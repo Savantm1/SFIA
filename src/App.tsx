@@ -1,5 +1,5 @@
-import { Button } from '@/scenarios/Button/';
-import React from 'react';
+
+import { Button } from '@ui/components/Button';
 
 function App() {
   return (

@@ -1,8 +1,16 @@
 {
   "compilerOptions": {
-      "baseUrl": "src",
+      "baseUrl": "./src",
       "paths": {
-        "@screnarios": ["./src/scenarios"]
+        "@scenarios/*": ["./scenarios/*"],
+        "@screens/*": ["./screens/*"],
+        "@store/*": ["./store/*"],
+        "@storybook/*": ["./storybook/*"],
+        "@types/*": ["./types/*"],
+        "@ui/*": ["./ui/*"],
+        "@images/*": ["./ui/images/*"],
+        "@icons/*": ["./ui/icons/*"],
+        "@fonts/*": ["./ui/fonts/*"]
       }
   }
 }

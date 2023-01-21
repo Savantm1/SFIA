@@ -1,9 +1,14 @@
-const path = require('path');
-const resolvePath = p => path.resolve(__dirname, p)
+const CracoAlias = require("craco-alias");
+
 module.exports = {
-  webpack: {
-    alias: {
-      "@screnarios": resolvePath("./src/scenarios"),
+  plugins: [
+    {
+      plugin: CracoAlias,
+      options: {
+        source: "tsconfig",
+        baseUrl: "./src",
+        tsConfigPath: "./tsconfig.paths.json",
+      },
     },
-  },
+  ],
 };
