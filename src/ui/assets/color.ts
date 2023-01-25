@@ -1,4 +1,4 @@
-export enum Color {
+enum Color {
   //main
   mainWhite = "#FFFFFF",
   mainBlack = "#000000",
@@ -24,3 +24,7 @@ export enum Color {
   lightGreen = "#CEFFCA",
   lightFuxy = "#FFC0D7",
 }
+
+export type KeysOfColor = keyof typeof Color;
+
+export default Color;

@@ -9,3 +9,5 @@ export enum Size {
   size_22 = 22,
   size_24 = 24,
 }
+
+export type KeysOfSize = keyof typeof Size;
