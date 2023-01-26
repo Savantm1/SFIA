@@ -7,12 +7,13 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
-import { TextField } from '@ui/components/TextField';
 import { Slider } from '@ui/components/Slider/Slider';
 import { Size } from '@ui/assets/size';
 import { Text } from '@ui/components/Text';
 import { Checkbox } from '@ui/components/Checkbox';
 import { useState } from 'react';
+import { TextInput } from '@ui/components/TextInput';
+import { TextArea } from '@ui/components/TextArea';
 
 function App() {
 
@@ -27,7 +28,32 @@ function App() {
           <Text align={'center'} variant={'body2'} color={Color.secondaryBlue}>123124 asdad</Text>
         <Checkbox color={Color.fuxy} checked={value} onChangeHandler={(value1)=>{setValue(value1)}}/>
         <Slider/>
-        <TextField label={'label'} onChange={(evt) => {setTextValue(evt.target.value)}}  value={textValue} disabled={false} />
+        {/*<TextField label={'label'} onChange={(val) => {setTextValue(val)}}  value={textValue} disabled={false} />*/}
+        <TextInput
+          isError={true}
+          errorText={'Ошибка'}
+          value={''}
+          onChange={(v) => {
+            console.log(v)}}
+          color={'red'}
+          disabled={false}
+          required={false}
+          placeholder={'dddsssAAACCC111'}
+          id={''}
+        />
+        <TextArea
+          isError={false}
+          errorText={'Ошибка'}
+          value={''}
+          onChange={(v) => {
+              console.log(v)}}
+          color={'red'}
+          disabled={false}
+          required={false}
+          placeholder={'dddsssAAACCC111'}
+          id={''}
+          rows={10}
+        />
       </AppStyled.ScreenWrapper>
     </ThemeProvider>
   );
