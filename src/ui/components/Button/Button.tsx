@@ -1,4 +1,4 @@
-import { Styled } from '@ui/components/Button/styled';
+import { Styled } from './styled';
 import { FC, memo } from 'react';
 
 type ButtonProps = {

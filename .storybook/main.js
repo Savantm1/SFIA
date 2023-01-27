@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   "stories": [
     "../src/**/*.stories.mdx",
@@ -11,5 +13,14 @@ module.exports = {
   "framework": "@storybook/react",
   "core": {
     "builder": "@storybook/builder-webpack5"
+  },
+  webpackFinal: async (config, { configType }) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@ui/': path.resolve(__dirname, "../ui"),
+      '@ui/assets/color': path.resolve(__dirname, "../src/ui/assets/color"),
+    };
+
+    return config;
   }
 }

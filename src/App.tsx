@@ -14,6 +14,7 @@ import { Checkbox } from '@ui/components/Checkbox';
 import { useState } from 'react';
 import { TextInput } from '@ui/components/TextInput';
 import { TextArea } from '@ui/components/TextArea';
+import UnstyledSelectSimple from '@ui/components/Select/Select';
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
           id={''}
           rows={10}
         />
+        <UnstyledSelectSimple/>
       </AppStyled.ScreenWrapper>
     </ThemeProvider>
   );
