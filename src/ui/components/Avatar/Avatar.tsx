@@ -5,16 +5,15 @@ import student from './../../assets/icons/material-symbols_school.svg';
 import { Styled } from '@ui/components/Avatar/styled';
 
 export type AvatarProps = {
-  role: 'student' | 'employer';
-  size: 'sm' | 'md' | 'lg'
+    role: 'student' | 'employer';
+    size: 'sm' | 'md' | 'lg';
 };
-export const Avatar: FC<AvatarProps> = memo(({size='md',role}) => {
-
+export const Avatar: FC<AvatarProps> = memo(({ size = 'md', role }) => {
     const sizes = getSize(size);
-    const icon = getIcon(role)
+    const icon = getIcon(role);
     return (
-       <Styled.Wrapper sizes={sizes}>
-         <Styled.Image src={icon} alt='avatar' />
-       </Styled.Wrapper>
+        <Styled.Wrapper sizes={sizes}>
+            <Styled.Image src={icon} alt="avatar" />
+        </Styled.Wrapper>
     );
-  });
+});

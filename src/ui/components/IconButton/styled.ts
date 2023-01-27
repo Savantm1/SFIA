@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Color from '@ui/assets/color';
 
-
 const Container = styled.div`
     width: 30px;
     height: 30px;
@@ -13,16 +12,16 @@ const Container = styled.div`
     border-radius: 5px;
     transition: all ease 0.3s;
     &:hover {
-    scale: 1.1;
+        scale: 1.1;
     }
 `;
 
 const Icon = styled.img`
-  width: 20px;
-  height: 20px;
+    width: 20px;
+    height: 20px;
 `;
 
 export const Styled = {
-  Container,
-  Icon,
-}
+    Container,
+    Icon,
+};

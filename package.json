@@ -74,14 +74,10 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src",
+    "lint-fix": "eslint --ext .js,.jsx,.ts,.tsx ./src --fix",
     "test": "craco test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
   },
   "browserslist": {
     "production": [
@@ -161,6 +157,8 @@
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-import-resolver-typescript": "^3.5.3",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jest-dom": "^4.0.3",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "2.8.3",
