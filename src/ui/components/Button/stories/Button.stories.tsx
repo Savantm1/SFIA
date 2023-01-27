@@ -16,7 +16,7 @@ export default {
   }
 }
 
-const Template = (arg) => <Button {...arg} />
+const Template = (arg: any) => <Button {...arg} />
 export const Default = () =>  Template.bind({});
 Default.args = {
   variant: 'outlined',
