@@ -1,16 +1,20 @@
 import styled from 'styled-components';
 import Color from '@ui/assets/color';
-import Select from '@mui/material/Select';
+import { default as SelectUI } from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
+import { SelectOption } from '@ui/components/Select/types';
 
-const SelectComponent = styled(Select)`
+type OptionValueType = { value: SelectOption['value'] };
+
+const Select = styled(SelectUI)<OptionValueType>`
     .MuiSelect-select {
         font-size: 12px !important;
         line-height: 14.52px !important;
         font-weight: 500 !important;
         background: ${Color.mainWhite} !important;
         font-family: 'inter', serif !important;
-        color: ${Color.mainBlack} !important;
+        color: ${({ value }) =>
+            value.length ? Color.mainBlack : Color.secondaryGray} !important;
         border: 1.5px solid ${Color.secondaryGray} !important;
         border-radius: 10px !important;
         outline: none !important;
@@ -22,6 +26,7 @@ const SelectComponent = styled(Select)`
     }
 
     .MuiSelect-select[aria-expanded='true'] {
+        color: ${Color.mainBlack} !important;
         background: ${Color.secondaryLightBlue} !important;
         border: 1.5px solid ${Color.secondaryBlue} !important;
     }
@@ -40,7 +45,12 @@ const Option = styled(MenuItem)`
     }
 `;
 
+const PlaceholderOption = styled(Option)`
+    color: ${Color.secondaryGray} !important;
+`;
+
 export const Styled = {
-    SelectComponent,
+    Select,
     Option,
+    PlaceholderOption,
 };

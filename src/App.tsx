@@ -31,7 +31,7 @@ function App() {
             <AppStyled.ScreenWrapper>
                 <Select
                     options={selectOptions}
-                    onSelect={(value) => alert(value)}
+                    onSelect={(value) => console.log(value)}
                     placeholder={'Выберите свой пол'}
                 />
 

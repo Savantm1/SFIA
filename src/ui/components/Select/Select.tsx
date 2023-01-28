@@ -6,7 +6,7 @@ import { SelectProps } from '@ui/components/Select/types';
 export const Select: FC<SelectProps> = memo(
     ({ options, defaultValue, placeholder, onSelect }) => {
         const [selectedValue, setSelectedValue] = useState(
-            placeholder ? 'placeholder' : defaultValue || options[0].value
+            defaultValue ? defaultValue : placeholder ? '' : options[0].value
         );
 
         const handleChange = ({ target: { value } }: SelectChangeEvent) => {
@@ -14,7 +14,7 @@ export const Select: FC<SelectProps> = memo(
             onSelect(value);
         };
 
-        const menuItems = options.map(({ value, text }) => {
+        const optionsList = options.map(({ value, text }) => {
             return (
                 <Styled.Option key={value} value={value}>
                     {text}
@@ -23,8 +23,9 @@ export const Select: FC<SelectProps> = memo(
         });
 
         return (
-            <Styled.SelectComponent
+            <Styled.Select
                 fullWidth
+                displayEmpty
                 MenuProps={{
                     style: { marginTop: 6, marginLeft: -8, borderRadius: 8 },
                 }}
@@ -32,12 +33,12 @@ export const Select: FC<SelectProps> = memo(
                 onChange={handleChange}
             >
                 {placeholder && (
-                    <Styled.Option value="placeholder">
+                    <Styled.PlaceholderOption value="">
                         {placeholder}
-                    </Styled.Option>
+                    </Styled.PlaceholderOption>
                 )}
-                {menuItems}
-            </Styled.SelectComponent>
+                {optionsList}
+            </Styled.Select>
         );
     }
 );
