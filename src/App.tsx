@@ -15,14 +15,27 @@ import { Text } from '@ui/components/Text';
 import { TextArea } from '@ui/components/TextArea';
 import { TextInput } from '@ui/components/TextInput';
 import React, { useState } from 'react';
+import { Select } from '@ui/components/Select/Select';
 
 function App() {
     const [value, setValue] = useState(false);
     const [textValue, setTextValue] = useState('aaffAsd');
 
+    const selectOptions = [
+        { value: '1', text: 'Вагина' },
+        { value: '2', text: 'Шпага' },
+        { value: '3', text: 'Отсутствует' },
+    ];
+
     return (
         <ThemeProvider theme={theme}>
             <AppStyled.ScreenWrapper>
+                <Select
+                    options={selectOptions}
+                    onSelect={(value) => console.log(value)}
+                    placeholder={'Выберите свой пол'}
+                />
+
                 <IconButton
                     onClick={() => {
                         console.log(123);
@@ -46,7 +59,7 @@ function App() {
                 <Slider />
                 {/*<TextField label={'label'} onChange={(val) => {setTextValue(val)}}  value={textValue} disabled={false} />*/}
                 <TextInput
-                    isError={true}
+                    isError={false}
                     errorText={'Ошибка'}
                     value={''}
                     onChange={(v) => {
