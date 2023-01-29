@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Color from '@ui/assets/color';
+import styled from 'styled-components';
 
 const Container = styled.div`
     width: 30px;

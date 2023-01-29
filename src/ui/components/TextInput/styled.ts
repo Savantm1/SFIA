@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import '@fontsource/inter/500.css';
+
 import Color from '@ui/assets/color';
 import { Size } from '@ui/assets/size';
-import '@fontsource/inter/500.css';
+import styled from 'styled-components';
 
 type InputCSSType = {
     isError?: boolean;

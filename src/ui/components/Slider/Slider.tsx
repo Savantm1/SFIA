@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
-import { Styled } from '@ui/components/Slider/styled';
 import Color from '@ui/assets/color';
+import { Styled } from '@ui/components/Slider/styled';
 import { FC, memo } from 'react';
 
 export const Slider: FC = memo(() => {

@@ -1,8 +1,7 @@
-import { FC, memo } from 'react';
+import { Styled } from '@ui/components/Avatar/styled';
 import { getIcon } from '@ui/components/Avatar/utils/getIcon';
 import { getSize } from '@ui/components/Avatar/utils/getSize';
-import student from './../../assets/icons/material-symbols_school.svg';
-import { Styled } from '@ui/components/Avatar/styled';
+import { FC, memo } from 'react';
 
 export type AvatarProps = {
     role: 'student' | 'employer';

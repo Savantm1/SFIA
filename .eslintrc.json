@@ -26,7 +26,14 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "react", "prettier"],
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "prettier",
+        "unused-imports",
+        "simple-import-sort",
+        "import"
+    ],
     "settings": {
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -41,6 +48,19 @@
     "rules": {
         "import/no-unresolved": "error",
         "react/display-name": "off",
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+            "warn",
+            {
+                "vars": "all",
+                "varsIgnorePattern": "^_",
+                "args": "after-used",
+                "argsIgnorePattern": "^_"
+            }
+        ],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
     }
 }
