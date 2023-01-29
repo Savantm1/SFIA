@@ -26,7 +26,14 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "react", "prettier", "unused-imports"],
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "prettier",
+        "unused-imports",
+        "simple-import-sort",
+        "import"
+    ],
     "settings": {
         "import/parsers": {
             "@typescript-eslint/parser": [".ts", ".tsx"]
@@ -52,6 +59,8 @@
                 "args": "after-used",
                 "argsIgnorePattern": "^_"
             }
-        ]
+        ],
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error"
     }
 }

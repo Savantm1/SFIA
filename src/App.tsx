@@ -1,19 +1,20 @@
-import { AppStyled } from '@ui/assets/globalStyles';
 import '@fontsource/inter/300.css';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/500.css';
 import '@fontsource/inter/700.css';
+
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { IconButton } from '@ui/components/IconButton/IconButton';
 import Color from '@ui/assets/color';
+import { AppStyled } from '@ui/assets/globalStyles';
 import { Icons } from '@ui/assets/icons';
-import { Slider } from '@ui/components/Slider/Slider';
 import { Size } from '@ui/assets/size';
-import { Text } from '@ui/components/Text';
 import { Checkbox } from '@ui/components/Checkbox';
-import React, { useState } from 'react';
-import { TextInput } from '@ui/components/TextInput';
+import { IconButton } from '@ui/components/IconButton/IconButton';
+import { Slider } from '@ui/components/Slider/Slider';
+import { Text } from '@ui/components/Text';
 import { TextArea } from '@ui/components/TextArea';
+import { TextInput } from '@ui/components/TextInput';
+import React, { useState } from 'react';
 
 function App() {
     const [value, setValue] = useState(false);

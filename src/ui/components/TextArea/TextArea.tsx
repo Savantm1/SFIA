@@ -1,5 +1,5 @@
-import { ChangeEvent, ChangeEventHandler, FC, memo, useState } from 'react';
 import { Styled } from '@ui/components/TextArea/styled';
+import { ChangeEvent, FC, memo, useState } from 'react';
 
 type TextAreaProps = {
     id?: string;

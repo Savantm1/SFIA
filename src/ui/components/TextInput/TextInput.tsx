@@ -1,5 +1,5 @@
-import { ChangeEvent, FC, memo, useState } from 'react';
 import { Styled } from '@ui/components/TextInput/styled';
+import { ChangeEvent, FC, memo, useState } from 'react';
 
 type TextInputProps = {
     id?: string;

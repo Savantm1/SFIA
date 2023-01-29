@@ -1,5 +1,6 @@
-import { Styled } from './styled';
 import { FC, memo } from 'react';
+
+import { Styled } from './styled';
 
 type ButtonProps = {
     value?: string | number;

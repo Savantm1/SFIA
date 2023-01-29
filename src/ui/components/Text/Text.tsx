@@ -1,10 +1,10 @@
-import { FC, memo } from 'react';
 import { Typography as TypographyUI } from '@mui/material';
-import { OverridableStringUnion } from '@mui/types';
 import { Variant } from '@mui/material/styles/createTypography';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography/Typography';
-import * as React from 'react';
+import { OverridableStringUnion } from '@mui/types';
 import Color, { KeysOfColor } from '@ui/assets/color';
+import { FC, memo } from 'react';
+import * as React from 'react';
 
 type TextProps = {
     align: 'center' | 'inherit' | 'justify' | 'left' | 'right';
