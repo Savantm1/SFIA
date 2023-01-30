@@ -12,6 +12,7 @@ type ButtonProps = {
     // leftIcon?: string;
     // rightIcon?: string;
     fullWidth?: boolean;
+    className?: string;
 };
 export const Button: FC<ButtonProps> = memo(
     ({
@@ -21,21 +22,25 @@ export const Button: FC<ButtonProps> = memo(
         href,
         onClick,
         size = 'medium',
+        className,
         // leftIcon,
         // rightIcon
     }) => {
         return (
-            <Styled.Button
-                variant={variant}
-                disabled={disabled}
-                href={href}
-                onClick={onClick}
-                size={size}
-                // rightIcon={rightIcon}
-                // leftIcon={leftIcon}
-            >
-                {value}
-            </Styled.Button>
+            <div className={className}>
+                <Styled.Button
+                    className={className}
+                    variant={variant}
+                    disabled={disabled}
+                    href={href}
+                    onClick={onClick}
+                    size={size}
+                    // rightIcon={rightIcon}
+                    // leftIcon={leftIcon}
+                >
+                    {value}
+                </Styled.Button>
+            </div>
         );
     }
 );
