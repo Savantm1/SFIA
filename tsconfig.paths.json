@@ -3,9 +3,7 @@
       "baseUrl": "./src",
       "paths": {
         "@scenarios/*": ["./scenarios/*"],
-        "@screens/*": ["./screens/*"],
         "@store/*": ["./store/*"],
-        "@storybook/*": ["./storybook/*"],
         "@types/*": ["./types/*"],
         "@ui/*": ["./ui/*"],
         "@pages/*": ["./pages/*"],

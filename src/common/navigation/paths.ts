@@ -2,7 +2,7 @@ export enum MAIN_ROUTES {
     default = '/',
     logout = '/logout',
     login = '/login',
-    registration = '/registration',
+    registration = '/select-registration',
 }
 
 export enum STUDENT_ROUTES {
