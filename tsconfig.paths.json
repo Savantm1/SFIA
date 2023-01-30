@@ -8,6 +8,8 @@
         "@storybook/*": ["./storybook/*"],
         "@types/*": ["./types/*"],
         "@ui/*": ["./ui/*"],
+        "@pages/*": ["./pages/*"],
+        "@common/*": ["./common/*"],
         "@images/*": ["./ui/images/*"],
         "@icons/*": ["./ui/icons/*"],
         "@fonts/*": ["./ui/fonts/*"]
