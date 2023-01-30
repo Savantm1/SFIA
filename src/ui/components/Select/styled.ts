@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import Color from '@ui/assets/color';
-import { default as SelectUI } from '@mui/material/Select';
 import { MenuItem } from '@mui/material';
+import { default as SelectUI } from '@mui/material/Select';
+import Color from '@ui/assets/color';
 import { SelectOption } from '@ui/components/Select/types';
+import styled from 'styled-components';
 
 type OptionValueType = { value: SelectOption['value'] };
 

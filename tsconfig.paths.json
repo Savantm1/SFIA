@@ -8,6 +8,9 @@
         "@storybook/*": ["./storybook/*"],
         "@types/*": ["./types/*"],
         "@ui/*": ["./ui/*"],
+        "@pages/*": ["./pages/*"],
+        "@common/*": ["./common/*"],
+        "@bless-components/*": ["./bless-components/*"],
         "@images/*": ["./ui/images/*"],
         "@icons/*": ["./ui/icons/*"],
         "@fonts/*": ["./ui/fonts/*"]

@@ -1,0 +1,1 @@
+export { AuthPageView } from './AuthPageView';

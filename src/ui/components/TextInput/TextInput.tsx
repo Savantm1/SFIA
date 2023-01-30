@@ -2,6 +2,7 @@ import { Styled } from '@ui/components/TextInput/styled';
 import { ChangeEvent, FC, memo, useState } from 'react';
 
 type TextInputProps = {
+    type?: string;
     id?: string;
     value: string;
     color?: string;
@@ -14,10 +15,15 @@ type TextInputProps = {
     name?: string;
     form?: string;
     maxLength?: number;
+    pattern?: string;
+    className?: string;
 };
 
 export const TextInput: FC<TextInputProps> = memo(
     ({
+        className,
+        pattern,
+        type = 'text',
         id,
         placeholder,
         disabled,
@@ -39,14 +45,15 @@ export const TextInput: FC<TextInputProps> = memo(
         };
 
         return (
-            <Styled.Wrapper>
+            <Styled.Wrapper className={className}>
                 <Styled.Input
+                    pattern={pattern}
                     maxLength={maxLength}
                     isError={isError}
                     id={id}
                     form={form}
                     name={name}
-                    type="text"
+                    type={type}
                     value={textValue}
                     color={color}
                     onChange={onChangeHandler}

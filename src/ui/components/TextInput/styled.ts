@@ -1,7 +1,6 @@
 import '@fontsource/inter/500.css';
 
 import Color from '@ui/assets/color';
-import { Size } from '@ui/assets/size';
 import styled from 'styled-components';
 
 type InputCSSType = {
@@ -11,14 +10,16 @@ type InputCSSType = {
 const Input = styled.input<InputCSSType>`
     font-family: 'inter', serif;
     color: ${(props) => (props.isError ? 'red' : Color.mainBlack)};
-    font-size: ${Size.size_16}px;
+    font-size: 16px;
     font-weight: 500;
     background: ${Color.mainWhite};
     border: 1.5px solid
-        ${(props) => (props.isError ? 'red' : Color.secondaryBlue)};
+        ${(props) => (props.isError ? 'red' : Color.secondaryGray)};
     border-radius: 10px;
     padding: 12px 10px 10px 10px;
     outline: none;
+    width: 100%;
+    box-sizing: border-box;
 
     &:disabled {
         background: rgba(251, 251, 251, 1);
@@ -47,7 +48,7 @@ const ErrorText = styled.span`
     left: 4px;
     font-family: 'inter', serif;
     font-weight: 500;
-    font-size: ${Size.size_12}px;
+    font-size: 12px;
     color: red;
 `;
 
