@@ -1,4 +1,5 @@
 import { LoginPage } from '@pages/LoginPage';
+import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -10,7 +11,7 @@ export const Navigation = memo(() => {
             <Route path={MAIN_ROUTES.login} element={<LoginPage />} />
             <Route
                 path={MAIN_ROUTES.registration}
-                element={<>RegistrationPage</>}
+                element={<SelectRegistrationPage />}
             />
         </Routes>
     );
