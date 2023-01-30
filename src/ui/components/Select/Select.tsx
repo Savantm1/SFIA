@@ -1,7 +1,7 @@
-import { FC, memo, useMemo, useState } from 'react';
 import { SelectChangeEvent } from '@mui/material';
 import { Styled } from '@ui/components/Select/styled';
 import { SelectProps } from '@ui/components/Select/types';
+import { FC, memo, useMemo, useState } from 'react';
 
 export const Select: FC<SelectProps> = memo(
     ({ options, defaultValue = options[0].value, placeholder, onSelect }) => {

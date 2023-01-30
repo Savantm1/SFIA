@@ -18,7 +18,7 @@ export const Sidebar: FC<SidebarProps> = memo(({ links }) => {
             <Styled.LogoContainer>logo</Styled.LogoContainer>
             <Styled.LinksContainer>{linkComponents}</Styled.LinksContainer>
             <Styled.LinksContainer>
-                <Link to={MAIN_ROUTES.login}></Link>
+                <Link to={MAIN_ROUTES.logout}></Link>
             </Styled.LinksContainer>
         </Styled.MainContainer>
     );
