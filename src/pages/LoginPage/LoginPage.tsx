@@ -1,3 +1,4 @@
+import { AuthPageView } from '@bless-components/AuthPageView';
 import { MAIN_ROUTES } from '@common/navigation';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
@@ -17,45 +18,38 @@ export const LoginPage: FC = memo(() => {
         alert(`send phone: ${phone}`);
     };
     return (
-        <Styled.PageWrapper>
-            <Styled.LeftSide>
-                <Styled.Title>Платформа развития цифровых навыков</Styled.Title>
-            </Styled.LeftSide>
-            <Styled.RightSide>
-                <Styled.ContentWrapper>
-                    <Text variant={'h1'} align={'left'} color={Color.mainBlack}>
-                        Добро пожаловать !
-                    </Text>
-                    <Styled.Subtitle
-                        variant={'h4'}
-                        align={'left'}
-                        color={Color.secondaryGray}
-                    >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nunc vulputate libero et velit interdum.
-                    </Styled.Subtitle>
-                    <Styled.TextInput
-                        type={'tel'}
-                        value={phone}
-                        pattern={
-                            '(s*)?(+)?([- _():=+]?d[- _():=+]?){10,14}(s*)?'
-                        }
-                        onChange={phoneValidationHandler}
-                        placeholder={'Номер телефона'}
-                    />
-                    <Styled.Button onClick={sendPhone} value={'Далее'} />
-                    <Text
-                        variant={'h4'}
-                        align={'left'}
-                        color={Color.secondaryDarkGray}
-                    >
-                        У вас нет аккаунта?{' '}
-                        <Styled.Link to={MAIN_ROUTES.registration}>
-                            Зарегистрироваться
-                        </Styled.Link>
-                    </Text>
-                </Styled.ContentWrapper>
-            </Styled.RightSide>
-        </Styled.PageWrapper>
+        <AuthPageView>
+            <Styled.ContentWrapper>
+                <Text variant={'h1'} align={'left'} color={Color.mainBlack}>
+                    Добро пожаловать !
+                </Text>
+                <Styled.Subtitle
+                    variant={'h4'}
+                    align={'left'}
+                    color={Color.secondaryGray}
+                >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Nunc vulputate libero et velit interdum.
+                </Styled.Subtitle>
+                <Styled.TextInput
+                    type={'tel'}
+                    value={phone}
+                    pattern={'(s*)?(+)?([- _():=+]?d[- _():=+]?){10,14}(s*)?'}
+                    onChange={phoneValidationHandler}
+                    placeholder={'Номер телефона'}
+                />
+                <Styled.Button onClick={sendPhone} value={'Далее'} />
+                <Text
+                    variant={'h4'}
+                    align={'left'}
+                    color={Color.secondaryDarkGray}
+                >
+                    У вас нет аккаунта?{' '}
+                    <Styled.Link to={MAIN_ROUTES.registration}>
+                        Зарегистрироваться
+                    </Styled.Link>
+                </Text>
+            </Styled.ContentWrapper>
+        </AuthPageView>
     );
 });

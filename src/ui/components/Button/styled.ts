@@ -3,6 +3,7 @@ import Color from '@ui/assets/color';
 export const Button = styled(ButtonMUI)<ButtonProps>(() => ({
     color: Color.mainWhite,
     maxWidth: '220px',
+    width: '100%',
     border: 'none',
     borderRadius: '8px',
     backgroundColor: Color.mainViolet,
