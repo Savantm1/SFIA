@@ -3,6 +3,8 @@ export enum MAIN_ROUTES {
     logout = '/logout',
     login = '/login',
     registration = '/select-registration',
+    registrationStudent = '/student-registration',
+    registrationEmployer = '/employer-registration',
 }
 
 export enum STUDENT_ROUTES {

@@ -15,7 +15,7 @@ const SelectContainer = styled.div`
     background: ${Color.mainWhite};
     box-shadow: ${Shadow.mainShadow};
     border-radius: 8px;
-    padding: 20px 25px;
+    padding: 25px 20px;
     & > img {
         opacity: 0;
     }

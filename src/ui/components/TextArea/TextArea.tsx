@@ -15,6 +15,7 @@ type TextAreaProps = {
     form?: string;
     maxLength?: number;
     name?: string;
+    className?: string;
 };
 
 export const TextArea: FC<TextAreaProps> = memo(
@@ -32,6 +33,7 @@ export const TextArea: FC<TextAreaProps> = memo(
         maxLength = 200,
         form,
         rows = 5,
+        className,
     }) => {
         const [textValue, setTextValue] = useState(value);
         const [counter, setCounter] = useState(maxLength);
@@ -44,7 +46,7 @@ export const TextArea: FC<TextAreaProps> = memo(
         };
 
         return (
-            <Styled.Wrapper>
+            <Styled.Wrapper className={className}>
                 <Styled.TextArea
                     form={form}
                     name={name}
@@ -60,7 +62,7 @@ export const TextArea: FC<TextAreaProps> = memo(
                     maxLength={maxLength}
                 />
                 {isError && <Styled.ErrorText>{errorText}</Styled.ErrorText>}
-                <Styled.Counter isError={isError}>{counter}</Styled.Counter>
+                {/*<Styled.Counter isError={isError}>{counter}</Styled.Counter>*/}
             </Styled.Wrapper>
         );
     }
