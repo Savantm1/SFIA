@@ -1,22 +1,23 @@
 import { AuthPageView } from '@bless-components/AuthPageView';
 import { MAIN_ROUTES } from '@common/navigation';
+import { useValidation } from '@common/validation/hooks/useValidation';
+import { inputValidationOptions } from '@pages/LoginPage/constants';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo } from 'react';
 
 import { Styled } from './styled';
 
 export const LoginPage: FC = memo(() => {
-    const [phone, setPhone] = useState('');
-    //TODO: добавить валидацию и маску
-    const phoneValidationHandler = (inputValue: string) => {
-        console.log(inputValue);
-        setPhone(inputValue);
-    };
-
-    const sendPhone = () => {
+    const onSubmit = (phone: string) => {
         alert(`send phone: ${phone}`);
     };
+
+    const { handleSubmit, getInputProps } = useValidation({
+        ...inputValidationOptions,
+        onSubmit,
+    });
+
     return (
         <AuthPageView>
             <Styled.ContentWrapper>
@@ -31,14 +32,8 @@ export const LoginPage: FC = memo(() => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Nunc vulputate libero et velit interdum.
                 </Styled.Subtitle>
-                <Styled.TextInput
-                    type={'tel'}
-                    value={phone}
-                    pattern={'(s*)?(+)?([- _():=+]?d[- _():=+]?){10,14}(s*)?'}
-                    onChange={phoneValidationHandler}
-                    placeholder={'Номер телефона'}
-                />
-                <Styled.Button onClick={sendPhone} value={'Далее'} />
+                <Styled.TextInput {...getInputProps('phone')} />
+                <Styled.Button onClick={handleSubmit} value={'Далее'} />
                 <Text
                     variant={'h4'}
                     align={'left'}

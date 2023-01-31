@@ -41,7 +41,7 @@ export const TextInput: FC<TextInputProps> = memo(
 
         const onChangeHandler = (evt: ChangeEvent<HTMLInputElement>) => {
             setTextValue(evt.target.value);
-            onChange(textValue);
+            onChange(evt.target.value);
         };
 
         return (

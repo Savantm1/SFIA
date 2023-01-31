@@ -14,6 +14,7 @@ export const useValidation = (options: any) => {
     const handleChange = (field: any) => {
         return (value: any) => {
             setData((prevValue: any) => {
+                console.log(prevValue, field, value);
                 return {
                     ...prevValue,
                     [field]: value,
