@@ -5,8 +5,14 @@ export const Button = styled(ButtonMUI)<ButtonProps>(() => ({
     maxWidth: '220px',
     width: '100%',
     border: 'none',
+    fontWeight: '700',
+    fontSize: '14px',
+    lineHeight: '17px',
     borderRadius: '8px',
     backgroundColor: Color.mainViolet,
+    paddingTop: '11px',
+    paddingBottom: '12px',
+
     '&:hover': {
         backgroundColor: Color.purple,
         border: 'none',
