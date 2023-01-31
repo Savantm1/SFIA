@@ -7,7 +7,7 @@ export const inputValidationOptions = {
             ...getDefaultRequiredField('phone', 'Номер телефона', {
                 pattern: {
                     value: '^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$',
-                    message: 'Номер указан не корректно',
+                    message: 'Номер указан некорректно',
                 },
             }),
         },
@@ -15,7 +15,7 @@ export const inputValidationOptions = {
             ...getDefaultRequiredField('email', 'E-mail', {
                 pattern: {
                     value: '[a-z0-9]+@[a-z]+.[a-z]{2,3}',
-                    message: 'E-mail указан не корректно',
+                    message: 'E-mail указан некорректно',
                 },
             }),
         },
