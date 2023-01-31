@@ -1,4 +1,5 @@
 import { LoginPage } from '@pages/LoginPage';
+import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -12,6 +13,14 @@ export const Navigation = memo(() => {
             <Route
                 path={MAIN_ROUTES.registration}
                 element={<SelectRegistrationPage />}
+            />
+            <Route
+                path={MAIN_ROUTES.registrationStudent}
+                element={<RegistrationPage.student />}
+            />
+            <Route
+                path={MAIN_ROUTES.registrationEmployer}
+                element={<RegistrationPage.employer />}
             />
         </Routes>
     );
