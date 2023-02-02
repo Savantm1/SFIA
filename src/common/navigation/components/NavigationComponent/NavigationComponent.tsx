@@ -1,3 +1,4 @@
+import { PageWrapperView } from '@bless-components/PageWrapperView';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
@@ -8,7 +9,7 @@ import { MAIN_ROUTES } from '../../paths';
 export const Navigation = memo(() => {
     return (
         <Routes>
-            <Route path={MAIN_ROUTES.default} element={<LoginPage />} />
+            <Route index path={MAIN_ROUTES.default} element={<LoginPage />} />
             <Route path={MAIN_ROUTES.login} element={<LoginPage />} />
             <Route
                 path={MAIN_ROUTES.registration}
@@ -22,6 +23,9 @@ export const Navigation = memo(() => {
                 path={MAIN_ROUTES.registrationEmployer}
                 element={<RegistrationPage.employer />}
             />
+            <Route path={'/employee'} element={<PageWrapperView />}>
+                <Route path={'/employee/main'} element={<>main</>} />
+            </Route>
         </Routes>
     );
 });
