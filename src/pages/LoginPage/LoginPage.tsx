@@ -10,7 +10,7 @@ import { Styled } from './styled';
 
 export const LoginPage: FC = memo(() => {
     const onSubmit = (phone: string) => {
-        alert(`send phone: ${phone}`);
+        alert(`send phone: ${JSON.stringify(phone)}`);
     };
 
     const { handleSubmit, getInputProps } = useValidation({
