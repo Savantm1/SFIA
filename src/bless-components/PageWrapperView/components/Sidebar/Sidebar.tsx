@@ -1,10 +1,10 @@
-import { EMPLOYER_LINKS } from '@bless-components/PageWrapperView/PageWrapperView';
-import { Link } from '@common/navigation/components/Sidebar/components/Link/Link';
+import { Link } from '@bless-components/PageWrapperView/components/Sidebar/components/Link/Link';
+import { EMPLOYER_LINKS } from '@common/navigation/links';
+import { MAIN_ROUTES } from '@common/navigation/paths';
 import LogoutIcon from '@ui/assets/iconComponents/LogoutIcon';
 import logo from '@ui/assets/images/logo1.png';
 import React, { FC, memo, useMemo } from 'react';
 
-import { MAIN_ROUTES } from '../../paths';
 import { Styled } from './styled';
 
 //посоветуй, куда можно это убрать ?
@@ -34,10 +34,11 @@ export const Sidebar: FC<SidebarProps> = memo(({ links = EMPLOYER_LINKS }) => {
                 <Styled.MainLinksContainer>
                     {linkComponents}
                 </Styled.MainLinksContainer>
-                <Styled.LastLinkUI to={MAIN_ROUTES.logout}>
-                    <LogoutIcon />
-                    Выход
-                </Styled.LastLinkUI>
+                <Link
+                    to={MAIN_ROUTES.logout}
+                    text={'Выход'}
+                    icon={<LogoutIcon />}
+                />
             </Styled.LinksContainer>
         </Styled.MainContainer>
     );

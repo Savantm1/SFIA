@@ -1,19 +1,13 @@
 import { Styled } from '@bless-components/PageWrapperView/styled';
-import { EMPLOYER_ROUTES } from '@common/navigation';
-import { Sidebar } from '@common/navigation/components/Sidebar';
-import BugIcon from '@ui/assets/iconComponents/BugIcon';
-import DashBordIcon from '@ui/assets/iconComponents/DashBordIcon';
-import PeopleIcon from '@ui/assets/iconComponents/PeopleIcon';
-import PersonIcon from '@ui/assets/iconComponents/PersonIcon';
-import React, { FC, memo } from 'react';
+import { EMPLOYER_LINKS } from '@common/navigation/links';
+import { Roles } from '@pages/SelectRegistrationPage/constants';
+import React, { FC, memo, useState } from 'react';
 import { Outlet } from 'react-router-dom';
-export const EMPLOYER_LINKS = [
-    { icon: <DashBordIcon />, text: 'Главная', to: EMPLOYER_ROUTES.main },
-    { icon: <BugIcon />, text: 'Мои Вакансии', to: EMPLOYER_ROUTES.vacancies },
-    { icon: <PersonIcon />, text: 'Кандидаты', to: EMPLOYER_ROUTES.candidates },
-    { icon: <PeopleIcon />, text: 'Моя команда', to: EMPLOYER_ROUTES.team },
-];
+
+import { Sidebar } from './components/Sidebar';
+
 export const PageWrapperView: FC = memo(() => {
+    const [role, setRole] = useState(Roles.employer);
     return (
         <Styled.MainWrapper>
             <Sidebar links={EMPLOYER_LINKS} />

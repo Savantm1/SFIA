@@ -5,7 +5,7 @@ import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegi
 import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { MAIN_ROUTES } from '../../paths';
+import { EMPLOYER_ROUTES, MAIN_ROUTES } from '../../paths';
 export const Navigation = memo(() => {
     return (
         <Routes>
@@ -23,8 +23,20 @@ export const Navigation = memo(() => {
                 path={MAIN_ROUTES.registrationEmployer}
                 element={<RegistrationPage.employer />}
             />
-            <Route path={'/employee'} element={<PageWrapperView />}>
-                <Route path={'/employee/main'} element={<>main</>} />
+            <Route
+                path={EMPLOYER_ROUTES.employer}
+                element={<PageWrapperView />}
+            >
+                <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
+                <Route
+                    path={EMPLOYER_ROUTES.vacancies}
+                    element={<>vacancies</>}
+                />
+                <Route path={EMPLOYER_ROUTES.team} element={<>team</>} />
+                <Route
+                    path={EMPLOYER_ROUTES.candidates}
+                    element={<>candidates</>}
+                />
             </Route>
         </Routes>
     );

@@ -12,8 +12,8 @@ import { Styled } from './styled';
 export const LoginPage: FC = memo(() => {
     const navigate = useNavigate();
     const onSubmit = (phone: string) => {
-        alert(`send phone: ${phone}`);
-        navigate('employee/main');
+        alert(`${JSON.stringify(phone)}`);
+        navigate('/employer/main');
     };
 
     const { handleSubmit, getInputProps } = useValidation({

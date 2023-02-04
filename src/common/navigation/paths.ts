@@ -1,6 +1,6 @@
 export enum MAIN_ROUTES {
     default = '/',
-    logout = '/logout',
+    logout = '/',
     login = '/login',
     registration = '/select-registration',
     registrationStudent = '/student-registration',
@@ -15,9 +15,9 @@ export enum STUDENT_ROUTES {
 }
 
 export enum EMPLOYER_ROUTES {
-    student = '/student',
-    main = '/main',
-    vacancies = '/vacancies',
-    candidates = '/candidates',
-    team = '/team',
+    employer = '/employer',
+    main = '/employer/main',
+    vacancies = '/employer/vacancies',
+    candidates = '/employer/candidates',
+    team = '/employer/team',
 }
