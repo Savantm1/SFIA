@@ -17,6 +17,7 @@ const LeftSide = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-inline: 10px;
 `;
 const RightSide = styled.div`
     background: ${Color.mainWhite};
@@ -25,6 +26,7 @@ const RightSide = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding-inline: 10px;
 `;
 
 const Title = styled.span`

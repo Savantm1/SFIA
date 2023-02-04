@@ -5,12 +5,15 @@ import { inputValidationOptions } from '@pages/LoginPage/constants';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import React, { FC, memo } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { Styled } from './styled';
 
 export const LoginPage: FC = memo(() => {
+    const navigate = useNavigate();
     const onSubmit = (phone: string) => {
-        alert(`send phone: ${JSON.stringify(phone)}`);
+        alert(`${JSON.stringify(phone)}`);
+        navigate('/employer/main');
     };
 
     const { handleSubmit, getInputProps } = useValidation({
