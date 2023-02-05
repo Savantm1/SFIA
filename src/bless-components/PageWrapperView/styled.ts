@@ -8,7 +8,7 @@ const MainWrapper = styled.div`
     flex-direction: row;
     justify-content: stretch;
     background: ${Color.mainViolet};
-    padding: 10px;
+    padding: 14px 10px;
 `;
 const ContentWrapper = styled.div`
     width: 100%;

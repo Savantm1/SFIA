@@ -1,6 +1,8 @@
 import { PageWrapperView } from '@bless-components/PageWrapperView';
+import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
+import { ScenariosPage } from '@pages/ScenariosPage/ScenariosPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -30,7 +32,7 @@ export const Navigation = memo(() => {
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
                 <Route
                     path={EMPLOYER_ROUTES.vacancies}
-                    element={<>vacancies</>}
+                    element={<EmployerVacancyPage />}
                 />
                 <Route path={EMPLOYER_ROUTES.team} element={<>team</>} />
                 <Route
@@ -38,6 +40,7 @@ export const Navigation = memo(() => {
                     element={<>candidates</>}
                 />
             </Route>
+            <Route path={'/test'} element={<ScenariosPage />} />
         </Routes>
     );
 });

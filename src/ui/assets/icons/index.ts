@@ -1,5 +1,6 @@
 import settingIcon from './ant-design_setting-outlined.svg';
 import menuIcon from './carbon_overflow-menu-horizontal.svg';
+import eye from './eye.svg';
 import peopleIcon from './fluent_people-16-regular.svg';
 import workIcon from './Group 429.svg';
 import addIcon from './ic_round-plus.svg';
@@ -14,6 +15,7 @@ export const Icons = {
     menu: menuIcon,
     back: backIcon,
     backBlack: backBlackIcon,
+    eye: eye,
     dashBord: dashBordIcon,
     features: featuresIcon,
     people: peopleIcon,
