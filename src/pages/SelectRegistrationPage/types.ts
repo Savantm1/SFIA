@@ -1,5 +1,7 @@
+import { Role } from '@common/models';
+
 export type RoleItem = {
-    role: 'student' | 'employer';
+    role: Role;
     link: string;
     title: string;
     subtitle: string;

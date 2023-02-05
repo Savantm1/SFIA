@@ -1,32 +1,18 @@
+import { Role } from '@common/models';
 import { MAIN_ROUTES } from '@common/navigation';
 import { RoleItem } from '@pages/SelectRegistrationPage/types';
 
-export const SELECT_REGISTRATION_PAGE_MAP = {
-    subtitleStudent: 'Хочу узнать свой уровень и повысить свои навыки',
-    subtitleEmployer: 'Хочу узнать уровень своей команды',
-};
-
-export enum Roles {
-    employer = 'employer',
-    student = 'student',
-}
-
-export enum RolesName {
-    employer = 'Работодатель',
-    student = 'Студент',
-}
-
 export const SELECT_ROLES_CONFIG: RoleItem[] = [
     {
-        role: Roles.student,
+        role: Role.STUDENT,
         link: MAIN_ROUTES.registrationStudent,
-        title: RolesName.student,
-        subtitle: SELECT_REGISTRATION_PAGE_MAP.subtitleStudent,
+        title: 'Студент',
+        subtitle: 'Хочу узнать свой уровень и повысить свои навыки',
     },
     {
-        role: Roles.employer,
+        role: Role.EMPLOYER,
         link: MAIN_ROUTES.registrationEmployer,
-        title: RolesName.employer,
-        subtitle: SELECT_REGISTRATION_PAGE_MAP.subtitleEmployer,
+        title: 'Работодатель',
+        subtitle: 'Хочу узнать уровень своей команды',
     },
 ];
