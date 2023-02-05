@@ -1,0 +1,1 @@
+export { EmployerVacancyPage } from './EmployerVacancyPage';
