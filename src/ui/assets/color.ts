@@ -24,6 +24,7 @@ enum Color {
     lightGreen = '#CEFFCA',
     lightFuxy = '#FFC0D7',
     lightRed = '#EF5A2B',
+    blue = '#347AE3',
 }
 
 export type KeysOfColor = keyof typeof Color;

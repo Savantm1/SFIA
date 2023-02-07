@@ -2,6 +2,7 @@ import Color from '@ui/assets/color';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    cursor: pointer;
     width: 30px;
     height: 30px;
     background: ${Color.mainViolet};

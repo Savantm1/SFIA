@@ -1,20 +1,14 @@
-import { ProgressBarProps } from '@scenarios/ProgressBarList';
+import { Vacancy } from '@common/models';
 import { Styled } from '@scenarios/VacancyMiniCard/styled';
 import { Icons } from '@ui/assets/icons';
 import React, { FC, memo } from 'react';
 
 type VacancyMiniCardProps = {
-    city: string;
-    company: string;
-    title: string;
-    description: string;
-    skillTypes: ProgressBarProps[];
-    views?: number;
-    responses?: number;
+    vacancy: Vacancy;
 };
 
-export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
-    ({
+export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(({ vacancy }) => {
+    const {
         city,
         company,
         title,
@@ -22,30 +16,30 @@ export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
         skillTypes,
         views = 0,
         responses = 0,
-    }) => {
-        return (
-            <Styled.ScenarioWrapper>
-                <Styled.HeaderWrapper>
-                    <Styled.HeaderLeftBlock>
-                        <Styled.HeaderText>{city}</Styled.HeaderText>
-                        <Styled.HeaderText>{company}</Styled.HeaderText>
-                    </Styled.HeaderLeftBlock>
+    } = vacancy;
 
-                    <Styled.HeaderRightBlock>
-                        <Styled.Icon src={Icons.eye} />
-                        <Styled.HeaderText>{views}</Styled.HeaderText>
-                    </Styled.HeaderRightBlock>
-                </Styled.HeaderWrapper>
+    return (
+        <Styled.ScenarioWrapper>
+            <Styled.HeaderWrapper>
+                <Styled.HeaderLeftBlock>
+                    <Styled.HeaderText>{city}</Styled.HeaderText>
+                    <Styled.HeaderText>{company}</Styled.HeaderText>
+                </Styled.HeaderLeftBlock>
 
-                <Styled.ContentWrapper>
-                    <Styled.Title>{title}</Styled.Title>
-                    <Styled.Subtitle>{description}</Styled.Subtitle>
+                <Styled.HeaderRightBlock>
+                    <Styled.Icon src={Icons.eye} />
+                    <Styled.HeaderText>{views}</Styled.HeaderText>
+                </Styled.HeaderRightBlock>
+            </Styled.HeaderWrapper>
 
-                    <Styled.ProgressBarsWrapper items={skillTypes} />
+            <Styled.ContentWrapper>
+                <Styled.Title>{title}</Styled.Title>
+                <Styled.Subtitle>{description}</Styled.Subtitle>
 
-                    <Styled.Responses>Отклики: {responses}</Styled.Responses>
-                </Styled.ContentWrapper>
-            </Styled.ScenarioWrapper>
-        );
-    }
-);
+                <Styled.ProgressBarsWrapper items={skillTypes} />
+
+                <Styled.Responses>Отклики: {responses}</Styled.Responses>
+            </Styled.ContentWrapper>
+        </Styled.ScenarioWrapper>
+    );
+});

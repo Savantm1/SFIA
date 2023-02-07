@@ -12,7 +12,7 @@ type TeamMemberMiniCardProps = {
 
 export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
     ({ user, skillTypes }) => {
-        const { city, role, fullname, position, phone, email } = user;
+        const { city, role, fullName, position, phone, email } = user;
 
         return (
             <Styled.ScenarioWrapper>
@@ -27,7 +27,7 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
                 </Styled.HeaderWrapper>
 
                 <Styled.ContentWrapper>
-                    <Styled.Title>{fullname}</Styled.Title>
+                    <Styled.Title>{fullName}</Styled.Title>
                     <Styled.Subtitle>{position}</Styled.Subtitle>
                     <Styled.Subtitle isSmallMargin={true}>
                         {phone}
