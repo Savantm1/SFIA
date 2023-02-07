@@ -14,7 +14,7 @@ type CandidateMiniCardProps = {
 
 export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
     ({ user, match, skillTypes }) => {
-        const { city, role, fullname, position, phone } = user;
+        const { city, role, fullName, position, phone } = user;
 
         const matchColor = getMatchColor(match);
 
@@ -34,7 +34,7 @@ export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
                 </Styled.HeaderWrapper>
 
                 <Styled.ContentWrapper>
-                    <Styled.Title>{fullname}</Styled.Title>
+                    <Styled.Title>{fullName}</Styled.Title>
                     <Styled.Subtitle>{position}</Styled.Subtitle>
                     <Styled.Subtitle>{phone}</Styled.Subtitle>
 

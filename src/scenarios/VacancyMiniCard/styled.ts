@@ -65,6 +65,7 @@ const Subtitle = styled.span`
     line-height: 10px;
     color: ${Color.secondaryDarkGray};
     margin-bottom: 10px;
+    min-height: 20px;
 `;
 
 const ProgressBarsWrapper = styled(ProgressBarList)`
