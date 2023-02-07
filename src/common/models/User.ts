@@ -1,10 +1,13 @@
 import { Role } from '@common/models';
 
 export type User = {
-    id: number;
+    id: string;
     role: Role;
-    fullname: string;
+    fullName: string;
     position: string;
+    company: string;
+    about: string;
+    site: string;
     phone: string;
     email: string;
     city: string;
