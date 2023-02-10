@@ -15,7 +15,7 @@ const Select = styled(SelectUI)<OptionValueType>`
         font-family: 'inter', serif !important;
         color: ${({ value }) =>
             value.length ? Color.mainBlack : Color.secondaryGray} !important;
-        border: 1.5px solid ${Color.secondaryGray} !important;
+        border: 1px solid ${Color.secondaryGray} !important;
         border-radius: 10px !important;
         outline: none !important;
         padding: 11px 14px 9px 14px !important;

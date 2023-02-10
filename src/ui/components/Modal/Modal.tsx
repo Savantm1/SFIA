@@ -21,33 +21,38 @@ type ModalProps = {
     onClose: VoidFunction;
     isOpen: boolean;
     children: React.ReactElement;
+    needCloseButton?: boolean;
 };
 
-export const Modal: FC<ModalProps> = memo(({ onClose, isOpen, children }) => {
-    return (
-        <div>
-            <Styled.ModalUI
-                aria-labelledby="transition-modal-title"
-                aria-describedby="transition-modal-description"
-                open={isOpen}
-                onClose={onClose}
-                closeAfterTransition
-                slots={{ backdrop: Styled.Backdrop }}
-            >
-                <Fade in={isOpen} timeout={300}>
-                    <Box sx={style}>
-                        <Styled.ContentContainer>
-                            <Styled.CloseButtonBlock>
-                                <Styled.Close
-                                    iconName={Icons.close}
-                                    onClick={onClose}
-                                />
-                            </Styled.CloseButtonBlock>
-                            {children}
-                        </Styled.ContentContainer>
-                    </Box>
-                </Fade>
-            </Styled.ModalUI>
-        </div>
-    );
-});
+export const Modal: FC<ModalProps> = memo(
+    ({ onClose, isOpen, children, needCloseButton = true }) => {
+        return (
+            <div>
+                <Styled.ModalUI
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    open={isOpen}
+                    onClose={onClose}
+                    closeAfterTransition
+                    slots={{ backdrop: Styled.Backdrop }}
+                >
+                    <Fade in={isOpen} timeout={300}>
+                        <Box sx={style}>
+                            <Styled.ContentContainer>
+                                {needCloseButton && (
+                                    <Styled.CloseButtonBlock>
+                                        <Styled.Close
+                                            iconName={Icons.close}
+                                            onClick={onClose}
+                                        />
+                                    </Styled.CloseButtonBlock>
+                                )}
+                                {children}
+                            </Styled.ContentContainer>
+                        </Box>
+                    </Fade>
+                </Styled.ModalUI>
+            </div>
+        );
+    }
+);
