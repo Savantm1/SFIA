@@ -33,14 +33,14 @@ const ModalUI = styledMUI(ModalUnstyled)`
 `;
 
 const CloseButtonBlock = styled.div`
-    width: 30px;
+    width: 100%;
     height: 30px;
-    position: absolute;
+    position: sticky;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    right: 5px;
-    top: 5px;
+    padding-right: 20px;
+    top: 20px;
     cursor: pointer;
 `;
 
