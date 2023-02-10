@@ -14,6 +14,10 @@ export const AppStyled = {
 };
 
 export default createGlobalStyle`
+    body {
+        font-family: 'Inter',serif;
+        font-weight: 500;
+    };
   * {
     margin:0;
     padding: 0;
