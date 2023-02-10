@@ -57,6 +57,11 @@ const Title = styled.span`
     line-height: 15px;
     color: ${Color.mainBlack};
     margin-bottom: 2px;
+
+    &:hover {
+        color: ${Color.blue};
+        cursor: pointer;
+    }
 `;
 
 const Subtitle = styled.span`
