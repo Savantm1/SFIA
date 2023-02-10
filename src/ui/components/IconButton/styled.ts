@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    padding: 5px;
     background: ${Color.mainViolet};
     color: white;
     display: flex;
@@ -17,9 +16,9 @@ const Container = styled.div`
     }
 `;
 
-const Icon = styled.img`
-    width: 20px;
-    height: 20px;
+const Icon = styled.img<{ size: number }>`
+    width: ${(props) => props.size}px;
+    height: ${(props) => props.size}px;
 `;
 
 export const Styled = {

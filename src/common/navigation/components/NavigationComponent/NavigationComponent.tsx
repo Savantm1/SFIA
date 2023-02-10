@@ -3,7 +3,8 @@ import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
-import { memo } from 'react';
+import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
+import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { EMPLOYER_ROUTES, MAIN_ROUTES } from '../../paths';
@@ -12,6 +13,7 @@ export const Navigation = memo(() => {
         <Routes>
             <Route index path={MAIN_ROUTES.default} element={<LoginPage />} />
             <Route path={MAIN_ROUTES.login} element={<LoginPage />} />
+            <Route path={'/test'} element={<SkillsSelectionModal />} />
             <Route
                 path={MAIN_ROUTES.registration}
                 element={<SelectRegistrationPage />}
@@ -37,7 +39,7 @@ export const Navigation = memo(() => {
                 <Route
                     path={EMPLOYER_ROUTES.candidates}
                     element={<>candidates</>}
-                />
+                />{' '}
             </Route>
         </Routes>
     );
