@@ -1,33 +1,63 @@
-import { CreateVacancyModal } from '@pages/EmployerVacancyPage/components/CreateVacancyModal/CreateVacancyModal';
+import { Vacancy } from '@common/models';
 import { NoVacancyComponent } from '@pages/EmployerVacancyPage/components/NoVacancyComponent/NoVacancyComponent';
+import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
+import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
+import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
-import React, { FC, memo, useCallback, useState } from 'react';
+import React, { FC, memo, useCallback, useMemo } from 'react';
 
 import { Styled } from './styled';
 
 type VacancyListComponentProps = {
-    vacancyList: JSX.Element[];
+    vacancies: Vacancy[];
+    selectVacancyHandler: (vacancy: Vacancy | null) => () => void;
 };
 
 export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
-    ({ vacancyList }) => {
-        const [isModalOpen, setIsModalOpen] = useState(false);
+    ({ vacancies, selectVacancyHandler }) => {
+        const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
+        const {
+            isModalOpen: isSkillModalOpen,
+            openModalHandler: openSkillModalHandler,
+            closeModalHandler: closeSkillModalHandler,
+        } = useModal();
 
-        const openModalHandler = useCallback(() => {
-            setIsModalOpen(true);
-        }, []);
+        const vacancyList = useMemo(() => {
+            return vacancies.map((vacancy) => {
+                return (
+                    <VacancyMiniCard
+                        key={vacancy.id}
+                        vacancy={vacancy}
+                        openVacancyProfileHandler={selectVacancyHandler(
+                            vacancy
+                        )}
+                    />
+                );
+            });
+        }, [selectVacancyHandler, vacancies]);
 
-        const closeModalHandler = useCallback(() => {
-            setIsModalOpen(false);
-        }, []);
+        const onFormSubmitHandler = useCallback(
+            (data: any) =>
+                alert(`Vacancy created success. Data: ${JSON.stringify(data)}`),
+            []
+        );
 
         return (
             <>
-                <CreateVacancyModal
+                <ModalContainer
+                    open={isSkillModalOpen}
+                    handleClose={closeSkillModalHandler}
+                />
+
+                <VacancyFormModal
                     isOpen={isModalOpen}
                     onCloseHandler={closeModalHandler}
+                    openSkillModalHandler={openSkillModalHandler}
+                    onFormSubmitHandler={onFormSubmitHandler}
                 />
+
                 <Styled.Wrapper>
                     <Styled.HeaderWrapper>
                         <Styled.Title>Мои вакансии</Styled.Title>

@@ -1,26 +1,47 @@
+import { Vacancy } from '@common/models';
 import { useValidation } from '@common/validation/hooks/useValidation';
 import { inputValidationOptions } from '@pages/EmployerVacancyPage/constants';
+import { getValidationOptionsWithInitialValue } from '@pages/EmployerVacancyPage/utils/getValidationOptionsWithInitialValue';
+import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 
-type CreateVacancyModalProps = {
+type VacancyFormModalProps = {
     isOpen: boolean;
     onCloseHandler: VoidFunction;
+    openSkillModalHandler: VoidFunction;
+    onFormSubmitHandler: (data: any) => void;
+    vacancy?: Vacancy;
 };
 
-export const CreateVacancyModal: FC<CreateVacancyModalProps> = memo(
-    ({ isOpen, onCloseHandler }) => {
+export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
+    ({
+        isOpen,
+        onCloseHandler,
+        openSkillModalHandler,
+        onFormSubmitHandler,
+        vacancy,
+    }) => {
         const onSubmit = (data: any) => {
-            alert(`Vacancy created success. Data: ${JSON.stringify(data)}`);
+            onFormSubmitHandler(data);
             onCloseHandler();
         };
 
+        const formValidationOptions = useMemo(() => {
+            return vacancy
+                ? getValidationOptionsWithInitialValue(vacancy)
+                : inputValidationOptions;
+        }, [vacancy]);
+
         const { handleSubmit, getInputProps } = useValidation({
-            ...inputValidationOptions,
+            ...formValidationOptions,
             onSubmit,
         });
+
+        const title = vacancy ? 'Редактирование вакансии' : 'Создать вакансию';
+        const buttonText = vacancy ? 'Сохранить' : 'Опубликовать';
 
         return (
             <Modal
@@ -29,16 +50,14 @@ export const CreateVacancyModal: FC<CreateVacancyModalProps> = memo(
                 needCloseButton={false}
             >
                 <Styled.Wrapper>
-                    <Styled.Title>Создать вакансию</Styled.Title>
+                    <Styled.Title>{title}</Styled.Title>
                     <Styled.Subtitle>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     </Styled.Subtitle>
 
                     <Styled.FormWrapper>
                         <Styled.Row>
-                            <Styled.TextInput
-                                {...getInputProps('vacancy_name')}
-                            />
+                            <Styled.TextInput {...getInputProps('title')} />
                             <Styled.TextInput
                                 {...getInputProps('experience')}
                             />
@@ -68,11 +87,15 @@ export const CreateVacancyModal: FC<CreateVacancyModalProps> = memo(
                                 defaultValue={''}
                                 placeholder={'Навык'}
                             />
+                            <Styled.DickButton
+                                iconName={Icons.cock}
+                                onClick={openSkillModalHandler}
+                            />
                         </Styled.Row>
 
                         <Styled.ButtonsWrapper>
                             <Styled.CreateButton
-                                value={'Опубликовать'}
+                                value={buttonText}
                                 onClick={handleSubmit}
                             />
                             <Styled.CancelButton

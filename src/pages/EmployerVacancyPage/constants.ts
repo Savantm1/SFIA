@@ -1,11 +1,15 @@
-import { getDefaultRequiredField } from '@common/validation/utils/getDefaultRequiredField';
+import {
+    FieldType,
+    getDefaultRequiredField,
+} from '@common/validation/utils/getDefaultRequiredField';
 
-export const inputValidationOptions = {
+type InputValidationOptionsType = {
+    fields: Record<string, FieldType>;
+};
+
+export const inputValidationOptions: InputValidationOptionsType = {
     fields: {
-        vacancy_name: getDefaultRequiredField(
-            'vacancy_name',
-            'Название вакансии'
-        ),
+        title: getDefaultRequiredField('title', 'Название вакансии'),
         experience: getDefaultRequiredField('experience', 'Опыт'),
         employment: getDefaultRequiredField('employment', 'Занятость'),
         schedule: getDefaultRequiredField('schedule', 'График работы'),
