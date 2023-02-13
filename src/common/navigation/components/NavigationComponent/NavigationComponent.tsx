@@ -1,4 +1,5 @@
 import { PageWrapperView } from '@bless-components/PageWrapperView';
+import { EMPLOYER_LINKS, STUDENT_LINKS } from '@common/navigation/links';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
@@ -7,7 +8,7 @@ import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { EMPLOYER_ROUTES, MAIN_ROUTES } from '../../paths';
+import { EMPLOYER_ROUTES, MAIN_ROUTES, STUDENT_ROUTES } from '../../paths';
 export const Navigation = memo(() => {
     return (
         <Routes>
@@ -26,9 +27,10 @@ export const Navigation = memo(() => {
                 path={MAIN_ROUTES.registrationEmployer}
                 element={<RegistrationPage.employer />}
             />
+            {/*employer routes*/}
             <Route
                 path={EMPLOYER_ROUTES.employer}
-                element={<PageWrapperView />}
+                element={<PageWrapperView links={EMPLOYER_LINKS} />}
             >
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
                 <Route
@@ -39,7 +41,19 @@ export const Navigation = memo(() => {
                 <Route
                     path={EMPLOYER_ROUTES.candidates}
                     element={<>candidates</>}
-                />{' '}
+                />
+            </Route>
+            {/*students routes*/}
+            <Route
+                path={STUDENT_ROUTES.student}
+                element={<PageWrapperView links={STUDENT_LINKS} />}
+            >
+                <Route path={STUDENT_ROUTES.main} element={<>main</>} />
+                <Route path={STUDENT_ROUTES.courses} element={<>courses</>} />
+                <Route
+                    path={STUDENT_ROUTES.vacancies}
+                    element={<>vacancies</>}
+                />
             </Route>
         </Routes>
     );

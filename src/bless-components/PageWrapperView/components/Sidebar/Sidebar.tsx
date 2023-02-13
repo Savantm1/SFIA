@@ -1,5 +1,5 @@
 import { Link } from '@bless-components/PageWrapperView/components/Sidebar/components/Link/Link';
-import { EMPLOYER_LINKS } from '@common/navigation/links';
+import { EMPLOYER_LINKS, LinksType } from '@common/navigation/links';
 import { MAIN_ROUTES } from '@common/navigation/paths';
 import LogoutIcon from '@ui/assets/iconComponents/LogoutIcon';
 import logo from '@ui/assets/images/logo1.png';
@@ -7,9 +7,8 @@ import React, { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 
-//посоветуй, куда можно это убрать ?
 type SidebarProps = {
-    links?: typeof EMPLOYER_LINKS;
+    links: LinksType;
 };
 
 export const Sidebar: FC<SidebarProps> = memo(({ links = EMPLOYER_LINKS }) => {

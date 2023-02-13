@@ -1,16 +1,19 @@
 import { Styled } from '@bless-components/PageWrapperView/styled';
 import { Role } from '@common/models';
-import { EMPLOYER_LINKS } from '@common/navigation/links';
+import { LinksType } from '@common/navigation/links';
 import React, { FC, memo, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Sidebar } from './components/Sidebar';
 
-export const PageWrapperView: FC = memo(() => {
+type PageWrapperViewProps = {
+    links: LinksType;
+};
+export const PageWrapperView: FC<PageWrapperViewProps> = memo(({ links }) => {
     const [role, setRole] = useState(Role.EMPLOYER);
     return (
         <Styled.MainWrapper>
-            <Sidebar links={EMPLOYER_LINKS} />
+            <Sidebar links={links} />
             <Styled.ContentWrapper>
                 <Outlet />
             </Styled.ContentWrapper>
