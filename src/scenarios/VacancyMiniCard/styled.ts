@@ -10,6 +10,7 @@ const ScenarioWrapper = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
+    max-width: 200px;
     flex-direction: column;
     padding: 14px 12px 12px 12px;
 `;
@@ -57,6 +58,11 @@ const Title = styled.span`
     line-height: 15px;
     color: ${Color.mainBlack};
     margin-bottom: 2px;
+
+    &:hover {
+        color: ${Color.blue};
+        cursor: pointer;
+    }
 `;
 
 const Subtitle = styled.span`

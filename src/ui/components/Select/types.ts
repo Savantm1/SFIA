@@ -5,4 +5,5 @@ export type SelectProps = {
     defaultValue?: SelectOption['value'];
     placeholder?: string;
     onSelect: (value: SelectOption['value']) => void;
+    className?: string;
 };

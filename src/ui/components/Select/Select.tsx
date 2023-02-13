@@ -4,7 +4,13 @@ import { SelectProps } from '@ui/components/Select/types';
 import { FC, memo, useMemo, useState } from 'react';
 
 export const Select: FC<SelectProps> = memo(
-    ({ options, defaultValue = options[0].value, placeholder, onSelect }) => {
+    ({
+        options,
+        defaultValue = options[0].value,
+        placeholder,
+        onSelect,
+        className,
+    }) => {
         const [selectedValue, setSelectedValue] = useState(
             placeholder ? '' : defaultValue
         );
@@ -36,6 +42,7 @@ export const Select: FC<SelectProps> = memo(
                 }}
                 value={selectedValue}
                 onChange={handleChange}
+                className={className}
             >
                 {placeholder && (
                     <Styled.PlaceholderOption value="">
