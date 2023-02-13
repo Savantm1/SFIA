@@ -25,6 +25,8 @@ const VacancyListWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
 `;
 
 export const Styled = {

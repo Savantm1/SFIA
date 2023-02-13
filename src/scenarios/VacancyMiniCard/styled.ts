@@ -10,6 +10,7 @@ const ScenarioWrapper = styled.div`
     width: 100%;
     height: 100%;
     display: flex;
+    max-width: 200px;
     flex-direction: column;
     padding: 14px 12px 12px 12px;
 `;
