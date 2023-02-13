@@ -4,6 +4,7 @@ import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
+import { StudentMainPage } from '@pages/StudentMainPage';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -48,7 +49,10 @@ export const Navigation = memo(() => {
                 path={STUDENT_ROUTES.student}
                 element={<PageWrapperView links={STUDENT_LINKS} />}
             >
-                <Route path={STUDENT_ROUTES.main} element={<>main</>} />
+                <Route
+                    path={STUDENT_ROUTES.main}
+                    element={<StudentMainPage />}
+                />
                 <Route path={STUDENT_ROUTES.courses} element={<>courses</>} />
                 <Route
                     path={STUDENT_ROUTES.vacancies}
