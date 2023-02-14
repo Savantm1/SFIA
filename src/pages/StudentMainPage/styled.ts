@@ -36,7 +36,13 @@ const EmptyImg = styled.img`
     width: 100%;
 `;
 
+const SchemeImg = styled.img`
+    margin-top: 66px;
+    max-width: 600px;
+    width: 100%;
+`;
 export const Styled = {
+    SchemeImg,
     EmptySubtitle,
     EmptyImg,
     PageWrapper,
