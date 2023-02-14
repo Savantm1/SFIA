@@ -1,5 +1,6 @@
 import Color from '@ui/assets/color';
 import { Button as ButtonUI } from '@ui/components/Button';
+import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Select as SelectUI } from '@ui/components/Select';
 import { TextArea as TextAreaUI } from '@ui/components/TextArea';
 import { TextInput as TextInputUI } from '@ui/components/TextInput';
@@ -45,7 +46,7 @@ const TextArea = styled(TextAreaUI)`
 `;
 
 const Select = styled(SelectUI)`
-    width: 286px !important;
+    width: 250px !important;
     align-self: flex-start;
 `;
 
@@ -75,6 +76,13 @@ const CancelButton = styled(ButtonUI)`
     line-height: 15px !important;
 `;
 
+export const DickButton = styled(IconButton)`
+    width: 30px;
+    height: 36px;
+    margin-left: -14px;
+    margin-top: 2px;
+`;
+
 export const Styled = {
     Wrapper,
     Title,
@@ -86,5 +94,6 @@ export const Styled = {
     ButtonsWrapper,
     CreateButton,
     CancelButton,
+    DickButton,
     Select,
 };

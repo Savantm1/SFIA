@@ -1,9 +1,13 @@
 import { Vacancy } from '@common/models';
+import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { InfoList } from '@pages/EmployerVacancyPage/components/VacancyProfileComponent/components/InfoList/InfoList';
+import { useMenu } from '@pages/EmployerVacancyPage/hooks/useMenu';
+import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { formatAmount } from '@pages/EmployerVacancyPage/utils/formatAmount';
+import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo, useCallback } from 'react';
 
 import { Styled } from './styled';
 
@@ -14,17 +18,37 @@ type VacancyProfileComponentProps = {
 
 export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
     ({ vacancy, closeVacancyProfileHandler }) => {
-        const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-        const open = Boolean(anchorEl);
-        const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-            setAnchorEl(event.currentTarget);
-        };
-        const handleClose = () => {
-            setAnchorEl(null);
-        };
+        const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
+        const {
+            isModalOpen: isSkillModalOpen,
+            openModalHandler: openSkillModalHandler,
+            closeModalHandler: closeSkillModalHandler,
+        } = useModal();
+
+        const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
+            useMenu();
+
+        const onFormSubmitHandler = useCallback(
+            (data: any) =>
+                alert(`Vacancy updated success. Data: ${JSON.stringify(data)}`),
+            []
+        );
 
         return (
             <Styled.Wrapper>
+                <ModalContainer
+                    open={isSkillModalOpen}
+                    handleClose={closeSkillModalHandler}
+                />
+
+                <VacancyFormModal
+                    isOpen={isModalOpen}
+                    onCloseHandler={closeModalHandler}
+                    openSkillModalHandler={openSkillModalHandler}
+                    onFormSubmitHandler={onFormSubmitHandler}
+                    vacancy={vacancy}
+                />
+
                 <Styled.HeaderWrapper>
                     <Styled.TitleWrapper>
                         <Styled.BackButton
@@ -36,10 +60,10 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
                     <Styled.MenuButton
                         id="basic-button"
                         iconName={Icons.menu}
-                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-controls={isMenuOpen ? 'basic-menu' : undefined}
                         aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick as VoidFunction}
+                        aria-expanded={isMenuOpen ? 'true' : undefined}
+                        onClick={anchorClickHandler as VoidFunction}
                     />
                     <Styled.Menu
                         id="basic-menu"
@@ -52,16 +76,21 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
                             horizontal: 'right',
                         }}
                         anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
+                        open={isMenuOpen}
+                        onClose={closeMenuHandler}
                         MenuListProps={{
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <Styled.MenuItem onClick={handleClose}>
+                        <Styled.MenuItem
+                            onClick={() => {
+                                openModalHandler();
+                                closeMenuHandler();
+                            }}
+                        >
                             Редактировать
                         </Styled.MenuItem>
-                        <Styled.MenuItem onClick={handleClose}>
+                        <Styled.MenuItem onClick={() => {}}>
                             Удалить
                         </Styled.MenuItem>
                     </Styled.Menu>

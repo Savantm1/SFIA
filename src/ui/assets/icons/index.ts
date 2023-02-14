@@ -1,6 +1,7 @@
 import close from './akar-icons_cross.svg';
 import settingIcon from './ant-design_setting-outlined.svg';
 import menuIcon from './carbon_overflow-menu-horizontal.svg';
+import cock from './cock.svg';
 import eye from './eye.svg';
 import peopleIcon from './fluent_people-16-regular.svg';
 import workIcon from './Group 429.svg';
@@ -10,6 +11,7 @@ import backBlackIcon from './material-symbols_arrow-back-ios-new-rounded_black.s
 import dashBordIcon from './material-symbols_dashboard-customize-outline-rounded.svg';
 import featuresIcon from './material-symbols_featured-play-list-outline.svg';
 import logoutIcon from './mi_log-out.svg';
+
 export const Icons = {
     add: addIcon,
     menu: menuIcon,
@@ -23,6 +25,7 @@ export const Icons = {
     settings: settingIcon,
     logout: logoutIcon,
     close: close,
+    cock: cock,
 };
 
 export type KeysOfIcons = keyof typeof Icons;
