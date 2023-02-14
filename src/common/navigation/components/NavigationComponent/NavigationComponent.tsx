@@ -1,11 +1,14 @@
 import { PageWrapperView } from '@bless-components/PageWrapperView';
-import { EMPLOYER_LINKS, STUDENT_LINKS } from '@common/navigation/links';
+import {
+    EMPLOYER_LINKS,
+    LinksType,
+    STUDENT_LINKS,
+} from '@common/navigation/links';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { StudentMainPage } from '@pages/StudentMainPage';
-import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -15,7 +18,6 @@ export const Navigation = memo(() => {
         <Routes>
             <Route index path={MAIN_ROUTES.default} element={<LoginPage />} />
             <Route path={MAIN_ROUTES.login} element={<LoginPage />} />
-            <Route path={'/test'} element={<SkillsSelectionModal />} />
             <Route
                 path={MAIN_ROUTES.registration}
                 element={<SelectRegistrationPage />}
@@ -31,9 +33,9 @@ export const Navigation = memo(() => {
             {/*employer routes*/}
             <Route
                 path={EMPLOYER_ROUTES.employer}
-                //eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore TODO: Есть проблема с типизацией
-                element={<PageWrapperView links={EMPLOYER_LINKS} />}
+                element={
+                    <PageWrapperView links={EMPLOYER_LINKS as LinksType} />
+                }
             >
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
                 <Route
@@ -49,7 +51,7 @@ export const Navigation = memo(() => {
             {/*students routes*/}
             <Route
                 path={STUDENT_ROUTES.student}
-                element={<PageWrapperView links={STUDENT_LINKS} />}
+                element={<PageWrapperView links={STUDENT_LINKS as LinksType} />}
             >
                 <Route
                     path={STUDENT_ROUTES.main}

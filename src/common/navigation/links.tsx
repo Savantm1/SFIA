@@ -18,5 +18,4 @@ export const STUDENT_LINKS = [
     { icon: <BugIcon />, text: 'Вакансии', to: STUDENT_ROUTES.vacancies },
 ];
 
-const LINKS = { ...EMPLOYER_LINKS, ...STUDENT_LINKS };
-export type LinksType = typeof LINKS;
+export type LinksType = typeof EMPLOYER_LINKS & typeof STUDENT_LINKS;
