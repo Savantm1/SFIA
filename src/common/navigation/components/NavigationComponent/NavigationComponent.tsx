@@ -31,6 +31,8 @@ export const Navigation = memo(() => {
             {/*employer routes*/}
             <Route
                 path={EMPLOYER_ROUTES.employer}
+                //eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore TODO: Есть проблема с типизацией
                 element={<PageWrapperView links={EMPLOYER_LINKS} />}
             >
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
