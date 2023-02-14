@@ -9,9 +9,9 @@ export enum MAIN_ROUTES {
 
 export enum STUDENT_ROUTES {
     student = '/student',
-    main = '/main',
-    courses = '/courses',
-    vacancies = '/vacancies',
+    main = '/student/main',
+    courses = '/student/courses',
+    vacancies = '/student/vacancies',
 }
 
 export enum EMPLOYER_ROUTES {
