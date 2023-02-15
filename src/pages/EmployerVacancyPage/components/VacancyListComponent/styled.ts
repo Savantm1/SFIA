@@ -5,6 +5,7 @@ const Wrapper = styled.div`
     width: 70%;
     height: 100%;
     padding: 30px 26px 30px 30px;
+    overflow: auto;
 `;
 
 const HeaderWrapper = styled.div`

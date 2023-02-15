@@ -1,6 +1,8 @@
 import { Role, User } from '@common/models';
 import { faker } from '@faker-js/faker';
 
+import { makeSkillTypesMock } from './SkillType';
+
 export const makeUserMock = (): User => {
     faker.setLocale('ru');
     return {
@@ -14,5 +16,6 @@ export const makeUserMock = (): User => {
         phone: faker.phone.number(),
         email: faker.internet.email(),
         city: faker.address.city(),
+        skillTypes: makeSkillTypesMock(),
     };
 };
