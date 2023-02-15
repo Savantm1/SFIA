@@ -1,3 +1,4 @@
+import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import styled from 'styled-components';
 const PageWrapper = styled.div`
@@ -22,7 +23,7 @@ const RightSide = styled.div`
     display: flex;
     flex-direction: column;
     padding: 30px;
-    border: 1px solid green;
+    border-left: 2px solid ${Color.secondaryLightGray};
 `;
 
 const EmptySubtitle = styled(Text)`
