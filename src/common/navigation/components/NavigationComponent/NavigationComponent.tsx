@@ -4,6 +4,8 @@ import {
     LinksType,
     STUDENT_LINKS,
 } from '@common/navigation/links';
+import { EmployerCandidatesPage } from '@pages/EmployerCandidatesPage/EmployerCandidatesPage';
+import { EmployerTeamPage } from '@pages/EmployerTeamPage';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
@@ -42,10 +44,13 @@ export const Navigation = memo(() => {
                     path={EMPLOYER_ROUTES.vacancies}
                     element={<EmployerVacancyPage />}
                 />
-                <Route path={EMPLOYER_ROUTES.team} element={<>team</>} />
+                <Route
+                    path={EMPLOYER_ROUTES.team}
+                    element={<EmployerTeamPage />}
+                />
                 <Route
                     path={EMPLOYER_ROUTES.candidates}
-                    element={<>candidates</>}
+                    element={<EmployerCandidatesPage />}
                 />
             </Route>
             {/*students routes*/}
