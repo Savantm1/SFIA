@@ -1,4 +1,4 @@
-import { Role } from '@common/models';
+import { Role, SkillType } from '@common/models';
 
 export type User = {
     id: string;
@@ -11,4 +11,5 @@ export type User = {
     phone: string;
     email: string;
     city: string;
+    skillTypes: SkillType[];
 };
