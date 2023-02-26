@@ -1,7 +1,14 @@
-import Color from '@ui/assets/color';
 import styled from 'styled-components';
 
 const StudentBar = styled.div`
+    z-index: 1;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 30px;
+    padding-bottom: 15px;
+    background: white;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -17,34 +24,22 @@ const Container = styled.div`
     flex-direction: column;
     align-items: stretch;
 `;
+
+const ScrollContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const SkillsBar = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 40px;
-    margin-top: 40px;
-`;
-
-const EmptySkillsBlock = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const Text = styled.span`
-    font-weight: 500;
-    font-size: 12px;
-    text-align: center;
-    width: 100%;
-    max-width: 220px;
-    color: ${Color.secondaryGray};
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 25px;
 `;
 export const Styled = {
+    SkillsBar,
     StudentBar,
     TextBlock,
     Container,
-    SkillsBar,
-    EmptySkillsBlock,
-    Text,
+    ScrollContainer,
 };

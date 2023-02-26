@@ -1,13 +1,13 @@
 import { Role, User } from '@common/models';
-import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
+import { RolesBlockSc } from '@scenarios/RolesBlockSc/RolesBlockSc';
+import {
+    mockArray,
+    SkillsBlockSc,
+} from '@scenarios/SkillsBlockSc/SkillsBlockSc';
 import Color from '@ui/assets/color';
-import { Icons } from '@ui/assets/icons';
-import EmptyImage from '@ui/assets/images/undraw_job_offers_re_634p 1.png';
 import { Avatar } from '@ui/components/Avatar';
-import { Button } from '@ui/components/Button';
-import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Text } from '@ui/components/Text';
-import { FC, memo, useCallback, useState } from 'react';
+import React, { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 
@@ -16,15 +16,18 @@ type RightSideContentProps = {
 };
 
 export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
-    const { fullName, phone } = user;
-    const [isOpenSkillsModal, setIsOpenSkillsModal] = useState(false);
-    const onCloseSkillsModal = useCallback(() => {
-        setIsOpenSkillsModal(false);
-    }, [setIsOpenSkillsModal]);
+    const { fullName, phone, skillTypes } = user;
 
-    const onOpenSkillsModal = useCallback(() => {
-        setIsOpenSkillsModal(true);
-    }, [setIsOpenSkillsModal]);
+    const [showAllItems, setShowAllItems] = useState<'roles' | '' | 'skills'>(
+        ''
+    );
+
+    const showAllItemsHandler = useCallback(
+        (value: 'roles' | 'skills' | '') => {
+            setShowAllItems(value);
+        },
+        []
+    );
     return (
         <Styled.Container>
             <Styled.StudentBar>
@@ -42,32 +45,21 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
                 </Styled.TextBlock>
                 <Avatar role={Role.STUDENT} size={'md'} />
             </Styled.StudentBar>
-            <Styled.SkillsBar>
-                <Text align={'left'} variant={'h2'}>
-                    Мои навыки
-                </Text>
-                <IconButton iconName={Icons.add} onClick={() => {}} />
-            </Styled.SkillsBar>
-            <Styled.EmptySkillsBlock>
-                <img src={EmptyImage} alt={'empty skills img'} />
-                <Styled.Text>
-                    Внесите навыки и роли, чтобы повысить ваш уровень!
-                </Styled.Text>
-                <Button
-                    onClick={onOpenSkillsModal}
-                    value={'Заполните навыки'}
-                />
-                <SkillsSelectionModal
-                    open={isOpenSkillsModal}
-                    handleClose={onCloseSkillsModal}
-                />
-            </Styled.EmptySkillsBlock>
-            <Styled.SkillsBar>
-                <Text align={'left'} variant={'h2'}>
-                    Мои Роли
-                </Text>
-                <IconButton iconName={Icons.add} onClick={() => {}} />
-            </Styled.SkillsBar>
+            <Styled.ScrollContainer>
+                {(showAllItems === 'skills' || showAllItems === '') && (
+                    <SkillsBlockSc
+                        items={mockArray}
+                        showAllItemsHandler={showAllItemsHandler}
+                    />
+                )}
+                {(showAllItems === 'roles' || showAllItems === '') && (
+                    <RolesBlockSc
+                        roles={[1, 2, 3, 4, 5, 6]}
+                        skillTypes={skillTypes}
+                        showAllItemsHandler={showAllItemsHandler}
+                    />
+                )}
+            </Styled.ScrollContainer>
         </Styled.Container>
     );
 });

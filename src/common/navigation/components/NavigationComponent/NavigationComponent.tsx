@@ -10,6 +10,7 @@ import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
+import { StudentCoursesPage } from '@pages/StudentCoursesPage';
 import { StudentMainPage } from '@pages/StudentMainPage';
 import React, { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
@@ -62,7 +63,10 @@ export const Navigation = memo(() => {
                     path={STUDENT_ROUTES.main}
                     element={<StudentMainPage />}
                 />
-                <Route path={STUDENT_ROUTES.courses} element={<>courses</>} />
+                <Route
+                    path={STUDENT_ROUTES.courses}
+                    element={<StudentCoursesPage />}
+                />
                 <Route
                     path={STUDENT_ROUTES.vacancies}
                     element={<>vacancies</>}
