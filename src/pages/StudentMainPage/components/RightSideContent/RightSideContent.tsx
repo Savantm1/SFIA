@@ -1,14 +1,13 @@
 import { Role, User } from '@common/models';
+import { RolesBlockSc } from '@scenarios/RolesBlockSc/RolesBlockSc';
 import {
     mockArray,
     SkillsBlockSc,
 } from '@scenarios/SkillsBlockSc/SkillsBlockSc';
 import Color from '@ui/assets/color';
-import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
-import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 
@@ -17,7 +16,18 @@ type RightSideContentProps = {
 };
 
 export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
-    const { fullName, phone } = user;
+    const { fullName, phone, skillTypes } = user;
+
+    const [showAllItems, setShowAllItems] = useState<'roles' | '' | 'skills'>(
+        ''
+    );
+
+    const showAllItemsHandler = useCallback(
+        (value: 'roles' | 'skills' | '') => {
+            setShowAllItems(value);
+        },
+        []
+    );
     return (
         <Styled.Container>
             <Styled.StudentBar>
@@ -36,13 +46,19 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
                 <Avatar role={Role.STUDENT} size={'md'} />
             </Styled.StudentBar>
             <Styled.ScrollContainer>
-                <SkillsBlockSc items={mockArray} />
-                <Styled.SkillsBar>
-                    <Text align={'left'} variant={'h2'}>
-                        Мои Роли
-                    </Text>
-                    <IconButton iconName={Icons.add} onClick={() => {}} />
-                </Styled.SkillsBar>
+                {(showAllItems === 'skills' || showAllItems === '') && (
+                    <SkillsBlockSc
+                        items={mockArray}
+                        showAllItemsHandler={showAllItemsHandler}
+                    />
+                )}
+                {(showAllItems === 'roles' || showAllItems === '') && (
+                    <RolesBlockSc
+                        roles={[1, 2, 3, 4, 5, 6]}
+                        skillTypes={skillTypes}
+                        showAllItemsHandler={showAllItemsHandler}
+                    />
+                )}
             </Styled.ScrollContainer>
         </Styled.Container>
     );
