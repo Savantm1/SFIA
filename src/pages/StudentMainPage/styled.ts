@@ -22,7 +22,8 @@ const RightSide = styled.div`
     width: 30%;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 0 30px 30px 0px;
+    overflow-y: auto;
     border-left: 2px solid ${Color.secondaryLightGray};
 `;
 
