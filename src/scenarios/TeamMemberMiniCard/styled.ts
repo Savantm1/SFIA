@@ -13,6 +13,11 @@ const ScenarioWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 12px;
+
+    &:hover {
+        outline: 2px solid ${Color.secondaryBlue};
+        cursor: pointer;
+    }
 `;
 
 const HeaderWrapper = styled.div`

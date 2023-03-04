@@ -12,11 +12,11 @@ import { Styled } from './styled';
 
 type VacancyListComponentProps = {
     vacancies: Vacancy[];
-    selectVacancyHandler: (vacancy: Vacancy | null) => () => void;
+    navigateVacancyHandler: (id: Vacancy['id']) => () => void;
 };
 
 export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
-    ({ vacancies, selectVacancyHandler }) => {
+    ({ vacancies, navigateVacancyHandler }) => {
         const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
         const {
             isModalOpen: isSkillModalOpen,
@@ -30,13 +30,13 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                     <VacancyMiniCard
                         key={vacancy.id}
                         vacancy={vacancy}
-                        openVacancyProfileHandler={selectVacancyHandler(
-                            vacancy
+                        openVacancyProfileHandler={navigateVacancyHandler(
+                            vacancy.id
                         )}
                     />
                 );
             });
-        }, [selectVacancyHandler, vacancies]);
+        }, [navigateVacancyHandler, vacancies]);
 
         const onFormSubmitHandler = useCallback(
             (data: any) =>

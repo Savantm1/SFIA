@@ -13,6 +13,11 @@ const ScenarioWrapper = styled.div`
     max-width: 200px;
     flex-direction: column;
     padding: 14px 12px 12px 12px;
+
+    &:hover {
+        outline: 2px solid ${Color.secondaryBlue};
+        cursor: pointer;
+    }
 `;
 
 const HeaderWrapper = styled.div`
@@ -39,6 +44,9 @@ const HeaderText = styled.span`
     font-size: 8px;
     line-height: 10px;
     color: ${Color.secondaryDarkGray};
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
 `;
 
 const Icon = styled.img`
@@ -58,11 +66,6 @@ const Title = styled.span`
     line-height: 15px;
     color: ${Color.mainBlack};
     margin-bottom: 2px;
-
-    &:hover {
-        color: ${Color.blue};
-        cursor: pointer;
-    }
 `;
 
 const Subtitle = styled.span`
@@ -71,7 +74,7 @@ const Subtitle = styled.span`
     line-height: 10px;
     color: ${Color.secondaryDarkGray};
     margin-bottom: 10px;
-    min-height: 20px;
+    min-height: 30px;
 `;
 
 const ProgressBarsWrapper = styled(ProgressBarList)`

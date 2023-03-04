@@ -7,6 +7,7 @@ import {
 import { EmployerCandidatesPage } from '@pages/EmployerCandidatesPage/EmployerCandidatesPage';
 import { EmployerTeamPage } from '@pages/EmployerTeamPage';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
+import { EmployerVacancyProfilePage } from '@pages/EmployerVacancyProfilePage/EmployerVacancyProfilePage';
 import { LoginPage } from '@pages/LoginPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
@@ -46,6 +47,10 @@ export const Navigation = memo(() => {
                     element={<EmployerVacancyPage />}
                 />
                 <Route
+                    path={EMPLOYER_ROUTES.vacancy}
+                    element={<EmployerVacancyProfilePage />}
+                />
+                <Route
                     path={EMPLOYER_ROUTES.team}
                     element={<EmployerTeamPage />}
                 />
@@ -65,6 +70,10 @@ export const Navigation = memo(() => {
                 />
                 <Route
                     path={STUDENT_ROUTES.courses}
+                    element={<StudentCoursesPage />}
+                />
+                <Route
+                    path={STUDENT_ROUTES.coursesWithMember}
                     element={<StudentCoursesPage />}
                 />
                 <Route

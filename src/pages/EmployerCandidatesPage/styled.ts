@@ -8,6 +8,13 @@ const PageWrapper = styled.div`
     height: 100%;
 `;
 
+const CandidateProfileWrapper = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+`;
+
 const Wrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -34,8 +41,8 @@ const CandidateListWrapper = styled.div`
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    align-items: baseline;
+    justify-content: flex-start;
     margin-bottom: 30px;
 `;
 
@@ -92,6 +99,7 @@ const CandidateBlockHeaderLink = styled.div`
     flex-direction: row;
     align-items: flex-start;
     gap: 6px;
+    cursor: pointer;
 `;
 
 const CandidateBlockHeaderLinkButton = styled(IconButton)`
@@ -109,6 +117,7 @@ const CandidateBlockHeaderLinkButton = styled(IconButton)`
 
 export const Styled = {
     PageWrapper,
+    CandidateProfileWrapper,
     Wrapper,
     HeaderWrapper,
     Title,

@@ -3,7 +3,7 @@ import { ProgressBarProps } from '@scenarios/ProgressBarList/types';
 import React, { FC, memo } from 'react';
 
 export const ProgressBar: FC<ProgressBarProps> = memo(
-    ({ value, title, subtitle, color }) => {
+    ({ value, title, subtitle, color, isBig }) => {
         return (
             <Styled.Wrapper>
                 <Styled.ProgressBar
@@ -11,10 +11,13 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
                     variant="determinate"
                     value={value}
                     customColor={color}
+                    isBig={isBig}
                 />
                 <Styled.LabelWrapper>
-                    <Styled.Title color={color}>{title}</Styled.Title>
-                    <Styled.Subtitle>{subtitle}</Styled.Subtitle>
+                    <Styled.Title color={color} isBig={isBig}>
+                        {title}
+                    </Styled.Title>
+                    <Styled.Subtitle isBig={isBig}>{subtitle}</Styled.Subtitle>
                 </Styled.LabelWrapper>
             </Styled.Wrapper>
         );

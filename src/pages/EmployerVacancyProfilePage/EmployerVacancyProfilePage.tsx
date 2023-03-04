@@ -1,40 +1,55 @@
-import { Vacancy } from '@common/models';
-import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
-import { InfoList } from '@pages/EmployerVacancyPage/components/VacancyProfileComponent/components/InfoList/InfoList';
-import { useMenu } from '@pages/EmployerVacancyPage/hooks/useMenu';
-import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
+import { useGoBack } from '@common/navigation/hooks/useGoBack';
 import { formatAmount } from '@pages/EmployerVacancyPage/utils/formatAmount';
+import { CompanyInfoComponent } from '@pages/EmployerVacancyProfilePage/components/CompanyInfoComponent/CompanyInfoComponent';
+import { InfoList } from '@pages/EmployerVacancyProfilePage/components/InfoList/InfoList';
+import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components/VacancyDeleteModal/VacancyDeleteModal';
+import { VacancyFormModal } from '@pages/EmployerVacancyProfilePage/components/VacancyFormModal/VacancyFormModal';
+import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
+import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
 import React, { FC, memo, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 
+import { makeUserMock } from '../../mock-factory/User';
+import { makeVacancyMock } from '../../mock-factory/Vacancy';
+import { Styled as StyledInfo } from './components/InfoList/styled';
 import { Styled } from './styled';
 
-type VacancyProfileComponentProps = {
-    vacancy: Vacancy;
-    closeVacancyProfileHandler: VoidFunction;
-};
+export const EmployerVacancyProfilePage: FC = memo(() => {
+    // Получили текущего пользователя
+    const user = makeUserMock();
 
-export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
-    ({ vacancy, closeVacancyProfileHandler }) => {
-        const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
-        const {
-            isModalOpen: isSkillModalOpen,
-            openModalHandler: openSkillModalHandler,
-            closeModalHandler: closeSkillModalHandler,
-        } = useModal();
+    // Получили вакансию по id из url
+    const id = useParams();
+    const vacancy = makeVacancyMock();
 
-        const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
-            useMenu();
+    const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
+    const {
+        isModalOpen: isDeleteModalOpen,
+        openModalHandler: openDeleteModalHandler,
+        closeModalHandler: closeDeleteModalHandler,
+    } = useModal();
+    const {
+        isModalOpen: isSkillModalOpen,
+        openModalHandler: openSkillModalHandler,
+        closeModalHandler: closeSkillModalHandler,
+    } = useModal();
 
-        const onFormSubmitHandler = useCallback(
-            (data: any) =>
-                alert(`Vacancy updated success. Data: ${JSON.stringify(data)}`),
-            []
-        );
+    const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
+        useMenu();
 
-        return (
+    const onFormSubmitHandler = useCallback(
+        (data: any) =>
+            alert(`Vacancy updated success. Data: ${JSON.stringify(data)}`),
+        []
+    );
+
+    const goBack = useGoBack();
+
+    return (
+        <Styled.PageWrapper>
             <Styled.Wrapper>
                 <ModalContainer
                     open={isSkillModalOpen}
@@ -49,11 +64,20 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
                     vacancy={vacancy}
                 />
 
+                <VacancyDeleteModal
+                    isOpen={isDeleteModalOpen}
+                    deleteVacancyHandler={goBack}
+                    closeModalHandler={() => {
+                        closeDeleteModalHandler();
+                        closeMenuHandler();
+                    }}
+                />
+
                 <Styled.HeaderWrapper>
                     <Styled.TitleWrapper>
                         <Styled.BackButton
                             iconName={Icons.backBlack}
-                            onClick={closeVacancyProfileHandler}
+                            onClick={goBack}
                         />
                         <Styled.Title>{vacancy.title}</Styled.Title>
                     </Styled.TitleWrapper>
@@ -90,7 +114,7 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
                         >
                             Редактировать
                         </Styled.MenuItem>
-                        <Styled.MenuItem onClick={() => {}}>
+                        <Styled.MenuItem onClick={openDeleteModalHandler}>
                             Удалить
                         </Styled.MenuItem>
                     </Styled.Menu>
@@ -114,6 +138,9 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
 
                 <Styled.Text>{vacancy.fullDescription}</Styled.Text>
 
+                <StyledInfo.Title>{'Навыки:'}</StyledInfo.Title>
+                <Styled.ProgressBar items={vacancy.skillTypes} isBig={true} />
+
                 <InfoList
                     title={'Обязанности:'}
                     list={vacancy.responsibilities.split(';')}
@@ -127,6 +154,8 @@ export const VacancyProfileComponent: FC<VacancyProfileComponentProps> = memo(
                     list={vacancy.conditions.split(';')}
                 />
             </Styled.Wrapper>
-        );
-    }
-);
+
+            <CompanyInfoComponent user={user} />
+        </Styled.PageWrapper>
+    );
+});

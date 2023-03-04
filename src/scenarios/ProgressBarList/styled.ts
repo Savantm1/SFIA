@@ -2,9 +2,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Color from '@ui/assets/color';
 import styled from 'styled-components';
 
-const ProgressBar = styled(CircularProgress)<{ customColor: string }>`
-    width: 38px !important;
-    height: 38px !important;
+const ProgressBar = styled(CircularProgress)<{
+    customColor: string;
+    isBig?: boolean;
+}>`
+    width: ${({ isBig }) => (isBig ? 60 : 38)}px !important;
+    height: ${({ isBig }) => (isBig ? 60 : 38)}px !important;
     transform: rotate(165deg) !important;
 
     & > svg {
@@ -36,17 +39,17 @@ const LabelWrapper = styled.div`
     right: 0;
 `;
 
-const Title = styled.span<{ color: Color }>`
+const Title = styled.span<{ color: Color; isBig?: boolean }>`
     font-weight: 700;
-    font-size: 8px;
-    line-height: 10px;
+    font-size: ${({ isBig }) => (isBig ? 12 : 8)}px !important;
+    line-height: ${({ isBig }) => (isBig ? 14.5 : 10)}px !important;
     color: ${({ color }) => color};
 `;
 
-const Subtitle = styled.span`
+const Subtitle = styled.span<{ isBig?: boolean }>`
     font-weight: 600;
-    font-size: 8px;
-    line-height: 10px;
+    font-size: ${({ isBig }) => (isBig ? 12 : 8)}px !important;
+    line-height: ${({ isBig }) => (isBig ? 14.5 : 10)}px !important;
     color: ${Color.secondaryDarkGray};
 `;
 
