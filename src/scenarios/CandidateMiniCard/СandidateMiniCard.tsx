@@ -8,16 +8,17 @@ import { Styled } from './styled';
 type CandidateMiniCardProps = {
     user: User;
     match: number;
+    openCandidateProfileHandler: VoidFunction;
 };
 
 export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
-    ({ user, match }) => {
+    ({ user, match, openCandidateProfileHandler }) => {
         const { city, role, fullName, position, phone, skillTypes } = user;
 
         const matchColor = getMatchColor(match);
 
         return (
-            <Styled.ScenarioWrapper>
+            <Styled.ScenarioWrapper onClick={openCandidateProfileHandler}>
                 <Styled.HeaderWrapper>
                     <Styled.HeaderLeftBlock>
                         <Styled.HeaderText>{city}</Styled.HeaderText>

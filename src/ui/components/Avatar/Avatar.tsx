@@ -6,7 +6,7 @@ import { FC, memo } from 'react';
 
 export type AvatarProps = {
     role: Role;
-    size: 'sm' | 'md' | 'lg';
+    size: 'sm' | 'md' | 'lg' | 'sobig';
 };
 export const Avatar: FC<AvatarProps> = memo(
     ({ size = 'md', role = Role.STUDENT }) => {

@@ -21,7 +21,7 @@ export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
         } = vacancy;
 
         return (
-            <Styled.ScenarioWrapper>
+            <Styled.ScenarioWrapper onClick={openVacancyProfileHandler}>
                 <Styled.HeaderWrapper>
                     <Styled.HeaderLeftBlock>
                         <Styled.HeaderText>{city}</Styled.HeaderText>
@@ -35,9 +35,7 @@ export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
                 </Styled.HeaderWrapper>
 
                 <Styled.ContentWrapper>
-                    <Styled.Title onClick={openVacancyProfileHandler}>
-                        {title}
-                    </Styled.Title>
+                    <Styled.Title>{title}</Styled.Title>
                     <Styled.Subtitle>{description}</Styled.Subtitle>
 
                     <Styled.ProgressBarsWrapper items={skillTypes} />

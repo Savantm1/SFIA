@@ -1,7 +1,16 @@
 import { Menu as MenuUI, MenuItem as MenuItemUI } from '@mui/material';
+import { ProgressBarList } from '@scenarios/ProgressBarList';
 import Color from '@ui/assets/color';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import styled from 'styled-components';
+
+const PageWrapper = styled.div`
+    font-family: 'inter', serif;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+`;
 
 const Wrapper = styled.div`
     width: 70%;
@@ -97,7 +106,13 @@ const MenuItem = styled(MenuItemUI)`
     }
 `;
 
+const ProgressBar = styled(ProgressBarList)`
+    justify-content: flex-start;
+    gap: 10px;
+`;
+
 export const Styled = {
+    PageWrapper,
     Wrapper,
     TitleWrapper,
     HeaderWrapper,
@@ -111,4 +126,5 @@ export const Styled = {
     Image,
     Menu,
     MenuItem,
+    ProgressBar,
 };

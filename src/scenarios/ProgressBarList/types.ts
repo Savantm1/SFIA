@@ -5,9 +5,12 @@ export type ProgressBarProps = {
     subtitle: string;
     value: number;
     color: Color;
+} & {
+    isBig?: boolean;
 };
 
 export type ProgressBarListProps = {
     items: ProgressBarProps[];
+    isBig?: boolean;
     className?: string;
 };

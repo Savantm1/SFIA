@@ -1,9 +1,10 @@
+import { Vacancy } from '@common/models';
+import { EMPLOYER_ROUTES } from '@common/navigation';
 import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { VacancyListComponent } from '@pages/EmployerVacancyPage/components/VacancyListComponent/VacancyListComponent';
-import { VacancyProfileComponent } from '@pages/EmployerVacancyPage/components/VacancyProfileComponent/VacancyProfileComponent';
-import { useSelectVacancy } from '@pages/EmployerVacancyPage/hooks/useSelectVacancy';
 import { Styled } from '@pages/EmployerVacancyPage/styled';
-import React, { FC, memo } from 'react';
+import React, { FC, memo, useCallback } from 'react';
+import { generatePath, useNavigate } from 'react-router-dom';
 
 import { makeUserMock } from '../../mock-factory/User';
 import { makeVacancyMock } from '../../mock-factory/Vacancy';
@@ -16,21 +17,27 @@ export const EmployerVacancyPage: FC = memo(() => {
     // Получили текущего пользователя
     const user = makeUserMock();
 
-    const { selectedVacancy, selectVacancyHandler } = useSelectVacancy();
+    const navigate = useNavigate();
+
+    const navigateVacancyHandler = useCallback(
+        (id: Vacancy['id']) => {
+            return () => {
+                navigate(
+                    generatePath(EMPLOYER_ROUTES.vacancy, {
+                        id,
+                    })
+                );
+            };
+        },
+        [navigate]
+    );
 
     return (
         <Styled.PageWrapper>
-            {selectedVacancy ? (
-                <VacancyProfileComponent
-                    vacancy={selectedVacancy}
-                    closeVacancyProfileHandler={selectVacancyHandler(null)}
-                />
-            ) : (
-                <VacancyListComponent
-                    vacancies={vacancies}
-                    selectVacancyHandler={selectVacancyHandler}
-                />
-            )}
+            <VacancyListComponent
+                vacancies={vacancies}
+                navigateVacancyHandler={navigateVacancyHandler}
+            />
 
             <CompanyInfoComponent user={user} />
         </Styled.PageWrapper>

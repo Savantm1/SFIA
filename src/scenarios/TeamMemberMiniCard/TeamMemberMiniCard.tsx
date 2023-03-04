@@ -6,15 +6,16 @@ import { Styled } from './styled';
 
 type TeamMemberMiniCardProps = {
     user: User;
+    openMemberProfileHandler: VoidFunction;
 };
 
 export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
-    ({ user }) => {
+    ({ user, openMemberProfileHandler }) => {
         const { city, role, fullName, position, phone, email, skillTypes } =
             user;
 
         return (
-            <Styled.ScenarioWrapper>
+            <Styled.ScenarioWrapper onClick={openMemberProfileHandler}>
                 <Styled.HeaderWrapper>
                     <Styled.HeaderLeftBlock>
                         <Styled.HeaderText>{city}</Styled.HeaderText>

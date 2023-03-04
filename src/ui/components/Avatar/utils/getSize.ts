@@ -13,6 +13,8 @@ export const getSize: GetSizeType = (size) => {
             return { width: 40, height: 40 };
         case 'lg':
             return { width: 50, height: 50 };
+        case 'sobig':
+            return { width: 120, height: 120 };
         default:
             return { width: 40, height: 40 };
     }

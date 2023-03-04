@@ -34,8 +34,8 @@ const MemberListWrapper = styled.div`
     flex-direction: row;
     gap: 20px;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    align-items: baseline;
+    justify-content: flex-start;
 `;
 
 const AvatarWrapper = styled.div`
