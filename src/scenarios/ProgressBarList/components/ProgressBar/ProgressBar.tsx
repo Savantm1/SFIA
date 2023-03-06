@@ -27,14 +27,16 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
                     customColor={isEdit ? Color.secondaryGray : color}
                     isBig={isBig}
                 />
+                {isEdit && (
+                    <DetailPopup
+                        abbr={title}
+                        color={color}
+                        anchorEl={anchorEl}
+                        isMenuOpen={isMenuOpen}
+                        closeMenuHandler={closeMenuHandler}
+                    />
+                )}
 
-                <DetailPopup
-                    abbr={title}
-                    color={color}
-                    anchorEl={anchorEl}
-                    isMenuOpen={isMenuOpen}
-                    closeMenuHandler={closeMenuHandler}
-                />
                 <Styled.LabelWrapper>
                     <Styled.Title
                         color={isEdit ? Color.secondaryGray : color}
