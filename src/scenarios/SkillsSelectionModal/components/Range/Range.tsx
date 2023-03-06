@@ -3,9 +3,12 @@ import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import {
     ChangeEventHandler,
+    Dispatch,
     FC,
     memo,
+    SetStateAction,
     useCallback,
+    useEffect,
     useMemo,
     useState,
 } from 'react';
@@ -18,19 +21,34 @@ type RangeProps = {
     max?: number;
     name: string; //пока оставлю
     color: (typeof Color)[KeysOfColor];
+    setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
+    isSelectedSkill: boolean;
 };
 
 export const Range: FC<RangeProps> = memo(
-    ({ min = RANGE_VALUES.min, max = RANGE_VALUES.max, name, color }) => {
+    ({
+        min = RANGE_VALUES.min,
+        max = RANGE_VALUES.max,
+        name,
+        color,
+        setIsSelectedSkill,
+        isSelectedSkill,
+    }) => {
         const [selectedValue, setSelectedValue] = useState('');
         const radioHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
             (event) => {
                 const value = event.currentTarget.value;
                 setSelectedValue(value);
+                setIsSelectedSkill(true);
             },
-            []
+            [setIsSelectedSkill]
         );
 
+        useEffect(() => {
+            isSelectedSkill
+                ? setSelectedValue(selectedValue || min.toString())
+                : setSelectedValue('');
+        }, [isSelectedSkill, min, selectedValue]);
         const rangeItems = useMemo(() => {
             const itemsArray = [];
             const rowName = faker.datatype.uuid(); // будет name

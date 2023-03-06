@@ -1,12 +1,11 @@
 import { Checkbox as CheckboxUI } from '@mui/material';
 import Color, { KeysOfColor } from '@ui/assets/color';
-import { ChangeEvent, FC, memo, useState } from 'react';
+import { ChangeEvent, FC, memo, useEffect, useState } from 'react';
 
 type CheckboxProps = {
     color?: (typeof Color)[KeysOfColor];
     disabled?: boolean;
     size?: number;
-    value?: any;
     required?: boolean;
     checked: boolean;
     onChangeHandler: (value: boolean) => void;
@@ -17,12 +16,13 @@ export const Checkbox: FC<CheckboxProps> = memo(
         color = 'black',
         disabled,
         size = 24,
-        value,
         required,
         onChangeHandler,
+        checked,
     }) => {
-        const [isChecked, setIsChecked] = useState(value);
+        const [isChecked, setIsChecked] = useState(checked);
 
+        useEffect(() => setIsChecked(checked), [checked]);
         const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
             setIsChecked(event.target.checked);
             onChangeHandler(event.target.checked);

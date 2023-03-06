@@ -53,7 +53,45 @@ const Subtitle = styled.span<{ isBig?: boolean }>`
     color: ${Color.secondaryDarkGray};
 `;
 
+const DeleteBtn = styled.div`
+    position: absolute;
+    right: -6px;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    opacity: 0.5;
+    &:hover {
+        opacity: 1;
+    }
+    &:before,
+    &:after {
+        position: absolute;
+        left: 5px;
+        content: ' ';
+        height: 10px;
+        width: 2px;
+        background-color: #333;
+    }
+    &:before {
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
+`;
+
+const ProgressBarOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+`;
 export const Styled = {
+    ProgressBarOverlay,
+    DeleteBtn,
     Wrapper,
     ListWrapper,
     ProgressBar,

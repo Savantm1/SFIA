@@ -5,7 +5,6 @@ const Container = styled.div`
     max-width: 390px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     border-radius: 8px;
     overflow: hidden;

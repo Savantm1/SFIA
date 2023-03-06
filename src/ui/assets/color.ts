@@ -24,7 +24,7 @@ enum Color {
     lightGreen = '#CEFFCA',
     lightFuxy = '#FFC0D7',
     lightRed = '#EF5A2B',
-    blue = '#347AE3',
+    blue = '#0E72AB',
     welcome_bg = '#EBCEE4',
     critical = '#DA0000',
 }
