@@ -54,6 +54,7 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
         const onOpenSkillsModal = useCallback(() => {
             setIsOpenSkillsModal(true);
         }, [setIsOpenSkillsModal]);
+
         //items
         const elements = mockArray.map((el) => {
             return (

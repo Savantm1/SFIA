@@ -1,13 +1,15 @@
 import { faker } from '@faker-js/faker';
 import { ColorCouples } from '@scenarios/SkillsSelectionModal/ColorCouples';
 import { Category } from '@scenarios/SkillsSelectionModal/components/Category/Category';
+import { ModalSkillsContext } from '@scenarios/SkillsSelectionModal/context/context';
 import { PAGE_DATA_MOCK } from '@scenarios/SkillsSelectionModal/mock';
 import { Styled } from '@scenarios/SkillsSelectionModal/styled';
+import { SelectedSkillType } from '@scenarios/SkillsSelectionModal/types';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
 import { Text } from '@ui/components/Text';
-import { FC, memo } from 'react';
+import { FC, memo, useContext } from 'react';
 import * as React from 'react';
 
 type ModalContainerProps = {
@@ -16,6 +18,8 @@ type ModalContainerProps = {
 };
 export const ModalContainer: FC<ModalContainerProps> = memo(
     ({ open, handleClose }) => {
+        const context = useContext(ModalSkillsContext);
+
         const categories = PAGE_DATA_MOCK.map((el, key) => {
             return (
                 <Category
@@ -27,26 +31,30 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             );
         });
 
-        const categoriesDeleteButtons = PAGE_DATA_MOCK.map((el) => {
-            return (
-                <Styled.DeleteCategoryBtn key={faker.datatype.uuid()}>
-                    <Styled.Close
-                        iconName={Icons.close}
-                        size={15}
-                        onClick={() => {}}
-                    />
-                    <Text variant={'h6'} color={Color.secondaryGray}>
-                        {el.title}
-                    </Text>
-                </Styled.DeleteCategoryBtn>
-            );
-        });
+        const DeleteSelectedSkillButtons = context.selectedSkills.map(
+            (el: SelectedSkillType) => {
+                return (
+                    <Styled.DeleteSelectedSkillBtn key={faker.datatype.uuid()}>
+                        <Styled.Close
+                            iconName={Icons.close}
+                            size={15}
+                            onClick={() => {
+                                context.removeSelectedSkillFromStore(el);
+                            }}
+                        />
+                        <Text variant={'h6'} color={Color.secondaryGray}>
+                            {el.skillText}
+                        </Text>
+                    </Styled.DeleteSelectedSkillBtn>
+                );
+            }
+        );
 
         return (
             <Modal onClose={handleClose} isOpen={open}>
                 <Styled.Container>
                     <Styled.DeleteBar>
-                        {categoriesDeleteButtons}
+                        {DeleteSelectedSkillButtons}
                     </Styled.DeleteBar>
                     <Styled.ContentOverflow>
                         <Styled.ScrollContainer>

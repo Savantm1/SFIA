@@ -5,12 +5,18 @@ import React, { FC, memo, useMemo } from 'react';
 import { Styled } from './styled';
 
 export const ProgressBarList: FC<ProgressBarListProps> = memo(
-    ({ items, isBig = false, className }) => {
+    ({ items, isBig = false, className, isEdit = false, onDelete }) => {
         const progressBars = useMemo(() => {
             return items.map((item) => (
-                <ProgressBar key={item.title} {...item} isBig={isBig} />
+                <ProgressBar
+                    key={item.title}
+                    {...item}
+                    isBig={isBig}
+                    isEdit={isEdit}
+                    onDelete={() => onDelete?.(item)}
+                />
             ));
-        }, [isBig, items]);
+        }, [isBig, isEdit, items, onDelete]);
 
         return (
             <Styled.ListWrapper className={className}>

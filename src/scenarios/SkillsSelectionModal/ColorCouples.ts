@@ -1,4 +1,4 @@
-import Color from '@ui/assets/color';
+import Color, { KeysOfColor } from '@ui/assets/color';
 
 export const ColorCouples = [
     { main: Color.fuxy, secondary: Color.lightFuxy },
@@ -8,3 +8,9 @@ export const ColorCouples = [
     { main: Color.green, secondary: Color.lightGreen },
     { main: Color.purple, secondary: Color.lightPurple },
 ];
+
+export const getColorCouple = (color: (typeof Color)[KeysOfColor]) => {
+    return ColorCouples.find((colorCouple) => {
+        return colorCouple.main === color;
+    });
+};

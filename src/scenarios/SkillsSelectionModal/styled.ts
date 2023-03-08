@@ -23,6 +23,7 @@ const DeleteBar = styled.div`
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 10px;
+    min-height: 30px;
 `;
 
 const Close = styled(IconButton)`
@@ -41,7 +42,7 @@ const ContentOverflow = styled.div`
     height: calc(100vh - 190px);
 `;
 
-const DeleteCategoryBtn = styled.div`
+const DeleteSelectedSkillBtn = styled.div`
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
@@ -66,7 +67,7 @@ export const Styled = {
     NextButton,
     DeleteBar,
     Container,
-    DeleteCategoryBtn,
+    DeleteSelectedSkillBtn,
     Close,
     Footer,
     ScrollContainer,
