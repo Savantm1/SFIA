@@ -32,9 +32,7 @@ export const LoginPage: FC = memo(() => {
     });
 
     const buttonText =
-        status === RequestStatus.LOADING
-            ? 'Логинимся...'
-            : 'Зарегистрироваться';
+        status === RequestStatus.LOADING ? 'Логинимся...' : 'Войти';
 
     return (
         <AuthPageView>
@@ -52,7 +50,7 @@ export const LoginPage: FC = memo(() => {
                 </Styled.Subtitle>
                 <Styled.TextInput {...getInputProps('phone')} />
                 <Styled.Button onClick={handleSubmit} value={buttonText} />
-                <Text
+                <Styled.RegistrationText
                     variant={'h4'}
                     align={'left'}
                     color={Color.secondaryDarkGray}
@@ -61,7 +59,7 @@ export const LoginPage: FC = memo(() => {
                     <Styled.Link to={MAIN_ROUTES.registration}>
                         Зарегистрироваться
                     </Styled.Link>
-                </Text>
+                </Styled.RegistrationText>
 
                 {!!errorMessage.length && (
                     <Text variant={'h4'} align={'left'} color={Color.lightRed}>

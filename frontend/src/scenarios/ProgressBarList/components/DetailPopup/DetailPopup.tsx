@@ -1,7 +1,7 @@
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Slider } from '@ui/components/Slider';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 
 import { Styled } from './styled';
 

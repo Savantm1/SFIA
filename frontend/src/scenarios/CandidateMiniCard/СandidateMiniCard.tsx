@@ -1,7 +1,7 @@
 import { User } from '@common/models';
 import { getMatchColor } from '@scenarios/CandidateMiniCard/utils/getMatchColor';
 import { Avatar } from '@ui/components/Avatar';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 

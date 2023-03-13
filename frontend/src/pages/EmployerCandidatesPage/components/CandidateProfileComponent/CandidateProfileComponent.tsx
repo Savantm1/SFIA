@@ -2,7 +2,7 @@ import { User } from '@common/models';
 import { InfoList } from '@pages/EmployerCandidatesPage/components/CandidateProfileComponent/components/InfoList/InfoList';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { Styled as StyledInfo } from './components/InfoList/styled';
 import { Styled } from './styled';

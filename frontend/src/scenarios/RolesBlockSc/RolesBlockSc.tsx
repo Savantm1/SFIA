@@ -1,7 +1,7 @@
 import { RoleRow } from '@scenarios/RolesBlockSc/components/RoleRow/RoleRow';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
-import React, { FC, memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 
 import { Styled } from './styled';
 

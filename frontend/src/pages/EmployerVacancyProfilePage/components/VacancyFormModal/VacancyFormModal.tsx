@@ -4,7 +4,7 @@ import { inputValidationOptions } from '@pages/EmployerVacancyPage/constants';
 import { getValidationOptionsWithInitialValue } from '@pages/EmployerVacancyPage/utils/getValidationOptionsWithInitialValue';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
-import React, { FC, memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 

@@ -1,7 +1,7 @@
 import { Styled } from '@bless-components/PageWrapperView/styled';
 import { Role } from '@common/models';
 import { LinksType } from '@common/navigation/links';
-import React, { FC, memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Sidebar } from './components/Sidebar';

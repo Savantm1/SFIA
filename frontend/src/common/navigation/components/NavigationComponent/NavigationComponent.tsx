@@ -13,7 +13,7 @@ import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { StudentCoursesPage } from '@pages/StudentCoursesPage';
 import { StudentMainPage } from '@pages/StudentMainPage';
-import React, { memo } from 'react';
+import { memo } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { EMPLOYER_ROUTES, MAIN_ROUTES, STUDENT_ROUTES } from '../../paths';

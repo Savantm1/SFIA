@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const BugIcon = (props: any) => (
     <svg
         width={18}

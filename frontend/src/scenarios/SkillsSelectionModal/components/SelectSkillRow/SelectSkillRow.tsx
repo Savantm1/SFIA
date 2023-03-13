@@ -3,7 +3,7 @@ import { ModalSkillsContext } from '@scenarios/SkillsSelectionModal/context/cont
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Checkbox } from '@ui/components/Checkbox';
 import { Text } from '@ui/components/Text/';
-import React, { FC, memo, useCallback, useContext, useState } from 'react';
+import { FC, memo, useCallback, useContext, useState } from 'react';
 
 import { Range } from '../Range/Range';
 import { Styled } from './styled';

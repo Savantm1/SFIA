@@ -3,7 +3,7 @@ import { RightSideContent } from '@pages/StudentMainPage/components/RightSideCon
 import { WELCOME_BLOCK_SUBTITLES } from '@pages/StudentMainPage/components/WelcomeTitle/constants';
 import { WelcomeTitle } from '@pages/StudentMainPage/components/WelcomeTitle/WelcomeTitle';
 import { Styled } from '@pages/StudentMainPage/styled';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { makeStudentMock } from '../../mock-factory/makeStudentMock';
 

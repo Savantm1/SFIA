@@ -7,7 +7,7 @@ import {
 import Color from '@ui/assets/color';
 import { Avatar } from '@ui/components/Avatar';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 

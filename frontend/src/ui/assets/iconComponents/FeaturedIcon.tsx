@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const FeaturedIcon = (props: any) => (
     <svg
         width={18}

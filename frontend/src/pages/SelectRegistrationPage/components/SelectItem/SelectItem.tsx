@@ -11,7 +11,6 @@ import { Styled } from './styled';
 export const SelectItem: FC<SelectItemProps> = memo(
     ({ roleItem, className }) => {
         const { role, link, title, subtitle } = roleItem;
-
         return (
             <Link to={link}>
                 <Styled.SelectContainer className={className}>

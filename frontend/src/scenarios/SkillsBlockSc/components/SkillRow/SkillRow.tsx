@@ -2,7 +2,7 @@ import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Slider } from '@ui/components/Slider';
-import React, { FC, memo, useState } from 'react';
+import { FC, memo, useState } from 'react';
 
 import { Styled } from './styled';
 

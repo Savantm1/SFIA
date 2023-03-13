@@ -3,7 +3,7 @@ import { MAIN_ROUTES } from '@common/navigation';
 import { SELECT_ROLES_CONFIG } from '@pages/SelectRegistrationPage/constants';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 

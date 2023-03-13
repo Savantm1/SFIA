@@ -1,7 +1,7 @@
 import Color from '@ui/assets/color';
 import Scheme from '@ui/assets/images/Group 519.png';
 import EmptyImage from '@ui/assets/images/undraw_learning_re_32qv 1.png';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 type LeftSideContentProps = {

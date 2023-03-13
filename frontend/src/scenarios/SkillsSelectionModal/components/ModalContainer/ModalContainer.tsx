@@ -10,7 +10,6 @@ import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
 import { Text } from '@ui/components/Text';
 import { FC, memo, useContext } from 'react';
-import * as React from 'react';
 
 type ModalContainerProps = {
     open: boolean;
