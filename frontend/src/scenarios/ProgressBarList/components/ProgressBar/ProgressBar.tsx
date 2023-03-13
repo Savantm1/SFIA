@@ -3,7 +3,7 @@ import { DetailPopup } from '@scenarios/ProgressBarList/components/DetailPopup/D
 import { Styled } from '@scenarios/ProgressBarList/styled';
 import { ProgressBarProps } from '@scenarios/ProgressBarList/types';
 import Color from '@ui/assets/color';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 export const ProgressBar: FC<ProgressBarProps> = memo(
     ({ value, title, subtitle, color, isBig, isEdit, onDelete }) => {

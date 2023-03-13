@@ -2,7 +2,11 @@ import { getDefaultRequiredField } from '@common/validation/utils/getDefaultRequ
 
 export const inputValidationOptions = {
     fields: {
-        company: getDefaultRequiredField('company', 'Название компании'),
+        nameOrganization: getDefaultRequiredField(
+            'nameOrganization',
+            'Название компании',
+            { required: true }
+        ),
         phone: {
             ...getDefaultRequiredField('phone', 'Номер телефона', {
                 pattern: {
@@ -11,18 +15,22 @@ export const inputValidationOptions = {
                 },
             }),
         },
-        email: {
-            ...getDefaultRequiredField('email', 'E-mail', {
-                pattern: {
-                    value: '[a-z0-9]+@[a-z]+.[a-z]{2,3}',
-                    message: 'E-mail указан некорректно',
-                },
-            }),
+        mail: {
+            ...getDefaultRequiredField(
+                'mail',
+                'E-mail'
+                //     {
+                //     pattern: {
+                //         value: '[a-z0-9]+@[a-z]+.[a-z]{2,3}',
+                //         message: 'E-mail указан некорректно',
+                //     },
+                // }
+            ),
         },
-        site: {
+        nameSite: {
             placeholder: 'Сайт',
         },
-        description: {
+        companyDescription: {
             placeholder: 'О Компании',
         },
     },

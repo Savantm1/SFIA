@@ -2,11 +2,21 @@ import { getDefaultRequiredField } from '@common/validation/utils/getDefaultRequ
 
 export const inputValidationOptions = {
     fields: {
-        secondname: getDefaultRequiredField('secondname', 'Фамилия'),
-        firstname: getDefaultRequiredField('firstname', 'Имя'),
-        thirdname: getDefaultRequiredField('thirdname', 'Отчество'),
-        birthday: getDefaultRequiredField('birthday', 'Дата рождения'),
-        education: getDefaultRequiredField('education', 'Образование'),
+        secondName: getDefaultRequiredField('secondName', 'Фамилия'),
+        firstName: getDefaultRequiredField('firstName', 'Имя'),
+        studentPatronymic: getDefaultRequiredField(
+            'studentPatronymic',
+            'Отчество',
+            {
+                required: false,
+            }
+        ),
+        birthday: getDefaultRequiredField('birthday', 'Дата рождения', {
+            required: false,
+        }),
+        education: getDefaultRequiredField('education', 'Образование', {
+            required: false,
+        }),
         phone: {
             ...getDefaultRequiredField('phone', 'Номер телефона', {
                 pattern: {
@@ -15,15 +25,22 @@ export const inputValidationOptions = {
                 },
             }),
         },
-        email: {
-            ...getDefaultRequiredField('email', 'E-mail', {
-                pattern: {
-                    value: '[a-z0-9]+@[a-z]+.[a-z]{2,3}',
-                    message: 'E-mail указан не корректно',
-                },
-            }),
+        mail: {
+            ...getDefaultRequiredField(
+                'mail',
+                'E-mail',
+                {
+                    required: false,
+                }
+                //     {
+                //     pattern: {
+                //         value: '[a-z0-9]+@[a-z]+.[a-z]{2,3}',
+                //         message: 'E-mail указан не корректно',
+                //     },
+                // }
+            ),
         },
-        about: {
+        studentDescription: {
             placeholder: 'О себе',
         },
     },

@@ -9,7 +9,7 @@ import { Icons } from '@ui/assets/icons';
 import EmptyImage from '@ui/assets/images/undraw_job_offers_re_634p 1.png';
 import { Button } from '@ui/components/Button';
 import { IconButton } from '@ui/components/IconButton/IconButton';
-import React, { FC, memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 const mock = {

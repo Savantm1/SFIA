@@ -1,7 +1,6 @@
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { SelectedSkillType } from '@scenarios/SkillsSelectionModal/types';
 import { FC, memo, useCallback, useContext } from 'react';
-import * as React from 'react';
 
 import { ModalSkillsContext } from './context/context';
 

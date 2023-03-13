@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const LogoutIcon = (props: any) => (
     <svg
         width={18}

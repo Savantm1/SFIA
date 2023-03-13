@@ -2,7 +2,7 @@ import { CandidateListComponent } from '@pages/EmployerCandidatesPage/components
 import { CandidateProfileComponent } from '@pages/EmployerCandidatesPage/components/CandidateProfileComponent/CandidateProfileComponent';
 import { CompanyInfoComponent } from '@pages/EmployerCandidatesPage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { useSelectCandidate } from '@pages/EmployerCandidatesPage/hooks/useSelectCandidate';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { makeStudentMock } from '../../mock-factory/makeStudentMock';
 import { makeUserMock } from '../../mock-factory/User';
