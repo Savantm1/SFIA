@@ -8,7 +8,7 @@ import {
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const useAuthCheck = (forRole: Role) => {
+export const useAuthCheck = (forRole?: Role) => {
     const currentUser = useCurrentUser();
     const navigate = useNavigate();
 

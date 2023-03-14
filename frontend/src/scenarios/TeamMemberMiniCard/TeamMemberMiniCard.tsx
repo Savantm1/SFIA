@@ -11,7 +11,7 @@ type TeamMemberMiniCardProps = {
 
 export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
     ({ user, openMemberProfileHandler }) => {
-        const { city, role, fullName, position, phone, email, skillTypes } =
+        const { city, role, fullName, position, phone, mail, skillTypes } =
             user;
 
         return (
@@ -32,7 +32,7 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
                     <Styled.Subtitle isSmallMargin={true}>
                         {phone}
                     </Styled.Subtitle>
-                    <Styled.Subtitle>{email}</Styled.Subtitle>
+                    <Styled.Subtitle>{mail}</Styled.Subtitle>
 
                     <Styled.ProgressBarsWrapper items={skillTypes} />
                 </Styled.ContentWrapper>

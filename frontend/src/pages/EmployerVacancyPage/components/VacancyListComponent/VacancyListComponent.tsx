@@ -1,4 +1,4 @@
-import { Vacancy } from '@common/models';
+import { User, Vacancy } from '@common/models';
 import { NoVacancyComponent } from '@pages/EmployerVacancyPage/components/NoVacancyComponent/NoVacancyComponent';
 import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
@@ -11,12 +11,14 @@ import { FC, memo, useCallback, useMemo } from 'react';
 import { Styled } from './styled';
 
 type VacancyListComponentProps = {
+    city: User['city'];
+    company: User['nameOrganization'];
     vacancies: Vacancy[];
     navigateVacancyHandler: (id: Vacancy['id']) => () => void;
 };
 
 export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
-    ({ vacancies, navigateVacancyHandler }) => {
+    ({ city, company, vacancies, navigateVacancyHandler }) => {
         const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
         const {
             isModalOpen: isSkillModalOpen,
@@ -29,6 +31,8 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                 return (
                     <VacancyMiniCard
                         key={vacancy.id}
+                        city={city}
+                        company={company}
                         vacancy={vacancy}
                         openVacancyProfileHandler={navigateVacancyHandler(
                             vacancy.id

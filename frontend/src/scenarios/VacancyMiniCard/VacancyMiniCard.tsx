@@ -1,18 +1,18 @@
-import { Vacancy } from '@common/models';
+import { User, Vacancy } from '@common/models';
 import { Styled } from '@scenarios/VacancyMiniCard/styled';
 import { Icons } from '@ui/assets/icons';
 import { FC, memo } from 'react';
 
 type VacancyMiniCardProps = {
+    city: User['city'];
+    company: User['nameOrganization'];
     vacancy: Vacancy;
     openVacancyProfileHandler: VoidFunction;
 };
 
 export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
-    ({ vacancy, openVacancyProfileHandler }) => {
+    ({ city, company, vacancy, openVacancyProfileHandler }) => {
         const {
-            city,
-            company,
             title,
             description,
             skillTypes,

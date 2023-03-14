@@ -54,7 +54,7 @@ export const CandidateListComponent: FC<CandidateListComponentProps> = memo(
                     <Styled.AvatarWrapper>
                         <Styled.InfoWrapper>
                             <Styled.InfoCompany>
-                                {user.company}
+                                {user.nameOrganization}
                             </Styled.InfoCompany>
                             <Styled.InfoPhone>{user.phone}</Styled.InfoPhone>
                         </Styled.InfoWrapper>
