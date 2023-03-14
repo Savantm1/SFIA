@@ -5,17 +5,23 @@ import FeaturedIcon from '@ui/assets/iconComponents/FeaturedIcon';
 import PeopleIcon from '@ui/assets/iconComponents/PeopleIcon';
 import PersonIcon from '@ui/assets/iconComponents/PersonIcon';
 
-export const EMPLOYER_LINKS = [
+export const EMPLOYER_LINKS: LinksType = [
     { icon: <DashBordIcon />, text: 'Главная', to: EMPLOYER_ROUTES.main },
     { icon: <BugIcon />, text: 'Мои Вакансии', to: EMPLOYER_ROUTES.vacancies },
     { icon: <PersonIcon />, text: 'Кандидаты', to: EMPLOYER_ROUTES.candidates },
     { icon: <PeopleIcon />, text: 'Моя команда', to: EMPLOYER_ROUTES.team },
 ];
 
-export const STUDENT_LINKS = [
+export const STUDENT_LINKS: LinksType = [
     { icon: <DashBordIcon />, text: 'Главная', to: STUDENT_ROUTES.main },
     { icon: <FeaturedIcon />, text: 'Курсы', to: STUDENT_ROUTES.courses },
     { icon: <BugIcon />, text: 'Вакансии', to: STUDENT_ROUTES.vacancies },
 ];
 
-export type LinksType = typeof EMPLOYER_LINKS & typeof STUDENT_LINKS;
+type LinkType = {
+    icon: JSX.Element;
+    text: string;
+    to: STUDENT_ROUTES | EMPLOYER_ROUTES;
+};
+
+export type LinksType = LinkType[];

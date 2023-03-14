@@ -2,12 +2,12 @@
   "users": [
     {
       "id": 1,
-      "role": "STUDENT",
+      "role": "student",
       "fullName": "Савельев Антон",
       "phone": "9299946216"
     },
     {
-      "role": "EMPLOYER",
+      "role": "employer",
       "nameOrganization": "SBERBANK",
       "phone": "89665554433",
       "mail": "sb@mail.ru",
@@ -16,7 +16,7 @@
       "id": 3
     },
     {
-      "role": "EMPLOYER",
+      "role": "employer",
       "nameOrganization": "2343243234",
       "phone": "89665554434",
       "mail": "savantm1@mail.ru",
@@ -25,7 +25,7 @@
       "id": 4
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "aaaasd",
       "firstName": "dsadad",
       "studentPatronymic": "asdada",
@@ -37,7 +37,7 @@
       "id": 5
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "ываыа",
       "firstName": "ыва",
       "studentPatronymic": "ыва",
@@ -49,7 +49,7 @@
       "id": 6
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "asd",
       "firstName": "asd",
       "studentPatronymic": "asd",

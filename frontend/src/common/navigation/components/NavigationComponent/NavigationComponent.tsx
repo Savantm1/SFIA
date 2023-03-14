@@ -1,9 +1,6 @@
 import { PageWrapperView } from '@bless-components/PageWrapperView';
-import {
-    EMPLOYER_LINKS,
-    LinksType,
-    STUDENT_LINKS,
-} from '@common/navigation/links';
+import { Role } from '@common/models';
+import { EMPLOYER_LINKS, STUDENT_LINKS } from '@common/navigation/links';
 import { EmployerCandidatesPage } from '@pages/EmployerCandidatesPage/EmployerCandidatesPage';
 import { EmployerTeamPage } from '@pages/EmployerTeamPage';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
@@ -40,7 +37,10 @@ export const Navigation = memo(() => {
             <Route
                 path={EMPLOYER_ROUTES.employer}
                 element={
-                    <PageWrapperView links={EMPLOYER_LINKS as LinksType} />
+                    <PageWrapperView
+                        forRole={Role.EMPLOYER}
+                        links={EMPLOYER_LINKS}
+                    />
                 }
             >
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
@@ -64,7 +64,12 @@ export const Navigation = memo(() => {
             {/*students routes*/}
             <Route
                 path={STUDENT_ROUTES.student}
-                element={<PageWrapperView links={STUDENT_LINKS as LinksType} />}
+                element={
+                    <PageWrapperView
+                        forRole={Role.STUDENT}
+                        links={STUDENT_LINKS}
+                    />
+                }
             >
                 <Route
                     path={STUDENT_ROUTES.main}
