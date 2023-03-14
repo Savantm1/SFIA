@@ -6,7 +6,6 @@ import '@fontsource/inter/700.css';
 import { Navigation } from '@common/navigation/components/NavigationComponent/NavigationComponent';
 import { ThemeProvider } from '@mui/material/styles';
 import GlobalStyles, { AppStyled, theme } from '@ui/assets/globalStyles';
-import React from 'react';
 
 function App() {
     return (

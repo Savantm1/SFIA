@@ -7,7 +7,7 @@ import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/Modal
 import { TeamMemberMiniCard } from '@scenarios/TeamMemberMiniCard';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
-import React, { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import { makeStudentMock } from '../../mock-factory/makeStudentMock';

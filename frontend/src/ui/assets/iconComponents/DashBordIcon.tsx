@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const DashBordIcon = (props: any) => (
     <svg
         width={18}

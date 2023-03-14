@@ -9,7 +9,7 @@ import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
-import React, { FC, memo, useCallback } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { makeUserMock } from '../../mock-factory/User';

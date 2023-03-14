@@ -20,9 +20,7 @@ const TextInput = styled(TextInputUI)`
     width: 100%;
 `;
 
-const Button = styled(ButtonUI)`
-    margin-bottom: 34px;
-`;
+const Button = styled(ButtonUI)``;
 
 const Link = styled(LinkUI)`
     color: ${Color.mainViolet};
@@ -30,7 +28,12 @@ const Link = styled(LinkUI)`
     font-weight: 600;
     font-size: 14px;
 `;
+
+const RegistrationText = styled(TextUI)`
+    margin-top: 34px;
+`;
 export const Styled = {
+    RegistrationText,
     Link,
     Button,
     TextInput,

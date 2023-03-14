@@ -6,7 +6,7 @@ import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/Modal
 import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
-import React, { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo } from 'react';
 
 import { Styled } from './styled';
 

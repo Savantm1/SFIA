@@ -1,4 +1,4 @@
-import React, { FC, memo, ReactElement } from 'react';
+import { FC, memo, ReactElement } from 'react';
 
 import { Styled } from './styled';
 

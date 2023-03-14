@@ -1,6 +1,6 @@
 import { ProgressBar } from '@scenarios/ProgressBarList/components/ProgressBar/ProgressBar';
 import { ProgressBarListProps } from '@scenarios/ProgressBarList/types';
-import React, { FC, memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 

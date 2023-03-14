@@ -4,7 +4,7 @@ import { NoCandidateComponent } from '@pages/EmployerCandidatesPage/components/N
 import { CandidateMiniCard } from '@scenarios/CandidateMiniCard';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
-import React, { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import { Styled } from '../../styled';

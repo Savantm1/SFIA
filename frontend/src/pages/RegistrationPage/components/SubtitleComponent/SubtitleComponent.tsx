@@ -1,7 +1,7 @@
 import { Styled } from '@pages/RegistrationPage/styled';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 type SubtitleComponentProps = {
     number: string;

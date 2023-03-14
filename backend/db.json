@@ -1,8 +1,85 @@
 {
-  "users": [{
-    "id": 1,
-    "role": "STUDENT",
-    "fullName": "Савельев Антон",
-    "phone": "9299946216"
-  }]
+  "users": [
+    {
+      "id": 1,
+      "role": "STUDENT",
+      "fullName": "Савельев Антон",
+      "phone": "9299946216"
+    },
+    {
+      "role": "EMPLOYER",
+      "nameOrganization": "SBERBANK",
+      "phone": "89665554433",
+      "mail": "sb@mail.ru",
+      "nameSite": "www.sb.ru",
+      "companyDescription": "Company Description",
+      "id": 3
+    },
+    {
+      "role": "EMPLOYER",
+      "nameOrganization": "2343243234",
+      "phone": "89665554434",
+      "mail": "savantm1@mail.ru",
+      "nameSite": "",
+      "companyDescription": "фы",
+      "id": 4
+    },
+    {
+      "role": "STUDENT",
+      "secondName": "aaaasd",
+      "firstName": "dsadad",
+      "studentPatronymic": "asdada",
+      "birthday": "11.12.1993",
+      "education": "aas",
+      "phone": "89665554435",
+      "mail": "savantm1@mail.ru",
+      "studentDescription": "as",
+      "id": 5
+    },
+    {
+      "role": "STUDENT",
+      "secondName": "ываыа",
+      "firstName": "ыва",
+      "studentPatronymic": "ыва",
+      "birthday": "11.12.1993",
+      "education": "яч",
+      "phone": "89665554432",
+      "mail": "savantm1@mail.ru",
+      "studentDescription": "я",
+      "id": 6
+    },
+    {
+      "role": "STUDENT",
+      "secondName": "asd",
+      "firstName": "asd",
+      "studentPatronymic": "asd",
+      "birthday": "11.12.1993",
+      "education": "adadad",
+      "phone": "89665554436",
+      "mail": "savantm1@mail.ru",
+      "studentDescription": "",
+      "id": 7
+    },
+    {
+      "role": "employer",
+      "nameOrganization": "asdad",
+      "phone": "89665554430",
+      "mail": "savantm1@mail.ru",
+      "nameSite": "",
+      "companyDescription": "ad",
+      "id": 8
+    },
+    {
+      "role": "student",
+      "secondName": "Самосов",
+      "firstName": "Владян",
+      "studentPatronymic": "Фельдиперсович",
+      "birthday": "",
+      "education": "",
+      "phone": "79442221122",
+      "mail": "",
+      "studentDescription": "",
+      "id": 9
+    }
+  ]
 }

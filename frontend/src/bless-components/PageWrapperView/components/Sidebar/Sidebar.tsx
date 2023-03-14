@@ -3,7 +3,7 @@ import { EMPLOYER_LINKS, LinksType } from '@common/navigation/links';
 import { MAIN_ROUTES } from '@common/navigation/paths';
 import LogoutIcon from '@ui/assets/iconComponents/LogoutIcon';
 import logo from '@ui/assets/images/logo1.png';
-import React, { FC, memo, useMemo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 

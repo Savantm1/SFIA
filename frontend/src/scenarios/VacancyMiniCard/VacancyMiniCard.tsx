@@ -1,7 +1,7 @@
 import { Vacancy } from '@common/models';
 import { Styled } from '@scenarios/VacancyMiniCard/styled';
 import { Icons } from '@ui/assets/icons';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 type VacancyMiniCardProps = {
     vacancy: Vacancy;

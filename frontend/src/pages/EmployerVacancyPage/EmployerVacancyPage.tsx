@@ -3,7 +3,7 @@ import { EMPLOYER_ROUTES } from '@common/navigation';
 import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { VacancyListComponent } from '@pages/EmployerVacancyPage/components/VacancyListComponent/VacancyListComponent';
 import { Styled } from '@pages/EmployerVacancyPage/styled';
-import React, { FC, memo, useCallback } from 'react';
+import { FC, memo, useCallback } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
 import { makeUserMock } from '../../mock-factory/User';

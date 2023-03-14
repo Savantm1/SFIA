@@ -1,5 +1,5 @@
 import { Modal } from '@ui/components/Modal';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 

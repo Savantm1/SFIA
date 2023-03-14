@@ -4,7 +4,7 @@ import { inputValidationOptions } from '@pages/EmployerTeamPage/components/Creat
 import { SubtitleComponent } from '@pages/RegistrationPage/components/SubtitleComponent/SubtitleComponent';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 

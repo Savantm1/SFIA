@@ -2,7 +2,7 @@ import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { ProgressBarProps } from '@scenarios/ProgressBarList';
 import { Icons } from '@ui/assets/icons';
 import { Text } from '@ui/components/Text';
-import React, { FC, memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 
