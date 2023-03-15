@@ -1,14 +1,12 @@
 import { PageWrapperView } from '@bless-components/PageWrapperView';
-import {
-    EMPLOYER_LINKS,
-    LinksType,
-    STUDENT_LINKS,
-} from '@common/navigation/links';
+import { Role } from '@common/models';
+import { EMPLOYER_LINKS, STUDENT_LINKS } from '@common/navigation/links';
 import { EmployerCandidatesPage } from '@pages/EmployerCandidatesPage/EmployerCandidatesPage';
 import { EmployerTeamPage } from '@pages/EmployerTeamPage';
 import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { EmployerVacancyProfilePage } from '@pages/EmployerVacancyProfilePage/EmployerVacancyProfilePage';
 import { LoginPage } from '@pages/LoginPage';
+import { LogoutPage } from '@pages/LogoutPage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { StudentCoursesPage } from '@pages/StudentCoursesPage';
@@ -22,6 +20,7 @@ export const Navigation = memo(() => {
         <Routes>
             <Route index path={MAIN_ROUTES.default} element={<LoginPage />} />
             <Route path={MAIN_ROUTES.login} element={<LoginPage />} />
+            <Route path={MAIN_ROUTES.logout} element={<LogoutPage />} />
             <Route
                 path={MAIN_ROUTES.registration}
                 element={<SelectRegistrationPage />}
@@ -38,7 +37,10 @@ export const Navigation = memo(() => {
             <Route
                 path={EMPLOYER_ROUTES.employer}
                 element={
-                    <PageWrapperView links={EMPLOYER_LINKS as LinksType} />
+                    <PageWrapperView
+                        forRole={Role.EMPLOYER}
+                        links={EMPLOYER_LINKS}
+                    />
                 }
             >
                 <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
@@ -62,7 +64,12 @@ export const Navigation = memo(() => {
             {/*students routes*/}
             <Route
                 path={STUDENT_ROUTES.student}
-                element={<PageWrapperView links={STUDENT_LINKS as LinksType} />}
+                element={
+                    <PageWrapperView
+                        forRole={Role.STUDENT}
+                        links={STUDENT_LINKS}
+                    />
+                }
             >
                 <Route
                     path={STUDENT_ROUTES.main}

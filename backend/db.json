@@ -2,21 +2,22 @@
   "users": [
     {
       "id": 1,
-      "role": "STUDENT",
+      "role": "student",
       "fullName": "Савельев Антон",
       "phone": "9299946216"
     },
     {
-      "role": "EMPLOYER",
-      "nameOrganization": "SBERBANK",
+      "role": "employer",
+      "nameOrganization": "ООО “Красти”",
       "phone": "89665554433",
-      "mail": "sb@mail.ru",
-      "nameSite": "www.sb.ru",
-      "companyDescription": "Company Description",
+      "mail": "www.crasty.com",
+      "city": "Москва",
+      "nameSite": "example@gmail.com",
+      "companyDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
       "id": 3
     },
     {
-      "role": "EMPLOYER",
+      "role": "employer",
       "nameOrganization": "2343243234",
       "phone": "89665554434",
       "mail": "savantm1@mail.ru",
@@ -25,7 +26,7 @@
       "id": 4
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "aaaasd",
       "firstName": "dsadad",
       "studentPatronymic": "asdada",
@@ -37,7 +38,7 @@
       "id": 5
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "ываыа",
       "firstName": "ыва",
       "studentPatronymic": "ыва",
@@ -49,7 +50,7 @@
       "id": 6
     },
     {
-      "role": "STUDENT",
+      "role": "student",
       "secondName": "asd",
       "firstName": "asd",
       "studentPatronymic": "asd",
@@ -80,6 +81,50 @@
       "mail": "",
       "studentDescription": "",
       "id": 9
+    }
+  ],
+  "vacancies": [
+    {
+      "id": 1,
+      "userId": 3,
+      "title": "Руководитель отдела продаж",
+      "salary": 100000,
+      "experience": "3-6",
+      "employment": "Полная занятость",
+      "schedule": "Удаленная работа",
+      "responsibilities": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "requirements": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "conditions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+      "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
+      "skillTypes": [
+        {
+          "title": "ITSP",
+          "subtitle": "6 ур",
+          "value": 70,
+          "color": "#B4104C"
+        },
+        {
+          "title": "PEMT",
+          "subtitle": "5 ур",
+          "value": 60,
+          "color": "#0E72AB"
+        },
+        {
+          "title": "SUPP",
+          "subtitle": "7 ур",
+          "value": 100,
+          "color": "#138D0A"
+        },
+        {
+          "title": "DCMA",
+          "subtitle": "4 ур",
+          "value": 60,
+          "color": "#FC8616"
+        }
+      ],
+      "views": 1,
+      "responses": 2
     }
   ]
 }

@@ -39,7 +39,6 @@ export const TextArea: FC<TextAreaProps> = memo(
         const [counter, setCounter] = useState(maxLength);
         const onChangeHandler = (evt: ChangeEvent<HTMLTextAreaElement>) => {
             const diff = maxLength - evt.target.value.length;
-            console.log(evt.target.value.length, maxLength);
             setCounter(diff);
             setTextValue(evt.target.value);
             onChange(textValue);

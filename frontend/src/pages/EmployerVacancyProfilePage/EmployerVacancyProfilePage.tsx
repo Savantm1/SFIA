@@ -1,29 +1,27 @@
+import { useCurrentUser } from '@common/hooks/useCurrentUser';
 import { useGoBack } from '@common/navigation/hooks/useGoBack';
+import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { formatAmount } from '@pages/EmployerVacancyPage/utils/formatAmount';
-import { CompanyInfoComponent } from '@pages/EmployerVacancyProfilePage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { InfoList } from '@pages/EmployerVacancyProfilePage/components/InfoList/InfoList';
 import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components/VacancyDeleteModal/VacancyDeleteModal';
 import { VacancyFormModal } from '@pages/EmployerVacancyProfilePage/components/VacancyFormModal/VacancyFormModal';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
-import { FC, memo, useCallback } from 'react';
+import { FC, memo, useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { makeUserMock } from '../../mock-factory/User';
-import { makeVacancyMock } from '../../mock-factory/Vacancy';
 import { Styled as StyledInfo } from './components/InfoList/styled';
 import { Styled } from './styled';
 
 export const EmployerVacancyProfilePage: FC = memo(() => {
-    // Получили текущего пользователя
-    const user = makeUserMock();
-
-    // Получили вакансию по id из url
-    const id = useParams();
-    const vacancy = makeVacancyMock();
+    const { id = '' } = useParams();
+    const user = useCurrentUser();
+    const currentVacancy = useVacanciesStore((state) => state.currentVacancy);
+    const getVacancyById = useVacanciesStore((state) => state.getVacancyById);
 
     const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
     const {
@@ -48,6 +46,14 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
 
     const goBack = useGoBack();
 
+    useEffect(() => {
+        getVacancyById(id);
+    }, [getVacancyById, id]);
+
+    if (!user || !currentVacancy) {
+        return null;
+    }
+
     return (
         <Styled.PageWrapper>
             <Styled.Wrapper>
@@ -61,7 +67,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                     onCloseHandler={closeModalHandler}
                     openSkillModalHandler={openSkillModalHandler}
                     onFormSubmitHandler={onFormSubmitHandler}
-                    vacancy={vacancy}
+                    vacancy={currentVacancy}
                 />
 
                 <VacancyDeleteModal
@@ -79,7 +85,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                             iconName={Icons.backBlack}
                             onClick={goBack}
                         />
-                        <Styled.Title>{vacancy.title}</Styled.Title>
+                        <Styled.Title>{currentVacancy.title}</Styled.Title>
                     </Styled.TitleWrapper>
                     <Styled.MenuButton
                         id="basic-button"
@@ -123,35 +129,41 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                 <Styled.GeneralInfoWrapper>
                     <Styled.TextInfoWrapper>
                         <Styled.BigText>
-                            {formatAmount(+vacancy.salary)} р до вычета налога
+                            {formatAmount(+currentVacancy.salary)} р до вычета
+                            налога
                         </Styled.BigText>
                         <Styled.Text>
-                            Опыт: {vacancy.experience} лет
+                            Опыт: {currentVacancy.experience} лет
                         </Styled.Text>
                         <Styled.Text>
-                            Занятость: {vacancy.employment}
+                            Занятость: {currentVacancy.employment}
                         </Styled.Text>
-                        <Styled.Text>График: {vacancy.schedule}</Styled.Text>
+                        <Styled.Text>
+                            График: {currentVacancy.schedule}
+                        </Styled.Text>
                     </Styled.TextInfoWrapper>
                     <Styled.Image src={image}></Styled.Image>
                 </Styled.GeneralInfoWrapper>
 
-                <Styled.Text>{vacancy.fullDescription}</Styled.Text>
+                <Styled.Text>{currentVacancy.fullDescription}</Styled.Text>
 
                 <StyledInfo.Title>{'Навыки:'}</StyledInfo.Title>
-                <Styled.ProgressBar items={vacancy.skillTypes} isBig={true} />
+                <Styled.ProgressBar
+                    items={currentVacancy.skillTypes}
+                    isBig={true}
+                />
 
                 <InfoList
                     title={'Обязанности:'}
-                    list={vacancy.responsibilities.split(';')}
+                    list={currentVacancy.responsibilities.split(';')}
                 />
                 <InfoList
                     title={'Требования:'}
-                    list={vacancy.requirements.split(';')}
+                    list={currentVacancy.requirements.split(';')}
                 />
                 <InfoList
                     title={'Условия:'}
-                    list={vacancy.conditions.split(';')}
+                    list={currentVacancy.conditions.split(';')}
                 />
             </Styled.Wrapper>
 

@@ -5,11 +5,12 @@ export type User = {
     role: Role;
     fullName: string;
     position: string;
-    company: string;
+    nameOrganization: string;
     about: string;
-    site: string;
+    companyDescription: string;
+    nameSite: string;
     phone: string;
-    email: string;
+    mail: string;
     city: string;
     skillTypes: SkillType[];
 };

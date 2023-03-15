@@ -10,23 +10,33 @@ type CompanyInfoComponentProps = {
 
 export const CompanyInfoComponent: FC<CompanyInfoComponentProps> = memo(
     ({ user }) => {
-        const { role, company, city, site, phone, email, about } = user;
+        const {
+            role,
+            nameOrganization,
+            city,
+            nameSite,
+            phone,
+            mail,
+            companyDescription,
+        } = user;
 
         return (
             <Styled.Wrapper>
                 <Styled.AvatarWrapper>
                     <Styled.InfoWrapper>
-                        <Styled.InfoCompany>{company}</Styled.InfoCompany>
+                        <Styled.InfoCompany>
+                            {nameOrganization}
+                        </Styled.InfoCompany>
                         <Styled.InfoPhone>{phone}</Styled.InfoPhone>
                     </Styled.InfoWrapper>
                     <Avatar role={role} size={'md'} />
                 </Styled.AvatarWrapper>
 
-                <Styled.TitleCompany>{company}</Styled.TitleCompany>
+                <Styled.TitleCompany>{nameOrganization}</Styled.TitleCompany>
                 <Styled.City>{city}</Styled.City>
-                <Styled.Link href={site}>{site}</Styled.Link>
-                <Styled.Link href={'to:' + email}>{email}</Styled.Link>
-                <Styled.Description>{about}</Styled.Description>
+                <Styled.Link href={nameSite}>{nameSite}</Styled.Link>
+                <Styled.Link href={'mailto:' + mail}>{mail}</Styled.Link>
+                <Styled.Description>{companyDescription}</Styled.Description>
             </Styled.Wrapper>
         );
     }

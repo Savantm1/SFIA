@@ -6,25 +6,16 @@ import { inputValidationOptions } from '@pages/LoginPage/constants';
 import { useLogin } from '@pages/LoginPage/hooks/useLogin';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import { FC, memo, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 
 export const LoginPage: FC = memo(() => {
-    const navigate = useNavigate();
-
     const { tryLoginHandler, status, errorMessage } = useLogin();
 
     const onSubmit = (data: any) => {
         tryLoginHandler(data.phone);
     };
-
-    useEffect(() => {
-        if (status === RequestStatus.SUCCESS) {
-            navigate('/student/main');
-        }
-    });
 
     const { handleSubmit, getInputProps } = useValidation({
         ...inputValidationOptions,
