@@ -23,6 +23,7 @@ type RangeProps = {
     color: (typeof Color)[KeysOfColor];
     setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
     isSelectedSkill: boolean;
+    setValueSkillHandler: (value: string | number) => void;
 };
 
 export const Range: FC<RangeProps> = memo(
@@ -33,15 +34,17 @@ export const Range: FC<RangeProps> = memo(
         color,
         setIsSelectedSkill,
         isSelectedSkill,
+        setValueSkillHandler,
     }) => {
         const [selectedValue, setSelectedValue] = useState('');
         const radioHandler: ChangeEventHandler<HTMLInputElement> = useCallback(
             (event) => {
                 const value = event.currentTarget.value;
                 setSelectedValue(value);
+                setValueSkillHandler(value);
                 setIsSelectedSkill(true);
             },
-            [setIsSelectedSkill]
+            [setIsSelectedSkill, setValueSkillHandler]
         );
 
         useEffect(() => {
@@ -51,7 +54,7 @@ export const Range: FC<RangeProps> = memo(
         }, [isSelectedSkill, min, selectedValue]);
         const rangeItems = useMemo(() => {
             const itemsArray = [];
-            const rowName = faker.datatype.uuid(); // будет name
+            const rowName = name;
             for (let i = RANGE_VALUES.min; i <= RANGE_VALUES.max; i++) {
                 itemsArray.push(
                     i < min || i > max ? (
@@ -69,7 +72,7 @@ export const Range: FC<RangeProps> = memo(
                 );
             }
             return itemsArray;
-        }, [color, max, min, radioHandler, selectedValue]);
+        }, [color, max, min, name, radioHandler, selectedValue]);
 
         return <Styled.Range>{rangeItems}</Styled.Range>;
     }

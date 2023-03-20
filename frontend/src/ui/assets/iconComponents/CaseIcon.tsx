@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const CaseIcon = (props: any) => (
     <svg
         width={20}

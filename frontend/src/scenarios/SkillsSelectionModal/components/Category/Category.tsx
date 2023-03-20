@@ -7,15 +7,16 @@ import { SubCategory } from '../SubCategory/SubCategory';
 import { Styled } from './styled';
 
 export type CategoryProps = {
-    title: string;
+    categoryTitle: string;
     color: {
         main: (typeof Color)[KeysOfColor];
         secondary: (typeof Color)[KeysOfColor];
     };
     subCategories: {
-        title: string;
+        subcategoryTitle: string;
         items: {
-            value: string;
+            value?: number;
+            text: string;
             min: number;
             max: number;
             isChecked: boolean;
@@ -24,12 +25,13 @@ export type CategoryProps = {
 };
 
 export const Category: FC<CategoryProps> = memo(
-    ({ title, subCategories, color }) => {
+    ({ categoryTitle, subCategories, color }) => {
         const subCategoriesItems = subCategories.map((subCategory) => {
             return (
                 <SubCategory
+                    categoryTitle={categoryTitle}
                     key={faker.datatype.uuid()}
-                    title={subCategory.title}
+                    subcategoryTitle={subCategory.subcategoryTitle}
                     items={subCategory.items}
                     color={color.main}
                 />
@@ -39,7 +41,7 @@ export const Category: FC<CategoryProps> = memo(
             <Styled.Container>
                 <Styled.Header color={color.main}>
                     <Text variant={'h5'} align={'left'} color={Color.mainWhite}>
-                        {title}
+                        {categoryTitle}
                     </Text>
                 </Styled.Header>
                 <Styled.SubCategoryContainer color={color.secondary}>

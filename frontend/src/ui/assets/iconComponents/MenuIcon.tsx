@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const MenuIcon = (props: any) => (
     <svg
         width={18}

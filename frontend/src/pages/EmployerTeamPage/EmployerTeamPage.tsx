@@ -5,6 +5,7 @@ import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberCo
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { TeamMemberMiniCard } from '@scenarios/TeamMemberMiniCard';
+import { useSkillsModalStore } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
 import { FC, memo, useCallback, useMemo } from 'react';
@@ -15,6 +16,8 @@ import { makeUserMock } from '../../mock-factory/User';
 import { Styled } from './styled';
 
 export const EmployerTeamPage: FC = memo(() => {
+    const skillsData = useSkillsModalStore((state) => state.initialModalData);
+
     // Получили список сотрудников
     const members = [...Array(10).fill('')].map(() => {
         return makeStudentMock();
@@ -55,7 +58,7 @@ export const EmployerTeamPage: FC = memo(() => {
                 />
             );
         });
-    }, [members]);
+    }, [members, navigateMemberHandler]);
 
     const onFormSubmitHandler = useCallback(
         (data: any) =>
@@ -66,6 +69,7 @@ export const EmployerTeamPage: FC = memo(() => {
     return (
         <Styled.PageWrapper>
             <ModalContainer
+                getDataHandler={(data) => data}
                 open={isSkillModalOpen}
                 handleClose={closeSkillModalHandler}
             />

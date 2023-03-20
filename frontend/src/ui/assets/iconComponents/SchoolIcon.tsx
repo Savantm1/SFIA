@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const SchoolIcon = (props: any) => (
     <svg
         width={24}
