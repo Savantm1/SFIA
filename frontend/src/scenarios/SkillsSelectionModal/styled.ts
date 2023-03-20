@@ -16,13 +16,10 @@ const Container = styled.div`
 const DeleteBar = styled.div`
     background: ${Color.mainWhite};
     top: 0;
-    margin-left: 14px;
-    margin-top: -10px;
-    margin-right: 50px;
+    margin: -10px 50px 10px 14px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-bottom: 10px;
     min-height: 30px;
 `;
 
@@ -38,8 +35,9 @@ const Footer = styled.div`
 `;
 
 const ContentOverflow = styled.div`
-    overflow: hidden;
+    overflow: scroll;
     height: calc(100vh - 190px);
+    width: 100%;
 `;
 
 const DeleteSelectedSkillBtn = styled.div`
@@ -53,8 +51,9 @@ const ScrollContainer = styled.div`
     padding-inline: 14px;
     overflow: scroll;
     width: 100%;
-    height: 100%;
     display: flex;
+    flex-direction: column;
+    height: 1040px;
     flex-wrap: wrap;
     gap: 14px;
 `;

@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { useSkillsModalStore } from '@store/skillsModal';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import { FC, memo } from 'react';
@@ -7,21 +8,49 @@ import { SelectSkillRow } from '../SelectSkillRow/SelectSkillRow';
 import { Styled } from './styled';
 
 export type SubCategoryProps = {
+    categoryTitle: string;
     color: (typeof Color)[KeysOfColor];
-    title: string;
-    items: { value: string; min: number; max: number; isChecked: boolean }[];
+    subcategoryTitle: string;
+    items: {
+        text: string;
+        value?: number;
+        min: number;
+        max: number;
+        isChecked: boolean;
+    }[];
 };
 export const SubCategory: FC<SubCategoryProps> = memo(
-    ({ title, items, color }) => {
+    ({ categoryTitle, subcategoryTitle, items, color }) => {
+        const addSkillsHandler = useSkillsModalStore((state) => state.addSkill);
+        const removeSkillsHandler = useSkillsModalStore(
+            (state) => state.removeSkill
+        );
+
         const elements = items.map((element) => {
             return (
                 <SelectSkillRow
                     key={faker.datatype.uuid()}
-                    text={element.value}
+                    text={element.text}
                     min={element.min}
                     max={element.max}
-                    isSelected={false}
-                    setIsSelected={() => {}}
+                    isSelected={element.isChecked}
+                    addSkillToStore={(value: number) => {
+                        console.log('overlay ADD handler:', value);
+                        addSkillsHandler({
+                            categoryTitle,
+                            subcategoryTitle,
+                            text: element.text,
+                            value,
+                        });
+                    }}
+                    removeSkillFromStore={() => {
+                        console.log('overlay REMOVE handler');
+                        removeSkillsHandler({
+                            categoryTitle,
+                            subcategoryTitle,
+                            text: element.text,
+                        });
+                    }}
                     color={color}
                 />
             );
@@ -35,7 +64,7 @@ export const SubCategory: FC<SubCategoryProps> = memo(
                             align={'left'}
                             color={Color.mainBlack}
                         >
-                            {title}
+                            {subcategoryTitle}
                         </Text>
                     </Styled.LeftSideRow>
                     <Styled.RightSideRow>

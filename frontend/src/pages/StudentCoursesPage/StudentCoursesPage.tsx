@@ -1,3 +1,4 @@
+import { useCurrentUser } from '@common/hooks/useCurrentUser';
 import { LeftSideContent } from '@pages/StudentMainPage/components/LeftSideContent/LeftSideContent';
 import { RightSideContent } from '@pages/StudentMainPage/components/RightSideContent/RightSideContent';
 import { WELCOME_BLOCK_SUBTITLES } from '@pages/StudentMainPage/components/WelcomeTitle/constants';
@@ -8,7 +9,8 @@ import { FC, memo } from 'react';
 import { makeStudentMock } from '../../mock-factory/makeStudentMock';
 
 export const StudentCoursesPage: FC = memo(() => {
-    const STUDENT_MOCK = makeStudentMock();
+    const currentUser = useCurrentUser();
+    const STUDENT_MOCK = { ...makeStudentMock(), ...currentUser };
 
     return (
         <Styled.PageWrapper>

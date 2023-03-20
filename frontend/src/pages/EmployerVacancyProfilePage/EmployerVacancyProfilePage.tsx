@@ -8,6 +8,7 @@ import { VacancyFormModal } from '@pages/EmployerVacancyProfilePage/components/V
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { useSkillsModalStore } from '@store/skillsModal';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
@@ -18,6 +19,7 @@ import { Styled as StyledInfo } from './components/InfoList/styled';
 import { Styled } from './styled';
 
 export const EmployerVacancyProfilePage: FC = memo(() => {
+    const skillsData = useSkillsModalStore((state) => state.initialModalData);
     const { id = '' } = useParams();
     const user = useCurrentUser();
     const currentVacancy = useVacanciesStore((state) => state.currentVacancy);
@@ -58,6 +60,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         <Styled.PageWrapper>
             <Styled.Wrapper>
                 <ModalContainer
+                    getDataHandler={(data) => data}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />

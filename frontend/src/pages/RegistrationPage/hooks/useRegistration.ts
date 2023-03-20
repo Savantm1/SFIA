@@ -36,7 +36,7 @@ export const useRegistration = (role: Role) => {
                 ? navigate(STUDENT_ROUTES.main)
                 : navigate(EMPLOYER_ROUTES.main);
         },
-        [createNewPerson, navigate]
+        [createNewPerson, navigate, role, setCurrentUser]
     );
 
     const errorHandler = useCallback(() => {
@@ -60,7 +60,7 @@ export const useRegistration = (role: Role) => {
                 canCreate ? registrationHandler(currentData) : errorHandler();
             }, 2000);
         },
-        [errorHandler, registrationHandler, users]
+        [errorHandler, registrationHandler, role, users]
     );
 
     return { onSubmit, status };

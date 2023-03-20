@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 const PlusIcon = (props: any) => (
     <svg
         width={18}

@@ -4,6 +4,7 @@ import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyF
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
 import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
+import { useSkillsModalStore } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import { FC, memo, useCallback, useMemo } from 'react';
@@ -19,6 +20,10 @@ type VacancyListComponentProps = {
 
 export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
     ({ city, company, vacancies, navigateVacancyHandler }) => {
+        const skillsData = useSkillsModalStore(
+            (state) => state.initialModalData
+        );
+
         const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
         const {
             isModalOpen: isSkillModalOpen,
@@ -40,7 +45,7 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                     />
                 );
             });
-        }, [navigateVacancyHandler, vacancies]);
+        }, [city, company, navigateVacancyHandler, vacancies]);
 
         const onFormSubmitHandler = useCallback(
             (data: any) =>
@@ -51,6 +56,7 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
         return (
             <>
                 <ModalContainer
+                    getDataHandler={(data) => data}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />

@@ -1,9 +1,8 @@
 import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
-import { ModalSkillsContext } from '@scenarios/SkillsSelectionModal/context/context';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Checkbox } from '@ui/components/Checkbox';
 import { Text } from '@ui/components/Text/';
-import { FC, memo, useCallback, useContext, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 
 import { Range } from '../Range/Range';
 import { Styled } from './styled';
@@ -14,25 +13,34 @@ type SelectSkillRowProps = {
     max: number;
     isSelected?: boolean;
     color: (typeof Color)[KeysOfColor];
-    setIsSelected: any;
+    addSkillToStore: any;
+    removeSkillFromStore: any;
 };
 
 export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
-    ({ text, min = RANGE_VALUES.min, max = RANGE_VALUES.max, color }) => {
+    ({
+        text,
+        min = RANGE_VALUES.min,
+        max = RANGE_VALUES.max,
+        color,
+        addSkillToStore,
+        removeSkillFromStore,
+    }) => {
         const [isSelectedSkill, setIsSelectedSkill] = useState(false);
-        const { addSelectedSkillToStore, removeSelectedSkillFromStore } =
-            useContext(ModalSkillsContext);
 
+        const setValueSkillHandler = (value: string | number) => {
+            addSkillToStore(value);
+        };
         const changeHandler = useCallback(
-            (value: boolean) => {
-                if (value) {
-                    addSelectedSkillToStore({ skillText: text });
+            (isSelect: boolean) => {
+                if (isSelect) {
+                    addSkillToStore(min);
                 } else {
-                    removeSelectedSkillFromStore({ skillText: text });
+                    removeSkillFromStore();
                 }
-                setIsSelectedSkill(value);
+                setIsSelectedSkill(isSelect);
             },
-            [addSelectedSkillToStore, removeSelectedSkillFromStore, text]
+            [addSkillToStore, min, removeSkillFromStore]
         );
         return (
             <Styled.Row>
@@ -59,6 +67,7 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
                     color={color}
                     isSelectedSkill={isSelectedSkill}
                     setIsSelectedSkill={setIsSelectedSkill}
+                    setValueSkillHandler={setValueSkillHandler}
                 />
             </Styled.Row>
         );
