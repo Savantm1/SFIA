@@ -43,6 +43,7 @@
         "jest-resolve": "^27.4.2",
         "jest-watch-typeahead": "^1.0.0",
         "ky": "^0.33.2",
+        "lodash": "^4.17.21",
         "mini-css-extract-plugin": "^2.4.5",
         "postcss": "^8.4.4",
         "postcss-flexbugs-fixes": "^5.0.2",
@@ -161,6 +162,7 @@
     },
     "devDependencies": {
         "@faker-js/faker": "^7.6.0",
+        "@types/lodash": "^4.14.191",
         "@types/styled-components": "^5.1.26",
         "@typescript-eslint/eslint-plugin": "^5.48.2",
         "@typescript-eslint/parser": "^5.48.2",

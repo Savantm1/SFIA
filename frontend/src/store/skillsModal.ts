@@ -2,6 +2,7 @@ import {
     initialModalData,
     InitialModalDataType,
 } from '@scenarios/SkillsSelectionModal/initialModalData';
+import cloneDeep from 'lodash/cloneDeep';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -73,14 +74,18 @@ export const useSkillsModalStore = create<SkillsModalState>()(
         },
         resetAllSelections: () => {
             set((state) => {
-                state.initialModalData = initialModalData;
-                return state;
+                return {
+                    ...state,
+                    initialModalData: initialModalData,
+                };
             });
         },
         getSelectedData: () => {
             let selectedData: InitialModalDataType = [];
             set((state) => {
-                const localInitialModalData = state.initialModalData;
+                const localInitialModalData: InitialModalDataType = cloneDeep(
+                    state.initialModalData
+                );
                 const selectedCategories = localInitialModalData.map(
                     (categoryItem) => {
                         const selectedSubCategories =
@@ -96,15 +101,12 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                                     }
                                 }
                             );
-                        const filteredSubs = selectedSubCategories.filter(
-                            (category) => {
-                                return !!category;
-                            }
-                        );
-
                         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                         // @ts-ignore
-                        categoryItem.subCategories = filteredSubs;
+                        categoryItem.subCategories =
+                            selectedSubCategories.filter((category) => {
+                                return !!category;
+                            });
                         return categoryItem;
                     }
                 );
@@ -114,6 +116,7 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                 );
                 return state;
             });
+
             return selectedData;
         },
     }))
