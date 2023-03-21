@@ -4,15 +4,19 @@ export type InitialModalDataType = {
     categoryTitle: string;
     subCategories: {
         subcategoryTitle: string;
-        items: {
-            text: string;
-            value?: number;
-            min: number;
-            max: number;
-            isChecked: boolean;
-        }[];
+        items: ItemSkillType[];
     }[];
 }[];
+
+export type ItemSkillType = {
+    text: string;
+    value?: number;
+    min: number;
+    max: number;
+    isChecked: boolean;
+    categoryTitle?: string;
+    subcategoryTitle?: string;
+};
 export const initialModalData: InitialModalDataType = [
     {
         mainColor: '#B4104C',
@@ -171,13 +175,6 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        text: 'Управление продуктами',
-                        value: undefined,
-                        min: 3,
-                        max: 5,
-                        isChecked: false,
-                    },
-                    {
                         text: 'Проектирование системи',
                         value: undefined,
                         min: 4,
@@ -315,13 +312,6 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         text: 'Бизнес администрирование',
-                        value: undefined,
-                        min: 1,
-                        max: 7,
-                        isChecked: false,
-                    },
-                    {
-                        text: '',
                         value: undefined,
                         min: 1,
                         max: 7,

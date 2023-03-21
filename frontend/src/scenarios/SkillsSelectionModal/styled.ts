@@ -45,6 +45,7 @@ const DeleteSelectedSkillBtn = styled.div`
     flex-wrap: nowrap;
     align-items: center;
     margin-right: 5px;
+    z-index: 1;
 `;
 
 const ScrollContainer = styled.div`

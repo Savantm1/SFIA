@@ -1,12 +1,16 @@
-import { faker } from '@faker-js/faker';
 import { ColorCouples } from '@scenarios/SkillsSelectionModal/ColorCouples';
 import { Category } from '@scenarios/SkillsSelectionModal/components/Category/Category';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
+import {
+    InitialModalDataType,
+    ItemSkillType,
+} from '@scenarios/SkillsSelectionModal/initialModalData';
 import { Styled } from '@scenarios/SkillsSelectionModal/styled';
 import { useSkillsModalStore } from '@store/skillsModal';
+import Color from '@ui/assets/color';
+import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
-import { FC, memo } from 'react';
-
+import { Text } from '@ui/components/Text';
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 type ModalContainerProps = {
     open: boolean;
     handleClose: VoidFunction;
@@ -16,36 +20,78 @@ type ModalContainerProps = {
 };
 export const ModalContainer: FC<ModalContainerProps> = memo(
     ({ open, handleClose, getDataHandler }) => {
-        const { resetAllSelections, getSelectedData, initialModalData } =
-            useSkillsModalStore((state) => state);
-        console.log('initialModalData', initialModalData);
-        const categories = initialModalData.map((category, key) => {
-            return (
-                <Category
-                    key={faker.datatype.uuid()}
-                    categoryTitle={category.categoryTitle}
-                    subCategories={category.subCategories}
-                    color={ColorCouples[key]}
-                />
-            );
-        });
+        const resetAllSelections = useSkillsModalStore(
+            (state) => state.resetAllSelections
+        );
+        const getSelectedData = useSkillsModalStore(
+            (state) => state.getSelectedData
+        );
+        const removeSkill = useSkillsModalStore((state) => state.removeSkill);
+        const initialModalData = useSkillsModalStore(
+            (state) => state.initialModalData
+        );
+        const getArrayOfSelectedSkills = useSkillsModalStore(
+            (state) => state.getArrayOfSelectedSkills
+        );
 
-        // const DeleteSelectedSkillButtons = context.selectedSkills.map(
-        //     (el: SelectedSkillType) => {
-        //         return (
-        //             <Styled.DeleteSelectedSkillBtn key={faker.datatype.uuid()}>
-        //                 <Styled.Close
-        //                     iconName={Icons.close}
-        //                     size={15}
-        //                     onClick={() => {}}
-        //                 />
-        //                 <Text variant={'h6'} color={Color.secondaryGray}>
-        //                     {el.skillText}
-        //                 </Text>
-        //             </Styled.DeleteSelectedSkillBtn>
-        //         );
-        //     }
-        // );
+        const [selectedSkillsArray, setSelectedSkillsArray] = useState(
+            getArrayOfSelectedSkills()
+        );
+
+        useEffect(() => {
+            setSelectedSkillsArray(getArrayOfSelectedSkills());
+        }, [getArrayOfSelectedSkills, initialModalData]);
+
+        const categories = useMemo(
+            () =>
+                initialModalData.map((category, key) => {
+                    return (
+                        <Category
+                            key={key}
+                            categoryTitle={category.categoryTitle}
+                            subCategories={category.subCategories}
+                            color={ColorCouples[key]}
+                        />
+                    );
+                }),
+            [initialModalData]
+        );
+
+        const removeSkillHandler = useCallback(
+            (skill: ItemSkillType) => {
+                removeSkill({
+                    categoryTitle: skill.categoryTitle!,
+                    subcategoryTitle: skill.subcategoryTitle!,
+                    text: skill.text,
+                });
+            },
+            [removeSkill]
+        );
+
+        const nextButtonHandler = useCallback(() => {
+            const selectedData = getSelectedData();
+            getDataHandler(selectedData);
+            resetAllSelections();
+            handleClose();
+        }, [getDataHandler, getSelectedData, handleClose, resetAllSelections]);
+        const DeleteSelectedSkillButtons = useMemo(() => {
+            return selectedSkillsArray.map((skill, index) => {
+                return (
+                    <Styled.DeleteSelectedSkillBtn key={index}>
+                        <Text variant={'h6'} color={Color.secondaryGray}>
+                            {skill.text}
+                        </Text>
+                        <Styled.Close
+                            iconName={Icons.close}
+                            size={15}
+                            onClick={() => {
+                                removeSkillHandler(skill);
+                            }}
+                        />
+                    </Styled.DeleteSelectedSkillBtn>
+                );
+            });
+        }, [removeSkillHandler, selectedSkillsArray]);
 
         return (
             <Modal
@@ -57,7 +103,7 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             >
                 <Styled.Container>
                     <Styled.DeleteBar>
-                        {/*{DeleteSelectedSkillButtons}*/}
+                        {DeleteSelectedSkillButtons}
                     </Styled.DeleteBar>
                     <Styled.ContentOverflow>
                         <Styled.ScrollContainer>
@@ -67,13 +113,8 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
 
                     <Styled.Footer>
                         <Styled.NextButton
-                            onClick={() => {
-                                const selectedData = getSelectedData();
-                                getDataHandler(selectedData);
-                                console.log('getSelectedData', selectedData);
-                                resetAllSelections();
-                                handleClose();
-                            }}
+                            disabled={!selectedSkillsArray.length}
+                            onClick={nextButtonHandler}
                             value={'Далее'}
                         />
                     </Styled.Footer>

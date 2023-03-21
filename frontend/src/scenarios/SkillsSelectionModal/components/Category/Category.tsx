@@ -1,7 +1,6 @@
-import { faker } from '@faker-js/faker';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import { FC, memo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { SubCategory } from '../SubCategory/SubCategory';
 import { Styled } from './styled';
@@ -26,17 +25,21 @@ export type CategoryProps = {
 
 export const Category: FC<CategoryProps> = memo(
     ({ categoryTitle, subCategories, color }) => {
-        const subCategoriesItems = subCategories.map((subCategory) => {
-            return (
-                <SubCategory
-                    categoryTitle={categoryTitle}
-                    key={faker.datatype.uuid()}
-                    subcategoryTitle={subCategory.subcategoryTitle}
-                    items={subCategory.items}
-                    color={color.main}
-                />
-            );
-        });
+        const subCategoriesItems = useMemo(
+            () =>
+                subCategories.map((subCategory, key) => {
+                    return (
+                        <SubCategory
+                            categoryTitle={categoryTitle}
+                            key={key}
+                            subcategoryTitle={subCategory.subcategoryTitle}
+                            items={subCategory.items}
+                            color={color.main}
+                        />
+                    );
+                }),
+            [categoryTitle, color.main, subCategories]
+        );
         return (
             <Styled.Container>
                 <Styled.Header color={color.main}>
@@ -45,7 +48,6 @@ export const Category: FC<CategoryProps> = memo(
                     </Text>
                 </Styled.Header>
                 <Styled.SubCategoryContainer color={color.secondary}>
-                    <Text variant={'h6'}></Text>
                     {subCategoriesItems}
                 </Styled.SubCategoryContainer>
             </Styled.Container>

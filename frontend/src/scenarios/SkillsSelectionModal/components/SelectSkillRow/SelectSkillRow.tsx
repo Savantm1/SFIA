@@ -2,7 +2,7 @@ import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Checkbox } from '@ui/components/Checkbox';
 import { Text } from '@ui/components/Text/';
-import { FC, memo, useCallback, useState } from 'react';
+import { FC, memo, useCallback } from 'react';
 
 import { Range } from '../Range/Range';
 import { Styled } from './styled';
@@ -11,7 +11,7 @@ type SelectSkillRowProps = {
     text: string;
     min: number;
     max: number;
-    isSelected?: boolean;
+    isSelected: boolean;
     color: (typeof Color)[KeysOfColor];
     addSkillToStore: any;
     removeSkillFromStore: any;
@@ -25,9 +25,8 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
         color,
         addSkillToStore,
         removeSkillFromStore,
+        isSelected,
     }) => {
-        const [isSelectedSkill, setIsSelectedSkill] = useState(false);
-
         const setValueSkillHandler = (value: string | number) => {
             addSkillToStore(value);
         };
@@ -38,7 +37,6 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
                 } else {
                     removeSkillFromStore();
                 }
-                setIsSelectedSkill(isSelect);
             },
             [addSkillToStore, min, removeSkillFromStore]
         );
@@ -47,15 +45,15 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
                 <Styled.LeftSide>
                     <Checkbox
                         size={18}
-                        checked={isSelectedSkill}
+                        checked={isSelected}
                         onChangeHandler={changeHandler}
-                        color={isSelectedSkill ? color : Color.mainBlack}
+                        color={isSelected ? color : Color.mainBlack}
                     />
 
                     <Text
                         variant={'h6'}
                         align={'left'}
-                        color={isSelectedSkill ? color : Color.mainBlack}
+                        color={isSelected ? color : Color.mainBlack}
                     >
                         {text}
                     </Text>
@@ -65,8 +63,7 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
                     min={min}
                     max={max}
                     color={color}
-                    isSelectedSkill={isSelectedSkill}
-                    setIsSelectedSkill={setIsSelectedSkill}
+                    isSelectedSkill={isSelected}
                     setValueSkillHandler={setValueSkillHandler}
                 />
             </Styled.Row>

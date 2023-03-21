@@ -1,8 +1,7 @@
-import { faker } from '@faker-js/faker';
 import { useSkillsModalStore } from '@store/skillsModal';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
-import { FC, memo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { SelectSkillRow } from '../SelectSkillRow/SelectSkillRow';
 import { Styled } from './styled';
@@ -22,39 +21,48 @@ export type SubCategoryProps = {
 export const SubCategory: FC<SubCategoryProps> = memo(
     ({ categoryTitle, subcategoryTitle, items, color }) => {
         const addSkillsHandler = useSkillsModalStore((state) => state.addSkill);
-        const removeSkillsHandler = useSkillsModalStore(
+        const removeSkillHandler = useSkillsModalStore(
             (state) => state.removeSkill
         );
 
-        const elements = items.map((element) => {
-            return (
-                <SelectSkillRow
-                    key={faker.datatype.uuid()}
-                    text={element.text}
-                    min={element.min}
-                    max={element.max}
-                    isSelected={element.isChecked}
-                    addSkillToStore={(value: number) => {
-                        console.log('overlay ADD handler:', value);
-                        addSkillsHandler({
-                            categoryTitle,
-                            subcategoryTitle,
-                            text: element.text,
-                            value,
-                        });
-                    }}
-                    removeSkillFromStore={() => {
-                        console.log('overlay REMOVE handler');
-                        removeSkillsHandler({
-                            categoryTitle,
-                            subcategoryTitle,
-                            text: element.text,
-                        });
-                    }}
-                    color={color}
-                />
-            );
-        });
+        const elements = useMemo(
+            () =>
+                items.map((element, key) => {
+                    return (
+                        <SelectSkillRow
+                            key={key}
+                            text={element.text}
+                            min={element.min}
+                            max={element.max}
+                            isSelected={element.isChecked}
+                            addSkillToStore={(value: number) => {
+                                addSkillsHandler({
+                                    categoryTitle,
+                                    subcategoryTitle,
+                                    text: element.text,
+                                    value,
+                                });
+                            }}
+                            removeSkillFromStore={() => {
+                                removeSkillHandler({
+                                    categoryTitle,
+                                    subcategoryTitle,
+                                    text: element.text,
+                                });
+                            }}
+                            color={color}
+                        />
+                    );
+                }),
+            [
+                addSkillsHandler,
+                categoryTitle,
+                color,
+                items,
+                removeSkillHandler,
+                subcategoryTitle,
+            ]
+        );
         return (
             <Styled.Container>
                 <Styled.SubtitleRow>

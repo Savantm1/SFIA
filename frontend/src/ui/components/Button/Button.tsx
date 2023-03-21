@@ -27,9 +27,8 @@ export const Button: FC<ButtonProps> = memo(
         // rightIcon
     }) => {
         return (
-            <div>
+            <div className={className}>
                 <Styled.Button
-                    className={className}
                     variant={variant}
                     disabled={disabled}
                     href={href}
