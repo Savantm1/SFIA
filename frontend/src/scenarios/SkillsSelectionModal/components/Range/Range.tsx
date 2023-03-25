@@ -3,10 +3,8 @@ import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
 import Color, { KeysOfColor } from '@ui/assets/color';
 import {
     ChangeEventHandler,
-    Dispatch,
     FC,
     memo,
-    SetStateAction,
     useCallback,
     useEffect,
     useMemo,
@@ -21,7 +19,7 @@ type RangeProps = {
     max?: number;
     name: string; //пока оставлю
     color: (typeof Color)[KeysOfColor];
-    setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
+    // setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
     isSelectedSkill: boolean;
     setValueSkillHandler: (value: string | number) => void;
 };
@@ -32,7 +30,6 @@ export const Range: FC<RangeProps> = memo(
         max = RANGE_VALUES.max,
         name,
         color,
-        setIsSelectedSkill,
         isSelectedSkill,
         setValueSkillHandler,
     }) => {
@@ -42,9 +39,8 @@ export const Range: FC<RangeProps> = memo(
                 const value = event.currentTarget.value;
                 setSelectedValue(value);
                 setValueSkillHandler(value);
-                setIsSelectedSkill(true);
             },
-            [setIsSelectedSkill, setValueSkillHandler]
+            [setValueSkillHandler]
         );
 
         useEffect(() => {

@@ -17,6 +17,11 @@ export const Button = styled(ButtonMUI)<ButtonProps>(() => ({
         backgroundColor: Color.purple,
         border: 'none',
     },
+
+    '&:disabled': {
+        backgroundColor: Color.secondaryGray,
+        color: Color.mainWhite,
+    },
 }));
 
 export const Styled = {
