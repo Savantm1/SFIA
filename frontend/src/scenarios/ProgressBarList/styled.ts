@@ -24,7 +24,9 @@ const Wrapper = styled.div`
 const ListWrapper = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    overflow: auto;
+    justify-content: flex-start;
+    gap: 10px;
 `;
 
 const LabelWrapper = styled.div`
@@ -39,7 +41,7 @@ const LabelWrapper = styled.div`
     right: 0;
 `;
 
-const Title = styled.span<{ color: Color; isBig?: boolean }>`
+const Title = styled.span<{ color: Color | string; isBig?: boolean }>`
     font-weight: 700;
     font-size: ${({ isBig }) => (isBig ? 12 : 8)}px !important;
     line-height: ${({ isBig }) => (isBig ? 14.5 : 10)}px !important;

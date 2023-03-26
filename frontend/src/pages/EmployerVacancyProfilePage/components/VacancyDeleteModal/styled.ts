@@ -1,5 +1,4 @@
 import Color from '@ui/assets/color';
-import { Button } from '@ui/components/Button';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -28,23 +27,28 @@ const ButtonsWrapper = styled.div`
     gap: 10px;
 `;
 
-const DeleteButton = styled(Button)`
+const DeleteButton = styled.button`
     background-color: ${Color.critical} !important;
     color: ${Color.mainWhite} !important;
     width: 150px !important;
     font-weight: 700 !important;
     font-size: 12px !important;
     line-height: 15px !important;
+    border-radius: 8px;
+    border: 1px solid ${Color.critical} !important;
 `;
 
-const CancelButton = styled(Button)`
-    background-color: ${Color.mainWhite} !important;
-    color: ${Color.secondaryGray} !important;
-    border: 1px solid ${Color.secondaryGray}!important;
+const CancelButton = styled.button`
     width: 100px !important;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid ${Color.secondaryGray} !important;
+    background: ${Color.mainWhite} !important;
+    color: ${Color.secondaryGray} !important;
     font-weight: 700 !important;
     font-size: 12px !important;
     line-height: 15px !important;
+    cursor: pointer;
 `;
 
 export const Styled = {

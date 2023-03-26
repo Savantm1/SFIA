@@ -7,6 +7,7 @@ export const makeVacancyMock = (): Vacancy => {
     faker.setLocale('ru');
     return {
         id: faker.datatype.uuid(),
+        userId: '1',
         title: faker.name.jobTitle(),
         salary: faker.datatype.number({
             min: 50000,

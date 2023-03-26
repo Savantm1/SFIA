@@ -1,29 +1,33 @@
 import { useCurrentUser } from '@common/hooks/useCurrentUser';
+import { SkillType } from '@common/models';
 import { useGoBack } from '@common/navigation/hooks/useGoBack';
 import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
+import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { formatAmount } from '@pages/EmployerVacancyPage/utils/formatAmount';
 import { InfoList } from '@pages/EmployerVacancyProfilePage/components/InfoList/InfoList';
 import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components/VacancyDeleteModal/VacancyDeleteModal';
-import { VacancyFormModal } from '@pages/EmployerVacancyProfilePage/components/VacancyFormModal/VacancyFormModal';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
-import { useSkillsModalStore } from '@store/skillsModal';
+import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
-import { FC, memo, useCallback, useEffect } from 'react';
+import React, { FC, memo, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Styled as StyledInfo } from './components/InfoList/styled';
 import { Styled } from './styled';
 
 export const EmployerVacancyProfilePage: FC = memo(() => {
-    const skillsData = useSkillsModalStore((state) => state.initialModalData);
     const { id = '' } = useParams();
     const user = useCurrentUser();
     const currentVacancy = useVacanciesStore((state) => state.currentVacancy);
     const getVacancyById = useVacanciesStore((state) => state.getVacancyById);
+    const updateVacancy = useVacanciesStore((state) => state.updateVacancy);
+    const deleteVacancy = useVacanciesStore((state) => state.deleteVacancy);
+
+    const [skillTypes, setSkillTypes] = useState<SkillType[]>();
 
     const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
     const {
@@ -41,10 +45,43 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         useMenu();
 
     const onFormSubmitHandler = useCallback(
-        (data: any) =>
-            alert(`Vacancy updated success. Data: ${JSON.stringify(data)}`),
-        []
+        async (data: any) => {
+            if (!currentVacancy) {
+                return;
+            }
+            await updateVacancy(currentVacancy.id, {
+                ...currentVacancy,
+                ...data,
+                skillTypes,
+            });
+            await getVacancyById(id);
+        },
+        [currentVacancy, getVacancyById, id, skillTypes, updateVacancy]
     );
+
+    // TODO: обсудить расчет value в %
+    const getDataHandler = useCallback((data: InitialModalDataType) => {
+        const skillTypes: SkillType[] = [];
+
+        data.forEach((dataItem) => {
+            dataItem.subCategories.forEach((subCategory) => {
+                subCategory.items.forEach((item) => {
+                    skillTypes.push({
+                        title: subCategory.subcategoryTitle
+                            .slice(0, 3)
+                            .toUpperCase(),
+                        subtitle: '' + item.value + ' ур',
+                        color: dataItem.mainColor,
+                        value: Math.round(((item.value ?? 0) * 100) / item.max),
+                    });
+                });
+            });
+        });
+
+        setSkillTypes(skillTypes);
+
+        return data;
+    }, []);
 
     const goBack = useGoBack();
 
@@ -60,12 +97,13 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         <Styled.PageWrapper>
             <Styled.Wrapper>
                 <ModalContainer
-                    getDataHandler={(data) => data}
+                    getDataHandler={getDataHandler}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />
 
                 <VacancyFormModal
+                    selectedSkillTypes={skillTypes}
                     isOpen={isModalOpen}
                     onCloseHandler={closeModalHandler}
                     openSkillModalHandler={openSkillModalHandler}
@@ -75,7 +113,10 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
 
                 <VacancyDeleteModal
                     isOpen={isDeleteModalOpen}
-                    deleteVacancyHandler={goBack}
+                    deleteVacancyHandler={() => {
+                        currentVacancy && deleteVacancy(currentVacancy.id);
+                        goBack();
+                    }}
                     closeModalHandler={() => {
                         closeDeleteModalHandler();
                         closeMenuHandler();
@@ -117,6 +158,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                     >
                         <Styled.MenuItem
                             onClick={() => {
+                                setSkillTypes([]);
                                 openModalHandler();
                                 closeMenuHandler();
                             }}

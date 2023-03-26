@@ -1,29 +1,31 @@
-import { User } from '@common/models';
+import { useCurrentUser } from '@common/hooks/useCurrentUser';
+import { SkillType, User } from '@common/models';
+import { Member } from '@common/models/Member';
 import { STUDENT_ROUTES } from '@common/navigation';
 import { CreateFormModal } from '@pages/EmployerTeamPage/components/CreateFormModal/CreateFormModal';
 import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberComponent/NoMemberComponent';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { TeamMemberMiniCard } from '@scenarios/TeamMemberMiniCard';
-import { useSkillsModalStore } from '@store/skillsModal';
+import { useMembersStore } from '@store/members';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
-import { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { generatePath, useNavigate } from 'react-router-dom';
 
-import { makeStudentMock } from '../../mock-factory/makeStudentMock';
-import { makeUserMock } from '../../mock-factory/User';
 import { Styled } from './styled';
 
 export const EmployerTeamPage: FC = memo(() => {
-    const skillsData = useSkillsModalStore((state) => state.initialModalData);
+    const members = useMembersStore((state) => state.members);
+    const fetchMembers = useMembersStore((state) => state.fetchMembers);
+    const createMember = useMembersStore((state) => state.createMember);
 
-    // Получили список сотрудников
-    const members = [...Array(10).fill('')].map(() => {
-        return makeStudentMock();
-    });
-    // Получили текущего пользователя
-    const user = makeUserMock();
+    const user = useCurrentUser();
+
+    useEffect(() => {
+        user && fetchMembers(user.id);
+    }, [fetchMembers, user]);
 
     const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
 
@@ -32,6 +34,8 @@ export const EmployerTeamPage: FC = memo(() => {
         openModalHandler: openSkillModalHandler,
         closeModalHandler: closeSkillModalHandler,
     } = useModal();
+
+    const [skillTypes, setSkillTypes] = useState<SkillType[]>();
 
     const navigate = useNavigate();
 
@@ -53,7 +57,7 @@ export const EmployerTeamPage: FC = memo(() => {
             return (
                 <TeamMemberMiniCard
                     key={member.id}
-                    user={member}
+                    member={member}
                     openMemberProfileHandler={navigateMemberHandler(member.id)}
                 />
             );
@@ -61,20 +65,55 @@ export const EmployerTeamPage: FC = memo(() => {
     }, [members, navigateMemberHandler]);
 
     const onFormSubmitHandler = useCallback(
-        (data: any) =>
-            alert(`Member created success. Data: ${JSON.stringify(data)}`),
-        []
+        async (data: Partial<Member>) => {
+            if (!user) {
+                return;
+            }
+
+            await createMember({ ...data, skillTypes, employerId: user.id });
+            await fetchMembers(user.id);
+        },
+        [createMember, fetchMembers, skillTypes, user]
     );
+
+    // TODO: обсудить расчет value в %
+    const getDataHandler = useCallback((data: InitialModalDataType) => {
+        const skillTypes: SkillType[] = [];
+
+        data.forEach((dataItem) => {
+            dataItem.subCategories.forEach((subCategory) => {
+                subCategory.items.forEach((item) => {
+                    skillTypes.push({
+                        title: subCategory.subcategoryTitle
+                            .slice(0, 3)
+                            .toUpperCase(),
+                        subtitle: '' + item.value + ' ур',
+                        color: dataItem.mainColor,
+                        value: Math.round(((item.value ?? 0) * 100) / item.max),
+                    });
+                });
+            });
+        });
+
+        setSkillTypes(skillTypes);
+
+        return data;
+    }, []);
+
+    if (!user) {
+        return null;
+    }
 
     return (
         <Styled.PageWrapper>
             <ModalContainer
-                getDataHandler={(data) => data}
+                getDataHandler={getDataHandler}
                 open={isSkillModalOpen}
                 handleClose={closeSkillModalHandler}
             />
 
             <CreateFormModal
+                selectedSkillTypes={skillTypes}
                 isOpen={isModalOpen}
                 onCloseHandler={closeModalHandler}
                 onFormSubmitHandler={onFormSubmitHandler}
@@ -87,7 +126,10 @@ export const EmployerTeamPage: FC = memo(() => {
                     <Styled.ToolbarWrapper>
                         <Styled.PlusButton
                             iconName={Icons.add}
-                            onClick={openModalHandler}
+                            onClick={() => {
+                                setSkillTypes([]);
+                                openModalHandler();
+                            }}
                         />
                         <Styled.AvatarWrapper>
                             <Styled.InfoWrapper>
@@ -104,7 +146,12 @@ export const EmployerTeamPage: FC = memo(() => {
                 </Styled.HeaderWrapper>
 
                 {!memberList.length ? (
-                    <NoMemberComponent createMemberHandler={openModalHandler} />
+                    <NoMemberComponent
+                        createMemberHandler={() => {
+                            setSkillTypes([]);
+                            openModalHandler();
+                        }}
+                    />
                 ) : (
                     <Styled.MemberListWrapper>
                         {memberList}

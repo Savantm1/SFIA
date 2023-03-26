@@ -9,7 +9,7 @@ type DetailPopupProps = {
     anchorEl: null | HTMLElement;
     isMenuOpen: boolean;
     closeMenuHandler: VoidFunction;
-    color?: (typeof Color)[KeysOfColor];
+    color?: (typeof Color)[KeysOfColor] | string;
     value?: number;
     title?: string;
     subTitle?: string;

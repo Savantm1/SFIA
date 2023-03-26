@@ -6,7 +6,6 @@ import PeopleIcon from '@ui/assets/iconComponents/PeopleIcon';
 import PersonIcon from '@ui/assets/iconComponents/PersonIcon';
 
 export const EMPLOYER_LINKS: LinksType = [
-    { icon: <DashBordIcon />, text: 'Главная', to: EMPLOYER_ROUTES.main },
     { icon: <BugIcon />, text: 'Мои Вакансии', to: EMPLOYER_ROUTES.vacancies },
     { icon: <PersonIcon />, text: 'Кандидаты', to: EMPLOYER_ROUTES.candidates },
     { icon: <PeopleIcon />, text: 'Моя команда', to: EMPLOYER_ROUTES.team },

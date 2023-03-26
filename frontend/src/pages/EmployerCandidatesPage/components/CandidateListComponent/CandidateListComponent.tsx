@@ -1,51 +1,30 @@
-import { User, Vacancy } from '@common/models';
-import { EMPLOYER_ROUTES } from '@common/navigation';
+import { User, VacancyWithCandidates } from '@common/models';
 import { NoCandidateComponent } from '@pages/EmployerCandidatesPage/components/NoCandidateComponent/NoCandidateComponent';
-import { CandidateMiniCard } from '@scenarios/CandidateMiniCard';
-import { Icons } from '@ui/assets/icons';
+import { VacancyWithCandidatesComponent } from '@pages/EmployerCandidatesPage/components/VacancyWithCondidatesComponent/VacancyWithCandidatesComponent';
 import { Avatar } from '@ui/components/Avatar';
-import { FC, memo, useCallback, useMemo } from 'react';
-import { generatePath, useNavigate } from 'react-router-dom';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from '../../styled';
 
 type CandidateListComponentProps = {
     user: User;
-    candidates: User[];
+    vacanciesWithCandidates: VacancyWithCandidates[];
     selectCandidateHandler: (candidate: User | null) => () => void;
 };
 
 export const CandidateListComponent: FC<CandidateListComponentProps> = memo(
-    ({ user, candidates, selectCandidateHandler }) => {
-        const candidateList = useMemo(() => {
-            return candidates.map((candidate) => {
+    ({ user, vacanciesWithCandidates, selectCandidateHandler }) => {
+        const vacancyWithCandidatesList = useMemo(() => {
+            return vacanciesWithCandidates.map((vacancyWithCandidate) => {
                 return (
-                    <CandidateMiniCard
-                        key={candidate.id}
-                        user={candidate}
-                        match={70}
-                        openCandidateProfileHandler={selectCandidateHandler(
-                            candidate
-                        )}
+                    <VacancyWithCandidatesComponent
+                        key={vacancyWithCandidate.vacancy.id}
+                        vacancyWithCandidate={vacancyWithCandidate}
+                        selectCandidateHandler={selectCandidateHandler}
                     />
                 );
             });
-        }, [candidates, selectCandidateHandler]);
-
-        const navigate = useNavigate();
-
-        const navigateVacancyHandler = useCallback(
-            (id: Vacancy['id']) => {
-                return () => {
-                    navigate(
-                        generatePath(EMPLOYER_ROUTES.vacancy, {
-                            id,
-                        })
-                    );
-                };
-            },
-            [navigate]
-        );
+        }, [selectCandidateHandler, vacanciesWithCandidates]);
 
         return (
             <Styled.Wrapper>
@@ -62,48 +41,10 @@ export const CandidateListComponent: FC<CandidateListComponentProps> = memo(
                     </Styled.AvatarWrapper>
                 </Styled.HeaderWrapper>
 
-                {!candidateList.length ? (
+                {!vacanciesWithCandidates.length ? (
                     <NoCandidateComponent />
                 ) : (
-                    <>
-                        <Styled.CandidateBlockHeader>
-                            <Styled.CandidateBlockHeaderTitle>
-                                Руководитель отдала продаж
-                            </Styled.CandidateBlockHeaderTitle>
-                            <Styled.CandidateBlockHeaderLink
-                                onClick={navigateVacancyHandler('123')}
-                            >
-                                <span>Перейти к вакансии</span>
-                                <Styled.CandidateBlockHeaderLinkButton
-                                    iconName={Icons.backBlack}
-                                    onClick={navigateVacancyHandler('123')}
-                                />
-                            </Styled.CandidateBlockHeaderLink>
-                        </Styled.CandidateBlockHeader>
-
-                        <Styled.CandidateListWrapper>
-                            {candidateList}
-                        </Styled.CandidateListWrapper>
-
-                        <Styled.CandidateBlockHeader>
-                            <Styled.CandidateBlockHeaderTitle>
-                                Руководитель отдала продаж
-                            </Styled.CandidateBlockHeaderTitle>
-                            <Styled.CandidateBlockHeaderLink
-                                onClick={navigateVacancyHandler('123')}
-                            >
-                                <span>Перейти к вакансии</span>
-                                <Styled.CandidateBlockHeaderLinkButton
-                                    iconName={Icons.backBlack}
-                                    onClick={navigateVacancyHandler('123')}
-                                />
-                            </Styled.CandidateBlockHeaderLink>
-                        </Styled.CandidateBlockHeader>
-
-                        <Styled.CandidateListWrapper>
-                            {candidateList}
-                        </Styled.CandidateListWrapper>
-                    </>
+                    <>{vacancyWithCandidatesList}</>
                 )}
             </Styled.Wrapper>
         );
