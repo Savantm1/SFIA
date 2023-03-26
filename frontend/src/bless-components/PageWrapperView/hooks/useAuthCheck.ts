@@ -27,7 +27,7 @@ export const useAuthCheck = (forRole?: Role) => {
             currentUser.role === Role.EMPLOYER &&
             currentUser.role !== forRole
         ) {
-            navigate(EMPLOYER_ROUTES.main);
+            navigate(EMPLOYER_ROUTES.vacancies);
             return;
         }
     }, [currentUser, forRole, navigate]);

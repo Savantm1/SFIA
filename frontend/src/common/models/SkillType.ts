@@ -4,5 +4,5 @@ export type SkillType = {
     title: string;
     subtitle: string;
     value: number;
-    color: Color;
+    color: Color | string;
 };

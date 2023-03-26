@@ -1,4 +1,4 @@
-import { Vacancy } from '@common/models';
+import { SkillType, Vacancy } from '@common/models';
 import { useValidation } from '@common/validation/hooks/useValidation';
 import { inputValidationOptions } from '@pages/EmployerVacancyPage/constants';
 import { getValidationOptionsWithInitialValue } from '@pages/EmployerVacancyPage/utils/getValidationOptionsWithInitialValue';
@@ -14,6 +14,7 @@ type VacancyFormModalProps = {
     openSkillModalHandler: VoidFunction;
     onFormSubmitHandler: (data: any) => void;
     vacancy?: Vacancy;
+    selectedSkillTypes?: SkillType[];
 };
 
 export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
@@ -23,6 +24,7 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
         openSkillModalHandler,
         onFormSubmitHandler,
         vacancy,
+        selectedSkillTypes = [],
     }) => {
         const onSubmit = (data: any) => {
             onFormSubmitHandler(data);
@@ -90,18 +92,27 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
                                     width: '100%',
                                 }}
                             >
-                                {vacancy ? (
-                                    <Styled.ProgressBar
-                                        items={vacancy.skillTypes}
-                                    />
-                                ) : (
-                                    <Styled.Select
-                                        options={[]}
-                                        onSelect={() => {}}
-                                        defaultValue={''}
-                                        placeholder={'Навык'}
-                                    />
-                                )}
+                                <Styled.ProgressBar
+                                    items={
+                                        vacancy
+                                            ? selectedSkillTypes.length > 0
+                                                ? selectedSkillTypes
+                                                : vacancy.skillTypes
+                                            : selectedSkillTypes
+                                    }
+                                />
+                                {/*{vacancy ? (*/}
+                                {/*    <Styled.ProgressBar*/}
+                                {/*        items={selectedSkillTypes}*/}
+                                {/*    />*/}
+                                {/*) : (*/}
+                                {/*    <Styled.Select*/}
+                                {/*        options={[]}*/}
+                                {/*        onSelect={() => {}}*/}
+                                {/*        defaultValue={''}*/}
+                                {/*        placeholder={'Навык'}*/}
+                                {/*    />*/}
+                                {/*)}*/}
 
                                 <Styled.DickButton
                                     iconName={Icons.cock}
@@ -111,14 +122,12 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
                         </Styled.Row>
 
                         <Styled.ButtonsWrapper>
-                            <Styled.CreateButton
-                                value={buttonText}
-                                onClick={handleSubmit}
-                            />
-                            <Styled.CancelButton
-                                value={'Отмена'}
-                                onClick={onCloseHandler}
-                            />
+                            <Styled.CreateButton onClick={handleSubmit}>
+                                {buttonText}
+                            </Styled.CreateButton>
+                            <Styled.CancelButton onClick={onCloseHandler}>
+                                Отмена
+                            </Styled.CancelButton>
                         </Styled.ButtonsWrapper>
                     </Styled.FormWrapper>
                 </Styled.Wrapper>

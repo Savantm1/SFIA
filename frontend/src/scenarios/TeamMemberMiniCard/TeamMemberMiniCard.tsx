@@ -1,28 +1,40 @@
-import { User } from '@common/models';
+import { Role } from '@common/models';
+import { Member } from '@common/models/Member';
 import { Avatar } from '@ui/components/Avatar';
 import { FC, memo } from 'react';
 
 import { Styled } from './styled';
 
 type TeamMemberMiniCardProps = {
-    user: User;
+    member: Member;
     openMemberProfileHandler: VoidFunction;
 };
 
 export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
-    ({ user, openMemberProfileHandler }) => {
-        const { city, role, fullName, position, phone, mail, skillTypes } =
-            user;
+    ({ member, openMemberProfileHandler }) => {
+        const {
+            firstName,
+            secondName,
+            patronymic,
+            position,
+            phone,
+            email,
+            skillTypes,
+        } = member;
+
+        const fullName = `${secondName} ${firstName}${
+            patronymic ? ' ' + patronymic : ''
+        }`;
 
         return (
             <Styled.ScenarioWrapper onClick={openMemberProfileHandler}>
                 <Styled.HeaderWrapper>
                     <Styled.HeaderLeftBlock>
-                        <Styled.HeaderText>{city}</Styled.HeaderText>
+                        <Styled.HeaderText></Styled.HeaderText>
                     </Styled.HeaderLeftBlock>
 
                     <Styled.HeaderRightBlock>
-                        <Avatar role={role} size={'md'} />
+                        <Avatar role={Role.STUDENT} size={'md'} />
                     </Styled.HeaderRightBlock>
                 </Styled.HeaderWrapper>
 
@@ -32,7 +44,7 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
                     <Styled.Subtitle isSmallMargin={true}>
                         {phone}
                     </Styled.Subtitle>
-                    <Styled.Subtitle>{mail}</Styled.Subtitle>
+                    <Styled.Subtitle>{email}</Styled.Subtitle>
 
                     <Styled.ProgressBarsWrapper items={skillTypes} />
                 </Styled.ContentWrapper>

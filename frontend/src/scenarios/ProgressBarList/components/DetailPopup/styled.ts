@@ -29,7 +29,7 @@ const TextBlock = styled.div`
 `;
 
 type AbbrBlockType = {
-    color: (typeof Color)[KeysOfColor];
+    color: (typeof Color)[KeysOfColor] | string;
 };
 
 const AbbrBlock = styled.div<AbbrBlockType>`

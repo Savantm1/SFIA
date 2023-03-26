@@ -1,10 +1,6 @@
-import Color from '@ui/assets/color';
+import { SkillType } from '@common/models';
 
-export type ProgressBarProps = {
-    title: string;
-    subtitle: string;
-    value: number;
-    color: Color;
+export type ProgressBarProps = SkillType & {
     isEdit?: boolean;
     onDelete?: VoidFunction;
 } & {

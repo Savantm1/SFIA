@@ -3,20 +3,28 @@ import { CandidateListComponent } from '@pages/EmployerCandidatesPage/components
 import { CandidateProfileComponent } from '@pages/EmployerCandidatesPage/components/CandidateProfileComponent/CandidateProfileComponent';
 import { useSelectCandidate } from '@pages/EmployerCandidatesPage/hooks/useSelectCandidate';
 import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
-import { FC, memo } from 'react';
+import { useVacancyCandidatePivotStore } from '@store/candidates';
+import { FC, memo, useEffect } from 'react';
 
-import { makeStudentMock } from '../../mock-factory/makeStudentMock';
 import { Styled } from './styled';
 
 export const EmployerCandidatesPage: FC = memo(() => {
-    // Получили список кандидатов
-    const candidates = [...Array(8).fill('')].map(() => {
-        return makeStudentMock();
-    });
-
     const user = useCurrentUser();
 
     const { selectedCandidate, selectCandidateHandler } = useSelectCandidate();
+
+    const vacanciesWithCandidates = useVacancyCandidatePivotStore(
+        (state) => state.vacanciesWithCandidates
+    );
+    const fetchVacanciesWithCandidates = useVacancyCandidatePivotStore(
+        (state) => state.fetchVacanciesWithCandidates
+    );
+
+    useEffect(() => {
+        if (user) {
+            fetchVacanciesWithCandidates(user.id);
+        }
+    }, [fetchVacanciesWithCandidates, user]);
 
     if (!user) {
         return null;
@@ -37,7 +45,7 @@ export const EmployerCandidatesPage: FC = memo(() => {
             ) : (
                 <CandidateListComponent
                     user={user}
-                    candidates={candidates}
+                    vacanciesWithCandidates={vacanciesWithCandidates}
                     selectCandidateHandler={selectCandidateHandler}
                 />
             )}

@@ -2,9 +2,9 @@ import { getDefaultRequiredField } from '@common/validation/utils/getDefaultRequ
 
 export const inputValidationOptions = {
     fields: {
-        secondname: getDefaultRequiredField('secondname', 'Фамилия'),
-        firstname: getDefaultRequiredField('firstname', 'Имя'),
-        thirdname: getDefaultRequiredField('thirdname', 'Отчество'),
+        secondName: getDefaultRequiredField('secondName', 'Фамилия'),
+        firstName: getDefaultRequiredField('firstName', 'Имя'),
+        patronymic: getDefaultRequiredField('patronymic', 'Отчество'),
         birthday: getDefaultRequiredField('birthday', 'Дата рождения'),
         position: getDefaultRequiredField('position', 'Должность'),
         experience: getDefaultRequiredField('experience', 'Опыт'),

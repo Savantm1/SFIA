@@ -22,14 +22,12 @@ export const VacancyDeleteModal: FC<VacancyDeleteModalProps> = memo(
                     </Styled.Subtitle>
 
                     <Styled.ButtonsWrapper>
-                        <Styled.DeleteButton
-                            onClick={deleteVacancyHandler}
-                            value={'Удалить'}
-                        />
-                        <Styled.CancelButton
-                            onClick={closeModalHandler}
-                            value={'Отмена'}
-                        />
+                        <Styled.DeleteButton onClick={deleteVacancyHandler}>
+                            Удалить
+                        </Styled.DeleteButton>
+                        <Styled.CancelButton onClick={closeModalHandler}>
+                            Отмена
+                        </Styled.CancelButton>
                     </Styled.ButtonsWrapper>
                 </Styled.Wrapper>
             </Modal>

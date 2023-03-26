@@ -10,7 +10,6 @@ const Container = styled.label<{ color: string; isSelected: boolean }>`
     justify-content: center;
     align-items: center;
     position: relative;
-    border-radius: 4px;
     cursor: pointer;
 `;
 

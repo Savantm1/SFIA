@@ -27,15 +27,45 @@
     },
     {
       "role": "student",
-      "secondName": "aaaasd",
-      "firstName": "dsadad",
-      "studentPatronymic": "asdada",
+      "secondName": "Гордунов",
+      "firstName": "Михаил",
+      "studentPatronymic": "Васильевич",
+      "position": "Руководитель отдела продаж",
       "birthday": "11.12.1993",
-      "education": "aas",
+      "experience": "Компания\nИюн 2021- наст.время\nДолжность\nYorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "education": "Уч. заведение\nИюн 2021- наст.время\nYorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
       "phone": "89665554435",
       "mail": "savantm1@mail.ru",
       "studentDescription": "as",
-      "id": 5
+      "city": "Москва",
+      "id": 5,
+      "skillTypes": [
+        {
+          "title": "ITSP",
+          "subtitle": "6 ур",
+          "value": 70,
+          "color": "#B4104C"
+        },
+        {
+          "title": "PEMT",
+          "subtitle": "5 ур",
+          "value": 60,
+          "color": "#0E72AB"
+        },
+        {
+          "title": "SUPP",
+          "subtitle": "7 ур",
+          "value": 100,
+          "color": "#138D0A"
+        },
+        {
+          "title": "DCMA",
+          "subtitle": "4 ур",
+          "value": 60,
+          "color": "#FC8616"
+        }
+      ]
     },
     {
       "role": "student",
@@ -126,7 +156,48 @@
       "views": 1,
       "responses": 2
     }
+  ],
+  "vacancyCandidatePivot": [
+    {
+      "id": 1,
+      "employerId": 3,
+      "candidateId": 5,
+      "vacancyId": 1
+    }
+  ],
+  "members": [
+    {
+      "secondName": "Самсово",
+      "firstName": "Валядн",
+      "patronymic": "Казс",
+      "birthday": "12.12.1212",
+      "position": "аываыва",
+      "experience": "ываываыва",
+      "education": "аываываываыв",
+      "phone": "89857266051",
+      "email": "result1993@gmail.com",
+      "skillTypes": [
+        {
+          "title": "СТР",
+          "subtitle": "6 ур",
+          "color": "#B4104C",
+          "value": 86
+        },
+        {
+          "title": "УПР",
+          "subtitle": "3 ур",
+          "color": "#FC8616",
+          "value": 43
+        },
+        {
+          "title": "ВНЕ",
+          "subtitle": "3 ур",
+          "color": "#138D0A",
+          "value": 50
+        }
+      ],
+      "employerId": 3,
+      "id": 1
+    }
   ]
-
 }
-

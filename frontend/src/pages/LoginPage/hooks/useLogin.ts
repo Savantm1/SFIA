@@ -39,7 +39,7 @@ export const useLogin = () => {
 
                 findUser.role === Role.STUDENT
                     ? navigate(STUDENT_ROUTES.main)
-                    : navigate(EMPLOYER_ROUTES.main);
+                    : navigate(EMPLOYER_ROUTES.vacancies);
             }, 2000);
         },
         [navigate, setCurrentUser, users]

@@ -1,28 +1,34 @@
-import { User, Vacancy } from '@common/models';
+import { SkillType, User, Vacancy } from '@common/models';
 import { NoVacancyComponent } from '@pages/EmployerVacancyPage/components/NoVacancyComponent/NoVacancyComponent';
 import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
-import { useSkillsModalStore } from '@store/skillsModal';
+import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
-import { FC, memo, useCallback, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo, useState } from 'react';
 
 import { Styled } from './styled';
 
 type VacancyListComponentProps = {
-    city: User['city'];
-    company: User['nameOrganization'];
+    user: User;
     vacancies: Vacancy[];
     navigateVacancyHandler: (id: Vacancy['id']) => () => void;
 };
 
 export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
-    ({ city, company, vacancies, navigateVacancyHandler }) => {
-        const skillsData = useSkillsModalStore(
-            (state) => state.initialModalData
+    ({ user, vacancies, navigateVacancyHandler }) => {
+        const { city, nameOrganization } = user;
+
+        const fetchVacancies = useVacanciesStore(
+            (state) => state.fetchVacancies
         );
+
+        const [skillTypes, setSkillTypes] = useState<SkillType[]>();
+
+        const createVacancy = useVacanciesStore((state) => state.createVacancy);
 
         const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
         const {
@@ -37,7 +43,7 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                     <VacancyMiniCard
                         key={vacancy.id}
                         city={city}
-                        company={company}
+                        company={nameOrganization}
                         vacancy={vacancy}
                         openVacancyProfileHandler={navigateVacancyHandler(
                             vacancy.id
@@ -45,23 +51,52 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                     />
                 );
             });
-        }, [city, company, navigateVacancyHandler, vacancies]);
+        }, [city, nameOrganization, navigateVacancyHandler, vacancies]);
 
         const onFormSubmitHandler = useCallback(
-            (data: any) =>
-                alert(`Vacancy created success. Data: ${JSON.stringify(data)}`),
-            []
+            async (data: Partial<Vacancy>) => {
+                await createVacancy({ ...data, skillTypes, userId: user.id });
+                await fetchVacancies(user.id);
+            },
+            [createVacancy, fetchVacancies, skillTypes, user.id]
         );
+
+        // TODO: обсудить расчет value в %
+        const getDataHandler = useCallback((data: InitialModalDataType) => {
+            const skillTypes: SkillType[] = [];
+
+            data.forEach((dataItem) => {
+                dataItem.subCategories.forEach((subCategory) => {
+                    subCategory.items.forEach((item) => {
+                        skillTypes.push({
+                            title: subCategory.subcategoryTitle
+                                .slice(0, 3)
+                                .toUpperCase(),
+                            subtitle: '' + item.value + ' ур',
+                            color: dataItem.mainColor,
+                            value: Math.round(
+                                ((item.value ?? 0) * 100) / item.max
+                            ),
+                        });
+                    });
+                });
+            });
+
+            setSkillTypes(skillTypes);
+
+            return data;
+        }, []);
 
         return (
             <>
                 <ModalContainer
-                    getDataHandler={(data) => data}
+                    getDataHandler={getDataHandler}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />
 
                 <VacancyFormModal
+                    selectedSkillTypes={skillTypes}
                     isOpen={isModalOpen}
                     onCloseHandler={closeModalHandler}
                     openSkillModalHandler={openSkillModalHandler}
@@ -73,7 +108,10 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
                         <Styled.Title>Мои вакансии</Styled.Title>
                         <IconButton
                             iconName={Icons.add}
-                            onClick={openModalHandler}
+                            onClick={() => {
+                                setSkillTypes([]);
+                                openModalHandler();
+                            }}
                         />
                     </Styled.HeaderWrapper>
 
