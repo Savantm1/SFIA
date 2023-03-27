@@ -7,7 +7,7 @@ import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components
 import { VacancyFormModal } from '@pages/EmployerVacancyProfilePage/components/VacancyFormModal/VacancyFormModal';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
-import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
+import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import { useSkillsModalStore } from '@store/skillsModal';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
@@ -59,7 +59,8 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
     return (
         <Styled.PageWrapper>
             <Styled.Wrapper>
-                <ModalContainer
+                <SkillsSelectionModal
+                    updatedModalData={[]}
                     getDataHandler={(data) => data}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}

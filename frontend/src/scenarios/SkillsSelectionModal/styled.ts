@@ -54,7 +54,7 @@ const ScrollContainer = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 1040px;
+    height: 1390px;
     flex-wrap: wrap;
     gap: 14px;
 `;

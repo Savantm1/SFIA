@@ -1,5 +1,5 @@
 import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
-import Color, { KeysOfColor } from '@ui/assets/color';
+import Color from '@ui/assets/color';
 import { Checkbox } from '@ui/components/Checkbox';
 import { Text } from '@ui/components/Text/';
 import { FC, memo, useCallback } from 'react';
@@ -8,17 +8,19 @@ import { Range } from '../Range/Range';
 import { Styled } from './styled';
 
 type SelectSkillRowProps = {
+    value?: number;
     text: string;
     min: number;
     max: number;
     isSelected: boolean;
-    color: (typeof Color)[KeysOfColor];
+    color: string;
     addSkillToStore: any;
     removeSkillFromStore: any;
 };
 
 export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
     ({
+        value,
         text,
         min = RANGE_VALUES.min,
         max = RANGE_VALUES.max,
@@ -59,6 +61,7 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
                     </Text>
                 </Styled.LeftSide>
                 <Range
+                    value={value}
                     name={text}
                     min={min}
                     max={max}

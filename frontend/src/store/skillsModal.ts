@@ -1,8 +1,9 @@
+import { User } from '@common/models';
 import {
     initialModalData,
     InitialModalDataType,
-    ItemSkillType,
 } from '@scenarios/SkillsSelectionModal/initialModalData';
+import ky from 'ky';
 import cloneDeep from 'lodash/cloneDeep';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
@@ -15,13 +16,27 @@ type HandlerPropsSkillType = {
     value?: number;
 };
 
+export type StudentSkillType = {
+    categoryTitle?: string;
+    subcategoryTitle: string;
+    color: string;
+    value?: number;
+    skillId: string;
+    text: string;
+    min?: number;
+    max?: number;
+};
+
 interface SkillsModalState {
     initialModalData: InitialModalDataType;
     addSkill: (props: HandlerPropsSkillType) => void;
     removeSkill: (props: HandlerPropsSkillType) => void;
     resetAllSelections: VoidFunction;
-    getSelectedData: () => InitialModalDataType;
-    getArrayOfSelectedSkills: () => ItemSkillType[] | [];
+    getArrayOfSelectedSkills: () => StudentSkillType[] | [];
+    updateStudentSkillsInDB: (user: User, skills: any) => void;
+    updateStudentSkillInDB: (userId: string, skill: StudentSkillType) => void;
+    deleteStudentSkillFromDB: (userId: string, skillId: string) => void;
+    setInitialData: (updatedModalData?: StudentSkillType[]) => void;
 }
 
 export const useSkillsModalStore = create<SkillsModalState>()(
@@ -75,7 +90,6 @@ export const useSkillsModalStore = create<SkillsModalState>()(
 
                     item!.value = undefined;
                     item!.isChecked = false;
-                    console.log('updatedModalData', updatedModalData);
                     state.initialModalData = updatedModalData;
                 });
             },
@@ -87,48 +101,9 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                     };
                 });
             },
-            getSelectedData: () => {
-                let selectedData: InitialModalDataType = [];
-                set((state) => {
-                    const localInitialModalData: InitialModalDataType =
-                        cloneDeep(state.initialModalData);
-                    const selectedCategories = localInitialModalData.map(
-                        (categoryItem) => {
-                            const selectedSubCategories =
-                                categoryItem.subCategories.map(
-                                    (subCategoryItem) => {
-                                        const selectedItems =
-                                            subCategoryItem.items.filter(
-                                                (item) => item.isChecked
-                                            );
-                                        if (selectedItems.length) {
-                                            subCategoryItem.items =
-                                                selectedItems;
-                                            return subCategoryItem;
-                                        }
-                                    }
-                                );
-                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                            // @ts-ignore
-                            categoryItem.subCategories =
-                                selectedSubCategories.filter((category) => {
-                                    return !!category;
-                                });
-                            return categoryItem;
-                        }
-                    );
-
-                    selectedData = selectedCategories.filter(
-                        (category) => !!category.subCategories.length
-                    );
-                    return state;
-                });
-
-                return selectedData;
-            },
 
             getArrayOfSelectedSkills: () => {
-                const arrayOfSelectedSkills: ItemSkillType[] = [];
+                const arrayOfSelectedSkills: StudentSkillType[] = [];
                 set((state) => {
                     const localInitialModalData: InitialModalDataType =
                         cloneDeep(state.initialModalData);
@@ -136,11 +111,19 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                         categoryItem.subCategories.forEach((subItem) => {
                             subItem.items.forEach((skillItem) => {
                                 if (skillItem.isChecked) {
-                                    skillItem.categoryTitle =
-                                        categoryItem.categoryTitle;
-                                    skillItem.subcategoryTitle =
-                                        subItem.subcategoryTitle;
-                                    arrayOfSelectedSkills.push(skillItem);
+                                    const shortSkillItem = {
+                                        categoryTitle:
+                                            categoryItem.categoryTitle,
+                                        subcategoryTitle:
+                                            subItem.subcategoryTitle,
+                                        color: categoryItem.mainColor,
+                                        skillId: skillItem.skillId,
+                                        text: skillItem.text,
+                                        value: skillItem!.value,
+                                        min: skillItem.min,
+                                        max: skillItem.max,
+                                    };
+                                    arrayOfSelectedSkills.push(shortSkillItem);
                                 }
                             });
                         });
@@ -148,6 +131,62 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                     return state;
                 });
                 return arrayOfSelectedSkills;
+            },
+
+            updateStudentSkillsInDB: async (user, skills): Promise<void> => {
+                await ky.put(`http://localhost:3001/users/${user.id}`, {
+                    json: {
+                        id: user.id,
+                        role: user.role,
+                        fullName: user.fullName,
+                        phone: user.phone,
+                        mail: user.mail,
+                        city: user.city,
+                        skills: skills,
+                    },
+                });
+            },
+
+            updateStudentSkillInDB: async (userId, skill) => {
+                await ky.put(
+                    `http://localhost:3001/users/${userId}/skills/${skill.skillId}`,
+                    {
+                        json: {
+                            ...skill,
+                        },
+                    }
+                );
+            },
+
+            deleteStudentSkillFromDB: async (userId, skillId) => {
+                await ky.delete(
+                    `http://localhost:3001/users/${userId}/skills/${skillId}`
+                );
+            },
+            setInitialData: (updatedModalData) => {
+                if (!updatedModalData?.length) return;
+
+                set((state) => {
+                    updatedModalData.forEach((defaultElement) => {
+                        state.initialModalData.forEach((categoryItem) => {
+                            categoryItem.subCategories.forEach(
+                                (subcategoryItem) => {
+                                    subcategoryItem.items.forEach((item) => {
+                                        if (
+                                            item.skillId ===
+                                            defaultElement.skillId
+                                        ) {
+                                            item.isChecked = true;
+                                            item.value = defaultElement.value;
+                                        }
+                                        return item;
+                                    });
+                                }
+                            );
+                        });
+                    });
+                    return state;
+                });
             },
         }))
     )

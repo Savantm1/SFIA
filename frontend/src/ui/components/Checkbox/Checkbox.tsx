@@ -1,9 +1,8 @@
 import { Checkbox as CheckboxUI } from '@mui/material';
-import Color, { KeysOfColor } from '@ui/assets/color';
 import { ChangeEvent, FC, memo, useEffect, useState } from 'react';
 
 type CheckboxProps = {
-    color?: (typeof Color)[KeysOfColor];
+    color?: string;
     disabled?: boolean;
     size?: number;
     required?: boolean;

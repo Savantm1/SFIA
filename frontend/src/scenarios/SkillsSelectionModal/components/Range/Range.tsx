@@ -1,6 +1,5 @@
 import { faker } from '@faker-js/faker';
 import { RANGE_VALUES } from '@scenarios/SkillsSelectionModal/constants';
-import Color, { KeysOfColor } from '@ui/assets/color';
 import {
     ChangeEventHandler,
     FC,
@@ -15,10 +14,11 @@ import { RangeItem } from '../RangeItem/RangeItem';
 import { Styled } from './styled';
 
 type RangeProps = {
+    value?: number;
     min?: number;
     max?: number;
     name: string; //пока оставлю
-    color: (typeof Color)[KeysOfColor];
+    color: string;
     // setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
     isSelectedSkill: boolean;
     setValueSkillHandler: (value: string | number) => void;
@@ -26,6 +26,7 @@ type RangeProps = {
 
 export const Range: FC<RangeProps> = memo(
     ({
+        value,
         min = RANGE_VALUES.min,
         max = RANGE_VALUES.max,
         name,
@@ -44,10 +45,19 @@ export const Range: FC<RangeProps> = memo(
         );
 
         useEffect(() => {
-            isSelectedSkill
-                ? setSelectedValue(selectedValue || min.toString())
-                : setSelectedValue('');
-        }, [isSelectedSkill, min, selectedValue]);
+            if (isSelectedSkill) {
+                if (value) {
+                    setSelectedValue(value.toString());
+                } else {
+                    setSelectedValue(selectedValue || min.toString());
+                }
+            } else {
+                setSelectedValue('');
+            }
+            // isSelectedSkill
+            //     ? setSelectedValue(selectedValue || min.toString())
+            //     : setSelectedValue('');
+        }, [isSelectedSkill, min, selectedValue, value]);
         const rangeItems = useMemo(() => {
             const itemsArray = [];
             const rowName = name;

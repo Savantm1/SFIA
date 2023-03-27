@@ -1,5 +1,5 @@
 import { useSkillsModalStore } from '@store/skillsModal';
-import Color, { KeysOfColor } from '@ui/assets/color';
+import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import { FC, memo, useMemo } from 'react';
 
@@ -8,7 +8,7 @@ import { Styled } from './styled';
 
 export type SubCategoryProps = {
     categoryTitle: string;
-    color: (typeof Color)[KeysOfColor];
+    color: string;
     subcategoryTitle: string;
     items: {
         text: string;
@@ -30,6 +30,7 @@ export const SubCategory: FC<SubCategoryProps> = memo(
                 items.map((element, key) => {
                     return (
                         <SelectSkillRow
+                            value={element.value}
                             key={key}
                             text={element.text}
                             min={element.min}
