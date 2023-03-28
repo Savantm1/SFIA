@@ -1,9 +1,7 @@
 import { Role, User } from '@common/models';
 import { RolesBlockSc } from '@scenarios/RolesBlockSc/RolesBlockSc';
-import {
-    mockArray,
-    SkillsBlockSc,
-} from '@scenarios/SkillsBlockSc/SkillsBlockSc';
+import { SkillsBlockSc } from '@scenarios/SkillsBlockSc/SkillsBlockSc';
+import { StudentSkillType, useSkillsModalStore } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Avatar } from '@ui/components/Avatar';
 import { Text } from '@ui/components/Text';
@@ -16,8 +14,10 @@ type RightSideContentProps = {
 };
 
 export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
-    const { fullName, phone, skillTypes } = user;
-
+    const { fullName, phone, skillTypes, skills } = user;
+    const updateStudentSkillsInDB = useSkillsModalStore(
+        (state) => state.updateStudentSkillsInDB
+    );
     const [showAllItems, setShowAllItems] = useState<'roles' | '' | 'skills'>(
         ''
     );
@@ -28,6 +28,13 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
         },
         []
     );
+    const getSkillsDataHandler = async (skillsData: StudentSkillType[]) => {
+        await updateStudentSkillsInDB(user, skillsData);
+        setSkillsState(skillsData);
+    };
+
+    const [skillsState, setSkillsState] = useState(skills);
+
     return (
         <Styled.Container>
             <Styled.StudentBar>
@@ -48,8 +55,9 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
             <Styled.ScrollContainer>
                 {(showAllItems === 'skills' || showAllItems === '') && (
                     <SkillsBlockSc
-                        items={mockArray}
+                        items={skillsState}
                         showAllItemsHandler={showAllItemsHandler}
+                        getSkillsDataHandler={getSkillsDataHandler}
                     />
                 )}
                 {(showAllItems === 'roles' || showAllItems === '') && (

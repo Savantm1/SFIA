@@ -4,7 +4,21 @@
       "id": 1,
       "role": "student",
       "fullName": "Савельев Антон",
-      "phone": "9299946216"
+      "phone": "9299946216",
+      "mail": "Raheem.Kovacek92@gmail.com",
+      "city": "Катайск",
+      "skills": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "id": "1",
+          "text": "Стратегическое планирование",
+          "value": "6",
+          "min": 5,
+          "max": 7
+        }
+      ]
     },
     {
       "role": "employer",

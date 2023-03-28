@@ -8,12 +8,11 @@ import { InfoList } from '@pages/EmployerVacancyProfilePage/components/InfoList/
 import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components/VacancyDeleteModal/VacancyDeleteModal';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
-import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
+import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
-import React, { FC, memo, useCallback, useEffect, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Styled as StyledInfo } from './components/InfoList/styled';
@@ -96,8 +95,9 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
     return (
         <Styled.PageWrapper>
             <Styled.Wrapper>
-                <ModalContainer
-                    getDataHandler={getDataHandler}
+                <SkillsSelectionModal
+                    updatedModalData={[]}
+                    getDataHandler={(data) => data}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />

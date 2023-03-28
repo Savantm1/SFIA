@@ -1,4 +1,4 @@
-import Color, { KeysOfColor } from '@ui/assets/color';
+import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import { FC, memo, useMemo } from 'react';
 
@@ -7,10 +7,8 @@ import { Styled } from './styled';
 
 export type CategoryProps = {
     categoryTitle: string;
-    color: {
-        main: (typeof Color)[KeysOfColor];
-        secondary: (typeof Color)[KeysOfColor];
-    };
+    mainColor: string;
+    secondaryColor: string;
     subCategories: {
         subcategoryTitle: string;
         items: {
@@ -24,7 +22,7 @@ export type CategoryProps = {
 };
 
 export const Category: FC<CategoryProps> = memo(
-    ({ categoryTitle, subCategories, color }) => {
+    ({ categoryTitle, subCategories, mainColor, secondaryColor }) => {
         const subCategoriesItems = useMemo(
             () =>
                 subCategories.map((subCategory, key) => {
@@ -34,20 +32,20 @@ export const Category: FC<CategoryProps> = memo(
                             key={key}
                             subcategoryTitle={subCategory.subcategoryTitle}
                             items={subCategory.items}
-                            color={color.main}
+                            color={mainColor}
                         />
                     );
                 }),
-            [categoryTitle, color.main, subCategories]
+            [categoryTitle, mainColor, subCategories]
         );
         return (
             <Styled.Container>
-                <Styled.Header color={color.main}>
+                <Styled.Header color={mainColor}>
                     <Text variant={'h5'} align={'left'} color={Color.mainWhite}>
                         {categoryTitle}
                     </Text>
                 </Styled.Header>
-                <Styled.SubCategoryContainer color={color.secondary}>
+                <Styled.SubCategoryContainer color={secondaryColor}>
                     {subCategoriesItems}
                 </Styled.SubCategoryContainer>
             </Styled.Container>

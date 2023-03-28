@@ -5,8 +5,7 @@ import { STUDENT_ROUTES } from '@common/navigation';
 import { CreateFormModal } from '@pages/EmployerTeamPage/components/CreateFormModal/CreateFormModal';
 import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberComponent/NoMemberComponent';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
-import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
+import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import { TeamMemberMiniCard } from '@scenarios/TeamMemberMiniCard';
 import { useMembersStore } from '@store/members';
 import { Icons } from '@ui/assets/icons';
@@ -106,8 +105,9 @@ export const EmployerTeamPage: FC = memo(() => {
 
     return (
         <Styled.PageWrapper>
-            <ModalContainer
-                getDataHandler={getDataHandler}
+            <SkillsSelectionModal
+                updatedModalData={[]}
+                getDataHandler={(data) => data}
                 open={isSkillModalOpen}
                 handleClose={closeSkillModalHandler}
             />

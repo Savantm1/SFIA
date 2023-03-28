@@ -1,11 +1,6 @@
-import { ColorCouples } from '@scenarios/SkillsSelectionModal/ColorCouples';
 import { Category } from '@scenarios/SkillsSelectionModal/components/Category/Category';
-import {
-    InitialModalDataType,
-    ItemSkillType,
-} from '@scenarios/SkillsSelectionModal/initialModalData';
 import { Styled } from '@scenarios/SkillsSelectionModal/styled';
-import { useSkillsModalStore } from '@store/skillsModal';
+import { StudentSkillType, useSkillsModalStore } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
@@ -14,17 +9,13 @@ import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 type ModalContainerProps = {
     open: boolean;
     handleClose: VoidFunction;
-    getDataHandler: (
-        selectedData: InitialModalDataType
-    ) => InitialModalDataType;
+    needToReset?: boolean;
+    getDataHandler: (selectedData: StudentSkillType[]) => Promise<void>;
 };
 export const ModalContainer: FC<ModalContainerProps> = memo(
-    ({ open, handleClose, getDataHandler }) => {
+    ({ open, handleClose, getDataHandler, needToReset = false }) => {
         const resetAllSelections = useSkillsModalStore(
             (state) => state.resetAllSelections
-        );
-        const getSelectedData = useSkillsModalStore(
-            (state) => state.getSelectedData
         );
         const removeSkill = useSkillsModalStore((state) => state.removeSkill);
         const initialModalData = useSkillsModalStore(
@@ -50,7 +41,8 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
                             key={key}
                             categoryTitle={category.categoryTitle}
                             subCategories={category.subCategories}
-                            color={ColorCouples[key]}
+                            mainColor={category.mainColor}
+                            secondaryColor={category.secondaryColor}
                         />
                     );
                 }),
@@ -58,7 +50,7 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
         );
 
         const removeSkillHandler = useCallback(
-            (skill: ItemSkillType) => {
+            (skill: StudentSkillType) => {
                 removeSkill({
                     categoryTitle: skill.categoryTitle!,
                     subcategoryTitle: skill.subcategoryTitle!,
@@ -68,12 +60,20 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             [removeSkill]
         );
 
-        const nextButtonHandler = useCallback(() => {
-            const selectedData = getSelectedData();
-            getDataHandler(selectedData);
-            resetAllSelections();
+        const nextButtonHandler = useCallback(async () => {
+            const skillsArray: StudentSkillType[] = getArrayOfSelectedSkills();
+            await getDataHandler(skillsArray);
+            if (needToReset) {
+                resetAllSelections();
+            }
             handleClose();
-        }, [getDataHandler, getSelectedData, handleClose, resetAllSelections]);
+        }, [
+            getArrayOfSelectedSkills,
+            getDataHandler,
+            handleClose,
+            needToReset,
+            resetAllSelections,
+        ]);
         const DeleteSelectedSkillButtons = useMemo(() => {
             return selectedSkillsArray.map((skill, index) => {
                 return (
@@ -97,7 +97,7 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             <Modal
                 onClose={() => {
                     handleClose();
-                    resetAllSelections();
+                    // resetAllSelections();
                 }}
                 isOpen={open}
             >

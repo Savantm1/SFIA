@@ -2,8 +2,7 @@ import { SkillType, User, Vacancy } from '@common/models';
 import { NoVacancyComponent } from '@pages/EmployerVacancyPage/components/NoVacancyComponent/NoVacancyComponent';
 import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
-import { ModalContainer } from '@scenarios/SkillsSelectionModal/components/ModalContainer/ModalContainer';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
+import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
@@ -89,8 +88,9 @@ export const VacancyListComponent: FC<VacancyListComponentProps> = memo(
 
         return (
             <>
-                <ModalContainer
-                    getDataHandler={getDataHandler}
+                <SkillsSelectionModal
+                    updatedModalData={[]}
+                    getDataHandler={(data) => data}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />

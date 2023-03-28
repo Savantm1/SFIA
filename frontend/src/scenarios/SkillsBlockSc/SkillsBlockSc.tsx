@@ -1,10 +1,6 @@
-import { faker } from '@faker-js/faker';
-import {
-    SkillRow,
-    SkillRowProps,
-} from '@scenarios/SkillsBlockSc/components/SkillRow/SkillRow';
+import { SkillRow } from '@scenarios/SkillsBlockSc/components/SkillRow/SkillRow';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
-import Color from '@ui/assets/color';
+import { StudentSkillType } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import EmptyImage from '@ui/assets/images/undraw_job_offers_re_634p 1.png';
 import { Button } from '@ui/components/Button';
@@ -12,40 +8,15 @@ import { IconButton } from '@ui/components/IconButton/IconButton';
 import { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
-const mock = {
-    title: faker.random.word(),
-    color: Color.fuxy,
-    value: faker.datatype.number({ min: 1, max: 7 }),
-};
-
-export const mockArray = [
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-    mock,
-];
 
 type SkillsBlockScProps = {
-    items: SkillRowProps[];
+    items?: StudentSkillType[];
     showAllItemsHandler: (value: 'roles' | 'skills' | '') => void;
+    getSkillsDataHandler: (skillsData: StudentSkillType[]) => Promise<void>;
 };
 export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
-    ({ items, showAllItemsHandler }) => {
+    ({ items = [], showAllItemsHandler, getSkillsDataHandler }) => {
         const [showAllSkills, setShowAllSkills] = useState(false);
-
         const [isOpenSkillsModal, setIsOpenSkillsModal] = useState(false);
         const onCloseSkillsModal = useCallback(() => {
             setIsOpenSkillsModal(false);
@@ -55,18 +26,20 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
             setIsOpenSkillsModal(true);
         }, [setIsOpenSkillsModal]);
 
-        //items
-        const elements = mockArray.map((el) => {
+        const elements = items.map((skill) => {
             return (
                 <SkillRow
-                    key={el.title}
-                    title={el.title}
-                    value={el.value}
-                    color={el.color}
+                    skillId={skill.skillId}
+                    key={skill.skillId}
+                    title={skill.text}
+                    value={skill.value!}
+                    color={skill.color}
+                    min={skill.min}
+                    max={skill.max}
                 />
             );
         });
-        if (items.length === 0) {
+        if (items?.length === 0 || !items) {
             return (
                 <Styled.Container>
                     <Styled.SkillsBar>
@@ -88,6 +61,10 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                             value={'Заполните навыки'}
                         />
                         <SkillsSelectionModal
+                            updatedModalData={items}
+                            getDataHandler={(data) =>
+                                getSkillsDataHandler(data)
+                            }
                             open={isOpenSkillsModal}
                             handleClose={onCloseSkillsModal}
                         />
@@ -128,6 +105,8 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                         </Styled.ShowAllBtn>
                     )}
                     <SkillsSelectionModal
+                        updatedModalData={items}
+                        getDataHandler={(data) => getSkillsDataHandler(data)}
                         open={isOpenSkillsModal}
                         handleClose={onCloseSkillsModal}
                     />
@@ -152,6 +131,8 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                     </Styled.SkillsBar>
                     {elements}
                     <SkillsSelectionModal
+                        updatedModalData={items}
+                        getDataHandler={(data) => getSkillsDataHandler(data)}
                         open={isOpenSkillsModal}
                         handleClose={onCloseSkillsModal}
                     />

@@ -1,5 +1,7 @@
+import { useCurrentUser } from '@common/hooks/useCurrentUser';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
-import Color, { KeysOfColor } from '@ui/assets/color';
+import { useSkillsModalStore } from '@store/skillsModal';
+import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Slider } from '@ui/components/Slider';
 import { FC, memo, useState } from 'react';
@@ -7,17 +9,30 @@ import { FC, memo, useState } from 'react';
 import { Styled } from './styled';
 
 export type SkillRowProps = {
+    skillId: string;
     title: string;
-    color?: (typeof Color)[KeysOfColor];
+    color?: string;
     value: number;
+    min?: number;
+    max?: number;
 };
 export const SkillRow: FC<SkillRowProps> = memo(
-    ({ title, color = Color.fuxy, value = 5 }) => {
+    ({ skillId, title, color = Color.fuxy, value = 5, min = 1, max = 7 }) => {
         const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
             useMenu();
 
-        const [isEdited, setIsEdited] = useState(false);
+        const currentUser = useCurrentUser();
 
+        const deleteStudentSkillFromDB = useSkillsModalStore(
+            (state) => state.deleteStudentSkillFromDB
+        );
+
+        const updateStudentSkillInDB = useSkillsModalStore(
+            (state) => state.updateStudentSkillInDB
+        );
+
+        const [isEdited, setIsEdited] = useState(false);
+        const [currentValue, setCurrentValue] = useState(value);
         return (
             <Styled.Container>
                 <Styled.Block>
@@ -26,7 +41,10 @@ export const SkillRow: FC<SkillRowProps> = memo(
                     </Styled.Title>
                     <Styled.SliderWrapper>
                         <Slider
-                            value={value}
+                            setCurrentValue={setCurrentValue}
+                            min={min}
+                            max={max}
+                            value={currentValue}
                             color={color}
                             cantEdit={!isEdited}
                         />
@@ -34,7 +52,7 @@ export const SkillRow: FC<SkillRowProps> = memo(
                             variant={'body1'}
                             color={Color.secondaryGray}
                         >
-                            {value} Ур
+                            {currentValue} Ур
                         </Styled.Level>
                     </Styled.SliderWrapper>
                 </Styled.Block>
@@ -86,7 +104,8 @@ export const SkillRow: FC<SkillRowProps> = memo(
                         Редактировать
                     </Styled.MenuItem>
                     <Styled.MenuItem
-                        onClick={() => {
+                        onClick={async () => {
+                            deleteStudentSkillFromDB(currentUser!.id, skillId);
                             closeMenuHandler();
                         }}
                     >

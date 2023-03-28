@@ -2,7 +2,7 @@ import { Typography as TypographyUI } from '@mui/material';
 import { Variant } from '@mui/material/styles/createTypography';
 import { TypographyPropsVariantOverrides } from '@mui/material/Typography/Typography';
 import { OverridableStringUnion } from '@mui/types';
-import Color, { KeysOfColor } from '@ui/assets/color';
+import Color from '@ui/assets/color';
 import { Styled } from '@ui/components/Text/styled';
 import { FC, memo } from 'react';
 import * as React from 'react';
@@ -14,7 +14,7 @@ type TextProps = {
         Variant | 'inherit',
         TypographyPropsVariantOverrides
     >;
-    color?: (typeof Color)[KeysOfColor];
+    color?: string;
     className?: string;
 };
 
