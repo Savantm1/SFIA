@@ -14,10 +14,10 @@ type CandidateProfileComponentProps = {
 
 export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
     memo(({ candidate, closeCandidateProfileHandler }) => {
-        const experience =
-            'Компания\nИюн 2021- наст.время\nДолжность\nYorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.';
-        const education =
-            'Уч. заведение\nИюн 2021- наст.время\nYorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis.';
+        const fullName = `${candidate.secondName} ${candidate.firstName}${
+            candidate.studentPatronymic ? ' ' + candidate.studentPatronymic : ''
+        }`;
+
         return (
             <Styled.Wrapper>
                 <Styled.HeaderWrapper>
@@ -26,7 +26,7 @@ export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
                             iconName={Icons.backBlack}
                             onClick={closeCandidateProfileHandler}
                         />
-                        <Styled.Title>{candidate.fullName}</Styled.Title>
+                        <Styled.Title>{fullName}</Styled.Title>
                     </Styled.TitleWrapper>
                     <Styled.MenuButton
                         iconName={Icons.menu}
@@ -36,7 +36,7 @@ export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
 
                 <Styled.GeneralInfoWrapper>
                     <Styled.TextInfoWrapper>
-                        <Styled.BigText>{candidate.fullName}</Styled.BigText>
+                        <Styled.BigText>{fullName}</Styled.BigText>
                         <Styled.Text>
                             Должность: {candidate.position}
                         </Styled.Text>
@@ -53,8 +53,8 @@ export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
                 <StyledInfo.Title>{'Навыки:'}</StyledInfo.Title>
                 <Styled.ProgressBar items={candidate.skillTypes} isBig={true} />
 
-                <InfoList title={'Опыт:'} text={experience} />
-                <InfoList title={'Образование:'} text={education} />
+                <InfoList title={'Опыт:'} text={candidate.experience} />
+                <InfoList title={'Образование:'} text={candidate.education} />
             </Styled.Wrapper>
         );
     });

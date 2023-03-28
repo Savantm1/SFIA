@@ -40,8 +40,7 @@ export const EmployerVacancyPage: FC = memo(() => {
     return (
         <Styled.PageWrapper>
             <VacancyListComponent
-                city={user.city}
-                company={user.nameOrganization}
+                user={user}
                 vacancies={vacancies}
                 navigateVacancyHandler={navigateVacancyHandler}
             />

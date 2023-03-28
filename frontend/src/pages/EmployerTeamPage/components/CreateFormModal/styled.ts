@@ -1,6 +1,5 @@
 import { ProgressBarList } from '@scenarios/ProgressBarList';
 import Color from '@ui/assets/color';
-import { Button as ButtonUI } from '@ui/components/Button';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Select as SelectUI } from '@ui/components/Select';
 import { TextArea as TextAreaUI } from '@ui/components/TextArea';
@@ -55,26 +54,33 @@ const ButtonsWrapper = styled.div`
     display: flex;
     flex-direction: row;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 30px;
 `;
 
-const CreateButton = styled(ButtonUI)`
+const CreateButton = styled.button`
     width: 150px !important;
     height: 36px;
     font-weight: 700 !important;
     font-size: 12px !important;
     line-height: 15px !important;
+    border-radius: 8px;
+    background-color: ${Color.mainViolet};
+    color: ${Color.mainWhite};
+    border: 1px solid ${Color.mainViolet} !important;
+    cursor: pointer;
 `;
 
-const CancelButton = styled(ButtonUI)`
+const CancelButton = styled.button`
     width: 100px !important;
     height: 36px;
+    border-radius: 8px;
     border: 1px solid ${Color.secondaryGray} !important;
     background: ${Color.mainWhite} !important;
     color: ${Color.secondaryGray} !important;
     font-weight: 700 !important;
     font-size: 12px !important;
     line-height: 15px !important;
+    cursor: pointer;
 `;
 
 export const DickButton = styled(IconButton)`

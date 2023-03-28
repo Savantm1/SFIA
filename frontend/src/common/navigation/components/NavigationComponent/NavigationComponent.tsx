@@ -43,7 +43,6 @@ export const Navigation = memo(() => {
                     />
                 }
             >
-                <Route path={EMPLOYER_ROUTES.main} element={<>main</>} />
                 <Route
                     path={EMPLOYER_ROUTES.vacancies}
                     element={<EmployerVacancyPage />}

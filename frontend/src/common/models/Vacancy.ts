@@ -2,6 +2,7 @@ import { SkillType } from '@common/models/SkillType';
 
 export type Vacancy = {
     id: string;
+    userId: string;
     title: string;
     salary: number;
     experience: string;

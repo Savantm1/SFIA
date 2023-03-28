@@ -9,7 +9,7 @@ export const ColorCouples = [
     { main: Color.purple, secondary: Color.lightPurple },
 ];
 
-export const getColorCouple = (color: (typeof Color)[KeysOfColor]) => {
+export const getColorCouple = (color: (typeof Color)[KeysOfColor] | string) => {
     return ColorCouples.find((colorCouple) => {
         return colorCouple.main === color;
     });

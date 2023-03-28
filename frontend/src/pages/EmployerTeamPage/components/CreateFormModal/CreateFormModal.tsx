@@ -1,4 +1,4 @@
-import { User } from '@common/models';
+import { SkillType, User } from '@common/models';
 import { useValidation } from '@common/validation/hooks/useValidation';
 import { inputValidationOptions } from '@pages/EmployerTeamPage/components/CreateFormModal/constants';
 import { SubtitleComponent } from '@pages/RegistrationPage/components/SubtitleComponent/SubtitleComponent';
@@ -14,6 +14,7 @@ type CreateFormModalProps = {
     onFormSubmitHandler: (data: any) => void;
     openSkillModalHandler: VoidFunction;
     member?: User;
+    selectedSkillTypes?: SkillType[];
 };
 
 export const CreateFormModal: FC<CreateFormModalProps> = memo(
@@ -23,6 +24,7 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
         onFormSubmitHandler,
         openSkillModalHandler,
         member,
+        selectedSkillTypes,
     }) => {
         const onSubmit = (data: any) => {
             onFormSubmitHandler(data);
@@ -53,13 +55,15 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                         />
                         <Styled.Row>
                             <Styled.TextInput
-                                {...getInputProps('secondname')}
+                                {...getInputProps('secondName')}
                             />
-                            <Styled.TextInput {...getInputProps('firstname')} />
+                            <Styled.TextInput {...getInputProps('firstName')} />
                         </Styled.Row>
 
                         <Styled.Row>
-                            <Styled.TextInput {...getInputProps('thirdname')} />
+                            <Styled.TextInput
+                                {...getInputProps('patronymic')}
+                            />
                             <Styled.TextInput {...getInputProps('birthday')} />
                         </Styled.Row>
 
@@ -82,11 +86,14 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                         </Styled.Row>
 
                         <Styled.Row>
-                            <Styled.Select
-                                options={[]}
-                                onSelect={() => {}}
-                                defaultValue={''}
-                                placeholder={'Навык'}
+                            {/*<Styled.Select*/}
+                            {/*    options={[]}*/}
+                            {/*    onSelect={() => {}}*/}
+                            {/*    defaultValue={''}*/}
+                            {/*    placeholder={'Навык'}*/}
+                            {/*/>*/}
+                            <Styled.ProgressBar
+                                items={selectedSkillTypes ?? []}
                             />
 
                             <Styled.DickButton
@@ -96,14 +103,12 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                         </Styled.Row>
 
                         <Styled.ButtonsWrapper>
-                            <Styled.CreateButton
-                                value={'Сохранить'}
-                                onClick={handleSubmit}
-                            />
-                            <Styled.CancelButton
-                                value={'Отмена'}
-                                onClick={onCloseHandler}
-                            />
+                            <Styled.CreateButton onClick={handleSubmit}>
+                                Сохранить
+                            </Styled.CreateButton>
+                            <Styled.CancelButton onClick={onCloseHandler}>
+                                Отмена
+                            </Styled.CancelButton>
                         </Styled.ButtonsWrapper>
                     </Styled.FormWrapper>
                 </Styled.Wrapper>

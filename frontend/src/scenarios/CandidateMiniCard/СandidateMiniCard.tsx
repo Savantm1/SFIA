@@ -13,7 +13,20 @@ type CandidateMiniCardProps = {
 
 export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
     ({ user, match, openCandidateProfileHandler }) => {
-        const { city, role, fullName, position, phone, skillTypes } = user;
+        const {
+            city,
+            role,
+            secondName,
+            firstName,
+            studentPatronymic,
+            position,
+            phone,
+            skillTypes = [],
+        } = user;
+
+        const fullName = `${secondName} ${firstName}${
+            studentPatronymic ? ' ' + studentPatronymic : ''
+        }`;
 
         const matchColor = getMatchColor(match);
 
