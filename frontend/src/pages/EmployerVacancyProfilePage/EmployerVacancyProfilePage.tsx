@@ -9,6 +9,7 @@ import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
+import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';

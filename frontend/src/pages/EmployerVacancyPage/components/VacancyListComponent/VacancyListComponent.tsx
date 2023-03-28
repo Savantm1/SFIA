@@ -3,6 +3,7 @@ import { NoVacancyComponent } from '@pages/EmployerVacancyPage/components/NoVaca
 import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
+import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { VacancyMiniCard } from '@scenarios/VacancyMiniCard';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
