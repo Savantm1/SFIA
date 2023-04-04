@@ -9,7 +9,6 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
     ({ value, title, subtitle, color, isBig, isEdit, onDelete }) => {
         const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
             useMenu();
-
         return (
             <Styled.Wrapper>
                 {isEdit && <Styled.DeleteBtn onClick={() => onDelete?.()} />}
@@ -31,6 +30,7 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
                     <DetailPopup
                         abbr={title}
                         color={color}
+                        title={title}
                         anchorEl={anchorEl}
                         isMenuOpen={isMenuOpen}
                         closeMenuHandler={closeMenuHandler}

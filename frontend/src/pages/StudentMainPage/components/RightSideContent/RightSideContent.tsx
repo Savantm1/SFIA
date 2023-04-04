@@ -14,7 +14,6 @@ type RightSideContentProps = {
 };
 
 export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
-    const { fullName, phone, skillTypes, skills } = user;
     const updateStudentSkillsInDB = useSkillsModalStore(
         (state) => state.updateStudentSkillsInDB
     );
@@ -30,24 +29,23 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
     );
     const getSkillsDataHandler = async (skillsData: StudentSkillType[]) => {
         await updateStudentSkillsInDB(user, skillsData);
-        setSkillsState(skillsData);
+        const updatedUserData = user;
+        updatedUserData.skills = skillsData;
     };
-
-    const [skillsState, setSkillsState] = useState(skills);
 
     return (
         <Styled.Container>
             <Styled.StudentBar>
                 <Styled.TextBlock>
                     <Text variant={'h4'} align={'right'}>
-                        {fullName}
+                        {user.fullName}
                     </Text>
                     <Text
                         variant={'body2'}
                         align={'right'}
                         color={Color.secondaryGray}
                     >
-                        {phone}
+                        {user.phone}
                     </Text>
                 </Styled.TextBlock>
                 <Avatar role={Role.STUDENT} size={'md'} />
@@ -55,15 +53,14 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
             <Styled.ScrollContainer>
                 {(showAllItems === 'skills' || showAllItems === '') && (
                     <SkillsBlockSc
-                        items={skillsState}
+                        items={user.skills}
                         showAllItemsHandler={showAllItemsHandler}
                         getSkillsDataHandler={getSkillsDataHandler}
                     />
                 )}
                 {(showAllItems === 'roles' || showAllItems === '') && (
                     <RolesBlockSc
-                        roles={[1, 2, 3, 4, 5, 6]}
-                        skillTypes={skillTypes}
+                        roles={user.studentRoles}
                         showAllItemsHandler={showAllItemsHandler}
                     />
                 )}

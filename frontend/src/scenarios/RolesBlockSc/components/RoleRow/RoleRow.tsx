@@ -1,5 +1,6 @@
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { ProgressBarProps } from '@scenarios/ProgressBarList';
+import { StudentRoleType } from '@store/rolesModal';
 import { Icons } from '@ui/assets/icons';
 import { Text } from '@ui/components/Text';
 import { FC, memo, useCallback, useState } from 'react';
@@ -7,14 +8,14 @@ import { FC, memo, useCallback, useState } from 'react';
 import { Styled } from './styled';
 
 type RoleRowProps = {
-    skillTypes: ProgressBarProps[];
+    roleProps: StudentRoleType;
 };
-export const RoleRow: FC<RoleRowProps> = memo(({ skillTypes }) => {
+export const RoleRow: FC<RoleRowProps> = memo(({ roleProps }) => {
     const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
         useMenu();
 
     const [isEdit, setIsEdit] = useState(false);
-    const [skillTypesState, setSkillTypesState] = useState(skillTypes);
+    const [skillTypesState, setSkillTypesState] = useState(roleProps.skills);
     const onCancelEdit = useCallback(() => {
         setIsEdit(false);
     }, []);
@@ -29,7 +30,7 @@ export const RoleRow: FC<RoleRowProps> = memo(({ skillTypes }) => {
         <Styled.Container>
             <Styled.Content>
                 <Text align={'left'} variant={'h5'}>
-                    Инженер
+                    {roleProps.text}
                 </Text>
                 <Styled.ProgressBarListWrapper
                     onDelete={onDeleteSkill}

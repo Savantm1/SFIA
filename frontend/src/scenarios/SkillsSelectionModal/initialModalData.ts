@@ -10,6 +10,7 @@ export type InitialModalDataType = {
 
 export type ItemSkillType = {
     skillId: string;
+    code: string;
     text: string;
     value?: number;
     min: number;
@@ -29,6 +30,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '1',
+                        code: 'ITSP',
                         text: 'Стратегическое планирование',
                         value: undefined,
                         min: 5,
@@ -37,6 +39,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '2',
+                        code: 'ISCO',
                         text: 'Координация информационных систем',
                         value: undefined,
                         min: 6,
@@ -45,6 +48,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '3',
+                        code: 'IRMG',
                         text: 'Информационное управление',
                         value: undefined,
                         min: 4,
@@ -53,6 +57,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '4',
+                        code: 'STPL',
                         text: 'Корпоративная и бизнес-архитектура',
                         value: undefined,
                         min: 5,
@@ -61,6 +66,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '5',
+                        code: 'ARCH',
                         text: 'Архитектура решений',
                         value: undefined,
                         min: 4,
@@ -69,6 +75,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '6',
+                        code: 'INOV',
                         text: 'Инновации',
                         value: undefined,
                         min: 5,
@@ -77,6 +84,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '7',
+                        code: 'EMRG',
                         text: 'Мониторинг новейших технологий',
                         value: undefined,
                         min: 4,
@@ -85,6 +93,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '8',
+                        code: 'RSCH',
                         text: 'Исследование',
                         value: undefined,
                         min: 2,
@@ -93,6 +102,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '81',
+                        code: 'DEMM',
                         text: 'Управление спросом',
                         value: undefined,
                         min: 5,
@@ -101,6 +111,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '82',
+                        code: 'INVA',
                         text: 'Оценка инвестиций',
                         value: undefined,
                         min: 4,
@@ -109,6 +120,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '83',
+                        code: 'FMIT',
                         text: 'Управление финансами',
                         value: undefined,
                         min: 4,
@@ -117,6 +129,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '84',
+                        code: 'MEAS',
                         text: 'Измерение',
                         value: undefined,
                         min: 3,
@@ -125,6 +138,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '85',
+                        code: 'SUST',
                         text: 'Устойчивое развитие',
                         value: undefined,
                         min: 4,
@@ -133,6 +147,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '86',
+                        code: 'COPL',
                         text: 'Управление непрерывностью',
                         value: undefined,
                         min: 2,
@@ -146,6 +161,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '9',
+                        code: 'SCTY',
                         text: 'Информационная безопасность',
                         value: undefined,
                         min: 3,
@@ -154,6 +170,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '10',
+                        code: 'INAS',
                         text: 'Информационное обеспечение',
                         value: undefined,
                         min: 5,
@@ -162,6 +179,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '11',
+                        code: 'PEDP',
                         text: 'Защита персональных данных',
                         value: undefined,
                         min: 5,
@@ -170,6 +188,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '12',
+                        code: 'VURE',
                         text: 'Изучение уязвимости',
                         value: undefined,
                         min: 3,
@@ -178,6 +197,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '13',
+                        code: 'THIN',
                         text: 'Анализ угроз',
                         value: undefined,
                         min: 2,
@@ -191,6 +211,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '14',
+                        code: 'GOVN',
                         text: 'Управление ИТ',
                         value: undefined,
                         min: 6,
@@ -199,6 +220,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '15',
+                        code: 'BURM',
                         text: 'Управление рисками',
                         value: undefined,
                         min: 3,
@@ -207,6 +229,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '16',
+                        code: 'AUDT',
                         text: 'Аудит',
                         value: undefined,
                         min: 3,
@@ -215,6 +238,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '17',
+                        code: 'QUMG',
                         text: 'Управление качеством',
                         value: undefined,
                         min: 3,
@@ -223,6 +247,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '171',
+                        code: 'QUAS',
                         text: 'Обеспечение качества',
                         value: undefined,
                         min: 3,
@@ -236,6 +261,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '133',
+                        code: 'CNSL',
                         text: 'Консалтинг',
                         value: undefined,
                         min: 4,
@@ -244,6 +270,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '132',
+                        code: 'TECH',
                         text: 'Консультация специалиста',
                         value: undefined,
                         min: 4,
@@ -252,6 +279,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '131',
+                        code: 'METL',
                         text: 'Методы и инструменты',
                         value: undefined,
                         min: 3,
@@ -272,6 +300,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '51',
+                        code: 'POMG',
                         text: 'Управление портфелем',
                         value: undefined,
                         min: 5,
@@ -280,6 +309,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '52',
+                        code: 'PGMG',
                         text: 'Управление программами',
                         value: undefined,
                         min: 6,
@@ -288,6 +318,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '53',
+                        code: 'PRMG',
                         text: 'Управление проектами',
                         value: undefined,
                         min: 4,
@@ -296,6 +327,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '53',
+                        code: 'PROF',
                         text: 'Сопровождение программ и проектов',
                         value: undefined,
                         min: 2,
@@ -309,6 +341,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '54',
+                        code: 'BUSA',
                         text: 'Анализ бизнес-ситуации',
                         value: undefined,
                         min: 3,
@@ -317,6 +350,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '55',
+                        code: 'FEAS',
                         text: 'Оценка целесообразности',
                         value: undefined,
                         min: 3,
@@ -325,6 +359,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '561',
+                        code: 'REQM',
                         text: 'Определение и управление требо-ми',
                         value: undefined,
                         min: 2,
@@ -333,6 +368,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '56',
+                        code: 'BSMO',
                         text: 'Бизнес-моделирование',
                         value: undefined,
                         min: 2,
@@ -341,6 +377,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '57',
+                        code: 'BPTS',
                         text: 'Приемочные испытания',
                         value: undefined,
                         min: 2,
@@ -354,6 +391,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '58',
+                        code: 'BPRE',
                         text: 'Улучшение бизнес - процессов',
                         value: undefined,
                         min: 5,
@@ -362,6 +400,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '59',
+                        code: 'OCDV',
                         text: 'Развитие организационных возможностей',
                         value: undefined,
                         min: 5,
@@ -370,6 +409,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '60',
+                        code: 'ORDI',
                         text: 'Разработка организационной структуры',
                         value: undefined,
                         min: 4,
@@ -378,6 +418,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '61',
+                        code: 'CIPM',
                         text: 'Управление органи-ми изменениями',
                         value: undefined,
                         min: 3,
@@ -386,6 +427,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '62',
+                        code: 'BENM',
                         text: 'Управление выгодами',
                         value: undefined,
                         min: 4,
@@ -407,6 +449,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '18',
+                        code: 'PROD',
                         text: 'Управление продуктами',
                         value: undefined,
                         min: 3,
@@ -415,6 +458,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '181',
+                        code: 'DLMG',
                         text: 'Управление разработкой систем',
                         value: undefined,
                         min: 5,
@@ -423,6 +467,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '182',
+                        code: 'SLEN',
                         text: 'Про-ние жизненного цикла систем и ПО',
                         value: undefined,
                         min: 4,
@@ -431,6 +476,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '19',
+                        code: 'DESN',
                         text: 'Проектирование систем',
                         value: undefined,
                         min: 3,
@@ -439,6 +485,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '19123',
+                        code: 'SWDN',
                         text: 'Проектирование ПО',
                         value: undefined,
                         min: 2,
@@ -447,6 +494,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '191',
+                        code: 'NTDS',
                         text: 'Проектирование сети',
                         value: undefined,
                         min: 3,
@@ -455,6 +503,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '20',
+                        code: 'HWDE',
                         text: 'Про-ние аппаратного обеспечения',
                         value: undefined,
                         min: 3,
@@ -463,6 +512,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '201',
+                        code: 'PROG',
                         text: 'Программирование/разработка ПО',
                         value: undefined,
                         min: 2,
@@ -471,6 +521,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '202',
+                        code: 'SINT',
                         text: 'Интеграция и сборка систем',
                         value: undefined,
                         min: 3,
@@ -479,6 +530,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '203',
+                        code: 'TEST',
                         text: 'Тестирование',
                         value: undefined,
                         min: 1,
@@ -487,6 +539,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '204',
+                        code: 'PORT',
                         text: 'Конфигурация ПО',
                         value: undefined,
                         min: 3,
@@ -494,15 +547,27 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '205',
-                        text: 'Техника безопасности',
+                        skillId: '204444',
+                        code: 'RESD',
+                        text: 'Cистемы реального времени',
                         value: undefined,
                         min: 2,
                         max: 6,
                         isChecked: false,
                     },
+
+                    {
+                        skillId: '205',
+                        code: 'SFEN',
+                        text: 'Техника безопасности',
+                        value: undefined,
+                        min: 3,
+                        max: 6,
+                        isChecked: false,
+                    },
                     {
                         skillId: '206',
+                        code: 'SFAS',
                         text: 'Оценка безопасности',
                         value: undefined,
                         min: 3,
@@ -511,17 +576,19 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '207',
+                        code: 'RFEN',
                         text: 'Радиочастотная техника',
                         value: undefined,
-                        min: 4,
+                        min: 2,
                         max: 6,
                         isChecked: false,
                     },
                     {
                         skillId: '208',
+                        code: 'ADEV',
                         text: 'Разработка анимации',
                         value: undefined,
-                        min: 2,
+                        min: 3,
                         max: 6,
                         isChecked: false,
                     },
@@ -532,6 +599,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '21',
+                        code: 'DATM',
                         text: 'Управление данными',
                         value: undefined,
                         min: 4,
@@ -540,6 +608,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '22',
+                        code: 'DTAN',
                         text: 'Моделирование и проектирование данных',
                         value: undefined,
                         min: 2,
@@ -548,6 +617,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '23',
+                        code: 'DBDS',
                         text: 'Проектирование базы данных',
                         value: undefined,
                         min: 3,
@@ -556,6 +626,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '24',
+                        code: 'DENG',
                         text: 'Инжиниринг данных',
                         value: undefined,
                         min: 2,
@@ -564,6 +635,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '25',
+                        code: 'DBAD',
                         text: 'Администрирование базы данных',
                         value: undefined,
                         min: 2,
@@ -572,6 +644,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '26',
+                        code: 'DATS',
                         text: 'Дата сайенс',
                         value: undefined,
                         min: 2,
@@ -580,6 +653,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '261',
+                        code: 'MLNG',
                         text: 'Машинное обучение',
                         value: undefined,
                         min: 2,
@@ -588,6 +662,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '262',
+                        code: 'BINT',
                         text: 'Бизнес-аналитика',
                         value: undefined,
                         min: 2,
@@ -596,6 +671,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '263',
+                        code: 'VISL',
                         text: 'Визуализация данных',
                         value: undefined,
                         min: 3,
@@ -609,6 +685,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '264',
+                        code: 'URCH',
                         text: 'Исследование пользователей',
                         value: undefined,
                         min: 3,
@@ -617,6 +694,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '265',
+                        code: 'UNAN',
                         text: 'Анализ пользовательского опыта',
                         value: undefined,
                         min: 3,
@@ -625,6 +703,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '266',
+                        code: 'HCEV',
                         text: 'Прое-ние пользовательского опыта',
                         value: undefined,
                         min: 3,
@@ -633,6 +712,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '267',
+                        code: 'USEV',
                         text: 'Оценка пользовательского опыта',
                         value: undefined,
                         min: 2,
@@ -646,6 +726,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '27',
+                        code: 'XXX',
                         text: 'Создание контентаи',
                         value: undefined,
                         min: 1,
@@ -654,6 +735,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '28',
+                        code: 'XXX',
                         text: 'Публикация контента',
                         value: undefined,
                         min: 1,
@@ -662,6 +744,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '29',
+                        code: 'XXX',
                         text: 'Управление знаниями',
                         value: undefined,
                         min: 2,
@@ -675,6 +758,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '271',
+                        code: 'SCMO',
                         text: 'Научная модель',
                         value: undefined,
                         min: 4,
@@ -683,6 +767,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '282',
+                        code: 'NUAN',
                         text: 'Числовой анализ',
                         value: undefined,
                         min: 4,
@@ -691,6 +776,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '293',
+                        code: 'HPCC',
                         text: 'Высокопроизводительные вычисления',
                         value: undefined,
                         min: 4,
@@ -712,6 +798,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '30',
+                        code: 'SORC',
                         text: 'Сорсинг',
                         value: undefined,
                         min: 2,
@@ -720,6 +807,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '31',
+                        code: 'SUPP',
                         text: 'Управление поставщиками',
                         value: undefined,
                         min: 2,
@@ -728,6 +816,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '32',
+                        code: 'ITCM',
                         text: 'Управление контрактами',
                         value: undefined,
                         min: 3,
@@ -736,6 +825,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '33',
+                        code: 'RLMT',
                         text: 'Управление взаимоотношениями',
                         value: undefined,
                         min: 4,
@@ -744,6 +834,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '34',
+                        code: 'CSMG',
                         text: 'Служба поддержки клиентов',
                         value: undefined,
                         min: 1,
@@ -752,6 +843,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '35',
+                        code: 'ADMN',
                         text: 'Бизнес администрирование',
                         value: undefined,
                         min: 1,
@@ -765,6 +857,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '36',
+                        code: 'MKTG',
                         text: 'Маркетинг',
                         value: undefined,
                         min: 2,
@@ -774,6 +867,7 @@ export const initialModalData: InitialModalDataType = [
 
                     {
                         skillId: '37',
+                        code: 'SALE',
                         text: 'Продажи',
                         value: undefined,
                         min: 3,
@@ -783,6 +877,7 @@ export const initialModalData: InitialModalDataType = [
 
                     {
                         skillId: '38',
+                        code: 'SSUP',
                         text: 'Поддержка продаж',
                         value: undefined,
                         min: 1,
@@ -803,6 +898,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '39',
+                        code: 'ITMG',
                         text: 'Управление технологическими услугами',
                         value: undefined,
                         min: 5,
@@ -811,6 +907,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '40',
+                        code: 'ASUP',
                         text: 'Поддержка приложения',
                         value: undefined,
                         min: 2,
@@ -819,6 +916,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '41',
+                        code: 'ITOP',
                         text: 'Инфраструктура ИТ',
                         value: undefined,
                         min: 1,
@@ -827,6 +925,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '42',
+                        code: 'SYSP',
                         text: 'Системное программное обеспечение',
                         value: undefined,
                         min: 3,
@@ -835,6 +934,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '421',
+                        code: 'NTAS',
                         text: 'Поддержка сети',
                         value: undefined,
                         min: 2,
@@ -843,6 +943,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '422',
+                        code: 'HSIN',
                         text: 'Установка и удаление систем',
                         value: undefined,
                         min: 1,
@@ -851,6 +952,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '423',
+                        code: 'CFMG',
                         text: 'Управление конфигурациями',
                         value: undefined,
                         min: 2,
@@ -859,6 +961,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '424',
+                        code: 'RELM',
                         text: 'Релиз и развертывание',
                         value: undefined,
                         min: 3,
@@ -867,6 +970,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '425',
+                        code: 'STMG',
                         text: 'Управление хранением',
                         value: undefined,
                         min: 3,
@@ -875,6 +979,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '426',
+                        code: 'DCMA',
                         text: 'Управление объектами',
                         value: undefined,
                         min: 3,
@@ -888,6 +993,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '431',
+                        code: 'SLMO',
                         text: 'Управление уровнем услуг',
                         value: undefined,
                         min: 2,
@@ -896,6 +1002,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '43',
+                        code: 'SCMG',
                         text: 'Управление каталогом услуг',
                         value: undefined,
                         min: 3,
@@ -904,6 +1011,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '45',
+                        code: 'AVMT',
                         text: 'Управление доступностью',
                         value: undefined,
                         min: 4,
@@ -912,6 +1020,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '46',
+                        code: 'CPMG',
                         text: 'Управление мощностями',
                         value: undefined,
                         min: 4,
@@ -920,6 +1029,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '441',
+                        code: 'USUP',
                         text: 'Управление инцидентами',
                         value: undefined,
                         min: 2,
@@ -928,6 +1038,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '442',
+                        code: 'PBMG',
                         text: 'Управление проблемами',
                         value: undefined,
                         min: 3,
@@ -936,6 +1047,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '443',
+                        code: 'CHMG',
                         text: 'Контроль изменений',
                         value: undefined,
                         min: 2,
@@ -944,6 +1056,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '444',
+                        code: 'ASMG',
                         text: 'Управление активами',
                         value: undefined,
                         min: 2,
@@ -952,6 +1065,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '445',
+                        code: 'SEAC',
                         text: 'Принятие услуг',
                         value: undefined,
                         min: 4,
@@ -965,6 +1079,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '47',
+                        code: 'SCAD',
                         text: 'Операции по обеспечению безопасности',
                         value: undefined,
                         min: 1,
@@ -973,6 +1088,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '48',
+                        code: 'VUAS',
                         text: 'Оценка уязвимости',
                         value: undefined,
                         min: 2,
@@ -981,6 +1097,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '49',
+                        code: 'DGFS',
                         text: 'Цифровая криминалистика',
                         value: undefined,
                         min: 3,
@@ -989,6 +1106,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '50',
+                        code: 'PENT',
                         text: 'Тестирование на проникновение',
                         value: undefined,
                         min: 3,
@@ -1009,6 +1127,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '63',
+                        code: 'PEMT',
                         text: 'Управление производительностью',
                         value: undefined,
                         min: 4,
@@ -1017,6 +1136,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '64',
+                        code: 'EEXP',
                         text: 'Впечатление персонала',
                         value: undefined,
                         min: 4,
@@ -1025,6 +1145,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '65',
+                        code: 'OFCL',
                         text: 'Организационная фасилитация',
                         value: undefined,
                         min: 4,
@@ -1033,6 +1154,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '66',
+                        code: 'PDSV',
                         text: 'Профессиональное развитие',
                         value: undefined,
                         min: 4,
@@ -1041,6 +1163,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '67',
+                        code: 'WFPL',
                         text: 'Планирование трудовых ресурсов',
                         value: undefined,
                         min: 4,
@@ -1049,6 +1172,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '68',
+                        code: 'RESC',
                         text: 'Обеспечение ресурсами',
                         value: undefined,
                         min: 3,
@@ -1062,6 +1186,7 @@ export const initialModalData: InitialModalDataType = [
                 items: [
                     {
                         skillId: '69',
+                        code: 'ETMG',
                         text: 'Управление обучением и развитием',
                         value: undefined,
                         min: 3,
@@ -1070,6 +1195,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '70',
+                        code: 'TMCR',
                         text: 'Разработка и развитие обучения',
                         value: undefined,
                         min: 3,
@@ -1078,6 +1204,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '71',
+                        code: 'ETDL',
                         text: 'Проведение учебных мероприятий',
                         value: undefined,
                         min: 2,
@@ -1086,6 +1213,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '72',
+                        code: 'LEDA',
                         text: 'Оценка компетенций',
                         value: undefined,
                         min: 3,
@@ -1094,6 +1222,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '73',
+                        code: 'CSOP',
                         text: 'Работа системы сертификации',
                         value: undefined,
                         min: 2,
@@ -1102,6 +1231,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '74',
+                        code: 'TEAC',
                         text: 'Обучение',
                         value: undefined,
                         min: 2,
@@ -1110,6 +1240,7 @@ export const initialModalData: InitialModalDataType = [
                     },
                     {
                         skillId: '75',
+                        code: 'SUBF',
                         text: 'Формирование темы',
                         value: undefined,
                         min: 4,
