@@ -33,6 +33,7 @@ export const SkillRow: FC<SkillRowProps> = memo(
 
         const [isEdited, setIsEdited] = useState(false);
         const [currentValue, setCurrentValue] = useState(value);
+
         return (
             <Styled.Container>
                 <Styled.Block>
@@ -60,11 +61,21 @@ export const SkillRow: FC<SkillRowProps> = memo(
                     <Styled.EditButtonsWrapper>
                         <Styled.EditButton
                             iconName={Icons.done}
-                            onClick={() => setIsEdited(false)}
+                            onClick={async () => {
+                                await updateStudentSkillInDB(
+                                    currentUser!,
+                                    skillId,
+                                    currentValue
+                                );
+                                setIsEdited(false);
+                            }}
                         />
                         <Styled.EditButton
                             iconName={Icons.cancel}
-                            onClick={() => setIsEdited(false)}
+                            onClick={() => {
+                                setCurrentValue(value);
+                                setIsEdited(false);
+                            }}
                         />
                     </Styled.EditButtonsWrapper>
                 ) : (
@@ -105,7 +116,10 @@ export const SkillRow: FC<SkillRowProps> = memo(
                     </Styled.MenuItem>
                     <Styled.MenuItem
                         onClick={async () => {
-                            deleteStudentSkillFromDB(currentUser!.id, skillId);
+                            await deleteStudentSkillFromDB(
+                                currentUser!,
+                                skillId
+                            );
                             closeMenuHandler();
                         }}
                     >

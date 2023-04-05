@@ -6,6 +6,8 @@ import { Styled } from './styled';
 
 export const ProgressBarList: FC<ProgressBarListProps> = memo(
     ({ items, isBig = false, className, isEdit = false, onDelete }) => {
+        console.log('items', items);
+
         const progressBars = useMemo(() => {
             return items.map((item) => (
                 <ProgressBar

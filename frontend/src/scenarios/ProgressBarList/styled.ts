@@ -70,6 +70,7 @@ const DeleteBtn = styled.div`
     &:after {
         position: absolute;
         left: 5px;
+        top: 4px;
         content: ' ';
         height: 10px;
         width: 2px;

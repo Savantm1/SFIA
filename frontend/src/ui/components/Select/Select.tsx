@@ -38,7 +38,7 @@ export const Select: FC<SelectProps> = memo(
                 fullWidth
                 displayEmpty
                 MenuProps={{
-                    style: { marginTop: 6, marginLeft: -8, borderRadius: 8 },
+                    style: { marginTop: 6, borderRadius: 8 },
                 }}
                 value={selectedValue}
                 onChange={handleChange}

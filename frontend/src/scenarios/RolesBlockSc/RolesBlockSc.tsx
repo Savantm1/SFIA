@@ -1,4 +1,6 @@
 import { RoleRow } from '@scenarios/RolesBlockSc/components/RoleRow/RoleRow';
+import { RolesSelectionModal } from '@scenarios/RolesSelectionModal';
+import { StudentRoleType } from '@store/rolesModal';
 import { Icons } from '@ui/assets/icons';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import { FC, memo, useState } from 'react';
@@ -6,35 +8,60 @@ import { FC, memo, useState } from 'react';
 import { Styled } from './styled';
 
 type RolesBlockScProps = {
-    skillTypes: any;
-    roles: number[];
+    roles?: StudentRoleType[];
     showAllItemsHandler: (value: 'roles' | 'skills' | '') => void;
 };
 export const RolesBlockSc: FC<RolesBlockScProps> = memo(
-    ({ skillTypes, roles, showAllItemsHandler }) => {
+    ({ roles = [], showAllItemsHandler }) => {
         const [showAllRoles, setShowAllRoles] = useState(false);
+        const [isVisible, setIsVisible] = useState(false);
+        const [studentRolesState, setStudentRolesState] =
+            useState<StudentRoleType[]>(roles);
+        const getNewRole = (newRole: StudentRoleType) => {
+            setStudentRolesState((prevState) => {
+                const updatedArray = prevState as StudentRoleType[];
+                updatedArray.push(newRole);
+                return updatedArray;
+            });
+        };
 
-        const elements = roles.map((el) => {
-            return <RoleRow key={el} skillTypes={skillTypes} />;
+        const onOpen: VoidFunction = () => {
+            setIsVisible(true);
+        };
+        const onClose: VoidFunction = () => {
+            setIsVisible(false);
+        };
+        const elements = studentRolesState.map((el) => {
+            return <RoleRow key={el.id} roleProps={el} />;
         });
-        if (roles.length === 0) {
+        if (studentRolesState.length === 0) {
             return (
                 <Styled.Container>
+                    <RolesSelectionModal
+                        handleClose={onClose}
+                        open={isVisible}
+                        getNewRole={getNewRole}
+                    />
                     <Styled.SkillsBar>
                         <Styled.Title align={'left'} variant={'h2'}>
                             Мои Роли
                         </Styled.Title>
-                        <IconButton iconName={Icons.add} onClick={() => {}} />
+                        <IconButton iconName={Icons.add} onClick={onOpen} />
                     </Styled.SkillsBar>
                     {elements}
                 </Styled.Container>
             );
         }
 
-        if (roles.length > 2) {
+        if (studentRolesState.length > 2) {
             const cutElements = elements.slice(0, 2);
             return (
                 <Styled.Container>
+                    <RolesSelectionModal
+                        handleClose={onClose}
+                        open={isVisible}
+                        getNewRole={getNewRole}
+                    />
                     <Styled.SkillsBar>
                         {showAllRoles && (
                             <Styled.BackButton
@@ -47,7 +74,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         <Styled.Title align={'left'} variant={'h2'}>
                             Мои Роли
                         </Styled.Title>
-                        <IconButton iconName={Icons.add} onClick={() => {}} />
+                        <IconButton iconName={Icons.add} onClick={onOpen} />
                     </Styled.SkillsBar>
                     {showAllRoles ? elements : cutElements}
                     {!showAllRoles && (
@@ -59,12 +86,17 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         >
                             Смотреть все
                         </Styled.ShowAllBtn>
-                    )}{' '}
+                    )}
                 </Styled.Container>
             );
         } else {
             return (
                 <Styled.Container>
+                    <RolesSelectionModal
+                        handleClose={onClose}
+                        open={isVisible}
+                        getNewRole={getNewRole}
+                    />
                     <Styled.SkillsBar>
                         {showAllRoles && (
                             <Styled.BackButton
@@ -74,7 +106,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         <Styled.Title align={'left'} variant={'h2'}>
                             Мои Роли
                         </Styled.Title>
-                        <IconButton iconName={Icons.add} onClick={() => {}} />
+                        <IconButton iconName={Icons.add} onClick={onOpen} />
                     </Styled.SkillsBar>
                     {elements}
                 </Styled.Container>

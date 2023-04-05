@@ -12,11 +12,72 @@
           "categoryTitle": "Стратегия и архитектура",
           "subcategoryTitle": "Стратегическое планирование",
           "color": "#B4104C",
-          "id": "1",
+          "skillId": "1",
           "text": "Стратегическое планирование",
-          "value": "6",
+          "value": 6,
           "min": 5,
           "max": 7
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "skillId": "2",
+          "text": "Координация информационных систем",
+          "value": 6,
+          "min": 6,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "skillId": "3",
+          "text": "Информационное управление",
+          "value": 7,
+          "min": 4,
+          "max": 7
+        }
+      ],
+      "studentRoles": [
+        {
+          "id": 1,
+          "text": "Стратегическое планирование",
+          "value": "Стратегическое планирование",
+          "skills": [
+            {
+              "id": 1,
+              "value": 50,
+              "text": "Заголовок",
+              "title": "ITSP",
+              "color": "#138D0A",
+              "subtitle": "4 ур"
+            },
+            {
+              "id": 2,
+              "value": 40,
+              "text": "Стратегия и архитектура",
+              "title": "PEMT",
+              "color": "#B4104C",
+              "subtitle": "3 ур"
+            },
+            {
+              "id": 3,
+              "value": 32,
+              "text": "Стратегия и архитектура",
+              "title": "SUPP",
+              "color": "#138D0A",
+              "subtitle": "3 ур"
+            },
+            {
+              "id": 4,
+              "value": 80,
+              "text": "Стратегия и архитектура",
+              "title": "DCMA",
+              "subtitle": "6 ур",
+              "color": "#FC8616"
+            }
+          ]
         }
       ]
     },
@@ -212,6 +273,47 @@
       ],
       "employerId": 3,
       "id": 1
+    }
+  ],
+  "roles": [
+    {
+      "id": 1,
+      "text": "Стратегическое планирование",
+      "value": "Стратегическое планирование",
+      "skills": [
+        {
+          "id": 1,
+          "value": 50,
+          "text": "Заголовок",
+          "title": "ITSP",
+          "color": "#138D0A",
+          "subtitle": "4 ур"
+        },
+        {
+          "id": 2,
+          "value": 40,
+          "text": "Стратегия и архитектура",
+          "title": "PEMT",
+          "color": "#B4104C",
+          "subtitle": "3 ур"
+        },
+        {
+          "id": 3,
+          "value": 32,
+          "text": "Стратегия и архитектура",
+          "title": "SUPP",
+          "color": "#138D0A",
+          "subtitle": "3 ур"
+        },
+        {
+          "id": 4,
+          "value": 80,
+          "text": "Стратегия и архитектура",
+          "title": "DCMA",
+          "subtitle": "6 ур",
+          "color": "#FC8616"
+        }
+      ]
     }
   ]
 }

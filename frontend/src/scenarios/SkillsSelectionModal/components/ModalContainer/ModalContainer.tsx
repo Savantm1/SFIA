@@ -97,7 +97,6 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             <Modal
                 onClose={() => {
                     handleClose();
-                    // resetAllSelections();
                 }}
                 isOpen={open}
             >
