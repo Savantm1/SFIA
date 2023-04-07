@@ -34,7 +34,7 @@ export const useRegistration = (role: Role) => {
             setCurrentUser(currentData);
             role === Role.STUDENT
                 ? navigate(STUDENT_ROUTES.main)
-                : navigate(EMPLOYER_ROUTES.main);
+                : navigate(EMPLOYER_ROUTES.vacancies);
         },
         [createNewPerson, navigate, role, setCurrentUser]
     );
