@@ -10,25 +10,9 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
-export type HandlerPropsSkillType = {
-    categoryTitle: string;
-    subcategoryTitle: string;
-    text: string;
-    value?: number;
-};
+import { HandlerPropsSkillType, StudentSkillType } from './skillsModal';
 
-export type StudentSkillType = {
-    categoryTitle?: string;
-    subcategoryTitle: string;
-    color: string;
-    value?: number;
-    skillId: string;
-    text: string;
-    min?: number;
-    max?: number;
-};
-
-interface SkillsModalState {
+interface SkillsModalForRolesState {
     initialModalData: InitialModalDataType;
     addSkill: (props: HandlerPropsSkillType) => void;
     removeSkill: (props: HandlerPropsSkillType) => void;
@@ -44,11 +28,12 @@ interface SkillsModalState {
     setInitialData: (updatedModalData?: StudentSkillType[]) => void;
 }
 
-export const useSkillsModalStore = create<SkillsModalState>()(
+export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
     devtools(
         immer((set, get) => ({
             initialModalData: initialModalData,
             addSkill: (props) => {
+                console.log('ADD', props);
                 const { categoryTitle, subcategoryTitle, text, value } = props;
                 set((state) => {
                     const category = state.initialModalData.find(
@@ -224,7 +209,7 @@ export const useSkillsModalStore = create<SkillsModalState>()(
 
             setInitialData: (updatedModalData) => {
                 if (!updatedModalData?.length) {
-                    // set({ initialModalData: initialModalData });
+                    set({ initialModalData: initialModalData });
                     return;
                 }
 

@@ -29,8 +29,7 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
     );
     const getSkillsDataHandler = async (skillsData: StudentSkillType[]) => {
         await updateStudentSkillsInDB(user, skillsData);
-        const updatedUserData = user;
-        updatedUserData.skills = skillsData;
+        user.skills = skillsData;
     };
 
     return (

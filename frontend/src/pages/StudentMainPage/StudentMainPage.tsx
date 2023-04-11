@@ -16,6 +16,7 @@ export const StudentMainPage: FC = memo(() => {
 
     useEffect(() => {
         console.log('effect');
+        console.log('roles', currentUser?.studentRoles);
         setStudentState({ ...makeStudentMock(), ...currentUser });
     }, [currentUser]);
 

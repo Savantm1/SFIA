@@ -11,8 +11,9 @@ const Container = styled.div`
     margin-bottom: 10px;
 `;
 
-const EditButton = styled(IconButton)`
-    height: 60px;
+const Button = styled(IconButton)`
+    height: 30px;
+    margin-inline: 1px;
 `;
 
 const Content = styled.div`
@@ -51,6 +52,6 @@ export const Styled = {
     MenuItem,
     Content,
     Container,
-    EditButton,
+    Button,
     ProgressBarListWrapper,
 };

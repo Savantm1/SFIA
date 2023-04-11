@@ -1,3 +1,4 @@
 {
-  "/users/:id/skills": "/users/:id/skills"
+  "/users/:id/skills": "/users/:id/skills",
+  "/users/:id/roles": "/users/:id/roles"
 }

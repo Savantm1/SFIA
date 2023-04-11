@@ -1,4 +1,4 @@
-import { useSkillsModalStore } from '@store/skillsModal';
+import { HandlerPropsSkillType } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Text } from '@ui/components/Text';
 import { FC, memo, useMemo } from 'react';
@@ -7,6 +7,8 @@ import { SelectSkillRow } from '../SelectSkillRow/SelectSkillRow';
 import { Styled } from './styled';
 
 export type SubCategoryProps = {
+    removeSkillHandler: (props: HandlerPropsSkillType) => void;
+    addSkillHandler: (props: HandlerPropsSkillType) => void;
     categoryTitle: string;
     color: string;
     subcategoryTitle: string;
@@ -19,12 +21,14 @@ export type SubCategoryProps = {
     }[];
 };
 export const SubCategory: FC<SubCategoryProps> = memo(
-    ({ categoryTitle, subcategoryTitle, items, color }) => {
-        const addSkillsHandler = useSkillsModalStore((state) => state.addSkill);
-        const removeSkillHandler = useSkillsModalStore(
-            (state) => state.removeSkill
-        );
-
+    ({
+        categoryTitle,
+        subcategoryTitle,
+        items,
+        color,
+        removeSkillHandler,
+        addSkillHandler,
+    }) => {
         const elements = useMemo(
             () =>
                 items.map((element, key) => {
@@ -37,7 +41,7 @@ export const SubCategory: FC<SubCategoryProps> = memo(
                             max={element.max}
                             isSelected={element.isChecked}
                             addSkillToStore={(value: number) => {
-                                addSkillsHandler({
+                                addSkillHandler({
                                     categoryTitle,
                                     subcategoryTitle,
                                     text: element.text,
@@ -56,7 +60,7 @@ export const SubCategory: FC<SubCategoryProps> = memo(
                     );
                 }),
             [
-                addSkillsHandler,
+                addSkillHandler,
                 categoryTitle,
                 color,
                 items,
