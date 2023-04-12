@@ -37,6 +37,16 @@
           "value": 7,
           "min": 4,
           "max": 7
+        },
+        {
+          "categoryTitle": "Изменения и трансформация",
+          "subcategoryTitle": "Внедрение изменений",
+          "color": "#7208A8",
+          "skillId": "51",
+          "text": "Управление портфелем",
+          "value": 5,
+          "min": 5,
+          "max": 7
         }
       ],
       "studentRoles": [

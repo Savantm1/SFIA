@@ -16,7 +16,6 @@ type SkillsBlockScProps = {
 };
 export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
     ({ items = [], showAllItemsHandler, getSkillsDataHandler }) => {
-        console.log('items', items);
         const [showAllSkills, setShowAllSkills] = useState(false);
         const [isOpenSkillsModal, setIsOpenSkillsModal] = useState(false);
         const onCloseSkillsModal = useCallback(() => {

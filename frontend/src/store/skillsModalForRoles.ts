@@ -33,7 +33,6 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
         immer((set, get) => ({
             initialModalData: initialModalData,
             addSkill: (props) => {
-                console.log('ADD', props);
                 const { categoryTitle, subcategoryTitle, text, value } = props;
                 set((state) => {
                     const category = state.initialModalData.find(
