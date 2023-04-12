@@ -14,8 +14,8 @@ type SelectSkillRowProps = {
     max: number;
     isSelected: boolean;
     color: string;
-    addSkillToStore: any;
-    removeSkillFromStore: any;
+    addSkillToStore: (value: number) => void;
+    removeSkillFromStore: VoidFunction;
 };
 
 export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
@@ -29,9 +29,12 @@ export const SelectSkillRow: FC<SelectSkillRowProps> = memo(
         removeSkillFromStore,
         isSelected,
     }) => {
-        const setValueSkillHandler = (value: string | number) => {
-            addSkillToStore(value);
-        };
+        const setValueSkillHandler = useCallback(
+            (value: number) => {
+                addSkillToStore(value);
+            },
+            [addSkillToStore]
+        );
         const changeHandler = useCallback(
             (isSelect: boolean) => {
                 if (isSelect) {

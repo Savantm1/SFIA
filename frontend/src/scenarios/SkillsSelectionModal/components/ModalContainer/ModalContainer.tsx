@@ -1,6 +1,7 @@
 import { Category } from '@scenarios/SkillsSelectionModal/components/Category/Category';
+import { useModalStoreSwitcher } from '@scenarios/SkillsSelectionModal/hooks/useModalStoreSwitcher';
 import { Styled } from '@scenarios/SkillsSelectionModal/styled';
-import { StudentSkillType, useSkillsModalStore } from '@store/skillsModal';
+import { StudentSkillType } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
@@ -11,19 +12,23 @@ type ModalContainerProps = {
     handleClose: VoidFunction;
     needToReset?: boolean;
     getDataHandler: (selectedData: StudentSkillType[]) => Promise<void>;
+    forRoles?: boolean;
 };
 export const ModalContainer: FC<ModalContainerProps> = memo(
-    ({ open, handleClose, getDataHandler, needToReset = false }) => {
-        const resetAllSelections = useSkillsModalStore(
-            (state) => state.resetAllSelections
-        );
-        const removeSkill = useSkillsModalStore((state) => state.removeSkill);
-        const initialModalData = useSkillsModalStore(
-            (state) => state.initialModalData
-        );
-        const getArrayOfSelectedSkills = useSkillsModalStore(
-            (state) => state.getArrayOfSelectedSkills
-        );
+    ({
+        open,
+        handleClose,
+        getDataHandler,
+        needToReset = false,
+        forRoles = false,
+    }) => {
+        const {
+            addSkillHandler,
+            removeSkillHandler: onRemoveSkill,
+            resetAllSelections,
+            initialModalData,
+            getArrayOfSelectedSkills,
+        } = useModalStoreSwitcher(forRoles);
 
         const [selectedSkillsArray, setSelectedSkillsArray] = useState(
             getArrayOfSelectedSkills()
@@ -31,33 +36,17 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
 
         useEffect(() => {
             setSelectedSkillsArray(getArrayOfSelectedSkills());
-        }, [getArrayOfSelectedSkills, initialModalData]);
-
-        const categories = useMemo(
-            () =>
-                initialModalData.map((category, key) => {
-                    return (
-                        <Category
-                            key={key}
-                            categoryTitle={category.categoryTitle}
-                            subCategories={category.subCategories}
-                            mainColor={category.mainColor}
-                            secondaryColor={category.secondaryColor}
-                        />
-                    );
-                }),
-            [initialModalData]
-        );
+        }, [getArrayOfSelectedSkills, initialModalData, resetAllSelections]);
 
         const removeSkillHandler = useCallback(
             (skill: StudentSkillType) => {
-                removeSkill({
+                onRemoveSkill({
                     categoryTitle: skill.categoryTitle!,
                     subcategoryTitle: skill.subcategoryTitle!,
                     text: skill.text,
                 });
             },
-            [removeSkill]
+            [onRemoveSkill]
         );
 
         const nextButtonHandler = useCallback(async () => {
@@ -74,7 +63,8 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             needToReset,
             resetAllSelections,
         ]);
-        const DeleteSelectedSkillButtons = useMemo(() => {
+
+        const deleteSelectedSkillButtons = useMemo(() => {
             return selectedSkillsArray.map((skill, index) => {
                 return (
                     <Styled.DeleteSelectedSkillBtn key={index}>
@@ -93,16 +83,29 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
             });
         }, [removeSkillHandler, selectedSkillsArray]);
 
+        const categories = useMemo(
+            () =>
+                initialModalData.map((category, key) => {
+                    return (
+                        <Category
+                            addSkillHandler={addSkillHandler}
+                            removeSkillHandler={onRemoveSkill}
+                            key={key}
+                            categoryTitle={category.categoryTitle}
+                            subCategories={category.subCategories}
+                            mainColor={category.mainColor}
+                            secondaryColor={category.secondaryColor}
+                        />
+                    );
+                }),
+            [addSkillHandler, initialModalData, onRemoveSkill]
+        );
+
         return (
-            <Modal
-                onClose={() => {
-                    handleClose();
-                }}
-                isOpen={open}
-            >
+            <Modal onClose={handleClose} isOpen={open}>
                 <Styled.Container>
                     <Styled.DeleteBar>
-                        {DeleteSelectedSkillButtons}
+                        {deleteSelectedSkillButtons}
                     </Styled.DeleteBar>
                     <Styled.ContentOverflow>
                         <Styled.ScrollContainer>

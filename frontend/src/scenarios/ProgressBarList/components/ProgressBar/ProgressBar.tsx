@@ -3,12 +3,17 @@ import { DetailPopup } from '@scenarios/ProgressBarList/components/DetailPopup/D
 import { Styled } from '@scenarios/ProgressBarList/styled';
 import { ProgressBarProps } from '@scenarios/ProgressBarList/types';
 import Color from '@ui/assets/color';
-import { FC, memo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 export const ProgressBar: FC<ProgressBarProps> = memo(
-    ({ value, title, subtitle, color, isBig, isEdit, onDelete }) => {
+    ({ value, title, subtitle, color, isBig, isEdit, onDelete, onChange }) => {
         const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
             useMenu();
+        //вроде у тебя такое же преобразование должно быть, если что убери тогда
+        const currentValue = useMemo(
+            () => (value > 7 ? value : Math.floor((value * 100) / 7)),
+            [value]
+        );
         return (
             <Styled.Wrapper>
                 {isEdit && <Styled.DeleteBtn onClick={() => onDelete?.()} />}
@@ -22,12 +27,13 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
                 <Styled.ProgressBar
                     thickness={5}
                     variant="determinate"
-                    value={value}
+                    value={currentValue}
                     customColor={isEdit ? Color.secondaryGray : color}
                     isBig={isBig}
                 />
                 {isEdit && (
                     <DetailPopup
+                        onChange={onChange!}
                         abbr={title}
                         color={color}
                         title={title}

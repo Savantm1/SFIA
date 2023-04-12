@@ -1,7 +1,7 @@
 import Color, { KeysOfColor } from '@ui/assets/color';
 import { Slider } from '@ui/components/Slider';
 import { Text } from '@ui/components/Text';
-import { FC, memo, useState } from 'react';
+import { FC, memo, useCallback, useState } from 'react';
 
 import { Styled } from './styled';
 
@@ -14,6 +14,7 @@ type DetailPopupProps = {
     title?: string;
     subTitle?: string;
     abbr: string;
+    onChange: (value: number) => void;
 };
 export const DetailPopup: FC<DetailPopupProps> = memo(
     ({
@@ -25,8 +26,17 @@ export const DetailPopup: FC<DetailPopupProps> = memo(
         title = 'Стратегическое планирование',
         subTitle = 'Стратегия и архитектура',
         abbr = 'ITSR',
+        onChange,
     }) => {
         const [sliderValue, setSliderValue] = useState(value);
+
+        const onChangeHandler = useCallback(
+            (currentValue: number) => {
+                setSliderValue(currentValue);
+                onChange(currentValue);
+            },
+            [onChange]
+        );
         return (
             <Styled.Container>
                 <Styled.Menu
@@ -73,6 +83,7 @@ export const DetailPopup: FC<DetailPopupProps> = memo(
                                 value={sliderValue}
                                 color={color}
                                 cantEdit={false}
+                                setCurrentValue={onChangeHandler}
                             />
                             <Styled.Level
                                 variant={'body1'}

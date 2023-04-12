@@ -15,7 +15,6 @@ export const StudentMainPage: FC = memo(() => {
     });
 
     useEffect(() => {
-        console.log('effect');
         setStudentState({ ...makeStudentMock(), ...currentUser });
     }, [currentUser]);
 

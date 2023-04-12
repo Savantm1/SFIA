@@ -13,26 +13,34 @@ import { Styled } from './styled';
 type RolesSelectionModalProps = {
     open: boolean;
     handleClose: VoidFunction;
-    getNewRole: (newRole: StudentRoleType) => void;
+    // getNewRole: (newRole: StudentRoleType) => void;
+    onOpenSkillsModal: VoidFunction;
 };
 export const RolesSelectionModal: FC<RolesSelectionModalProps> = memo(
-    ({ open, handleClose, getNewRole }) => {
+    ({ open, handleClose, onOpenSkillsModal }) => {
         const [selectRoleValue, setSelectRoleValue] = useState('');
-        const roles = useRolesModalStore((state) => state.studentRoles);
+        const defaultRoles = useRolesModalStore((state) => state.studentRoles);
         const getRoles = useRolesModalStore((state) => state.getRoles);
         const addRole = useRolesModalStore((state) => state.addRole);
         const user = useCurrentUser();
+        const userRoles = user?.studentRoles;
+
+        const filteredRoles = defaultRoles.filter((item) => {
+            if (!userRoles?.length) return true;
+            let result = true;
+            for (const userRole of userRoles) {
+                if (userRole.id === item.id) {
+                    result = false;
+                }
+            }
+            return result;
+        });
         useEffect(() => {
             getRoles();
         }, [open, getRoles]);
 
         return (
-            <Modal
-                onClose={() => {
-                    handleClose();
-                }}
-                isOpen={open}
-            >
+            <Modal onClose={handleClose} isOpen={open}>
                 <Styled.Container>
                     <Styled.LeftSide>
                         <Text align={'left'} variant={'h2'}>
@@ -48,7 +56,7 @@ export const RolesSelectionModal: FC<RolesSelectionModalProps> = memo(
                         </Styled.Description>
                         <Styled.SelectContainer>
                             <Styled.Select
-                                options={roles}
+                                options={filteredRoles}
                                 onSelect={(role) => {
                                     setSelectRoleValue(role);
                                 }}
@@ -56,22 +64,22 @@ export const RolesSelectionModal: FC<RolesSelectionModalProps> = memo(
                             />
                             <IconButton
                                 iconName={Icons.add}
-                                onClick={() => {
-                                    console.log('role', selectRoleValue);
-                                    setTimeout(() => {
-                                        const currentRole = roles.find(
-                                            (role) => {
-                                                return (
-                                                    role.value ===
-                                                    selectRoleValue
-                                                );
-                                            }
-                                        ) as StudentRoleType;
-                                        console.log(currentRole);
-                                        addRole(user!, currentRole);
-                                        getNewRole(currentRole);
+                                onClick={async () => {
+                                    const currentRole = filteredRoles.find(
+                                        (role) => {
+                                            return (
+                                                role.value === selectRoleValue
+                                            );
+                                        }
+                                    ) as StudentRoleType;
+                                    //если хочет создать свою роль, то закрываем модалку с ролями и открываем модалку с навыками)
+                                    if (currentRole.id === 0) {
                                         handleClose();
-                                    }, 2000);
+                                        onOpenSkillsModal();
+                                        return;
+                                    }
+                                    await addRole(user!, currentRole);
+                                    handleClose();
                                 }}
                                 size={24}
                             />

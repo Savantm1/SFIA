@@ -1,22 +1,26 @@
 import { SkillType, User } from '@common/models';
+import { useAuthStore } from '@store/auth';
 import ky from 'ky';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
 export type StudentRoleSkill = SkillType & {
-    id: string;
+    id: number;
 };
 
 export type StudentRoleType = {
-    id: string;
+    id: number;
     value: string;
     text: string;
+    canEdit?: boolean;
     skills: StudentRoleSkill[];
 };
 type RolesModalStoreType = {
     studentRoles: StudentRoleType[];
     getRoles: () => void;
     addRole: (user: User, role: StudentRoleType) => void;
+    deleteRole: (user: User, roleId: number) => void;
+    editRole: (user: User, role: StudentRoleType) => void;
 };
 
 export const useRolesModalStore = create<RolesModalStoreType>()(
@@ -43,6 +47,54 @@ export const useRolesModalStore = create<RolesModalStoreType>()(
                     studentRoles: updatedStudentRoles,
                 },
             });
+            useAuthStore
+                .getState()
+                .setCurrentUser({ ...user, studentRoles: updatedStudentRoles });
+        },
+
+        deleteRole: async (user: User, roleId: number) => {
+            const filteredRoles = user.studentRoles?.filter(
+                (role) => role.id !== roleId
+            );
+            await ky.put(`http://localhost:3001/users/${user.id}`, {
+                json: {
+                    id: user.id,
+                    role: user.role,
+                    fullName: user.fullName,
+                    phone: user.phone,
+                    mail: user.mail,
+                    city: user.city,
+                    skills: user.skills,
+                    studentRoles: filteredRoles,
+                },
+            });
+            useAuthStore
+                .getState()
+                .setCurrentUser({ ...user, studentRoles: filteredRoles });
+        },
+
+        editRole: async (user: User, role) => {
+            const updatedRoles = user.studentRoles?.map((userRole) => {
+                if (userRole.id === role.id) {
+                    return role;
+                }
+                return userRole;
+            });
+            await ky.put(`http://localhost:3001/users/${user.id}`, {
+                json: {
+                    id: user.id,
+                    role: user.role,
+                    fullName: user.fullName,
+                    phone: user.phone,
+                    mail: user.mail,
+                    city: user.city,
+                    skills: user.skills,
+                    studentRoles: updatedRoles,
+                },
+            });
+            useAuthStore
+                .getState()
+                .setCurrentUser({ ...user, studentRoles: updatedRoles });
         },
     }))
 );

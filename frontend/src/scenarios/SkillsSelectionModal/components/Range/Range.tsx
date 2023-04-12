@@ -21,7 +21,7 @@ type RangeProps = {
     color: string;
     // setIsSelectedSkill: Dispatch<SetStateAction<boolean>>;
     isSelectedSkill: boolean;
-    setValueSkillHandler: (value: string | number) => void;
+    setValueSkillHandler: (value: number) => void;
 };
 
 export const Range: FC<RangeProps> = memo(
@@ -39,7 +39,7 @@ export const Range: FC<RangeProps> = memo(
             (event) => {
                 const value = event.currentTarget.value;
                 setSelectedValue(value);
-                setValueSkillHandler(value);
+                setValueSkillHandler(+value);
             },
             [setValueSkillHandler]
         );
@@ -54,9 +54,6 @@ export const Range: FC<RangeProps> = memo(
             } else {
                 setSelectedValue('');
             }
-            // isSelectedSkill
-            //     ? setSelectedValue(selectedValue || min.toString())
-            //     : setSelectedValue('');
         }, [isSelectedSkill, min, selectedValue, value]);
         const rangeItems = useMemo(() => {
             const itemsArray = [];

@@ -4,7 +4,7 @@ import { useSkillsModalStore } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
 import { Slider } from '@ui/components/Slider';
-import { FC, memo, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 
 import { Styled } from './styled';
 
@@ -33,6 +33,10 @@ export const SkillRow: FC<SkillRowProps> = memo(
 
         const [isEdited, setIsEdited] = useState(false);
         const [currentValue, setCurrentValue] = useState(value);
+
+        useEffect(() => {
+            setCurrentValue(value);
+        }, [value]);
 
         return (
             <Styled.Container>

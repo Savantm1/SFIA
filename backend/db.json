@@ -14,7 +14,7 @@
           "color": "#B4104C",
           "skillId": "1",
           "text": "Стратегическое планирование",
-          "value": 6,
+          "value": 5,
           "min": 5,
           "max": 7
         },
@@ -37,47 +37,25 @@
           "value": 7,
           "min": 4,
           "max": 7
+        },
+        {
+          "categoryTitle": "Изменения и трансформация",
+          "subcategoryTitle": "Внедрение изменений",
+          "color": "#7208A8",
+          "skillId": "51",
+          "text": "Управление портфелем",
+          "value": 5,
+          "min": 5,
+          "max": 7
         }
       ],
       "studentRoles": [
         {
-          "id": 1,
-          "text": "Стратегическое планирование",
-          "value": "Стратегическое планирование",
-          "skills": [
-            {
-              "id": 1,
-              "value": 50,
-              "text": "Заголовок",
-              "title": "ITSP",
-              "color": "#138D0A",
-              "subtitle": "4 ур"
-            },
-            {
-              "id": 2,
-              "value": 40,
-              "text": "Стратегия и архитектура",
-              "title": "PEMT",
-              "color": "#B4104C",
-              "subtitle": "3 ур"
-            },
-            {
-              "id": 3,
-              "value": 32,
-              "text": "Стратегия и архитектура",
-              "title": "SUPP",
-              "color": "#138D0A",
-              "subtitle": "3 ур"
-            },
-            {
-              "id": 4,
-              "value": 80,
-              "text": "Стратегия и архитектура",
-              "title": "DCMA",
-              "subtitle": "6 ур",
-              "color": "#FC8616"
-            }
-          ]
+          "id": null,
+          "value": "Роль 1",
+          "text": "Роль 1",
+          "canEdit": true,
+          "skills": []
         }
       ]
     },
@@ -202,32 +180,7 @@
       "conditions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.;Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
       "fullDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
-      "skillTypes": [
-        {
-          "title": "ITSP",
-          "subtitle": "6 ур",
-          "value": 70,
-          "color": "#B4104C"
-        },
-        {
-          "title": "PEMT",
-          "subtitle": "5 ур",
-          "value": 60,
-          "color": "#0E72AB"
-        },
-        {
-          "title": "SUPP",
-          "subtitle": "7 ур",
-          "value": 100,
-          "color": "#138D0A"
-        },
-        {
-          "title": "DCMA",
-          "subtitle": "4 ур",
-          "value": 60,
-          "color": "#FC8616"
-        }
-      ],
+      "skillTypes": [],
       "views": 1,
       "responses": 2
     }
@@ -277,40 +230,246 @@
   ],
   "roles": [
     {
+      "id": 0,
+      "text": "Создать свою роль",
+      "value": "Создать свою роль"
+    },
+    {
       "id": 1,
-      "text": "Стратегическое планирование",
-      "value": "Стратегическое планирование",
+      "text": "Инженер ИБ",
+      "value": "Инженер ИБ",
+      "canEdit": false,
       "skills": [
         {
           "id": 1,
-          "value": 50,
+          "value": 4,
           "text": "Заголовок",
-          "title": "ITSP",
+          "title": "SFAS",
           "color": "#138D0A",
           "subtitle": "4 ур"
         },
         {
           "id": 2,
-          "value": 40,
-          "text": "Стратегия и архитектура",
-          "title": "PEMT",
+          "value": 2,
+          "text": "Заголовок",
+          "title": "SWDN",
           "color": "#B4104C",
-          "subtitle": "3 ур"
+          "subtitle": "2 ур"
         },
         {
           "id": 3,
-          "value": 32,
-          "text": "Стратегия и архитектура",
-          "title": "SUPP",
+          "value": 5,
+          "text": "Заголовок",
+          "title": "PEDP",
           "color": "#138D0A",
-          "subtitle": "3 ур"
+          "subtitle": "5 ур"
         },
         {
           "id": 4,
-          "value": 80,
+          "value": 4,
           "text": "Стратегия и архитектура",
-          "title": "DCMA",
-          "subtitle": "6 ур",
+          "title": "SYSP",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 5,
+          "value": 3,
+          "text": "Стратегия и архитектура",
+          "title": "AUDT",
+          "subtitle": "3 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 6,
+          "value": 2,
+          "text": "Стратегия и архитектура",
+          "title": "VUAS",
+          "subtitle": "2 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 7,
+          "value": 2,
+          "text": "Стратегия и архитектура",
+          "title": "NTAS",
+          "subtitle": "2 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 8,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "NTDS",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 9,
+          "value": 5,
+          "text": "Стратегия и архитектура",
+          "title": "PROG",
+          "subtitle": "5 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 10,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "THIN",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 11,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "VURE",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 12,
+          "value": 3,
+          "text": "Стратегия и архитектура",
+          "title": "SCAD",
+          "subtitle": "3 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 13,
+          "value": 5,
+          "text": "Стратегия и архитектура",
+          "title": "SFAS",
+          "subtitle": "5 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 14,
+          "value": 3,
+          "text": "Стратегия и архитектура",
+          "title": "VUAS",
+          "subtitle": "3 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 15,
+          "value": 5,
+          "text": "Стратегия и архитектура",
+          "title": "SFEN",
+          "subtitle": "5 ур",
+          "color": "#FC8616"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "Data scientist (Антифрод)",
+      "value": "Data scientist (Антифрод)",
+      "canEdit": false,
+      "skills": [
+        {
+          "id": 1,
+          "value": 4,
+          "text": "Заголовок",
+          "title": "RSCH",
+          "color": "#138D0A",
+          "subtitle": "4 ур"
+        },
+        {
+          "id": 2,
+          "value": 2,
+          "text": "Заголовок",
+          "title": "ICPM",
+          "color": "#B4104C",
+          "subtitle": "2 ур"
+        },
+        {
+          "id": 3,
+          "value": 5,
+          "text": "Заголовок",
+          "title": "DEMM",
+          "color": "#138D0A",
+          "subtitle": "5 ур"
+        },
+        {
+          "id": 4,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "BUSA",
+          "subtitle": "3 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 5,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "DTAN",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 6,
+          "value": 2,
+          "text": "Стратегия и архитектура",
+          "title": "VUAS",
+          "subtitle": "2 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 7,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "NUAN",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 8,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "DENG",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 9,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "DBAD",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 10,
+          "value": 3,
+          "text": "Стратегия и архитектура",
+          "title": "DBDS",
+          "subtitle": "3 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 11,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "PROG",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 12,
+          "value": 4,
+          "text": "Стратегия и архитектура",
+          "title": "DATS",
+          "subtitle": "4 ур",
+          "color": "#FC8616"
+        },
+        {
+          "id": 13,
+          "value": 3,
+          "text": "Стратегия и архитектура",
+          "title": "REQM",
+          "subtitle": "3 ур",
           "color": "#FC8616"
         }
       ]
