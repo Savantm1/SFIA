@@ -19,12 +19,6 @@ interface SkillsModalForRolesState {
     resetAllSelections: VoidFunction;
     getArrayOfSelectedSkills: () => StudentSkillType[] | [];
     updateStudentSkillsInDB: (user: User, skills: StudentSkillType[]) => void;
-    updateStudentSkillInDB: (
-        user: User,
-        skillId: string,
-        value: number
-    ) => void;
-    deleteStudentSkillFromDB: (user: User, skillId: string) => void;
     setInitialData: (updatedModalData?: StudentSkillType[]) => void;
 }
 
@@ -107,7 +101,7 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
                                             subItem.subcategoryTitle,
                                         color: categoryItem.mainColor,
                                         subColor: categoryItem.secondaryColor,
-                                        skillId: skillItem.skillId,
+                                        id: skillItem.id,
                                         code: skillItem.code,
                                         text: skillItem.text,
                                         value: Number(skillItem?.value),
@@ -140,75 +134,6 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
                 useAuthStore.getState().setCurrentUser({ ...user, skills });
             },
 
-            updateStudentSkillInDB: async (user, skillId, value) => {
-                const updatedSkills = user.skills?.map((skill) => {
-                    if (skill.skillId === skillId) {
-                        skill.value = value;
-                    }
-                    return skill;
-                });
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: updatedSkills,
-                    },
-                });
-                useAuthStore
-                    .getState()
-                    .setCurrentUser({ ...user, skills: updatedSkills });
-            },
-
-            deleteStudentSkillFromDB: async (user, skillId) => {
-                const filteredSkills = user.skills?.filter(
-                    (skill) => skill.skillId !== skillId
-                );
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: filteredSkills,
-                    },
-                });
-                useAuthStore
-                    .getState()
-                    .setCurrentUser({ ...user, skills: filteredSkills });
-                set({
-                    initialModalData: initialModalData,
-                });
-                set((state) => {
-                    if (!filteredSkills?.length) return;
-
-                    filteredSkills.forEach((defaultElement) => {
-                        state.initialModalData.forEach((categoryItem) => {
-                            categoryItem.subCategories.forEach(
-                                (subcategoryItem) => {
-                                    subcategoryItem.items.forEach((item) => {
-                                        if (
-                                            item.skillId ===
-                                            defaultElement.skillId
-                                        ) {
-                                            item.isChecked = true;
-                                            item.value = defaultElement.value;
-                                        }
-                                        return item;
-                                    });
-                                }
-                            );
-                        });
-                    });
-                    return state;
-                });
-            },
-
             setInitialData: (updatedModalData) => {
                 if (!updatedModalData?.length) {
                     set({ initialModalData: initialModalData });
@@ -221,10 +146,7 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
                             categoryItem.subCategories.forEach(
                                 (subcategoryItem) => {
                                     subcategoryItem.items.forEach((item) => {
-                                        if (
-                                            item.skillId ===
-                                            defaultElement.skillId
-                                        ) {
+                                        if (item.id === defaultElement.id) {
                                             item.isChecked = true;
                                             item.value = defaultElement.value;
                                         }

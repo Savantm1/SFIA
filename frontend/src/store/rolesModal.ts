@@ -5,23 +5,20 @@ import ky from 'ky';
 import { create } from 'zustand';
 import { immer } from 'zustand/middleware/immer';
 
-export type StudentRoleSkill = StudentSkillType & {
-    id: number;
-};
-
 export type StudentRoleType = {
     id: number;
     value: string;
     text: string;
     canEdit?: boolean;
-    skills: StudentRoleSkill[];
+    skills: StudentSkillType[];
 };
+
 type RolesModalStoreType = {
     studentRoles: StudentRoleType[];
     getRoles: () => void;
     addRole: (user: User, role: StudentRoleType) => void;
     deleteRole: (user: User, roleId: number) => void;
-    editRole: (user: User, role: StudentRoleType) => void;
+    editRole: (user: User, roleId: number, skills: StudentSkillType[]) => void;
 };
 
 export const useRolesModalStore = create<RolesModalStoreType>()(
@@ -74,10 +71,11 @@ export const useRolesModalStore = create<RolesModalStoreType>()(
                 .setCurrentUser({ ...user, studentRoles: filteredRoles });
         },
 
-        editRole: async (user: User, role) => {
+        editRole: async (user: User, roleId, skills) => {
             const updatedRoles = user.studentRoles?.map((userRole) => {
-                if (userRole.id === role.id) {
-                    return role;
+                if (userRole.id === roleId) {
+                    userRole.skills = skills;
+                    return userRole;
                 }
                 return userRole;
             });

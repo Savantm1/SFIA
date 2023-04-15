@@ -23,8 +23,7 @@ export type StudentSkillType = {
     color: string;
     subColor?: string;
     value?: number;
-    skillId?: string;
-    id?: number;
+    id: number;
     subtitle?: string;
     title?: string;
     code?: string;
@@ -40,12 +39,8 @@ interface SkillsModalState {
     resetAllSelections: VoidFunction;
     getArrayOfSelectedSkills: () => StudentSkillType[] | [];
     updateStudentSkillsInDB: (user: User, skills: StudentSkillType[]) => void;
-    updateStudentSkillInDB: (
-        user: User,
-        skillId: string,
-        value: number
-    ) => void;
-    deleteStudentSkillFromDB: (user: User, skillId: string) => void;
+    updateStudentSkillInDB: (user: User, id: number, value: number) => void;
+    deleteStudentSkillFromDB: (user: User, id: number) => void;
     setInitialData: (updatedModalData?: StudentSkillType[]) => void;
 }
 
@@ -128,7 +123,7 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                                             subItem.subcategoryTitle,
                                         color: categoryItem.mainColor,
                                         subColor: categoryItem.secondaryColor,
-                                        skillId: skillItem.skillId,
+                                        id: skillItem.id,
                                         text: skillItem.text,
                                         code: skillItem.code,
                                         value: Number(skillItem?.value),
@@ -160,9 +155,9 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                 useAuthStore.getState().setCurrentUser({ ...user, skills });
             },
 
-            updateStudentSkillInDB: async (user, skillId, value) => {
+            updateStudentSkillInDB: async (user, id, value) => {
                 const updatedSkills = user.skills?.map((skill) => {
-                    if (skill.skillId === skillId) {
+                    if (skill.id === id) {
                         skill.value = value;
                     }
                     return skill;
@@ -183,9 +178,9 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                     .setCurrentUser({ ...user, skills: updatedSkills });
             },
 
-            deleteStudentSkillFromDB: async (user, skillId) => {
+            deleteStudentSkillFromDB: async (user, id) => {
                 const filteredSkills = user.skills?.filter(
-                    (skill) => skill.skillId !== skillId
+                    (skill) => skill.id !== id
                 );
                 await ky.put(`http://localhost:3001/users/${user.id}`, {
                     json: {
@@ -212,10 +207,7 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                             categoryItem.subCategories.forEach(
                                 (subcategoryItem) => {
                                     subcategoryItem.items.forEach((item) => {
-                                        if (
-                                            item.skillId ===
-                                            defaultElement.skillId
-                                        ) {
+                                        if (item.id === defaultElement.id) {
                                             item.isChecked = true;
                                             item.value = defaultElement.value;
                                         }
@@ -231,7 +223,6 @@ export const useSkillsModalStore = create<SkillsModalState>()(
 
             setInitialData: (updatedModalData) => {
                 if (!updatedModalData?.length) {
-                    // set({ initialModalData: initialModalData });
                     return;
                 }
 
@@ -241,10 +232,7 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                             categoryItem.subCategories.forEach(
                                 (subcategoryItem) => {
                                     subcategoryItem.items.forEach((item) => {
-                                        if (
-                                            item.skillId ===
-                                            defaultElement.skillId
-                                        ) {
+                                        if (item.id === defaultElement.id) {
                                             item.isChecked = true;
                                             item.value = defaultElement.value;
                                         }

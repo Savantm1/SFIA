@@ -51,8 +51,11 @@ export const SaveRoleModal: FC<SaveRoleModalProps> = memo(
                     <Styled.ButtonsContainer>
                         <Button
                             onClick={async () => {
-                                await addRole(user!, {
-                                    id: +faker.datatype.uuid(),
+                                addRole(user!, {
+                                    id: faker.datatype.number({
+                                        min: 100,
+                                        max: 90000000,
+                                    }),
                                     value: value,
                                     text: value,
                                     canEdit: true,

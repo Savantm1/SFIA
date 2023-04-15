@@ -17,7 +17,7 @@ export const ProgressBarList: FC<ProgressBarListProps> = memo(
         const progressBars = useMemo(() => {
             return items.map((item) => (
                 <ProgressBar
-                    key={item.skillId}
+                    key={item.id}
                     {...item}
                     isBig={isBig}
                     isEdit={isEdit}

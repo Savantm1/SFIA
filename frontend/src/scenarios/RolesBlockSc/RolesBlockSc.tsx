@@ -19,21 +19,14 @@ type RolesBlockScProps = {
 export const RolesBlockSc: FC<RolesBlockScProps> = memo(
     ({ roles = [], showAllItemsHandler }) => {
         const onDeleteRole = useRolesModalStore((state) => state.deleteRole);
-        const onEditRole = useRolesModalStore((state) => state.editRole);
         const user = useCurrentUser();
-
-        const onChangeRole = useCallback(
-            (role: StudentRoleType) => {
-                onEditRole(user!, role);
-            },
-            [onEditRole, user]
-        );
         const onDeleteRoleHandler = useCallback(
             (roleId: number) => {
                 onDeleteRole(user!, roleId);
             },
             [onDeleteRole, user]
         );
+
         const {
             skillsSelectionModalIsVisible,
             isVisibleRolesSelectionModal,
@@ -60,11 +53,10 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                             key={el.id}
                             roleProps={el}
                             onDeleteRole={onDeleteRoleHandler}
-                            onChangeRole={onChangeRole}
                         />
                     );
                 }),
-            [onChangeRole, onDeleteRoleHandler, roles]
+            [onDeleteRoleHandler, roles]
         );
         if (roles.length === 0) {
             return (
@@ -76,6 +68,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     />
                     <SkillsSelectionModal
                         forRoles={true}
+                        updatedModalData={[]}
                         open={skillsSelectionModalIsVisible}
                         handleClose={onCloseSkillsSelectionModal}
                         getDataHandler={(selectedData) => {
@@ -87,7 +80,6 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     <RolesSelectionModal
                         handleClose={onCloseRolesSelectionModal}
                         open={isVisibleRolesSelectionModal}
-                        // getNewRole={getNewRole}
                         onOpenSkillsModal={onOpenSkillsSelectionModal}
                     />
                     <Styled.SkillsBar>
@@ -115,6 +107,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     />
                     <SkillsSelectionModal
                         forRoles={true}
+                        updatedModalData={[]}
                         open={skillsSelectionModalIsVisible}
                         handleClose={onCloseSkillsSelectionModal}
                         getDataHandler={(selectedData) => {
@@ -126,7 +119,6 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     <RolesSelectionModal
                         handleClose={onCloseRolesSelectionModal}
                         open={isVisibleRolesSelectionModal}
-                        // getNewRole={getNewRole}
                         onOpenSkillsModal={onOpenSkillsSelectionModal}
                     />
                     <Styled.SkillsBar>
@@ -169,6 +161,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     />
                     <SkillsSelectionModal
                         forRoles={true}
+                        updatedModalData={[]}
                         open={skillsSelectionModalIsVisible}
                         handleClose={onCloseSkillsSelectionModal}
                         getDataHandler={(selectedData) => {

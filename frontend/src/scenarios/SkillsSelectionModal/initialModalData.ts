@@ -9,7 +9,7 @@ export type InitialModalDataType = {
 }[];
 
 export type ItemSkillType = {
-    skillId: string;
+    id: number;
     code: string;
     text: string;
     value?: number;
@@ -29,7 +29,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Стратегическое планирование',
                 items: [
                     {
-                        skillId: '1',
+                        id: 1,
                         code: 'ITSP',
                         text: 'Стратегическое планирование',
                         value: undefined,
@@ -38,7 +38,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '2',
+                        id: 2,
                         code: 'ISCO',
                         text: 'Координация информационных систем',
                         value: undefined,
@@ -47,7 +47,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '3',
+                        id: 3,
                         code: 'IRMG',
                         text: 'Информационное управление',
                         value: undefined,
@@ -56,7 +56,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '4',
+                        id: 4,
                         code: 'STPL',
                         text: 'Корпоративная и бизнес-архитектура',
                         value: undefined,
@@ -65,7 +65,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '5',
+                        id: 5,
                         code: 'ARCH',
                         text: 'Архитектура решений',
                         value: undefined,
@@ -74,7 +74,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '6',
+                        id: 6,
                         code: 'INOV',
                         text: 'Инновации',
                         value: undefined,
@@ -83,7 +83,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '7',
+                        id: 7,
                         code: 'EMRG',
                         text: 'Мониторинг новейших технологий',
                         value: undefined,
@@ -92,7 +92,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '8',
+                        id: 8,
                         code: 'RSCH',
                         text: 'Исследование',
                         value: undefined,
@@ -101,7 +101,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '81',
+                        id: 81,
                         code: 'DEMM',
                         text: 'Управление спросом',
                         value: undefined,
@@ -110,7 +110,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '82',
+                        id: 82,
                         code: 'INVA',
                         text: 'Оценка инвестиций',
                         value: undefined,
@@ -119,7 +119,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '83',
+                        id: 83,
                         code: 'FMIT',
                         text: 'Управление финансами',
                         value: undefined,
@@ -128,7 +128,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '84',
+                        id: 84,
                         code: 'MEAS',
                         text: 'Измерение',
                         value: undefined,
@@ -137,7 +137,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '85',
+                        id: 85,
                         code: 'SUST',
                         text: 'Устойчивое развитие',
                         value: undefined,
@@ -146,7 +146,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '86',
+                        id: 86,
                         code: 'COPL',
                         text: 'Управление непрерывностью',
                         value: undefined,
@@ -160,7 +160,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Безопасность и конфиденциальность',
                 items: [
                     {
-                        skillId: '9',
+                        id: 9,
                         code: 'SCTY',
                         text: 'Информационная безопасность',
                         value: undefined,
@@ -169,7 +169,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '10',
+                        id: 10,
                         code: 'INAS',
                         text: 'Информационное обеспечение',
                         value: undefined,
@@ -178,7 +178,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '11',
+                        id: 11,
                         code: 'PEDP',
                         text: 'Защита персональных данных',
                         value: undefined,
@@ -187,7 +187,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '12',
+                        id: 12,
                         code: 'VURE',
                         text: 'Изучение уязвимости',
                         value: undefined,
@@ -196,7 +196,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '13',
+                        id: 13,
                         code: 'THIN',
                         text: 'Анализ угроз',
                         value: undefined,
@@ -210,7 +210,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Управление, риск и соблюдение требований',
                 items: [
                     {
-                        skillId: '14',
+                        id: 14,
                         code: 'GOVN',
                         text: 'Управление ИТ',
                         value: undefined,
@@ -219,7 +219,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '15',
+                        id: 15,
                         code: 'BURM',
                         text: 'Управление рисками',
                         value: undefined,
@@ -228,7 +228,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '16',
+                        id: 16,
                         code: 'AUDT',
                         text: 'Аудит',
                         value: undefined,
@@ -237,7 +237,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '17',
+                        id: 17,
                         code: 'QUMG',
                         text: 'Управление качеством',
                         value: undefined,
@@ -246,7 +246,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '171',
+                        id: 171,
                         code: 'QUAS',
                         text: 'Обеспечение качества',
                         value: undefined,
@@ -260,7 +260,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Консультации и рекомендации',
                 items: [
                     {
-                        skillId: '133',
+                        id: 133,
                         code: 'CNSL',
                         text: 'Консалтинг',
                         value: undefined,
@@ -269,7 +269,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '132',
+                        id: 132,
                         code: 'TECH',
                         text: 'Консультация специалиста',
                         value: undefined,
@@ -278,7 +278,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '131',
+                        id: 131,
                         code: 'METL',
                         text: 'Методы и инструменты',
                         value: undefined,
@@ -299,7 +299,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Внедрение изменений',
                 items: [
                     {
-                        skillId: '51',
+                        id: 51,
                         code: 'POMG',
                         text: 'Управление портфелем',
                         value: undefined,
@@ -308,7 +308,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '52',
+                        id: 52,
                         code: 'PGMG',
                         text: 'Управление программами',
                         value: undefined,
@@ -317,7 +317,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '53',
+                        id: 53,
                         code: 'PRMG',
                         text: 'Управление проектами',
                         value: undefined,
@@ -326,7 +326,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '53',
+                        id: 53,
                         code: 'PROF',
                         text: 'Сопровождение программ и проектов',
                         value: undefined,
@@ -340,7 +340,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Анализ изменений',
                 items: [
                     {
-                        skillId: '54',
+                        id: 54,
                         code: 'BUSA',
                         text: 'Анализ бизнес-ситуации',
                         value: undefined,
@@ -349,7 +349,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '55',
+                        id: 55,
                         code: 'FEAS',
                         text: 'Оценка целесообразности',
                         value: undefined,
@@ -358,7 +358,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '561',
+                        id: 561,
                         code: 'REQM',
                         text: 'Определение и управление требо-ми',
                         value: undefined,
@@ -367,7 +367,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '56',
+                        id: 56,
                         code: 'BSMO',
                         text: 'Бизнес-моделирование',
                         value: undefined,
@@ -376,7 +376,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '57',
+                        id: 57,
                         code: 'BPTS',
                         text: 'Приемочные испытания',
                         value: undefined,
@@ -390,7 +390,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Планирование изменений',
                 items: [
                     {
-                        skillId: '58',
+                        id: 58,
                         code: 'BPRE',
                         text: 'Улучшение бизнес - процессов',
                         value: undefined,
@@ -399,7 +399,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '59',
+                        id: 59,
                         code: 'OCDV',
                         text: 'Развитие организационных возможностей',
                         value: undefined,
@@ -408,7 +408,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '60',
+                        id: 60,
                         code: 'ORDI',
                         text: 'Разработка организационной структуры',
                         value: undefined,
@@ -417,7 +417,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '61',
+                        id: 61,
                         code: 'CIPM',
                         text: 'Управление органи-ми изменениями',
                         value: undefined,
@@ -426,7 +426,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '62',
+                        id: 62,
                         code: 'BENM',
                         text: 'Управление выгодами',
                         value: undefined,
@@ -448,7 +448,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Разработка систем',
                 items: [
                     {
-                        skillId: '18',
+                        id: 18,
                         code: 'PROD',
                         text: 'Управление продуктами',
                         value: undefined,
@@ -457,7 +457,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '181',
+                        id: 181,
                         code: 'DLMG',
                         text: 'Управление разработкой систем',
                         value: undefined,
@@ -466,7 +466,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '182',
+                        id: 182,
                         code: 'SLEN',
                         text: 'Про-ние жизненного цикла систем и ПО',
                         value: undefined,
@@ -475,7 +475,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '19',
+                        id: 19,
                         code: 'DESN',
                         text: 'Проектирование систем',
                         value: undefined,
@@ -484,7 +484,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '19123',
+                        id: 19123,
                         code: 'SWDN',
                         text: 'Проектирование ПО',
                         value: undefined,
@@ -493,7 +493,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '191',
+                        id: 191,
                         code: 'NTDS',
                         text: 'Проектирование сети',
                         value: undefined,
@@ -502,7 +502,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '20',
+                        id: 20,
                         code: 'HWDE',
                         text: 'Про-ние аппаратного обеспечения',
                         value: undefined,
@@ -511,7 +511,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '201',
+                        id: 201,
                         code: 'PROG',
                         text: 'Программирование/разработка ПО',
                         value: undefined,
@@ -520,7 +520,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '202',
+                        id: 202,
                         code: 'SINT',
                         text: 'Интеграция и сборка систем',
                         value: undefined,
@@ -529,7 +529,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '203',
+                        id: 203,
                         code: 'TEST',
                         text: 'Тестирование',
                         value: undefined,
@@ -538,7 +538,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '204',
+                        id: 204,
                         code: 'PORT',
                         text: 'Конфигурация ПО',
                         value: undefined,
@@ -547,7 +547,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '204444',
+                        id: 204444,
                         code: 'RESD',
                         text: 'Cистемы реального времени',
                         value: undefined,
@@ -557,7 +557,7 @@ export const initialModalData: InitialModalDataType = [
                     },
 
                     {
-                        skillId: '205',
+                        id: 205,
                         code: 'SFEN',
                         text: 'Техника безопасности',
                         value: undefined,
@@ -566,7 +566,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '206',
+                        id: 206,
                         code: 'SFAS',
                         text: 'Оценка безопасности',
                         value: undefined,
@@ -575,7 +575,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '207',
+                        id: 207,
                         code: 'RFEN',
                         text: 'Радиочастотная техника',
                         value: undefined,
@@ -584,7 +584,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '208',
+                        id: 208,
                         code: 'ADEV',
                         text: 'Разработка анимации',
                         value: undefined,
@@ -598,7 +598,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Данные и аналитика',
                 items: [
                     {
-                        skillId: '21',
+                        id: 21,
                         code: 'DATM',
                         text: 'Управление данными',
                         value: undefined,
@@ -607,7 +607,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '22',
+                        id: 22,
                         code: 'DTAN',
                         text: 'Моделирование и проектирование данных',
                         value: undefined,
@@ -616,7 +616,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '23',
+                        id: 23,
                         code: 'DBDS',
                         text: 'Проектирование базы данных',
                         value: undefined,
@@ -625,7 +625,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '24',
+                        id: 24,
                         code: 'DENG',
                         text: 'Инжиниринг данных',
                         value: undefined,
@@ -634,7 +634,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '25',
+                        id: 25,
                         code: 'DBAD',
                         text: 'Администрирование базы данных',
                         value: undefined,
@@ -643,7 +643,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '26',
+                        id: 26,
                         code: 'DATS',
                         text: 'Дата сайенс',
                         value: undefined,
@@ -652,7 +652,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '261',
+                        id: 261,
                         code: 'MLNG',
                         text: 'Машинное обучение',
                         value: undefined,
@@ -661,7 +661,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '262',
+                        id: 262,
                         code: 'BINT',
                         text: 'Бизнес-аналитика',
                         value: undefined,
@@ -670,7 +670,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '263',
+                        id: 263,
                         code: 'VISL',
                         text: 'Визуализация данных',
                         value: undefined,
@@ -684,7 +684,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Опыт пользователя',
                 items: [
                     {
-                        skillId: '264',
+                        id: 264,
                         code: 'URCH',
                         text: 'Исследование пользователей',
                         value: undefined,
@@ -693,7 +693,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '265',
+                        id: 265,
                         code: 'UNAN',
                         text: 'Анализ пользовательского опыта',
                         value: undefined,
@@ -702,7 +702,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '266',
+                        id: 266,
                         code: 'HCEV',
                         text: 'Прое-ние пользовательского опыта',
                         value: undefined,
@@ -711,7 +711,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '267',
+                        id: 267,
                         code: 'USEV',
                         text: 'Оценка пользовательского опыта',
                         value: undefined,
@@ -725,8 +725,8 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Управление контентом',
                 items: [
                     {
-                        skillId: '27',
-                        code: 'XXX',
+                        id: 27,
+                        code: 'INCA',
                         text: 'Создание контентаи',
                         value: undefined,
                         min: 1,
@@ -734,8 +734,8 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '28',
-                        code: 'XXX',
+                        id: 28,
+                        code: 'ICPM',
                         text: 'Публикация контента',
                         value: undefined,
                         min: 1,
@@ -743,8 +743,8 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '29',
-                        code: 'XXX',
+                        id: 29,
+                        code: 'KNOW',
                         text: 'Управление знаниями',
                         value: undefined,
                         min: 2,
@@ -757,7 +757,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Вычислительные науки',
                 items: [
                     {
-                        skillId: '271',
+                        id: 271,
                         code: 'SCMO',
                         text: 'Научная модель',
                         value: undefined,
@@ -766,7 +766,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '282',
+                        id: 282,
                         code: 'NUAN',
                         text: 'Числовой анализ',
                         value: undefined,
@@ -775,7 +775,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '293',
+                        id: 293,
                         code: 'HPCC',
                         text: 'Высокопроизводительные вычисления',
                         value: undefined,
@@ -797,7 +797,7 @@ export const initialModalData: InitialModalDataType = [
                     'Управление отношениями с заинтересованными сторонами',
                 items: [
                     {
-                        skillId: '30',
+                        id: 30,
                         code: 'SORC',
                         text: 'Сорсинг',
                         value: undefined,
@@ -806,7 +806,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '31',
+                        id: 31,
                         code: 'SUPP',
                         text: 'Управление поставщиками',
                         value: undefined,
@@ -815,7 +815,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '32',
+                        id: 32,
                         code: 'ITCM',
                         text: 'Управление контрактами',
                         value: undefined,
@@ -824,7 +824,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '33',
+                        id: 33,
                         code: 'RLMT',
                         text: 'Управление взаимоотношениями',
                         value: undefined,
@@ -833,7 +833,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '34',
+                        id: 34,
                         code: 'CSMG',
                         text: 'Служба поддержки клиентов',
                         value: undefined,
@@ -842,7 +842,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '35',
+                        id: 35,
                         code: 'ADMN',
                         text: 'Бизнес администрирование',
                         value: undefined,
@@ -856,7 +856,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Анализ изменений',
                 items: [
                     {
-                        skillId: '36',
+                        id: 36,
                         code: 'MKTG',
                         text: 'Маркетинг',
                         value: undefined,
@@ -866,7 +866,7 @@ export const initialModalData: InitialModalDataType = [
                     },
 
                     {
-                        skillId: '37',
+                        id: 37,
                         code: 'SALE',
                         text: 'Продажи',
                         value: undefined,
@@ -876,7 +876,7 @@ export const initialModalData: InitialModalDataType = [
                     },
 
                     {
-                        skillId: '38',
+                        id: 38,
                         code: 'SSUP',
                         text: 'Поддержка продаж',
                         value: undefined,
@@ -897,7 +897,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Технологический менеджмент',
                 items: [
                     {
-                        skillId: '39',
+                        id: 39,
                         code: 'ITMG',
                         text: 'Управление технологическими услугами',
                         value: undefined,
@@ -906,7 +906,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '40',
+                        id: 40,
                         code: 'ASUP',
                         text: 'Поддержка приложения',
                         value: undefined,
@@ -915,7 +915,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '41',
+                        id: 41,
                         code: 'ITOP',
                         text: 'Инфраструктура ИТ',
                         value: undefined,
@@ -924,7 +924,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '42',
+                        id: 42,
                         code: 'SYSP',
                         text: 'Системное программное обеспечение',
                         value: undefined,
@@ -933,7 +933,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '421',
+                        id: 421,
                         code: 'NTAS',
                         text: 'Поддержка сети',
                         value: undefined,
@@ -942,7 +942,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '422',
+                        id: 422,
                         code: 'HSIN',
                         text: 'Установка и удаление систем',
                         value: undefined,
@@ -951,7 +951,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '423',
+                        id: 423,
                         code: 'CFMG',
                         text: 'Управление конфигурациями',
                         value: undefined,
@@ -960,7 +960,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '424',
+                        id: 424,
                         code: 'RELM',
                         text: 'Релиз и развертывание',
                         value: undefined,
@@ -969,7 +969,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '425',
+                        id: 425,
                         code: 'STMG',
                         text: 'Управление хранением',
                         value: undefined,
@@ -978,7 +978,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '426',
+                        id: 426,
                         code: 'DCMA',
                         text: 'Управление объектами',
                         value: undefined,
@@ -992,7 +992,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Управление услугами',
                 items: [
                     {
-                        skillId: '431',
+                        id: 431,
                         code: 'SLMO',
                         text: 'Управление уровнем услуг',
                         value: undefined,
@@ -1001,7 +1001,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '43',
+                        id: 43,
                         code: 'SCMG',
                         text: 'Управление каталогом услуг',
                         value: undefined,
@@ -1010,7 +1010,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '45',
+                        id: 45,
                         code: 'AVMT',
                         text: 'Управление доступностью',
                         value: undefined,
@@ -1019,7 +1019,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '46',
+                        id: 46,
                         code: 'CPMG',
                         text: 'Управление мощностями',
                         value: undefined,
@@ -1028,7 +1028,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '441',
+                        id: 441,
                         code: 'USUP',
                         text: 'Управление инцидентами',
                         value: undefined,
@@ -1037,7 +1037,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '442',
+                        id: 442,
                         code: 'PBMG',
                         text: 'Управление проблемами',
                         value: undefined,
@@ -1046,7 +1046,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '443',
+                        id: 443,
                         code: 'CHMG',
                         text: 'Контроль изменений',
                         value: undefined,
@@ -1055,7 +1055,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '444',
+                        id: 444,
                         code: 'ASMG',
                         text: 'Управление активами',
                         value: undefined,
@@ -1064,7 +1064,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '445',
+                        id: 445,
                         code: 'SEAC',
                         text: 'Принятие услуг',
                         value: undefined,
@@ -1078,7 +1078,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Услуги по обеспечению безопасности',
                 items: [
                     {
-                        skillId: '47',
+                        id: 47,
                         code: 'SCAD',
                         text: 'Операции по обеспечению безопасности',
                         value: undefined,
@@ -1087,7 +1087,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '48',
+                        id: 48,
                         code: 'VUAS',
                         text: 'Оценка уязвимости',
                         value: undefined,
@@ -1096,7 +1096,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '49',
+                        id: 49,
                         code: 'DGFS',
                         text: 'Цифровая криминалистика',
                         value: undefined,
@@ -1105,7 +1105,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '50',
+                        id: 50,
                         code: 'PENT',
                         text: 'Тестирование на проникновение',
                         value: undefined,
@@ -1126,7 +1126,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Управление людскими ресурсамии',
                 items: [
                     {
-                        skillId: '63',
+                        id: 63,
                         code: 'PEMT',
                         text: 'Управление производительностью',
                         value: undefined,
@@ -1135,7 +1135,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '64',
+                        id: 64,
                         code: 'EEXP',
                         text: 'Впечатление персонала',
                         value: undefined,
@@ -1144,7 +1144,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '65',
+                        id: 65,
                         code: 'OFCL',
                         text: 'Организационная фасилитация',
                         value: undefined,
@@ -1153,7 +1153,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '66',
+                        id: 66,
                         code: 'PDSV',
                         text: 'Профессиональное развитие',
                         value: undefined,
@@ -1162,7 +1162,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '67',
+                        id: 67,
                         code: 'WFPL',
                         text: 'Планирование трудовых ресурсов',
                         value: undefined,
@@ -1171,7 +1171,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '68',
+                        id: 68,
                         code: 'RESC',
                         text: 'Обеспечение ресурсами',
                         value: undefined,
@@ -1185,7 +1185,7 @@ export const initialModalData: InitialModalDataType = [
                 subcategoryTitle: 'Управление навыками',
                 items: [
                     {
-                        skillId: '69',
+                        id: 69,
                         code: 'ETMG',
                         text: 'Управление обучением и развитием',
                         value: undefined,
@@ -1194,7 +1194,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '70',
+                        id: 70,
                         code: 'TMCR',
                         text: 'Разработка и развитие обучения',
                         value: undefined,
@@ -1203,7 +1203,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '71',
+                        id: 71,
                         code: 'ETDL',
                         text: 'Проведение учебных мероприятий',
                         value: undefined,
@@ -1212,7 +1212,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '72',
+                        id: 72,
                         code: 'LEDA',
                         text: 'Оценка компетенций',
                         value: undefined,
@@ -1221,7 +1221,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '73',
+                        id: 73,
                         code: 'CSOP',
                         text: 'Работа системы сертификации',
                         value: undefined,
@@ -1230,7 +1230,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '74',
+                        id: 74,
                         code: 'TEAC',
                         text: 'Обучение',
                         value: undefined,
@@ -1239,7 +1239,7 @@ export const initialModalData: InitialModalDataType = [
                         isChecked: false,
                     },
                     {
-                        skillId: '75',
+                        id: 75,
                         code: 'SUBF',
                         text: 'Формирование темы',
                         value: undefined,

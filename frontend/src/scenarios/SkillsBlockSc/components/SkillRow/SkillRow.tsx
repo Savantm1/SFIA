@@ -9,7 +9,7 @@ import { FC, memo, useEffect, useState } from 'react';
 import { Styled } from './styled';
 
 export type SkillRowProps = {
-    skillId: string;
+    id: number;
     title: string;
     color?: string;
     value: number;
@@ -17,7 +17,7 @@ export type SkillRowProps = {
     max?: number;
 };
 export const SkillRow: FC<SkillRowProps> = memo(
-    ({ skillId, title, color = Color.fuxy, value = 5, min = 1, max = 7 }) => {
+    ({ id, title, color = Color.fuxy, value = 5, min = 1, max = 7 }) => {
         const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
             useMenu();
 
@@ -68,7 +68,7 @@ export const SkillRow: FC<SkillRowProps> = memo(
                             onClick={async () => {
                                 await updateStudentSkillInDB(
                                     currentUser!,
-                                    skillId,
+                                    id,
                                     currentValue
                                 );
                                 setIsEdited(false);
@@ -120,10 +120,7 @@ export const SkillRow: FC<SkillRowProps> = memo(
                     </Styled.MenuItem>
                     <Styled.MenuItem
                         onClick={async () => {
-                            await deleteStudentSkillFromDB(
-                                currentUser!,
-                                skillId
-                            );
+                            await deleteStudentSkillFromDB(currentUser!, id);
                             closeMenuHandler();
                         }}
                     >
