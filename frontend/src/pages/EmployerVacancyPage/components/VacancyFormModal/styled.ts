@@ -83,6 +83,19 @@ const CancelButton = styled.button`
     cursor: pointer;
 `;
 
+const AddSkillsButton = styled.button`
+    width: 286px !important;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid ${Color.secondaryGray} !important;
+    background: ${Color.mainWhite} !important;
+    color: ${Color.secondaryGray} !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    line-height: 15px !important;
+    cursor: pointer;
+`;
+
 export const DickButton = styled(IconButton)`
     width: 30px;
     height: 36px;
@@ -92,6 +105,7 @@ export const DickButton = styled(IconButton)`
 
 const ProgressBar = styled(ProgressBarList)`
     width: 100%;
+    height: 100%;
     max-width: 250px;
 `;
 
@@ -106,6 +120,7 @@ export const Styled = {
     ButtonsWrapper,
     CreateButton,
     CancelButton,
+    AddSkillsButton,
     DickButton,
     Select,
     ProgressBar,

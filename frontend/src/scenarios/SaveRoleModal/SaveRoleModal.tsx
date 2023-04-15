@@ -18,10 +18,11 @@ type SaveRoleModalProps = {
     skills?: StudentSkillType[];
 };
 export const SaveRoleModal: FC<SaveRoleModalProps> = memo(
-    ({ open, handleClose, skills }) => {
+    ({ open, handleClose, skills = [] }) => {
         const [value, setValue] = useState('');
         const addRole = useRolesModalStore((state) => state.addRole);
         const user = useCurrentUser();
+
         return (
             <Modal
                 onClose={() => {
@@ -46,22 +47,7 @@ export const SaveRoleModal: FC<SaveRoleModalProps> = memo(
                     >
                         Набор навыков, которые входят в эту роль
                     </Styled.Description>
-                    <ProgressBarList
-                        items={[
-                            {
-                                title: 'ITSP',
-                                subtitle: '6 ур',
-                                value: 70,
-                                color: '#B4104C',
-                            },
-                            {
-                                title: 'PEMT',
-                                subtitle: '5 ур',
-                                value: 60,
-                                color: '#0E72AB',
-                            },
-                        ]}
-                    />
+                    <ProgressBarList items={skills} />
                     <Styled.ButtonsContainer>
                         <Button
                             onClick={async () => {
@@ -70,26 +56,7 @@ export const SaveRoleModal: FC<SaveRoleModalProps> = memo(
                                     value: value,
                                     text: value,
                                     canEdit: true,
-                                    skills: [
-                                        {
-                                            id: 1,
-                                            value: 4,
-                                            //Поправить типы после решения конфликтов
-                                            text: 'Заголовок',
-                                            title: 'RSCH',
-                                            color: '#138D0A',
-                                            subtitle: '4 ур',
-                                        },
-                                        {
-                                            id: 2,
-                                            value: 2,
-                                            //Поправить типы после решения конфликтов
-                                            text: 'Заголовок',
-                                            title: 'ICPM',
-                                            color: '#B4104C',
-                                            subtitle: '2 ур',
-                                        },
-                                    ],
+                                    skills: skills,
                                 });
                                 handleClose();
                             }}

@@ -1,13 +1,15 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export const useValidation = (options: any) => {
-    const [data, setData] = useState<any>(() => {
+    const [data, setData] = useState<any>([]);
+
+    useEffect(() => {
         const values: any = {};
         for (const field in options.fields) {
             values[field] = options.fields[field].initialValue || '';
         }
-        return values;
-    });
+        setData(values);
+    }, [options.fields]);
 
     const [errors, setErrors] = useState<any>({});
 

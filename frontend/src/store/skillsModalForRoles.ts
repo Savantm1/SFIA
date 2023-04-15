@@ -106,7 +106,9 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
                                         subcategoryTitle:
                                             subItem.subcategoryTitle,
                                         color: categoryItem.mainColor,
+                                        subColor: categoryItem.secondaryColor,
                                         skillId: skillItem.skillId,
+                                        code: skillItem.code,
                                         text: skillItem.text,
                                         value: Number(skillItem?.value),
                                         min: skillItem.min,
@@ -119,6 +121,7 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
                     });
                     return state;
                 });
+
                 return arrayOfSelectedSkills;
             },
 

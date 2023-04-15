@@ -41,7 +41,7 @@ export const TextArea: FC<TextAreaProps> = memo(
             const diff = maxLength - evt.target.value.length;
             setCounter(diff);
             setTextValue(evt.target.value);
-            onChange(textValue);
+            onChange(evt.target.value);
         };
 
         return (

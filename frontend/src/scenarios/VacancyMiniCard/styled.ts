@@ -73,7 +73,6 @@ const Subtitle = styled.span`
     font-size: 8px;
     line-height: 10px;
     color: ${Color.secondaryDarkGray};
-    margin-bottom: 10px;
     min-height: 30px;
 `;
 

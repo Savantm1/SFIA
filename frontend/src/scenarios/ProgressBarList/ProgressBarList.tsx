@@ -12,22 +12,23 @@ export const ProgressBarList: FC<ProgressBarListProps> = memo(
         isEdit = false,
         onDelete,
         onChange,
+        skillsGap,
     }) => {
         const progressBars = useMemo(() => {
             return items.map((item) => (
                 <ProgressBar
-                    key={item.title}
+                    key={item.skillId}
                     {...item}
                     isBig={isBig}
                     isEdit={isEdit}
                     onDelete={() => onDelete?.(item)}
-                    onChange={(value) => onChange!(item.id!, value)}
+                    onChange={(value) => onChange?.(item.id!, value)}
                 />
             ));
         }, [isBig, isEdit, items, onChange, onDelete]);
 
         return (
-            <Styled.ListWrapper className={className}>
+            <Styled.ListWrapper skillsGap={skillsGap} className={className}>
                 {progressBars}
             </Styled.ListWrapper>
         );

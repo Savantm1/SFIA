@@ -36,6 +36,7 @@ const DeleteButton = styled.button`
     line-height: 15px !important;
     border-radius: 8px;
     border: 1px solid ${Color.critical} !important;
+    cursor: pointer;
 `;
 
 const CancelButton = styled.button`

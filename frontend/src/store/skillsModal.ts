@@ -19,11 +19,16 @@ export type HandlerPropsSkillType = {
 
 export type StudentSkillType = {
     categoryTitle?: string;
-    subcategoryTitle: string;
+    subcategoryTitle?: string;
     color: string;
+    subColor?: string;
     value?: number;
-    skillId: string;
-    text: string;
+    skillId?: string;
+    id?: number;
+    subtitle?: string;
+    title?: string;
+    code?: string;
+    text?: string;
     min?: number;
     max?: number;
 };
@@ -122,8 +127,10 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                                         subcategoryTitle:
                                             subItem.subcategoryTitle,
                                         color: categoryItem.mainColor,
+                                        subColor: categoryItem.secondaryColor,
                                         skillId: skillItem.skillId,
                                         text: skillItem.text,
+                                        code: skillItem.code,
                                         value: Number(skillItem?.value),
                                         min: skillItem.min,
                                         max: skillItem.max,

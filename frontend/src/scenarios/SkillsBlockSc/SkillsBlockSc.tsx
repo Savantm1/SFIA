@@ -29,9 +29,9 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
         const elements = items.map((skill) => {
             return (
                 <SkillRow
-                    skillId={skill.skillId}
+                    skillId={skill.skillId ?? ''}
                     key={skill.skillId}
-                    title={skill.text}
+                    title={skill.text ?? ''}
                     value={skill.value!}
                     color={skill.color}
                     min={skill.min}

@@ -1,7 +1,8 @@
-import { SkillType, Vacancy } from '@common/models';
+import { Vacancy } from '@common/models';
 import { useValidation } from '@common/validation/hooks/useValidation';
 import { inputValidationOptions } from '@pages/EmployerVacancyPage/constants';
 import { getValidationOptionsWithInitialValue } from '@pages/EmployerVacancyPage/utils/getValidationOptionsWithInitialValue';
+import { StudentSkillType } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
 import { FC, memo, useMemo } from 'react';
@@ -14,7 +15,7 @@ type VacancyFormModalProps = {
     openSkillModalHandler: VoidFunction;
     onFormSubmitHandler: (data: any) => void;
     vacancy?: Vacancy;
-    selectedSkillTypes?: SkillType[];
+    selectedSkillTypes?: StudentSkillType[];
 };
 
 export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
@@ -83,42 +84,40 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
 
                         <Styled.Row>
                             <Styled.TextArea {...getInputProps('conditions')} />
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    height: '100%',
-                                    width: '100%',
-                                }}
-                            >
-                                <Styled.ProgressBar
-                                    items={
-                                        vacancy
-                                            ? selectedSkillTypes.length > 0
-                                                ? selectedSkillTypes
-                                                : vacancy.skillTypes
-                                            : selectedSkillTypes
-                                    }
-                                />
-                                {/*{vacancy ? (*/}
-                                {/*    <Styled.ProgressBar*/}
-                                {/*        items={selectedSkillTypes}*/}
-                                {/*    />*/}
-                                {/*) : (*/}
-                                {/*    <Styled.Select*/}
-                                {/*        options={[]}*/}
-                                {/*        onSelect={() => {}}*/}
-                                {/*        defaultValue={''}*/}
-                                {/*        placeholder={'Навык'}*/}
-                                {/*    />*/}
-                                {/*)}*/}
+                            <Styled.TextArea
+                                {...getInputProps('description')}
+                            />
+                        </Styled.Row>
 
-                                <Styled.DickButton
-                                    iconName={Icons.cock}
-                                    onClick={openSkillModalHandler}
-                                />
-                            </div>
+                        <Styled.Row>
+                            <Styled.TextInput {...getInputProps('salary')} />
+
+                            <>
+                                {selectedSkillTypes.length === 0 ? (
+                                    <Styled.AddSkillsButton
+                                        onClick={openSkillModalHandler}
+                                    >
+                                        Выбрать навыки
+                                    </Styled.AddSkillsButton>
+                                ) : (
+                                    <>
+                                        <Styled.ProgressBar
+                                            items={
+                                                vacancy
+                                                    ? selectedSkillTypes.length >
+                                                      0
+                                                        ? selectedSkillTypes
+                                                        : vacancy.skillTypes
+                                                    : selectedSkillTypes
+                                            }
+                                        />
+                                        <Styled.DickButton
+                                            iconName={Icons.cock}
+                                            onClick={openSkillModalHandler}
+                                        />
+                                    </>
+                                )}
+                            </>
                         </Styled.Row>
 
                         <Styled.ButtonsWrapper>

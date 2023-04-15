@@ -28,10 +28,6 @@ export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
                         />
                         <Styled.Title>{fullName}</Styled.Title>
                     </Styled.TitleWrapper>
-                    <Styled.MenuButton
-                        iconName={Icons.menu}
-                        onClick={() => {}}
-                    />
                 </Styled.HeaderWrapper>
 
                 <Styled.GeneralInfoWrapper>
@@ -51,7 +47,10 @@ export const CandidateProfileComponent: FC<CandidateProfileComponentProps> =
                 <Styled.Text>{candidate.about}</Styled.Text>
 
                 <StyledInfo.Title>{'Навыки:'}</StyledInfo.Title>
-                <Styled.ProgressBar items={candidate.skillTypes} isBig={true} />
+                <Styled.ProgressBar
+                    items={candidate.skills ?? []}
+                    isBig={true}
+                />
 
                 <InfoList title={'Опыт:'} text={candidate.experience} />
                 <InfoList title={'Образование:'} text={candidate.education} />

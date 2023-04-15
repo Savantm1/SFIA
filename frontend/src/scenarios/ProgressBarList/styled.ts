@@ -1,5 +1,6 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Color from '@ui/assets/color';
+import { Text } from '@ui/components/Text';
 import styled from 'styled-components';
 
 const ProgressBar = styled(CircularProgress)<{
@@ -21,12 +22,12 @@ const Wrapper = styled.div`
     position: relative;
 `;
 
-const ListWrapper = styled.div`
+const ListWrapper = styled.div<{ skillsGap?: number }>`
     display: flex;
     flex-direction: row;
     overflow: auto;
     justify-content: flex-start;
-    gap: 10px;
+    gap: ${({ skillsGap }) => skillsGap ?? 10}px;
 `;
 
 const LabelWrapper = styled.div`
@@ -92,6 +93,75 @@ const ProgressBarOverlay = styled.div`
     right: 0;
     z-index: 1;
 `;
+
+const PopoverContentWrapper = styled.div`
+    padding: 14px;
+    width: 350px;
+`;
+
+const Row = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+const PopoverInfo = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+`;
+
+const PopoverTitle = styled.div`
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: #656464;
+`;
+
+const PopoverSubtitle = styled.div`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+`;
+
+const PopoverSliderWrapper = styled.div`
+    margin-top: 10px;
+    display: flex;
+`;
+
+const PopoverCode = styled.div<{ color: string; subColor?: string }>`
+    background-color: ${({ subColor }) => subColor};
+    color: ${({ color }) => color};
+    width: 70px;
+    height: 30px;
+    margin-right: -14px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    :after {
+        right: 0;
+        height: 30px;
+        width: 6px;
+        background-color: ${({ color }) => color};
+        content: '';
+    }
+`;
+
+const PopoverCodeSpan = styled.span`
+    margin-right: 8px;
+`;
+
+const PopoverLevel = styled(Text)`
+    margin-left: 8px;
+    margin-top: 7px;
+    width: 30px;
+`;
+
 export const Styled = {
     ProgressBarOverlay,
     DeleteBtn,
@@ -101,4 +171,13 @@ export const Styled = {
     LabelWrapper,
     Title,
     Subtitle,
+    PopoverContentWrapper,
+    Row,
+    PopoverInfo,
+    PopoverTitle,
+    PopoverSubtitle,
+    PopoverSliderWrapper,
+    PopoverCode,
+    PopoverLevel,
+    PopoverCodeSpan,
 };

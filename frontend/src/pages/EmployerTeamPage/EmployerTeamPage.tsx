@@ -1,14 +1,14 @@
 import { useCurrentUser } from '@common/hooks/useCurrentUser';
-import { SkillType, User } from '@common/models';
+import { User } from '@common/models';
 import { Member } from '@common/models/Member';
 import { STUDENT_ROUTES } from '@common/navigation';
 import { CreateFormModal } from '@pages/EmployerTeamPage/components/CreateFormModal/CreateFormModal';
 import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberComponent/NoMemberComponent';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
 import { TeamMemberMiniCard } from '@scenarios/TeamMemberMiniCard';
 import { useMembersStore } from '@store/members';
+import { StudentSkillType, useSkillsModalStore } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { Avatar } from '@ui/components/Avatar';
 import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
@@ -29,13 +29,17 @@ export const EmployerTeamPage: FC = memo(() => {
 
     const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
 
+    const resetAllSelections = useSkillsModalStore(
+        (state) => state.resetAllSelections
+    );
+
     const {
         isModalOpen: isSkillModalOpen,
         openModalHandler: openSkillModalHandler,
         closeModalHandler: closeSkillModalHandler,
     } = useModal();
 
-    const [skillTypes, setSkillTypes] = useState<SkillType[]>();
+    const [skillTypes, setSkillTypes] = useState<StudentSkillType[]>();
 
     const navigate = useNavigate();
 
@@ -76,28 +80,10 @@ export const EmployerTeamPage: FC = memo(() => {
         [createMember, fetchMembers, skillTypes, user]
     );
 
-    // TODO: обсудить расчет value в %
-    const getDataHandler = useCallback((data: InitialModalDataType) => {
-        const skillTypes: SkillType[] = [];
+    const getDataHandler = useCallback((selectedData: StudentSkillType[]) => {
+        setSkillTypes(selectedData);
 
-        data.forEach((dataItem) => {
-            dataItem.subCategories.forEach((subCategory) => {
-                subCategory.items.forEach((item) => {
-                    skillTypes.push({
-                        title: subCategory.subcategoryTitle
-                            .slice(0, 3)
-                            .toUpperCase(),
-                        subtitle: '' + item.value + ' ур',
-                        color: dataItem.mainColor,
-                        value: Math.round(((item.value ?? 0) * 100) / item.max),
-                    });
-                });
-            });
-        });
-
-        setSkillTypes(skillTypes);
-
-        return data;
+        return selectedData;
     }, []);
 
     if (!user) {
@@ -108,7 +94,7 @@ export const EmployerTeamPage: FC = memo(() => {
         <Styled.PageWrapper>
             <SkillsSelectionModal
                 updatedModalData={[]}
-                getDataHandler={(data) => data}
+                getDataHandler={getDataHandler}
                 open={isSkillModalOpen}
                 handleClose={closeSkillModalHandler}
             />
@@ -129,6 +115,7 @@ export const EmployerTeamPage: FC = memo(() => {
                             iconName={Icons.add}
                             onClick={() => {
                                 setSkillTypes([]);
+                                resetAllSelections();
                                 openModalHandler();
                             }}
                         />

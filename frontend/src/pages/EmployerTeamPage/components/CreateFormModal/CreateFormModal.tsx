@@ -1,7 +1,8 @@
-import { SkillType, User } from '@common/models';
+import { User } from '@common/models';
 import { useValidation } from '@common/validation/hooks/useValidation';
 import { inputValidationOptions } from '@pages/EmployerTeamPage/components/CreateFormModal/constants';
 import { SubtitleComponent } from '@pages/RegistrationPage/components/SubtitleComponent/SubtitleComponent';
+import { StudentSkillType } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
 import { FC, memo } from 'react';
@@ -14,7 +15,7 @@ type CreateFormModalProps = {
     onFormSubmitHandler: (data: any) => void;
     openSkillModalHandler: VoidFunction;
     member?: User;
-    selectedSkillTypes?: SkillType[];
+    selectedSkillTypes?: StudentSkillType[];
 };
 
 export const CreateFormModal: FC<CreateFormModalProps> = memo(
@@ -24,7 +25,7 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
         onFormSubmitHandler,
         openSkillModalHandler,
         member,
-        selectedSkillTypes,
+        selectedSkillTypes = [],
     }) => {
         const onSubmit = (data: any) => {
             onFormSubmitHandler(data);
@@ -86,20 +87,32 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                         </Styled.Row>
 
                         <Styled.Row>
-                            {/*<Styled.Select*/}
-                            {/*    options={[]}*/}
-                            {/*    onSelect={() => {}}*/}
-                            {/*    defaultValue={''}*/}
-                            {/*    placeholder={'Навык'}*/}
-                            {/*/>*/}
-                            <Styled.ProgressBar
-                                items={selectedSkillTypes ?? []}
-                            />
-
-                            <Styled.DickButton
-                                iconName={Icons.cock}
-                                onClick={openSkillModalHandler}
-                            />
+                            <>
+                                {selectedSkillTypes.length === 0 ? (
+                                    <Styled.AddSkillsButton
+                                        onClick={openSkillModalHandler}
+                                    >
+                                        Выбрать навыки
+                                    </Styled.AddSkillsButton>
+                                ) : (
+                                    <div
+                                        style={{
+                                            width: '286px',
+                                            display: 'flex',
+                                            flexDirection: 'row',
+                                            justifyContent: 'space-between',
+                                        }}
+                                    >
+                                        <Styled.ProgressBar
+                                            items={selectedSkillTypes}
+                                        />
+                                        <Styled.DickButton
+                                            iconName={Icons.cock}
+                                            onClick={openSkillModalHandler}
+                                        />
+                                    </div>
+                                )}
+                            </>
                         </Styled.Row>
 
                         <Styled.ButtonsWrapper>

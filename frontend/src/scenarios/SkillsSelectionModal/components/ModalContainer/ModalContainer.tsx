@@ -43,7 +43,7 @@ export const ModalContainer: FC<ModalContainerProps> = memo(
                 onRemoveSkill({
                     categoryTitle: skill.categoryTitle!,
                     subcategoryTitle: skill.subcategoryTitle!,
-                    text: skill.text,
+                    text: skill.text ?? '',
                 });
             },
             [onRemoveSkill]

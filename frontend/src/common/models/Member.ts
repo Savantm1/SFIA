@@ -1,4 +1,5 @@
-import { SkillType, User } from '@common/models';
+import { User } from '@common/models';
+import { StudentSkillType } from '@store/skillsModal';
 
 export type Member = {
     id: string;
@@ -12,5 +13,5 @@ export type Member = {
     birthday: string;
     phone: string;
     email: string;
-    skillTypes: SkillType[];
+    skillTypes: StudentSkillType[];
 };

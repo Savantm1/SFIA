@@ -19,5 +19,7 @@ export const inputValidationOptions: InputValidationOptionsType = {
         ),
         requirements: getDefaultRequiredField('requirements', 'Требования'),
         conditions: getDefaultRequiredField('conditions', 'Условия'),
+        description: getDefaultRequiredField('description', 'Описание'),
+        salary: getDefaultRequiredField('salary', 'Зарплата'),
     },
 };

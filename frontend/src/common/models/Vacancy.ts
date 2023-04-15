@@ -1,4 +1,4 @@
-import { SkillType } from '@common/models/SkillType';
+import { StudentSkillType } from '@store/skillsModal';
 
 export type Vacancy = {
     id: string;
@@ -12,8 +12,7 @@ export type Vacancy = {
     requirements: string;
     conditions: string;
     description: string;
-    fullDescription: string;
-    skillTypes: SkillType[];
+    skillTypes: StudentSkillType[];
     views?: number;
     responses?: number;
 };

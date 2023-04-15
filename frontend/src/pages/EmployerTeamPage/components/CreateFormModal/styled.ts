@@ -92,6 +92,22 @@ export const DickButton = styled(IconButton)`
 
 const ProgressBar = styled(ProgressBarList)`
     gap: 10px;
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+`;
+
+const AddSkillsButton = styled.button`
+    width: 286px !important;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid ${Color.secondaryGray} !important;
+    background: ${Color.mainWhite} !important;
+    color: ${Color.secondaryGray} !important;
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    line-height: 15px !important;
+    cursor: pointer;
 `;
 
 export const Styled = {
@@ -108,4 +124,5 @@ export const Styled = {
     DickButton,
     Select,
     ProgressBar,
+    AddSkillsButton,
 };

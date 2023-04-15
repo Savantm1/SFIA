@@ -1,6 +1,6 @@
-import { SkillType } from '@common/models';
+import { StudentSkillType } from '@store/skillsModal';
 
-export type ProgressBarProps = SkillType & {
+export type ProgressBarProps = StudentSkillType & {
     isEdit?: boolean;
     onDelete?: VoidFunction;
     onChange?: (value: number) => void;
@@ -15,4 +15,5 @@ export type ProgressBarListProps = {
     isEdit?: boolean;
     onDelete?: (value: ProgressBarProps) => void;
     onChange?: (id: number, value: number) => void;
+    skillsGap?: number;
 };

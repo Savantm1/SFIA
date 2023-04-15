@@ -12,6 +12,7 @@ type RoleRowProps = {
     onDeleteRole: (roleId: number) => void;
     onChangeRole: (role: StudentRoleType) => void;
 };
+
 export const RoleRow: FC<RoleRowProps> = memo(
     ({ roleProps, onDeleteRole, onChangeRole }) => {
         const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =

@@ -1,5 +1,4 @@
 import { useCurrentUser } from '@common/hooks/useCurrentUser';
-import { SkillType } from '@common/models';
 import { useGoBack } from '@common/navigation/hooks/useGoBack';
 import { CompanyInfoComponent } from '@pages/EmployerVacancyPage/components/CompanyInfoComponent/CompanyInfoComponent';
 import { VacancyFormModal } from '@pages/EmployerVacancyPage/components/VacancyFormModal/VacancyFormModal';
@@ -9,7 +8,7 @@ import { VacancyDeleteModal } from '@pages/EmployerVacancyProfilePage/components
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
 import { useModal } from '@pages/EmployerVacancyProfilePage/hooks/useModal';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
-import { InitialModalDataType } from '@scenarios/SkillsSelectionModal/initialModalData';
+import { StudentSkillType } from '@store/skillsModal';
 import { useVacanciesStore } from '@store/vacancies';
 import { Icons } from '@ui/assets/icons';
 import image from '@ui/assets/images/phone.png';
@@ -27,7 +26,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
     const updateVacancy = useVacanciesStore((state) => state.updateVacancy);
     const deleteVacancy = useVacanciesStore((state) => state.deleteVacancy);
 
-    const [skillTypes, setSkillTypes] = useState<SkillType[]>();
+    const [skillTypes, setSkillTypes] = useState<StudentSkillType[]>();
 
     const { isModalOpen, openModalHandler, closeModalHandler } = useModal();
     const {
@@ -35,6 +34,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         openModalHandler: openDeleteModalHandler,
         closeModalHandler: closeDeleteModalHandler,
     } = useModal();
+
     const {
         isModalOpen: isSkillModalOpen,
         openModalHandler: openSkillModalHandler,
@@ -59,28 +59,10 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         [currentVacancy, getVacancyById, id, skillTypes, updateVacancy]
     );
 
-    // TODO: обсудить расчет value в %
-    const getDataHandler = useCallback((data: InitialModalDataType) => {
-        const skillTypes: SkillType[] = [];
+    const getDataHandler = useCallback((selectedData: StudentSkillType[]) => {
+        setSkillTypes(selectedData);
 
-        data.forEach((dataItem) => {
-            dataItem.subCategories.forEach((subCategory) => {
-                subCategory.items.forEach((item) => {
-                    skillTypes.push({
-                        title: subCategory.subcategoryTitle
-                            .slice(0, 3)
-                            .toUpperCase(),
-                        subtitle: '' + item.value + ' ур',
-                        color: dataItem.mainColor,
-                        value: Math.round(((item.value ?? 0) * 100) / item.max),
-                    });
-                });
-            });
-        });
-
-        setSkillTypes(skillTypes);
-
-        return data;
+        return selectedData;
     }, []);
 
     const goBack = useGoBack();
@@ -88,6 +70,12 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
     useEffect(() => {
         getVacancyById(id);
     }, [getVacancyById, id]);
+
+    useEffect(() => {
+        if (currentVacancy) {
+            setSkillTypes(currentVacancy.skillTypes);
+        }
+    }, [currentVacancy]);
 
     if (!user || !currentVacancy) {
         return null;
@@ -97,8 +85,8 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
         <Styled.PageWrapper>
             <Styled.Wrapper>
                 <SkillsSelectionModal
-                    updatedModalData={[]}
-                    getDataHandler={(data) => data}
+                    updatedModalData={skillTypes}
+                    getDataHandler={getDataHandler}
                     open={isSkillModalOpen}
                     handleClose={closeSkillModalHandler}
                 />
@@ -159,7 +147,11 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                     >
                         <Styled.MenuItem
                             onClick={() => {
-                                setSkillTypes([]);
+                                setSkillTypes(
+                                    currentVacancy
+                                        ? currentVacancy.skillTypes
+                                        : []
+                                );
                                 openModalHandler();
                                 closeMenuHandler();
                             }}
@@ -191,7 +183,7 @@ export const EmployerVacancyProfilePage: FC = memo(() => {
                     <Styled.Image src={image}></Styled.Image>
                 </Styled.GeneralInfoWrapper>
 
-                <Styled.Text>{currentVacancy.fullDescription}</Styled.Text>
+                <Styled.Text>{currentVacancy.description}</Styled.Text>
 
                 <StyledInfo.Title>{'Навыки:'}</StyledInfo.Title>
                 <Styled.ProgressBar

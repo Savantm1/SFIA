@@ -6,11 +6,12 @@ import { WelcomeTitle } from '@pages/StudentMainPage/components/WelcomeTitle/Wel
 import { Styled } from '@pages/StudentMainPage/styled';
 import { FC, memo } from 'react';
 
-import { makeStudentMock } from '../../mock-factory/makeStudentMock';
-
 export const StudentCoursesPage: FC = memo(() => {
     const currentUser = useCurrentUser();
-    const STUDENT_MOCK = { ...makeStudentMock(), ...currentUser };
+
+    if (!currentUser) {
+        return null;
+    }
 
     return (
         <Styled.PageWrapper>
@@ -22,7 +23,7 @@ export const StudentCoursesPage: FC = memo(() => {
                 <LeftSideContent variant={'2'} />
             </Styled.LeftSide>
             <Styled.RightSide>
-                <RightSideContent user={STUDENT_MOCK} />
+                <RightSideContent user={currentUser} />
             </Styled.RightSide>
         </Styled.PageWrapper>
     );

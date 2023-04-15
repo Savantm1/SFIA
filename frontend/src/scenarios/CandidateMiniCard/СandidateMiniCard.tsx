@@ -21,7 +21,7 @@ export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
             studentPatronymic,
             position,
             phone,
-            skillTypes = [],
+            skills = [],
         } = user;
 
         const fullName = `${secondName} ${firstName}${
@@ -49,7 +49,7 @@ export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
                     <Styled.Title>{fullName}</Styled.Title>
                     <Styled.Subtitle>{position}</Styled.Subtitle>
                     <Styled.Subtitle>{phone}</Styled.Subtitle>
-                    <Styled.ProgressBarsWrapper items={skillTypes} />
+                    <Styled.ProgressBarsWrapper items={skills} />
                 </Styled.ContentWrapper>
             </Styled.ScenarioWrapper>
         );

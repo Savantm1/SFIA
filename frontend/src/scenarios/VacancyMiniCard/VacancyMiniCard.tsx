@@ -8,10 +8,11 @@ type VacancyMiniCardProps = {
     company: User['nameOrganization'];
     vacancy: Vacancy;
     openVacancyProfileHandler: VoidFunction;
+    skillsGap?: number;
 };
 
 export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
-    ({ city, company, vacancy, openVacancyProfileHandler }) => {
+    ({ city, company, vacancy, openVacancyProfileHandler, skillsGap }) => {
         const {
             title,
             description,
@@ -38,7 +39,10 @@ export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
                     <Styled.Title>{title}</Styled.Title>
                     <Styled.Subtitle>{description}</Styled.Subtitle>
 
-                    <Styled.ProgressBarsWrapper items={skillTypes} />
+                    <Styled.ProgressBarsWrapper
+                        items={skillTypes}
+                        skillsGap={skillsGap}
+                    />
 
                     <Styled.Responses>Отклики: {responses}</Styled.Responses>
                 </Styled.ContentWrapper>

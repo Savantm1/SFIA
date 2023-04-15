@@ -1,4 +1,4 @@
-import { Role, SkillType } from '@common/models';
+import { Role } from '@common/models';
 import { StudentRoleType } from '@store/rolesModal';
 import { StudentSkillType } from '@store/skillsModal';
 
@@ -19,7 +19,6 @@ export type User = {
     phone: string;
     mail: string;
     city: string;
-    skillTypes: SkillType[];
     skills?: StudentSkillType[];
     studentRoles?: StudentRoleType[];
 };

@@ -81,6 +81,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         getDataHandler={(selectedData) => {
                             setSelectedSkillsArray(selectedData);
                             onCloseSkillsSelectionModal();
+                            onOpenSaveRolesModal();
                         }}
                     />
                     <RolesSelectionModal
@@ -116,7 +117,9 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         forRoles={true}
                         open={skillsSelectionModalIsVisible}
                         handleClose={onCloseSkillsSelectionModal}
-                        getDataHandler={() => {
+                        getDataHandler={(selectedData) => {
+                            setSelectedSkillsArray(selectedData);
+                            onCloseSkillsSelectionModal();
                             onOpenSaveRolesModal();
                         }}
                     />
@@ -168,7 +171,9 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                         forRoles={true}
                         open={skillsSelectionModalIsVisible}
                         handleClose={onCloseSkillsSelectionModal}
-                        getDataHandler={() => {
+                        getDataHandler={(selectedData) => {
+                            setSelectedSkillsArray(selectedData);
+                            onCloseSkillsSelectionModal();
                             onOpenSaveRolesModal();
                         }}
                     />
