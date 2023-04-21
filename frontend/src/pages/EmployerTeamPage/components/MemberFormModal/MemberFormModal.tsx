@@ -1,24 +1,25 @@
-import { User } from '@common/models';
+import { Member } from '@common/models/Member';
 import { useValidation } from '@common/validation/hooks/useValidation';
-import { inputValidationOptions } from '@pages/EmployerTeamPage/components/CreateFormModal/constants';
+import { inputValidationOptions } from '@pages/EmployerTeamPage/components/MemberFormModal/constants';
+import { getValidationOptionsWithInitialValue } from '@pages/EmployerTeamPage/utils/getValidationOptionsWithInitialValue';
 import { SubtitleComponent } from '@pages/RegistrationPage/components/SubtitleComponent/SubtitleComponent';
 import { StudentSkillType } from '@store/skillsModal';
 import { Icons } from '@ui/assets/icons';
 import { Modal } from '@ui/components/Modal';
-import { FC, memo } from 'react';
+import { FC, memo, useMemo } from 'react';
 
 import { Styled } from './styled';
 
-type CreateFormModalProps = {
+type MemberFormModalProps = {
     isOpen: boolean;
     onCloseHandler: VoidFunction;
     onFormSubmitHandler: (data: any) => void;
     openSkillModalHandler: VoidFunction;
-    member?: User;
+    member?: Member;
     selectedSkillTypes?: StudentSkillType[];
 };
 
-export const CreateFormModal: FC<CreateFormModalProps> = memo(
+export const MemberFormModal: FC<MemberFormModalProps> = memo(
     ({
         isOpen,
         onCloseHandler,
@@ -32,10 +33,24 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
             onCloseHandler();
         };
 
+        const formValidationOptions = useMemo(() => {
+            return member
+                ? getValidationOptionsWithInitialValue(member)
+                : inputValidationOptions;
+        }, [member]);
+
         const { handleSubmit, getInputProps } = useValidation({
-            ...inputValidationOptions,
+            ...formValidationOptions,
             onSubmit,
         });
+
+        const title = member
+            ? 'Редактирование сотрудника'
+            : 'Создать сотрудника';
+        const subtitle = member
+            ? 'Внесите нужные изменения'
+            : 'Заполните все поля';
+        const buttonText = member ? 'Сохранить' : 'Добавить';
 
         return (
             <Modal
@@ -44,10 +59,8 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                 needCloseButton={false}
             >
                 <Styled.Wrapper>
-                    <Styled.Title>Создать сотрудника</Styled.Title>
-                    <Styled.Subtitle>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </Styled.Subtitle>
+                    <Styled.Title>{title}</Styled.Title>
+                    <Styled.Subtitle>{subtitle}</Styled.Subtitle>
 
                     <Styled.FormWrapper>
                         <SubtitleComponent
@@ -75,6 +88,7 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
 
                         <Styled.Row>
                             <Styled.TextInput {...getInputProps('education')} />
+                            <Styled.TextInput {...getInputProps('city')} />
                         </Styled.Row>
 
                         <SubtitleComponent number={'2'} text={'Должность'} />
@@ -104,7 +118,14 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
                                         }}
                                     >
                                         <Styled.ProgressBar
-                                            items={selectedSkillTypes}
+                                            items={
+                                                member
+                                                    ? selectedSkillTypes.length >
+                                                      0
+                                                        ? selectedSkillTypes
+                                                        : member.skills ?? []
+                                                    : selectedSkillTypes
+                                            }
                                         />
                                         <Styled.DickButton
                                             iconName={Icons.cock}
@@ -117,7 +138,7 @@ export const CreateFormModal: FC<CreateFormModalProps> = memo(
 
                         <Styled.ButtonsWrapper>
                             <Styled.CreateButton onClick={handleSubmit}>
-                                Сохранить
+                                {buttonText}
                             </Styled.CreateButton>
                             <Styled.CancelButton onClick={onCloseHandler}>
                                 Отмена

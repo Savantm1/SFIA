@@ -1,6 +1,13 @@
-import { getDefaultRequiredField } from '@common/validation/utils/getDefaultRequiredField';
+import {
+    FieldType,
+    getDefaultRequiredField,
+} from '@common/validation/utils/getDefaultRequiredField';
 
-export const inputValidationOptions = {
+type InputValidationOptionsType = {
+    fields: Record<string, FieldType>;
+};
+
+export const inputValidationOptions: InputValidationOptionsType = {
     fields: {
         secondName: getDefaultRequiredField('secondName', 'Фамилия'),
         firstName: getDefaultRequiredField('firstName', 'Имя'),
@@ -9,6 +16,7 @@ export const inputValidationOptions = {
         position: getDefaultRequiredField('position', 'Должность'),
         experience: getDefaultRequiredField('experience', 'Опыт'),
         education: getDefaultRequiredField('education', 'Образование'),
+        city: getDefaultRequiredField('city', 'Город'),
         phone: {
             ...getDefaultRequiredField('phone', 'Номер телефона', {
                 pattern: {

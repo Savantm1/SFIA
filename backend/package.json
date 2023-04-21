@@ -3,6 +3,7 @@
     "json-server": "^0.17.2"
   },
   "scripts": {
-    "start": "json-server --port 3001  --watch db.json --routes routes.json"
+    "start": "json-server --port 3001  --watch db.json --routes routes.json",
+    "db-clear": "cp db_clear.json db.json"
   }
 }

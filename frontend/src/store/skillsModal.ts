@@ -48,6 +48,8 @@ interface SkillsModalState {
         member: Member,
         skills: StudentSkillType[]
     ) => void;
+    deleteMemberSkillFromDB: (member: Member, id: number) => void;
+    updateMemberSkillInDB: (member: Member, id: number, value: number) => void;
 }
 
 export const useSkillsModalStore = create<SkillsModalState>()(
@@ -262,6 +264,62 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                 useMembersStore
                     .getState()
                     .setCurrentMember({ ...member, skills });
+            },
+
+            deleteMemberSkillFromDB: async (member, id) => {
+                const filteredSkills = member.skills?.filter(
+                    (skill) => skill.id !== id
+                );
+                await ky.put(`http://localhost:3001/members/${member.id}`, {
+                    json: {
+                        ...member,
+                        skills: filteredSkills,
+                    },
+                });
+                useMembersStore
+                    .getState()
+                    .setCurrentMember({ ...member, skills: filteredSkills });
+                set({
+                    initialModalData: initialModalData,
+                });
+                set((state) => {
+                    if (!filteredSkills?.length) return;
+
+                    filteredSkills.forEach((defaultElement) => {
+                        state.initialModalData.forEach((categoryItem) => {
+                            categoryItem.subCategories.forEach(
+                                (subcategoryItem) => {
+                                    subcategoryItem.items.forEach((item) => {
+                                        if (item.id === defaultElement.id) {
+                                            item.isChecked = true;
+                                            item.value = defaultElement.value;
+                                        }
+                                        return item;
+                                    });
+                                }
+                            );
+                        });
+                    });
+                    return state;
+                });
+            },
+
+            updateMemberSkillInDB: async (member, id, value) => {
+                const updatedSkills = member.skills?.map((skill) => {
+                    if (skill.id === id) {
+                        skill.value = value;
+                    }
+                    return skill;
+                });
+                await ky.put(`http://localhost:3001/members/${member.id}`, {
+                    json: {
+                        ...member,
+                        skills: updatedSkills,
+                    },
+                });
+                useMembersStore
+                    .getState()
+                    .setCurrentMember({ ...member, skills: updatedSkills });
             },
         }))
     )

@@ -36,8 +36,8 @@ export const LoginPage: FC = memo(() => {
                     align={'left'}
                     color={Color.secondaryGray}
                 >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc vulputate libero et velit interdum.
+                    Рад приветствовать вас на платформе для развития цифровых
+                    навыков.
                 </Styled.Subtitle>
                 <Styled.TextInput {...getInputProps('phone')} />
                 <Styled.Button onClick={handleSubmit} value={buttonText} />

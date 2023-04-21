@@ -14,6 +14,7 @@ export type Member = {
     birthday: string;
     phone: string;
     email: string;
+    city: string;
     skills?: StudentSkillType[];
     roles?: StudentRoleType[];
 };

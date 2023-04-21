@@ -30,7 +30,7 @@ export const useMemberRolesModalStore = create<RolesModalStoreType>()(
         roles: [],
         getRoles: async () => {
             const response: StudentRoleType[] = await ky
-                .get('http://localhost:3001/memberRoles')
+                .get('http://localhost:3001/roles')
                 .json();
             set({ roles: response });
         },

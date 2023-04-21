@@ -51,8 +51,7 @@ export const RolesSelectionModal: FC<RolesSelectionModalProps> = memo(
                             variant={'h6'}
                             color={Color.secondaryGray}
                         >
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit.
+                            Выберете роль из предложенных или создайте свою
                         </Styled.Description>
                         <Styled.SelectContainer>
                             <Styled.Select

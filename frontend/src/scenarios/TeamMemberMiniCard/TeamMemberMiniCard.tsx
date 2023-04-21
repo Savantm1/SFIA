@@ -19,6 +19,7 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
             position,
             phone,
             email,
+            city,
             skills = [],
         } = member;
 
@@ -30,7 +31,7 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
             <Styled.ScenarioWrapper onClick={openMemberProfileHandler}>
                 <Styled.HeaderWrapper>
                     <Styled.HeaderLeftBlock>
-                        <Styled.HeaderText></Styled.HeaderText>
+                        <Styled.HeaderText>{city}</Styled.HeaderText>
                     </Styled.HeaderLeftBlock>
 
                     <Styled.HeaderRightBlock>

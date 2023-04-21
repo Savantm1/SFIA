@@ -1,5 +1,5 @@
-import { useCurrentUser } from '@common/hooks/useCurrentUser';
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
+import { useMembersStore } from '@store/members';
 import { StudentSkillType, useSkillsModalStore } from '@store/skillsModal';
 import Color from '@ui/assets/color';
 import { Icons } from '@ui/assets/icons';
@@ -10,20 +10,20 @@ import { Styled } from './styled';
 
 export type SkillRowProps = { skill: StudentSkillType };
 
-export const SkillRow: FC<SkillRowProps> = memo(({ skill }) => {
+export const MemberSkillRow: FC<SkillRowProps> = memo(({ skill }) => {
     const { id, text, color = Color.fuxy, value = 5, min = 1, max = 7 } = skill;
 
     const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
         useMenu();
 
-    const currentUser = useCurrentUser();
+    const currentMember = useMembersStore((state) => state.currentMember);
 
-    const deleteStudentSkillFromDB = useSkillsModalStore(
-        (state) => state.deleteStudentSkillFromDB
+    const deleteMemberSkillFromDB = useSkillsModalStore(
+        (state) => state.deleteMemberSkillFromDB
     );
 
-    const updateStudentSkillInDB = useSkillsModalStore(
-        (state) => state.updateStudentSkillInDB
+    const updateMemberSkillInDB = useSkillsModalStore(
+        (state) => state.updateMemberSkillInDB
     );
 
     const [isEdited, setIsEdited] = useState(false);
@@ -32,6 +32,10 @@ export const SkillRow: FC<SkillRowProps> = memo(({ skill }) => {
     useEffect(() => {
         setCurrentValue(value);
     }, [value]);
+
+    if (!currentMember) {
+        return null;
+    }
 
     return (
         <Styled.Container>
@@ -58,8 +62,8 @@ export const SkillRow: FC<SkillRowProps> = memo(({ skill }) => {
                     <Styled.EditButton
                         iconName={Icons.done}
                         onClick={async () => {
-                            await updateStudentSkillInDB(
-                                currentUser!,
+                            await updateMemberSkillInDB(
+                                currentMember,
                                 id,
                                 currentValue
                             );
@@ -112,7 +116,7 @@ export const SkillRow: FC<SkillRowProps> = memo(({ skill }) => {
                 </Styled.MenuItem>
                 <Styled.MenuItem
                     onClick={async () => {
-                        await deleteStudentSkillFromDB(currentUser!, id);
+                        await deleteMemberSkillFromDB(currentMember, id);
                         closeMenuHandler();
                     }}
                 >

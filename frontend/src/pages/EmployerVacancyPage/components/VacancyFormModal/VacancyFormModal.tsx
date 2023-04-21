@@ -44,7 +44,9 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
         });
 
         const title = vacancy ? 'Редактирование вакансии' : 'Создать вакансию';
-        const buttonText = vacancy ? 'Сохранить' : 'Опубликовать';
+        const subtitle = vacancy
+            ? 'Внесите нужные изменения'
+            : 'Заполните все поля';
 
         return (
             <Modal
@@ -54,9 +56,7 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
             >
                 <Styled.Wrapper>
                     <Styled.Title>{title}</Styled.Title>
-                    <Styled.Subtitle>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </Styled.Subtitle>
+                    <Styled.Subtitle>{subtitle}</Styled.Subtitle>
 
                     <Styled.FormWrapper>
                         <Styled.Row>
@@ -122,7 +122,7 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
 
                         <Styled.ButtonsWrapper>
                             <Styled.CreateButton onClick={handleSubmit}>
-                                {buttonText}
+                                Опубликовать
                             </Styled.CreateButton>
                             <Styled.CancelButton onClick={onCloseHandler}>
                                 Отмена

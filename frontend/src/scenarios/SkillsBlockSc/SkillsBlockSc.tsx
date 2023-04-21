@@ -7,6 +7,7 @@ import { Button } from '@ui/components/Button';
 import { IconButton } from '@ui/components/IconButton/IconButton';
 import { FC, memo, useCallback, useState } from 'react';
 
+import { MemberSkillRow } from './components/MemberSkillRow/MemberSkillRow';
 import { Styled } from './styled';
 
 type SkillsBlockScProps = {
@@ -14,9 +15,16 @@ type SkillsBlockScProps = {
     showAllItemsHandler: (value: 'roles' | 'skills' | '') => void;
     getSkillsDataHandler: (skillsData: StudentSkillType[]) => Promise<void>;
     title?: string;
+    isMember?: boolean;
 };
 export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
-    ({ items = [], showAllItemsHandler, getSkillsDataHandler, title }) => {
+    ({
+        items = [],
+        showAllItemsHandler,
+        getSkillsDataHandler,
+        title,
+        isMember = false,
+    }) => {
         const [showAllSkills, setShowAllSkills] = useState(false);
         const [isOpenSkillsModal, setIsOpenSkillsModal] = useState(false);
         const onCloseSkillsModal = useCallback(() => {
@@ -28,16 +36,10 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
         }, [setIsOpenSkillsModal]);
 
         const elements = items.map((skill) => {
-            return (
-                <SkillRow
-                    id={skill.id ?? ''}
-                    key={skill.id}
-                    title={skill.text ?? ''}
-                    value={skill.value!}
-                    color={skill.color}
-                    min={skill.min}
-                    max={skill.max}
-                />
+            return isMember ? (
+                <MemberSkillRow key={skill.id} skill={skill} />
+            ) : (
+                <SkillRow key={skill.id} skill={skill} />
             );
         });
 

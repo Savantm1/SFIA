@@ -1,4 +1,6 @@
+import { Menu as MenuUI, MenuItem as MenuItemUI } from '@mui/material';
 import Color from '@ui/assets/color';
+import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Text } from '@ui/components/Text';
 import styled from 'styled-components';
 const PageWrapper = styled.div`
@@ -43,6 +45,40 @@ const SchemeImg = styled.img`
     max-width: 600px;
     width: 100%;
 `;
+
+const HeaderWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+`;
+
+const MenuButton = styled(IconButton)`
+    width: 26px;
+    height: 32px;
+`;
+
+const Menu = styled(MenuUI)`
+    margin-top: 6px;
+    border-radius: 8px;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+`;
+
+const MenuItem = styled(MenuItemUI)`
+    font-size: 12px !important;
+    line-height: 15px !important;
+    padding: 8px 10px !important;
+    width: 170px !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: ${Color.mainViolet} !important;
+        color: ${Color.mainWhite} !important;
+    }
+`;
+
 export const Styled = {
     SchemeImg,
     EmptySubtitle,
@@ -51,4 +87,8 @@ export const Styled = {
     LeftSide,
     RightSide,
     PageTitle,
+    HeaderWrapper,
+    MenuButton,
+    Menu,
+    MenuItem,
 };

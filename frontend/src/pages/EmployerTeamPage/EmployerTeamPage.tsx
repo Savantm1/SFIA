@@ -1,7 +1,7 @@
 import { useCurrentUser } from '@common/hooks/useCurrentUser';
 import { Member } from '@common/models/Member';
 import { EMPLOYER_ROUTES } from '@common/navigation';
-import { CreateFormModal } from '@pages/EmployerTeamPage/components/CreateFormModal/CreateFormModal';
+import { MemberFormModal } from '@pages/EmployerTeamPage/components/MemberFormModal/MemberFormModal';
 import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberComponent/NoMemberComponent';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
@@ -98,7 +98,7 @@ export const EmployerTeamPage: FC = memo(() => {
                 handleClose={closeSkillModalHandler}
             />
 
-            <CreateFormModal
+            <MemberFormModal
                 selectedSkillTypes={skills}
                 isOpen={isModalOpen}
                 onCloseHandler={closeModalHandler}
