@@ -21,5 +21,6 @@ export enum EMPLOYER_ROUTES {
     vacancies = '/employer/vacancies',
     vacancy = '/employer/vacancies/:id',
     candidates = '/employer/candidates',
+    member = '/employer/members/:id',
     team = '/employer/team',
 }

@@ -353,14 +353,11 @@
       ]
     },
     {
+      "id": 3,
       "role": "employer",
-      "nameOrganization": "ООО “Красти”",
       "phone": "89665554433",
       "mail": "www.crasty.com",
-      "city": "Москва",
-      "nameSite": "example@gmail.com",
-      "companyDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.",
-      "id": 3
+      "city": "Москва"
     },
     {
       "role": "employer",
@@ -572,10 +569,405 @@
         }
       ],
       "employerId": 3,
-      "id": 1
+      "id": 1,
+      "skills": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 6,
+          "text": "Инновации",
+          "code": "INOV",
+          "value": 5,
+          "min": 5,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 191,
+          "text": "Проектирование сети",
+          "code": "NTDS",
+          "value": 4,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Технологический менеджмент",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 423,
+          "text": "Управление конфигурациями",
+          "code": "CFMG",
+          "value": 3,
+          "min": 2,
+          "max": 6
+        }
+      ],
+      "roles": [
+        {
+          "id": 30423006,
+          "value": "Kaka",
+          "text": "Kaka",
+          "canEdit": true,
+          "skills": [
+            {
+              "categoryTitle": "Изменения и трансформация",
+              "subcategoryTitle": "Внедрение изменений",
+              "color": "#7208A8",
+              "subColor": "#EDCAFF",
+              "id": 53,
+              "code": "PROF",
+              "text": "Сопровождение программ и проектов",
+              "value": 6,
+              "min": 2,
+              "max": 7
+            },
+            {
+              "categoryTitle": "Люди и навыки",
+              "subcategoryTitle": "Управление людскими ресурсамии",
+              "color": "#0E72AB",
+              "subColor": "#C8EBFF",
+              "id": 66,
+              "code": "PDSV",
+              "text": "Профессиональное развитие",
+              "value": 4,
+              "min": 4,
+              "max": 6
+            }
+          ]
+        }
+      ]
     }
   ],
   "roles": [
+    {
+      "id": 0,
+      "text": "Создать свою роль",
+      "value": "Создать свою роль"
+    },
+    {
+      "id": 1,
+      "value": "Инженер ИБ",
+      "text": "Инженер ИБ",
+      "canEdit": false,
+      "skills": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Безопасность и конфиденциальность",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 11,
+          "code": "PEDP",
+          "text": "Защита персональных данных",
+          "value": 5,
+          "min": 5,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Безопасность и конфиденциальность",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 12,
+          "code": "VURE",
+          "text": "Изучение уязвимости",
+          "value": 4,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Безопасность и конфиденциальность",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 13,
+          "code": "THIN",
+          "text": "Анализ угроз",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Управление, риск и соблюдение требований",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 16,
+          "code": "AUDT",
+          "text": "Аудит",
+          "value": 3,
+          "min": 3,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 19123,
+          "code": "SWDN",
+          "text": "Проектирование ПО",
+          "value": 2,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 191,
+          "code": "NTDS",
+          "text": "Проектирование сети",
+          "value": 4,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 201,
+          "code": "PROG",
+          "text": "Программирование/разработка ПО",
+          "value": 5,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 205,
+          "code": "SFEN",
+          "text": "Техника безопасности",
+          "value": 5,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 206,
+          "code": "SFAS",
+          "text": "Оценка безопасности",
+          "value": 4,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Технологический менеджмент",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 42,
+          "code": "SYSP",
+          "text": "Системное программное обеспечение",
+          "value": 4,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Технологический менеджмент",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 421,
+          "code": "NTAS",
+          "text": "Поддержка сети",
+          "value": 2,
+          "min": 2,
+          "max": 5
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Услуги по обеспечению безопасности",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 47,
+          "code": "SCAD",
+          "text": "Операции по обеспечению безопасности",
+          "value": 3,
+          "min": 1,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Услуги по обеспечению безопасности",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 48,
+          "code": "VUAS",
+          "text": "Оценка уязвимости",
+          "value": 2,
+          "min": 2,
+          "max": 5
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "value": "Data scientist (Антифрод)",
+      "text": "Data scientist (Антифрод)",
+      "canEdit": false,
+      "skills": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 8,
+          "code": "RSCH",
+          "text": "Исследование",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 81,
+          "code": "DEMM",
+          "text": "Управление спросом",
+          "value": 5,
+          "min": 5,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Изменения и трансформация",
+          "subcategoryTitle": "Анализ изменений",
+          "color": "#7208A8",
+          "subColor": "#EDCAFF",
+          "id": 54,
+          "code": "BUSA",
+          "text": "Анализ бизнес-ситуации",
+          "value": 3,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Изменения и трансформация",
+          "subcategoryTitle": "Анализ изменений",
+          "color": "#7208A8",
+          "subColor": "#EDCAFF",
+          "id": 561,
+          "code": "REQM",
+          "text": "Определение и управление требо-ми",
+          "value": 3,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 201,
+          "code": "PROG",
+          "text": "Программирование/разработка ПО",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 22,
+          "code": "DTAN",
+          "text": "Моделирование и проектирование данных",
+          "value": 4,
+          "min": 2,
+          "max": 5
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 23,
+          "code": "DBDS",
+          "text": "Проектирование базы данных",
+          "value": 3,
+          "min": 3,
+          "max": 5
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 24,
+          "code": "DENG",
+          "text": "Инжиниринг данных",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 25,
+          "code": "DBAD",
+          "text": "Администрирование базы данных",
+          "value": 4,
+          "min": 2,
+          "max": 5
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 26,
+          "code": "DATS",
+          "text": "Дата сайенс",
+          "value": 4,
+          "min": 2,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Управление контентом",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 28,
+          "code": "ICPM",
+          "text": "Публикация контента",
+          "value": 2,
+          "min": 1,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Вычислительные науки",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 282,
+          "code": "NUAN",
+          "text": "Числовой анализ",
+          "value": 4,
+          "min": 4,
+          "max": 7
+        }
+      ]
+    }
+  ],
+  "memberRoles": [
     {
       "id": 0,
       "text": "Создать свою роль",

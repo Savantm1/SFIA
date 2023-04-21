@@ -7,6 +7,7 @@ import { EmployerVacancyPage } from '@pages/EmployerVacancyPage';
 import { EmployerVacancyProfilePage } from '@pages/EmployerVacancyProfilePage/EmployerVacancyProfilePage';
 import { LoginPage } from '@pages/LoginPage';
 import { LogoutPage } from '@pages/LogoutPage';
+import { MemberProfilePage } from '@pages/MemberProfilePage';
 import { RegistrationPage } from '@pages/RegistrationPage';
 import { SelectRegistrationPage } from '@pages/SelectRegistrationPage/SelectRegistrationPage';
 import { StudentCoursesPage } from '@pages/StudentCoursesPage';
@@ -54,6 +55,10 @@ export const Navigation = memo(() => {
                 <Route
                     path={EMPLOYER_ROUTES.team}
                     element={<EmployerTeamPage />}
+                />
+                <Route
+                    path={EMPLOYER_ROUTES.member}
+                    element={<MemberProfilePage />}
                 />
                 <Route
                     path={EMPLOYER_ROUTES.candidates}

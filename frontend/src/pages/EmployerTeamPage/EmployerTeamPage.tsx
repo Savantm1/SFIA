@@ -1,7 +1,6 @@
 import { useCurrentUser } from '@common/hooks/useCurrentUser';
-import { User } from '@common/models';
 import { Member } from '@common/models/Member';
-import { STUDENT_ROUTES } from '@common/navigation';
+import { EMPLOYER_ROUTES } from '@common/navigation';
 import { CreateFormModal } from '@pages/EmployerTeamPage/components/CreateFormModal/CreateFormModal';
 import { NoMemberComponent } from '@pages/EmployerTeamPage/components/NoMemberComponent/NoMemberComponent';
 import { useModal } from '@pages/EmployerVacancyPage/hooks/useModal';
@@ -39,16 +38,16 @@ export const EmployerTeamPage: FC = memo(() => {
         closeModalHandler: closeSkillModalHandler,
     } = useModal();
 
-    const [skillTypes, setSkillTypes] = useState<StudentSkillType[]>();
+    const [skills, setSkills] = useState<StudentSkillType[]>();
 
     const navigate = useNavigate();
 
     const navigateMemberHandler = useCallback(
-        (id: User['id']) => {
+        (id: Member['id']) => {
             return () => {
                 navigate(
-                    generatePath(STUDENT_ROUTES.coursesWithMember, {
-                        memberId: id,
+                    generatePath(EMPLOYER_ROUTES.member, {
+                        id: id,
                     })
                 );
             };
@@ -74,14 +73,14 @@ export const EmployerTeamPage: FC = memo(() => {
                 return;
             }
 
-            await createMember({ ...data, skillTypes, employerId: user.id });
+            await createMember({ ...data, skills, employerId: user.id });
             await fetchMembers(user.id);
         },
-        [createMember, fetchMembers, skillTypes, user]
+        [createMember, fetchMembers, skills, user]
     );
 
     const getDataHandler = useCallback((selectedData: StudentSkillType[]) => {
-        setSkillTypes(selectedData);
+        setSkills(selectedData);
 
         return selectedData;
     }, []);
@@ -100,7 +99,7 @@ export const EmployerTeamPage: FC = memo(() => {
             />
 
             <CreateFormModal
-                selectedSkillTypes={skillTypes}
+                selectedSkillTypes={skills}
                 isOpen={isModalOpen}
                 onCloseHandler={closeModalHandler}
                 onFormSubmitHandler={onFormSubmitHandler}
@@ -114,7 +113,7 @@ export const EmployerTeamPage: FC = memo(() => {
                         <Styled.PlusButton
                             iconName={Icons.add}
                             onClick={() => {
-                                setSkillTypes([]);
+                                setSkills([]);
                                 resetAllSelections();
                                 openModalHandler();
                             }}
@@ -136,7 +135,7 @@ export const EmployerTeamPage: FC = memo(() => {
                 {!memberList.length ? (
                     <NoMemberComponent
                         createMemberHandler={() => {
-                            setSkillTypes([]);
+                            setSkills([]);
                             openModalHandler();
                         }}
                     />

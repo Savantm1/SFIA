@@ -13,9 +13,10 @@ type SkillsBlockScProps = {
     items?: StudentSkillType[];
     showAllItemsHandler: (value: 'roles' | 'skills' | '') => void;
     getSkillsDataHandler: (skillsData: StudentSkillType[]) => Promise<void>;
+    title?: string;
 };
 export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
-    ({ items = [], showAllItemsHandler, getSkillsDataHandler }) => {
+    ({ items = [], showAllItemsHandler, getSkillsDataHandler, title }) => {
         const [showAllSkills, setShowAllSkills] = useState(false);
         const [isOpenSkillsModal, setIsOpenSkillsModal] = useState(false);
         const onCloseSkillsModal = useCallback(() => {
@@ -39,12 +40,15 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                 />
             );
         });
+
+        const skillsTitle = title ?? 'Мои навыки';
+
         if (items?.length === 0 || !items) {
             return (
                 <Styled.Container>
                     <Styled.SkillsBar>
                         <Styled.SkillsTitle align={'left'} variant={'h2'}>
-                            Мои навыки
+                            {skillsTitle}
                         </Styled.SkillsTitle>
                         <IconButton
                             iconName={Icons.add}
@@ -86,7 +90,7 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                             />
                         )}
                         <Styled.SkillsTitle align={'left'} variant={'h2'}>
-                            Мои навыки
+                            {skillsTitle}
                         </Styled.SkillsTitle>
                         <IconButton
                             iconName={Icons.add}
@@ -122,7 +126,7 @@ export const SkillsBlockSc: FC<SkillsBlockScProps> = memo(
                             />
                         )}
                         <Styled.SkillsTitle align={'left'} variant={'h2'}>
-                            Мои навыки
+                            {skillsTitle}
                         </Styled.SkillsTitle>
                         <IconButton
                             iconName={Icons.add}
