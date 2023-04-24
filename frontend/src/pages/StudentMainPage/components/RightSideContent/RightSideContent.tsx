@@ -31,7 +31,7 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
         await updateStudentSkillsInDB(user, skillsData);
         user.skills = skillsData;
     };
-
+    console.log(user);
     return (
         <Styled.Container>
             <Styled.StudentBar>

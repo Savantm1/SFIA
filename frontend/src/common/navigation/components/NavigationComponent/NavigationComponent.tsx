@@ -79,18 +79,18 @@ export const Navigation = memo(() => {
                     path={STUDENT_ROUTES.main}
                     element={<StudentMainPage />}
                 />
-                <Route
-                    path={STUDENT_ROUTES.courses}
-                    element={<StudentCoursesPage />}
-                />
+                {/*<Route*/}
+                {/*    path={STUDENT_ROUTES.courses}*/}
+                {/*    element={<StudentCoursesPage />}*/}
+                {/*/>*/}
                 <Route
                     path={STUDENT_ROUTES.coursesWithMember}
                     element={<StudentCoursesPage />}
                 />
-                <Route
-                    path={STUDENT_ROUTES.vacancies}
-                    element={<>vacancies</>}
-                />
+                {/*<Route*/}
+                {/*    path={STUDENT_ROUTES.vacancies}*/}
+                {/*    element={<>vacancies</>}*/}
+                {/*/>*/}
             </Route>
         </Routes>
     );

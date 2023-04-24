@@ -1,6 +1,4 @@
 import { Popover } from '@mui/material';
-import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
-import { DetailPopup } from '@scenarios/ProgressBarList/components/DetailPopup/DetailPopup';
 import { Styled } from '@scenarios/ProgressBarList/styled';
 import { ProgressBarProps } from '@scenarios/ProgressBarList/types';
 import Color from '@ui/assets/color';
@@ -9,23 +7,16 @@ import { FC, memo, useState } from 'react';
 
 export const ProgressBar: FC<ProgressBarProps> = memo(
     ({
-        categoryTitle,
         subcategoryTitle,
         value = 0,
         code,
-        title,
         color,
         subColor,
         isBig,
-        isEdit,
-        onDelete,
-        onChange,
         min,
         max,
         text,
     }) => {
-        const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
-            useMenu();
         const percent = Math.round((100 / 7) * value);
 
         const [popoverAnchorEl, setPopoverAnchorEl] =
@@ -48,39 +39,16 @@ export const ProgressBar: FC<ProgressBarProps> = memo(
                 onMouseEnter={handlePopoverOpen}
                 onMouseLeave={handlePopoverClose}
             >
-                {isEdit && <Styled.DeleteBtn onClick={() => onDelete?.()} />}
-                <Styled.ProgressBarOverlay
-                    aria-controls={isMenuOpen ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={isMenuOpen ? 'true' : undefined}
-                    id="basic-button"
-                    onClick={anchorClickHandler as VoidFunction}
-                />
                 <Styled.ProgressBar
                     thickness={5}
                     variant="determinate"
                     value={percent}
-                    customColor={isEdit ? Color.secondaryGray : color}
+                    customColor={color}
                     isBig={isBig}
                 />
 
-                {isEdit && (
-                    <DetailPopup
-                        onChange={onChange!}
-                        abbr={title ?? ''}
-                        color={color}
-                        title={title}
-                        anchorEl={anchorEl}
-                        isMenuOpen={isMenuOpen}
-                        closeMenuHandler={closeMenuHandler}
-                    />
-                )}
-
                 <Styled.LabelWrapper>
-                    <Styled.Title
-                        color={isEdit ? Color.secondaryGray : color}
-                        isBig={isBig}
-                    >
+                    <Styled.Title color={color} isBig={isBig}>
                         {code}
                     </Styled.Title>
                     <Styled.Subtitle isBig={isBig}>

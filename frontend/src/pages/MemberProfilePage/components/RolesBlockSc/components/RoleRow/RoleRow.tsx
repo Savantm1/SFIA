@@ -1,5 +1,4 @@
 import { useMenu } from '@pages/EmployerVacancyProfilePage/hooks/useMenu';
-import { ProgressBarProps } from '@scenarios/ProgressBarList';
 import { SkillsSelectionModal } from '@scenarios/SkillsSelectionModal';
 import { useMemberRolesModalStore } from '@store/memberRolesModal';
 import { useMembersStore } from '@store/members';
@@ -33,35 +32,6 @@ export const RoleRow: FC<RoleRowProps> = memo(({ roleProps, onDeleteRole }) => {
 
     const { anchorEl, isMenuOpen, anchorClickHandler, closeMenuHandler } =
         useMenu();
-    const [skillTypesState, setSkillTypesState] = useState(roleProps);
-
-    const onDeleteSkill = useCallback((currentSkill: ProgressBarProps) => {
-        setSkillTypesState((prevValue) => {
-            const updatedSkills = prevValue.skills.filter((skill) => {
-                return skill.title !== currentSkill.title;
-            });
-            prevValue.skills = updatedSkills;
-            const currentValue = { ...prevValue, skills: updatedSkills };
-            return currentValue;
-        });
-    }, []);
-
-    const onChangeLocalValueOfSkill = useCallback(
-        (currentSkillId: number, value: number) => {
-            const updatedSkillTypes = skillTypesState.skills.map((skill) => {
-                if (skill.id === currentSkillId) {
-                    skill.value = value;
-                }
-                return skill;
-            });
-
-            setSkillTypesState((prevValue) => {
-                prevValue.skills = updatedSkillTypes;
-                return prevValue;
-            });
-        },
-        [skillTypesState]
-    );
 
     if (!currentMember) {
         return null;
@@ -71,13 +41,9 @@ export const RoleRow: FC<RoleRowProps> = memo(({ roleProps, onDeleteRole }) => {
         <Styled.Container>
             <Styled.Content>
                 <Text align={'left'} variant={'h5'}>
-                    {skillTypesState.text}
+                    {roleProps.text}
                 </Text>
-                <Styled.ProgressBarListWrapper
-                    onDelete={onDeleteSkill}
-                    onChange={onChangeLocalValueOfSkill}
-                    items={skillTypesState.skills}
-                />
+                <Styled.ProgressBarListWrapper items={roleProps.skills} />
             </Styled.Content>
 
             <Styled.Button

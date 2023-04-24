@@ -1,5 +1,6 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Color from '@ui/assets/color';
+import { IconButton } from '@ui/components/IconButton/IconButton';
 import { Text } from '@ui/components/Text';
 import styled from 'styled-components';
 
@@ -22,12 +23,44 @@ const Wrapper = styled.div`
     position: relative;
 `;
 
-const ListWrapper = styled.div<{ skillsGap?: number }>`
+const ListWrapper = styled.div<{
+    skillsGap?: number;
+    offset?: number;
+}>`
     display: flex;
     flex-direction: row;
-    overflow: auto;
     justify-content: flex-start;
+    flex-wrap: nowrap;
     gap: ${({ skillsGap }) => skillsGap ?? 10}px;
+    position: relative;
+    transition: all ease 0.3s;
+    transform: translateX(${({ offset }) => offset ?? 0}px);
+`;
+
+const LeftButton = styled(IconButton)<{ arrowVisibility: boolean }>`
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    transition: all ease 0.3s;
+    opacity: ${({ arrowVisibility }) => {
+        return arrowVisibility ? 1 : 0;
+    }};
+`;
+
+const RightButton = styled(IconButton)<{ arrowVisibility: boolean }>`
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    transform: rotate(180deg);
+    transition: all ease 0.3s;
+    opacity: ${({ arrowVisibility }) => {
+        return arrowVisibility ? 1 : 0;
+    }};
+`;
+
+const SliderWrapper = styled.div<{ isBig: boolean }>`
+    width: ${({ isBig }) => (isBig ? 344 : 230)}px;
+    overflow: hidden;
 `;
 
 const LabelWrapper = styled.div`
@@ -54,44 +87,6 @@ const Subtitle = styled.span<{ isBig?: boolean }>`
     font-size: ${({ isBig }) => (isBig ? 12 : 8)}px !important;
     line-height: ${({ isBig }) => (isBig ? 14.5 : 10)}px !important;
     color: ${Color.secondaryDarkGray};
-`;
-
-const DeleteBtn = styled.div`
-    position: absolute;
-    right: -6px;
-    top: -4px;
-    width: 10px;
-    height: 10px;
-    cursor: pointer;
-    opacity: 0.5;
-    &:hover {
-        opacity: 1;
-    }
-    &:before,
-    &:after {
-        position: absolute;
-        left: 5px;
-        top: 4px;
-        content: ' ';
-        height: 10px;
-        width: 2px;
-        background-color: #333;
-    }
-    &:before {
-        transform: rotate(45deg);
-    }
-    &:after {
-        transform: rotate(-45deg);
-    }
-`;
-
-const ProgressBarOverlay = styled.div`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
 `;
 
 const PopoverContentWrapper = styled.div`
@@ -162,9 +157,12 @@ const PopoverLevel = styled(Text)`
     width: 30px;
 `;
 
+const ProgressBarContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 export const Styled = {
-    ProgressBarOverlay,
-    DeleteBtn,
     Wrapper,
     ListWrapper,
     ProgressBar,
@@ -180,4 +178,8 @@ export const Styled = {
     PopoverCode,
     PopoverLevel,
     PopoverCodeSpan,
+    SliderWrapper,
+    LeftButton,
+    RightButton,
+    ProgressBarContainer,
 };
