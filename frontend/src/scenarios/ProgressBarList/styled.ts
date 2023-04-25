@@ -43,7 +43,10 @@ const LeftButton = styled(IconButton)<{ arrowVisibility: boolean }>`
     height: 20px;
     transition: all ease 0.3s;
     opacity: ${({ arrowVisibility }) => {
-        return arrowVisibility ? 1 : 0;
+        return arrowVisibility ? 1 : 0.2;
+    }};
+    cursor: ${({ arrowVisibility }) => {
+        return arrowVisibility ? 'pointer' : 'default';
     }};
 `;
 
@@ -54,7 +57,10 @@ const RightButton = styled(IconButton)<{ arrowVisibility: boolean }>`
     transform: rotate(180deg);
     transition: all ease 0.3s;
     opacity: ${({ arrowVisibility }) => {
-        return arrowVisibility ? 1 : 0;
+        return arrowVisibility ? 1 : 0.2;
+    }};
+    cursor: ${({ arrowVisibility }) => {
+        return arrowVisibility ? 'pointer' : 'default';
     }};
 `;
 

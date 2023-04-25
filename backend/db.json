@@ -8,9 +8,436 @@
       "nameSite": "Vladislav Samsonov",
       "companyDescription": "Ну ничего так",
       "id": 1
+    },
+    {
+      "id": 2,
+      "role": "student",
+      "phone": "89857266052",
+      "mail": "",
+      "skills": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 5,
+          "text": "Архитектура решений",
+          "code": "ARCH",
+          "value": 6,
+          "min": 4,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 202,
+          "text": "Интеграция и сборка систем",
+          "code": "SINT",
+          "value": 5,
+          "min": 3,
+          "max": 6
+        }
+      ],
+      "studentRoles": [
+        {
+          "id": 1,
+          "value": "Инженер ИБ",
+          "text": "Инженер ИБ",
+          "canEdit": false,
+          "skills": [
+            {
+              "categoryTitle": "Стратегия и архитектура",
+              "subcategoryTitle": "Безопасность и конфиденциальность",
+              "color": "#B4104C",
+              "subColor": "#FFC0D7",
+              "id": 11,
+              "code": "PEDP",
+              "text": "Защита персональных данных",
+              "value": 5,
+              "min": 5,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Стратегия и архитектура",
+              "subcategoryTitle": "Безопасность и конфиденциальность",
+              "color": "#B4104C",
+              "subColor": "#FFC0D7",
+              "id": 12,
+              "code": "VURE",
+              "text": "Изучение уязвимости",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Стратегия и архитектура",
+              "subcategoryTitle": "Безопасность и конфиденциальность",
+              "color": "#B4104C",
+              "subColor": "#FFC0D7",
+              "id": 13,
+              "code": "THIN",
+              "text": "Анализ угроз",
+              "value": 4,
+              "min": 2,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Стратегия и архитектура",
+              "subcategoryTitle": "Управление, риск и соблюдение требований",
+              "color": "#B4104C",
+              "subColor": "#FFC0D7",
+              "id": 16,
+              "code": "AUDT",
+              "text": "Аудит",
+              "value": 3,
+              "min": 3,
+              "max": 7
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 19123,
+              "code": "SWDN",
+              "text": "Проектирование ПО",
+              "value": 2,
+              "min": 2,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 191,
+              "code": "NTDS",
+              "text": "Проектирование сети",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 201,
+              "code": "PROG",
+              "text": "Программирование/разработка ПО",
+              "value": 5,
+              "min": 2,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 205,
+              "code": "SFEN",
+              "text": "Техника безопасности",
+              "value": 5,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 206,
+              "code": "SFAS",
+              "text": "Оценка безопасности",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Доставка и эксплуатация",
+              "subcategoryTitle": "Технологический менеджмент",
+              "color": "#FC8616",
+              "subColor": "#FFE9D4",
+              "id": 42,
+              "code": "SYSP",
+              "text": "Системное программное обеспечение",
+              "value": 4,
+              "min": 3,
+              "max": 5
+            },
+            {
+              "categoryTitle": "Доставка и эксплуатация",
+              "subcategoryTitle": "Технологический менеджмент",
+              "color": "#FC8616",
+              "subColor": "#FFE9D4",
+              "id": 421,
+              "code": "NTAS",
+              "text": "Поддержка сети",
+              "value": 2,
+              "min": 2,
+              "max": 5
+            },
+            {
+              "categoryTitle": "Доставка и эксплуатация",
+              "subcategoryTitle": "Услуги по обеспечению безопасности",
+              "color": "#FC8616",
+              "subColor": "#FFE9D4",
+              "id": 47,
+              "code": "SCAD",
+              "text": "Операции по обеспечению безопасности",
+              "value": 3,
+              "min": 1,
+              "max": 7
+            },
+            {
+              "categoryTitle": "Доставка и эксплуатация",
+              "subcategoryTitle": "Услуги по обеспечению безопасности",
+              "color": "#FC8616",
+              "subColor": "#FFE9D4",
+              "id": 48,
+              "code": "VUAS",
+              "text": "Оценка уязвимости",
+              "value": 2,
+              "min": 2,
+              "max": 5
+            }
+          ]
+        },
+        {
+          "id": 58559641,
+          "value": "as",
+          "text": "as",
+          "canEdit": true,
+          "skills": [
+            {
+              "categoryTitle": "Стратегия и архитектура",
+              "subcategoryTitle": "Стратегическое планирование",
+              "color": "#B4104C",
+              "subColor": "#FFC0D7",
+              "id": 7,
+              "code": "EMRG",
+              "text": "Мониторинг новейших технологий",
+              "value": 5,
+              "min": 4,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Изменения и трансформация",
+              "subcategoryTitle": "Анализ изменений",
+              "color": "#7208A8",
+              "subColor": "#EDCAFF",
+              "id": 54,
+              "code": "BUSA",
+              "text": "Анализ бизнес-ситуации",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Разработка систем",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 206,
+              "code": "SFAS",
+              "text": "Оценка безопасности",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Разработка и внедрение",
+              "subcategoryTitle": "Управление контентом",
+              "color": "#BF9501",
+              "subColor": "#FFF1C0",
+              "id": 28,
+              "code": "ICPM",
+              "text": "Публикация контента",
+              "value": 4,
+              "min": 1,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Взаимоотношения и взаимодействия",
+              "subcategoryTitle": "Управление отношениями с заинтересованными сторонами",
+              "color": "#138D0A",
+              "subColor": "#CEFFCA",
+              "id": 32,
+              "code": "ITCM",
+              "text": "Управление контрактами",
+              "value": 5,
+              "min": 3,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Доставка и эксплуатация",
+              "subcategoryTitle": "Управление услугами",
+              "color": "#FC8616",
+              "subColor": "#FFE9D4",
+              "id": 46,
+              "code": "CPMG",
+              "text": "Управление мощностями",
+              "value": 6,
+              "min": 4,
+              "max": 6
+            },
+            {
+              "categoryTitle": "Люди и навыки",
+              "subcategoryTitle": "Управление навыками",
+              "color": "#0E72AB",
+              "subColor": "#C8EBFF",
+              "id": 72,
+              "code": "LEDA",
+              "text": "Оценка компетенций",
+              "value": 4,
+              "min": 3,
+              "max": 6
+            }
+          ]
+        }
+      ]
     }
   ],
-  "vacancies": [],
+  "vacancies": [
+    {
+      "title": "asd",
+      "experience": "asd",
+      "employment": "asd",
+      "schedule": "asd",
+      "responsibilities": "asd",
+      "requirements": "asd",
+      "conditions": "asd",
+      "description": "asd",
+      "salary": "100",
+      "skillTypes": [
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 5,
+          "text": "Архитектура решений",
+          "code": "ARCH",
+          "value": 5,
+          "min": 4,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Стратегия и архитектура",
+          "subcategoryTitle": "Стратегическое планирование",
+          "color": "#B4104C",
+          "subColor": "#FFC0D7",
+          "id": 8,
+          "text": "Исследование",
+          "code": "RSCH",
+          "value": 3,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 19123,
+          "text": "Проектирование ПО",
+          "code": "SWDN",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 202,
+          "text": "Интеграция и сборка систем",
+          "code": "SINT",
+          "value": 5,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Разработка систем",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 204,
+          "text": "Конфигурация ПО",
+          "code": "PORT",
+          "value": 4,
+          "min": 3,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Данные и аналитика",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 24,
+          "text": "Инжиниринг данных",
+          "code": "DENG",
+          "value": 6,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Разработка и внедрение",
+          "subcategoryTitle": "Управление контентом",
+          "color": "#BF9501",
+          "subColor": "#FFF1C0",
+          "id": 29,
+          "text": "Управление знаниями",
+          "code": "KNOW",
+          "value": 6,
+          "min": 2,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Взаимоотношения и взаимодействия",
+          "subcategoryTitle": "Управление отношениями с заинтересованными сторонами",
+          "color": "#138D0A",
+          "subColor": "#CEFFCA",
+          "id": 33,
+          "text": "Управление взаимоотношениями",
+          "code": "RLMT",
+          "value": 5,
+          "min": 4,
+          "max": 7
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Технологический менеджмент",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 423,
+          "text": "Управление конфигурациями",
+          "code": "CFMG",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        },
+        {
+          "categoryTitle": "Доставка и эксплуатация",
+          "subcategoryTitle": "Управление услугами",
+          "color": "#FC8616",
+          "subColor": "#FFE9D4",
+          "id": 444,
+          "text": "Управление активами",
+          "code": "ASMG",
+          "value": 4,
+          "min": 2,
+          "max": 6
+        }
+      ],
+      "userId": 1,
+      "id": 1,
+      "views": 2
+    }
+  ],
   "vacancyCandidatePivot": [],
   "members": [
     {

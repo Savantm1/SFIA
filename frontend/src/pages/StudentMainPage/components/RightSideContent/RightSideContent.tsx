@@ -31,13 +31,13 @@ export const RightSideContent: FC<RightSideContentProps> = memo(({ user }) => {
         await updateStudentSkillsInDB(user, skillsData);
         user.skills = skillsData;
     };
-    console.log(user);
+
     return (
         <Styled.Container>
             <Styled.StudentBar>
                 <Styled.TextBlock>
                     <Text variant={'h4'} align={'right'}>
-                        {user.fullName}
+                        {`${user.secondName} ${user.firstName}`}
                     </Text>
                     <Text
                         variant={'body2'}

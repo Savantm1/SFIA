@@ -69,6 +69,7 @@ const Subtitle = styled.span<{ isSmallMargin?: boolean }>`
 `;
 
 const ProgressBarsWrapper = styled(ProgressBarList)`
+    justify-content: space-between;
     margin-top: 4px;
 `;
 

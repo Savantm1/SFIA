@@ -40,8 +40,9 @@ export const VacancyMiniCard: FC<VacancyMiniCardProps> = memo(
                     <Styled.Subtitle>{description}</Styled.Subtitle>
 
                     <Styled.ProgressBarsWrapper
-                        items={skillTypes}
+                        items={skillTypes.slice(0, 4)}
                         skillsGap={skillsGap}
+                        carousel={false}
                     />
 
                     <Styled.Responses>Отклики: {responses}</Styled.Responses>

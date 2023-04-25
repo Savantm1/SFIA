@@ -43,7 +43,10 @@ export const RoleRow: FC<RoleRowProps> = memo(({ roleProps, onDeleteRole }) => {
                 <Text align={'left'} variant={'h5'}>
                     {roleProps.text}
                 </Text>
-                <Styled.ProgressBarListWrapper items={roleProps.skills} />
+                <Styled.ProgressBarListWrapper
+                    items={roleProps.skills}
+                    carousel={false}
+                />
             </Styled.Content>
 
             <Styled.Button

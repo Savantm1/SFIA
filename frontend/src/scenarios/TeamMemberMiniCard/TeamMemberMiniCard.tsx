@@ -47,7 +47,10 @@ export const TeamMemberMiniCard: FC<TeamMemberMiniCardProps> = memo(
                     </Styled.Subtitle>
                     <Styled.Subtitle>{email}</Styled.Subtitle>
 
-                    <Styled.ProgressBarsWrapper items={skills} />
+                    <Styled.ProgressBarsWrapper
+                        carousel={false}
+                        items={skills.slice(0, 4)}
+                    />
                 </Styled.ContentWrapper>
             </Styled.ScenarioWrapper>
         );

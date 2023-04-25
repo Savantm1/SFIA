@@ -78,6 +78,7 @@ const Subtitle = styled.span`
 
 const ProgressBarsWrapper = styled(ProgressBarList)`
     margin-bottom: 10px;
+    justify-content: space-between;
 `;
 
 const Responses = styled.span`

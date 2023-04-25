@@ -49,7 +49,10 @@ export const CandidateMiniCard: FC<CandidateMiniCardProps> = memo(
                     <Styled.Title>{fullName}</Styled.Title>
                     <Styled.Subtitle>{position}</Styled.Subtitle>
                     <Styled.Subtitle>{phone}</Styled.Subtitle>
-                    <Styled.ProgressBarsWrapper items={skills} />
+                    <Styled.ProgressBarsWrapper
+                        items={skills.slice(0, 4)}
+                        carousel={false}
+                    />
                 </Styled.ContentWrapper>
             </Styled.ScenarioWrapper>
         );
