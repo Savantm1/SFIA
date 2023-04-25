@@ -101,16 +101,18 @@ export const VacancyFormModal: FC<VacancyFormModalProps> = memo(
                                     </Styled.AddSkillsButton>
                                 ) : (
                                     <>
-                                        <Styled.ProgressBar
-                                            items={
-                                                vacancy
-                                                    ? selectedSkillTypes.length >
-                                                      0
-                                                        ? selectedSkillTypes
-                                                        : vacancy.skillTypes
-                                                    : selectedSkillTypes
-                                            }
-                                        />
+                                        <div style={{ height: 38 }}>
+                                            <Styled.ProgressBar
+                                                items={
+                                                    vacancy
+                                                        ? selectedSkillTypes.length >
+                                                          0
+                                                            ? selectedSkillTypes
+                                                            : vacancy.skillTypes
+                                                        : selectedSkillTypes
+                                                }
+                                            />
+                                        </div>
                                         <Styled.DickButton
                                             iconName={Icons.cock}
                                             onClick={openSkillModalHandler}

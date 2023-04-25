@@ -111,10 +111,12 @@ export const MemberFormModal: FC<MemberFormModalProps> = memo(
                                 ) : (
                                     <div
                                         style={{
-                                            width: '286px',
                                             display: 'flex',
                                             flexDirection: 'row',
+                                            alignItems: 'center',
                                             justifyContent: 'space-between',
+                                            height: '30px',
+                                            width: '300px',
                                         }}
                                     >
                                         <Styled.ProgressBar

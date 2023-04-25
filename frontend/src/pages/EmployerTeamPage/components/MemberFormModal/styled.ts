@@ -36,7 +36,7 @@ const Row = styled.div`
 `;
 
 const TextInput = styled(TextInputUI)`
-    width: 286px;
+    width: 300px;
     margin-bottom: 4px;
 `;
 
@@ -91,7 +91,6 @@ export const DickButton = styled(IconButton)`
 `;
 
 const ProgressBar = styled(ProgressBarList)`
-    gap: 10px;
     width: 100%;
     height: 100%;
     max-width: 250px;
