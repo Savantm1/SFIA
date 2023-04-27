@@ -15,7 +15,7 @@ export const ProgressBarList: FC<ProgressBarListProps> = memo(
             ));
         }, [isBig, items]);
 
-        return carousel ? (
+        return carousel && items.length > 5 ? (
             <Styled.ProgressBarContainer>
                 <Styled.LeftButton
                     iconName={Icons.backBlack}

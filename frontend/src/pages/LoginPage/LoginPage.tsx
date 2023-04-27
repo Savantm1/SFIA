@@ -36,7 +36,7 @@ export const LoginPage: FC = memo(() => {
                     align={'left'}
                     color={Color.secondaryGray}
                 >
-                    Рад приветствовать вас на платформе для развития цифровых
+                    Рады приветствовать вас на платформе для развития цифровых
                     навыков.
                 </Styled.Subtitle>
                 <Styled.TextInput {...getInputProps('phone')} />
