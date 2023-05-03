@@ -19,34 +19,42 @@ export const useVacanciesStore = create<VacanciesState>()(
         currentVacancy: null,
         fetchVacancies: async (userId) => {
             const response = await fetch(
-                `http://localhost:3001/vacancies?userId=${userId}`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies?userId=${userId}`
             );
             const vacancies = (await response.json()) as Vacancy[];
             set({ vacancies });
         },
         getVacancyById: async (id) => {
             const response = await fetch(
-                `http://localhost:3001/vacancies?id=${id}`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies?id=${id}`
             );
             const vacancy = (await response.json())[0] as Vacancy;
             set({ currentVacancy: vacancy });
         },
         createVacancy: async (data) => {
-            await ky.post('http://localhost:3001/vacancies', {
-                json: {
-                    ...data,
-                },
-            });
+            await ky.post(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies`,
+                {
+                    json: {
+                        ...data,
+                    },
+                }
+            );
         },
         updateVacancy: async (vacancyId, data) => {
-            await ky.put(`http://localhost:3001/vacancies/${vacancyId}`, {
-                json: {
-                    ...data,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies/${vacancyId}`,
+                {
+                    json: {
+                        ...data,
+                    },
+                }
+            );
         },
         deleteVacancy: async (vacancyId) => {
-            await ky.delete(`http://localhost:3001/vacancies/${vacancyId}`);
+            await ky.delete(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies/${vacancyId}`
+            );
         },
     }))
 );

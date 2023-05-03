@@ -30,19 +30,24 @@ export const useMemberRolesModalStore = create<RolesModalStoreType>()(
         roles: [],
         getRoles: async () => {
             const response: StudentRoleType[] = await ky
-                .get('http://localhost:3001/roles')
+                .get(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/roles`
+                )
                 .json();
             set({ roles: response });
         },
         addRole: async (member: Member, newRole: StudentRoleType) => {
             const updatedMemberRoles = member.roles || [];
             updatedMemberRoles.push(newRole);
-            await ky.put(`http://localhost:3001/members/${member.id}`, {
-                json: {
-                    ...member,
-                    roles: updatedMemberRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                {
+                    json: {
+                        ...member,
+                        roles: updatedMemberRoles,
+                    },
+                }
+            );
             useMembersStore
                 .getState()
                 .setCurrentMember({ ...member, roles: updatedMemberRoles });
@@ -52,12 +57,15 @@ export const useMemberRolesModalStore = create<RolesModalStoreType>()(
             const filteredRoles = member.roles?.filter(
                 (role) => role.id !== roleId
             );
-            await ky.put(`http://localhost:3001/members/${member.id}`, {
-                json: {
-                    ...member,
-                    roles: filteredRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                {
+                    json: {
+                        ...member,
+                        roles: filteredRoles,
+                    },
+                }
+            );
             useMembersStore
                 .getState()
                 .setCurrentMember({ ...member, roles: filteredRoles });
@@ -71,12 +79,15 @@ export const useMemberRolesModalStore = create<RolesModalStoreType>()(
                 }
                 return role;
             });
-            await ky.put(`http://localhost:3001/members/${member.id}`, {
-                json: {
-                    ...member,
-                    roles: updatedRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                {
+                    json: {
+                        ...member,
+                        roles: updatedRoles,
+                    },
+                }
+            );
             useMembersStore
                 .getState()
                 .setCurrentMember({ ...member, roles: updatedRoles });

@@ -149,17 +149,20 @@ export const useSkillsModalStore = create<SkillsModalState>()(
             },
 
             updateStudentSkillsInDB: async (user, skills): Promise<void> => {
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: skills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                    {
+                        json: {
+                            id: user.id,
+                            role: user.role,
+                            fullName: user.fullName,
+                            phone: user.phone,
+                            mail: user.mail,
+                            city: user.city,
+                            skills: skills,
+                        },
+                    }
+                );
                 useAuthStore.getState().setCurrentUser({ ...user, skills });
             },
 
@@ -170,17 +173,20 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                     }
                     return skill;
                 });
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: updatedSkills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                    {
+                        json: {
+                            id: user.id,
+                            role: user.role,
+                            fullName: user.fullName,
+                            phone: user.phone,
+                            mail: user.mail,
+                            city: user.city,
+                            skills: updatedSkills,
+                        },
+                    }
+                );
                 useAuthStore
                     .getState()
                     .setCurrentUser({ ...user, skills: updatedSkills });
@@ -190,17 +196,20 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                 const filteredSkills = user.skills?.filter(
                     (skill) => skill.id !== id
                 );
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: filteredSkills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                    {
+                        json: {
+                            id: user.id,
+                            role: user.role,
+                            fullName: user.fullName,
+                            phone: user.phone,
+                            mail: user.mail,
+                            city: user.city,
+                            skills: filteredSkills,
+                        },
+                    }
+                );
                 useAuthStore
                     .getState()
                     .setCurrentUser({ ...user, skills: filteredSkills });
@@ -255,12 +264,15 @@ export const useSkillsModalStore = create<SkillsModalState>()(
             },
 
             updateMemberSkillsInDB: async (member, skills): Promise<void> => {
-                await ky.put(`http://localhost:3001/members/${member.id}`, {
-                    json: {
-                        ...member,
-                        skills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                    {
+                        json: {
+                            ...member,
+                            skills,
+                        },
+                    }
+                );
                 useMembersStore
                     .getState()
                     .setCurrentMember({ ...member, skills });
@@ -270,12 +282,15 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                 const filteredSkills = member.skills?.filter(
                     (skill) => skill.id !== id
                 );
-                await ky.put(`http://localhost:3001/members/${member.id}`, {
-                    json: {
-                        ...member,
-                        skills: filteredSkills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                    {
+                        json: {
+                            ...member,
+                            skills: filteredSkills,
+                        },
+                    }
+                );
                 useMembersStore
                     .getState()
                     .setCurrentMember({ ...member, skills: filteredSkills });
@@ -311,12 +326,15 @@ export const useSkillsModalStore = create<SkillsModalState>()(
                     }
                     return skill;
                 });
-                await ky.put(`http://localhost:3001/members/${member.id}`, {
-                    json: {
-                        ...member,
-                        skills: updatedSkills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${member.id}`,
+                    {
+                        json: {
+                            ...member,
+                            skills: updatedSkills,
+                        },
+                    }
+                );
                 useMembersStore
                     .getState()
                     .setCurrentMember({ ...member, skills: updatedSkills });

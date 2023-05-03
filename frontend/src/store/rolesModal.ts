@@ -26,25 +26,30 @@ export const useRolesModalStore = create<RolesModalStoreType>()(
         studentRoles: [],
         getRoles: async () => {
             const response: StudentRoleType[] = await ky
-                .get('http://localhost:3001/roles')
+                .get(
+                    'http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/roles'
+                )
                 .json();
             set({ studentRoles: response });
         },
         addRole: async (user: User, newRole: StudentRoleType) => {
             const updatedStudentRoles = user.studentRoles || [];
             updatedStudentRoles.push(newRole);
-            await ky.put(`http://localhost:3001/users/${user.id}`, {
-                json: {
-                    id: user.id,
-                    role: user.role,
-                    fullName: user.fullName,
-                    phone: user.phone,
-                    mail: user.mail,
-                    city: user.city,
-                    skills: user.skills,
-                    studentRoles: updatedStudentRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                {
+                    json: {
+                        id: user.id,
+                        role: user.role,
+                        fullName: user.fullName,
+                        phone: user.phone,
+                        mail: user.mail,
+                        city: user.city,
+                        skills: user.skills,
+                        studentRoles: updatedStudentRoles,
+                    },
+                }
+            );
             useAuthStore
                 .getState()
                 .setCurrentUser({ ...user, studentRoles: updatedStudentRoles });
@@ -54,18 +59,21 @@ export const useRolesModalStore = create<RolesModalStoreType>()(
             const filteredRoles = user.studentRoles?.filter(
                 (role) => role.id !== roleId
             );
-            await ky.put(`http://localhost:3001/users/${user.id}`, {
-                json: {
-                    id: user.id,
-                    role: user.role,
-                    fullName: user.fullName,
-                    phone: user.phone,
-                    mail: user.mail,
-                    city: user.city,
-                    skills: user.skills,
-                    studentRoles: filteredRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                {
+                    json: {
+                        id: user.id,
+                        role: user.role,
+                        fullName: user.fullName,
+                        phone: user.phone,
+                        mail: user.mail,
+                        city: user.city,
+                        skills: user.skills,
+                        studentRoles: filteredRoles,
+                    },
+                }
+            );
             useAuthStore
                 .getState()
                 .setCurrentUser({ ...user, studentRoles: filteredRoles });
@@ -79,18 +87,21 @@ export const useRolesModalStore = create<RolesModalStoreType>()(
                 }
                 return userRole;
             });
-            await ky.put(`http://localhost:3001/users/${user.id}`, {
-                json: {
-                    id: user.id,
-                    role: user.role,
-                    fullName: user.fullName,
-                    phone: user.phone,
-                    mail: user.mail,
-                    city: user.city,
-                    skills: user.skills,
-                    studentRoles: updatedRoles,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                {
+                    json: {
+                        id: user.id,
+                        role: user.role,
+                        fullName: user.fullName,
+                        phone: user.phone,
+                        mail: user.mail,
+                        city: user.city,
+                        skills: user.skills,
+                        studentRoles: updatedRoles,
+                    },
+                }
+            );
             useAuthStore
                 .getState()
                 .setCurrentUser({ ...user, studentRoles: updatedRoles });

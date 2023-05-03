@@ -28,10 +28,13 @@ export const useRegistrationStore = create<RegistrationState>()(() => ({
     createNewPerson: async (
         data: StudentRegistrationData | EmployerRegistrationData
     ) => {
-        await ky.post('http://localhost:3001/users', {
-            json: {
-                ...data,
-            },
-        });
+        await ky.post(
+            `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users`,
+            {
+                json: {
+                    ...data,
+                },
+            }
+        );
     },
 }));

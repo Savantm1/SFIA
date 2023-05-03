@@ -15,7 +15,9 @@ export const useAuthStore = create<AuthState>()((set) => ({
     },
 
     fetchCurrentUser: async (userId: string) => {
-        const user = await ky(` http://localhost:3001/users/${userId}`).json();
+        const user = await ky(
+            `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${userId}`
+        ).json();
         set({ currentUser: user as User });
     },
 }));

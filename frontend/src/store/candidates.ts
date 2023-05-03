@@ -16,16 +16,18 @@ export const useVacancyCandidatePivotStore =
         vacanciesWithCandidates: [],
         fetchVacanciesWithCandidates: async (employerId) => {
             const response = await fetch(
-                `http://localhost:3001/vacancyCandidatePivot?employerId=${employerId}`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancyCandidatePivot?employerId=${employerId}`
             );
             const vacancyCandidatePivot =
                 (await response.json()) as VacancyCandidatePivot[];
 
-            const usersResponse = await fetch(`http://localhost:3001/users`);
+            const usersResponse = await fetch(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users`
+            );
             const users = (await usersResponse.json()) as User[];
 
             const vacanciesResponse = await fetch(
-                `http://localhost:3001/vacancies`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/vacancies`
             );
             const vacancies = (await vacanciesResponse.json()) as Vacancy[];
 

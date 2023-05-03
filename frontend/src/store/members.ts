@@ -21,7 +21,7 @@ export const useMembersStore = create<MembersState>()(
         currentMember: null,
         fetchMembers: async (employerId) => {
             const response = await fetch(
-                `http://localhost:3001/members?employerId=${employerId}`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members?employerId=${employerId}`
             );
             const members = (await response.json()) as Member[];
 
@@ -29,27 +29,35 @@ export const useMembersStore = create<MembersState>()(
         },
         getMemberById: async (id) => {
             const response = await fetch(
-                `http://localhost:3001/members?id=${id}`
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members?id=${id}`
             );
             const member = (await response.json())[0] as Member;
             set({ currentMember: member });
         },
         createMember: async (data) => {
-            await ky.post('http://localhost:3001/members', {
-                json: {
-                    ...data,
-                },
-            });
+            await ky.post(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members`,
+                {
+                    json: {
+                        ...data,
+                    },
+                }
+            );
         },
         updateMember: async (memberId, data) => {
-            await ky.put(`http://localhost:3001/members/${memberId}`, {
-                json: {
-                    ...data,
-                },
-            });
+            await ky.put(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${memberId}`,
+                {
+                    json: {
+                        ...data,
+                    },
+                }
+            );
         },
         deleteMember: async (memberId) => {
-            await ky.delete(`http://localhost:3001/members/${memberId}`);
+            await ky.delete(
+                `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/members/${memberId}`
+            );
         },
         setCurrentMember: (member: Member | null) => {
             set({ currentMember: member });

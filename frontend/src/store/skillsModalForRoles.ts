@@ -120,17 +120,20 @@ export const useSkillsModalForRolesStore = create<SkillsModalForRolesState>()(
             },
 
             updateStudentSkillsInDB: async (user, skills): Promise<void> => {
-                await ky.put(`http://localhost:3001/users/${user.id}`, {
-                    json: {
-                        id: user.id,
-                        role: user.role,
-                        fullName: user.fullName,
-                        phone: user.phone,
-                        mail: user.mail,
-                        city: user.city,
-                        skills: skills,
-                    },
-                });
+                await ky.put(
+                    `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_SERVER_PORT}/users/${user.id}`,
+                    {
+                        json: {
+                            id: user.id,
+                            role: user.role,
+                            fullName: user.fullName,
+                            phone: user.phone,
+                            mail: user.mail,
+                            city: user.city,
+                            skills: skills,
+                        },
+                    }
+                );
                 useAuthStore.getState().setCurrentUser({ ...user, skills });
             },
 
