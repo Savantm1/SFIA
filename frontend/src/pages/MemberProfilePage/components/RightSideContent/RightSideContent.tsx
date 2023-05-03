@@ -58,7 +58,7 @@ export const RightSideContent: FC<RightSideContentProps> = memo(
                             items={member.skills}
                             showAllItemsHandler={showAllItemsHandler}
                             getSkillsDataHandler={getSkillsDataHandler}
-                            title={`Мои навык`}
+                            title={`Навыки сотрудника`}
                             isMember={true}
                         />
                     )}

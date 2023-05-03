@@ -36,12 +36,12 @@ const Row = styled.div`
 `;
 
 const TextInput = styled(TextInputUI)`
-    width: 286px;
+    width: 300px;
     margin-bottom: 4px;
 `;
 
 const TextArea = styled(TextAreaUI)`
-    width: 100%;
+    width: 300px;
     margin-bottom: 4px;
 `;
 
@@ -84,7 +84,7 @@ const CancelButton = styled.button`
 `;
 
 const AddSkillsButton = styled.button`
-    width: 286px !important;
+    width: 300px !important;
     height: 36px;
     border-radius: 8px;
     border: 1px solid ${Color.secondaryGray} !important;

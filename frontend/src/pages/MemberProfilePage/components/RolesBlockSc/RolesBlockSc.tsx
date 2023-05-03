@@ -89,7 +89,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                     />
                     <Styled.SkillsBar>
                         <Styled.Title align={'left'} variant={'h2'}>
-                            {'Мои роли'}
+                            {'Роли сотрудника'}
                         </Styled.Title>
                         <IconButton
                             iconName={Icons.add}
@@ -136,7 +136,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                             />
                         )}
                         <Styled.Title align={'left'} variant={'h2'}>
-                            {'Мои роли'}
+                            {'Роли сотрудника'}
                         </Styled.Title>
                         <IconButton
                             iconName={Icons.add}
@@ -187,7 +187,7 @@ export const RolesBlockSc: FC<RolesBlockScProps> = memo(
                             />
                         )}
                         <Styled.Title align={'left'} variant={'h2'}>
-                            {'Мои роли'}
+                            {'Роли сотрудника'}
                         </Styled.Title>
                         <IconButton
                             iconName={Icons.add}
