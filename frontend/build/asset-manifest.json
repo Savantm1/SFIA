@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.b543bd12.css",
-    "main.js": "/static/js/main.c5f5e367.js",
+    "main.js": "/static/js/main.efe08073.js",
     "static/js/787.c0415dec.chunk.js": "/static/js/787.c0415dec.chunk.js",
     "static/media/inter-all-700-normal.woff": "/static/media/inter-all-700-normal.4caa68a0cd07682d7af5.woff",
     "static/media/inter-all-500-normal.woff": "/static/media/inter-all-500-normal.83e7a0ab5dc3177d4723.woff",
@@ -61,11 +61,11 @@
     "static/media/material-symbols_school.svg": "/static/media/material-symbols_school.663757762ab6beaa9e463608faae6f5c.svg",
     "static/media/akar-icons_cross.svg": "/static/media/akar-icons_cross.c47c618091a06be67b665d9bd752ec6b.svg",
     "main.b543bd12.css.map": "/static/css/main.b543bd12.css.map",
-    "main.c5f5e367.js.map": "/static/js/main.c5f5e367.js.map",
+    "main.efe08073.js.map": "/static/js/main.efe08073.js.map",
     "787.c0415dec.chunk.js.map": "/static/js/787.c0415dec.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b543bd12.css",
-    "static/js/main.c5f5e367.js"
+    "static/js/main.efe08073.js"
   ]
 }
